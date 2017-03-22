@@ -107,27 +107,26 @@ class LoginScreen extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-        
         <View style={Styles.topHeading}>
           <View style={Styles.navigationbar} >
             <TouchableOpacity onPress={NavigationActions.pop}  style={{flex:1,marginLeft:'5%'}}>
                 <Image source={Images.backButton} />
             </TouchableOpacity>
-            <Text style={[Fonts.style.landingTitle,{flex:2,color:'white'}]}>PT SPOTTER</Text>
+            <Text style={[Fonts.style.landingTitle,{color:'white'}]}>PT SPOTTER</Text>
             <Text style={[Fonts.style.landingTitle,{flex:1}]}></Text>
           </View>
               <Text style={Styles.slogan}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
-            
+
         </View>
 
-        <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'16%',marginBottom:5, height:45,backgroundColor:'white'}}>
+        <Item rounded style={Styles.Input}>
             <Icon name='mail' style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
-            <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='EMAIL'/> 
+            <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='EMAIL'/>
         </Item>
-        <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'3%',marginBottom:5,height:45,backgroundColor:'white'}}>                             
+        <Item rounded style={{height:45,backgroundColor:'white'}}>
               <Icon name='lock'style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
               <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='PASSWORD'/>
-        </Item> 
+        </Item>
 
         <View style={Styles.btnSelect}>
             <TouchableOpacity style={Styles.SignupBtn} onPress={Actions.homeScreen}>
@@ -144,20 +143,15 @@ class LoginScreen extends React.Component {
         <View style={Styles.btnSelect}>
             <TouchableOpacity style={Styles.facebookBtn}>
                     <Text style={Styles.SignupText} > LOGIN VIA FACEBOOK </Text>
-                
             </TouchableOpacity>
         </View>
 
         <View style={Styles.loginView}>
                 <Text style={Styles.loginText}> Register as</Text>
-
                 <TouchableOpacity onPress={Actions.signup}>
                  <Text style={Styles.loginBtn}> Personal Trainer </Text>
                  </TouchableOpacity>
-
         </View>
-        
-
       </ScrollView>
     )
   }

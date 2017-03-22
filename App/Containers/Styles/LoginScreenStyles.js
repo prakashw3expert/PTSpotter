@@ -5,6 +5,8 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
   container: {
     paddingTop: 40,
+    paddingLeft: 20,
+    paddingRight: 20,
     backgroundColor: Colors.background
   },
   form: {
@@ -51,7 +53,7 @@ export default EStyleSheet.create({
     resizeMode: 'contain'
   },
   topHeading: {
-  
+
     alignSelf:'stretch',
     alignItems:'center'
   },
@@ -93,7 +95,7 @@ export default EStyleSheet.create({
       flexDirection:'row',
       justifyContent:'center',
   },
-  
+
   orText: {
     textAlign:'center',
     fontSize:18.6,
@@ -101,12 +103,12 @@ export default EStyleSheet.create({
     color:'white',
   },
   facebookBtn: {
-      marginTop:'7%',
+    marginTop:'7%',
     backgroundColor:'rgb(59,90,154)',
     justifyContent:'center',
     alignItems:'center',
-    marginLeft:'14%',
-    marginRight:'14%',
+    /* marginLeft:'14%',
+    marginRight:'14%', */
     height:57,
     borderRadius:30,
   },
@@ -145,5 +147,8 @@ export default EStyleSheet.create({
     fontWeight:'bold',
     fontSize:15,
   },
-  
+  Input:{
+    height:45,
+    backgroundColor:'white'
+  }
 })
