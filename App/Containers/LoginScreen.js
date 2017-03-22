@@ -156,7 +156,7 @@ class LoginScreen extends React.Component {
                  </TouchableOpacity>
 
         </View>
-        
+
 
       </ScrollView>
     )

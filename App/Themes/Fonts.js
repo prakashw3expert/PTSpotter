@@ -72,6 +72,14 @@ const style = {
     borderWidth:2,
 
   },
+  textInput:{
+     
+     alignSelf:'stretch',
+     fontWeight:'bold',
+     fontSize:14,
+     color:'rgba(102,102,102,0.5)',
+     marginLeft:10,
+  },
   textArea:{
     marginLeft:'5%',
     marginRight:'5%',
@@ -80,7 +88,14 @@ const style = {
     height:'13%',
     borderColor:'rgba(234,234,234,0.5)',
     borderWidth:2,
-    
+
+  },
+  regular14:{
+    fontFamily:type.regular,
+    backgroundColor:'transparent',
+    color:'rgb(102,102,102)',
+    fontSize:14,
+    letterSpacing:1.8,
   },
   h1: {
     fontFamily: type.base,
