@@ -7,7 +7,8 @@ export default EStyleSheet.create({
     paddingTop: 40,
     paddingLeft: 20,
     paddingRight: 20,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.background,
+
   },
   form: {
     backgroundColor: Colors.snow,
@@ -102,24 +103,18 @@ export default EStyleSheet.create({
     letterSpacing:3.8,fontFamily:Fonts.type.bold,
     color:'white',
   },
-  facebookBtn: {
-    marginTop:'7%',
-    backgroundColor:'rgb(59,90,154)',
+  button: {
     justifyContent:'center',
     alignItems:'center',
-    /* marginLeft:'14%',
-    marginRight:'14%', */
     height:57,
     borderRadius:30,
   },
+  facebook: {
+    backgroundColor:'rgb(59,90,154)'
+  },
   bottomView: {
     alignItems:'center',
-    marginLeft:'15%',
-    marginRight:'15%',
     justifyContent:'center',
-    height:30,
-    marginTop:'8%',
-
   },
 
   bottomText: {

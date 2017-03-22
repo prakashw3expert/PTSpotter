@@ -10,11 +10,11 @@ import {
   LayoutAnimation
 } from 'react-native'
 import Hr from 'react-native-hr'
-import { Container, Content,Input,
-  Form,Item, Left,Icon,
-  Body, Right, ListItem,
-  Thumbnail,List,Button,
-  Card, CardItem,Label } from 'native-base';
+import {
+  Container, Content,Input,
+  Form, Button, Item, Icon } from 'native-base';
+
+
 import { Actions } from 'react-native-router-flux'
 
 import { connect } from 'react-redux'
@@ -115,15 +115,15 @@ class LoginScreen extends React.Component {
             <Text style={[Fonts.style.landingTitle,{color:'white'}]}>PT SPOTTER</Text>
             <Text style={[Fonts.style.landingTitle,{flex:1}]}></Text>
           </View>
-              <Text style={Styles.slogan}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
+              <Text style={Fonts.style.normal}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
 
         </View>
 
-        <Item rounded style={Styles.Input}>
+        <Item rounded style={Fonts.style.input}>
             <Icon name='mail' style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
             <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='EMAIL'/>
         </Item>
-        <Item rounded style={{height:45,backgroundColor:'white'}}>
+        <Item rounded style={Fonts.style.input}>
               <Icon name='lock'style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
               <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='PASSWORD'/>
         </Item>
@@ -140,10 +140,12 @@ class LoginScreen extends React.Component {
                 <Hr lineColor='white' text='OR' textColor='white'/>
         </View>
 
-        <View style={Styles.btnSelect}>
-            <TouchableOpacity style={Styles.facebookBtn}>
-                    <Text style={Styles.SignupText} > LOGIN VIA FACEBOOK </Text>
-            </TouchableOpacity>
+        <View>
+
+            <Button light full rounded style={Fonts.style.facebook}>
+                <Text style={Fonts.style.buttonText}>Login with facebook</Text>
+            </Button>
+
         </View>
 
         <View style={Styles.loginView}>

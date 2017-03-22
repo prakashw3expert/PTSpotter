@@ -5,74 +5,47 @@ export default EStyleSheet.create({
   container: {
     flex:1,
     alignItems:'center',
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
+    marginLeft: 28,
+    marginRight: 28
   },
   topHeading: {
-    marginTop: '5%',
+    marginTop: '6%',
     flex:2,
-    //backgroundColor:'green',
-    //alignSelf:'stretch',
     alignItems:'center'
   },
    bottomView: {
     flex:3,
-    justifyContent:'center',
-    marginTop:'1%',
-  //  backgroundColor:'red',
-    alignSelf:'stretch',
-    alignItems:'center',
+    marginTop:"2%",
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      marginTop:"15%",
+    },
   },
   swiperView: {
     flex:10,
     alignSelf:'center',
   },
-  wrapper: {
 
-  },
-  slide1: {
+  slider: {
     flex: 1,
-    //justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
     flexDirection:'column',
   },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
+
   text: {
-    color: '#525252',
-    fontSize: 13,
-    textAlign:'center',
-    fontWeight: '600',
-  },
-  text2: {
     color: 'rgb(102, 102, 102)',
-    fontSize: 14,
+    fontSize: Fonts.size.regular,
     textAlign:'center',
-    fontFamily:'Montserrat-Regular',
+    fontFamily:Fonts.type.regular,
     lineHeight:23,
     letterSpacing:1.8,
-    marginLeft:'4%',
-    marginRight:'4%',
 
   },
-  
-  // heading: {
-  //   fontWeight:'bold',
-  //   fontSize:18.6,
-  //   color:'#525252',
-  //   fontFamily:'Montserrat-Bold'
-  // },
- 
+  facebook: {
+    backgroundColor:'rgb(59,90,154)',
+    height: 57,
+  },
   StartBtn: {
     backgroundColor:'transparent',
     justifyContent:'center',
@@ -94,14 +67,14 @@ export default EStyleSheet.create({
   },
   loginText: {
     color:'rgba(102,102,102,0.5)',
-    fontSize:14,
-    fontWeight:'bold',
-    backgroundColor: 'transparent',
+    fontSize:Fonts.size.button,
+    fontFamily:Fonts.type.regular,
+    letterSpacing:0.2
   },
   loginBtn: {
     color:'rgb(102,102,102)',
-    fontWeight:'bold',
-    fontSize:15,
+    fontFamily:Fonts.type.bold,
+    fontSize:Fonts.size.button,
   },
   sliderheading: {
     marginTop:5,
@@ -112,8 +85,9 @@ export default EStyleSheet.create({
     justifyContent:'center',
   },
   sliderbottomtext: {
-    
     marginTop:'6%',
+    paddingLeft:20,
+    paddingRight:20
 
   },
   slogan: {
@@ -129,22 +103,13 @@ export default EStyleSheet.create({
   },
 
   '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
-    text2: {
-      fontSize: 12,
+    text: {
+      fontSize: Fonts.size.medium,
+      lineHeight:21,
     },
-    btnImage: {
-    
+
   },
-  },
-  header: {
-    fontSize: 18,
-    '@media ios': { // media query on style level
-      color: 'green',
-    },
-    '@media android': {
-      color: 'blue',
-    },
-  }
+
 
 
 
