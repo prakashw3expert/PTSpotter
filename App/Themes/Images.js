@@ -1,0 +1,35 @@
+const images = {
+  logo: require('../Images/ir.png'),
+  clearLogo: require('../Images/top_logo.png'),
+  launch: require('../Images/launch-icon.png'),
+  ready: require('../Images/your-app.png'),
+  ignite: require('../Images/ignite_logo.png'),
+  igniteClear: require('../Images/ignite-logo-transparent.png'),
+  tileBg: require('../Images/tile_bg.png'),
+  background: require('../Images/BG.png'),
+  api: require('../Images/Icons/icon-api-testing.png'),
+  components: require('../Images/Icons/icon-components.png'),
+  deviceInfo: require('../Images/Icons/icon-device-information.png'),
+  faq: require('../Images/Icons/faq-icon.png'),
+  home: require('../Images/Icons/icon-home.png'),
+  theme: require('../Images/Icons/icon-theme.png'),
+  usageExamples: require('../Images/Icons/icon-usage-examples.png'),
+  chevronRight: require('../Images/Icons/chevron-right.png'),
+  hamburger: require('../Images/Icons/hamburger.png'),
+  onBoarding1: require('../Images/onboarding1.png'),
+  onBoarding2: require('../Images/onboarding2.png'),
+  onBoarding3: require('../Images/onboarding3.png'),
+  buttonBackground: require('../Images/buttonBackground.png'),
+  cardBackground: require('../Images/rectangle.png'),
+  cardillustration1: require('../Images/cardIllustration.png'),
+  cardillustration0: require('../Images/cardIllustration_on.png'),
+  backButton: require('../Images/back.png'),
+  avatarImage: require('../Images/avatar.jpg'),
+  menuIcon: require('../Images/sidemenu.png'),
+  messageIcon: require('../Images/messageicon.png'),
+  smsIllustration: require('../Images/smsImage.png'),
+  addImageCircle: require('../Images/addPhotoWithCircle.png')
+
+}
+
+export default images

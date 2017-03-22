@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11760" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundDecoration" translatesAutoresizingMaskIntoConstraints="NO" id="5R4-7W-ujU">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="DWc-Jy-viN">
+                    <rect key="frame" x="92.5" y="114" width="135" height="135"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="135" id="ngv-Lk-OaU"/>
+                        <constraint firstAttribute="width" constant="135" id="qHD-st-Ulb"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P T  S P O T T E R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-Jw-FHP">
+                    <rect key="frame" x="65.5" y="277" width="189" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="189" id="BXF-4i-WVi"/>
+                        <constraint firstAttribute="height" constant="21" id="NNM-AQ-E6u"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18.600000381469727"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1B-oN-plY">
+                    <rect key="frame" x="0.0" y="320" width="320" height="34"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T H E  N E W  W A Y  T O  F I N D  Y O U R  P E R F E C T         P E R S O N A L  T R A I N E R" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHn-EQ-uV5">
+                            <rect key="frame" x="12" y="0.0" width="296" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="MQ6-yi-Nak"/>
+                                <constraint firstAttribute="width" constant="296" id="VYl-xS-58q"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10.399999618530273"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="1XR-sb-dLN"/>
+                        <constraint firstItem="oHn-EQ-uV5" firstAttribute="top" secondItem="s1B-oN-plY" secondAttribute="top" id="9Db-C5-4De"/>
+                        <constraint firstAttribute="height" constant="34" id="iKL-aE-slp"/>
+                        <constraint firstItem="oHn-EQ-uV5" firstAttribute="centerX" secondItem="s1B-oN-plY" secondAttribute="centerX" id="yFh-IW-bAt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.050980392156862744" green="0.027450980392156862" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="s1B-oN-plY" firstAttribute="top" secondItem="LFy-Jw-FHP" secondAttribute="bottom" constant="22" id="6H4-g4-1QM"/>
+                <constraint firstItem="DWc-Jy-viN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="114" id="AWL-P0-yUP"/>
+                <constraint firstItem="5R4-7W-ujU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Dm2-Fe-Oqz"/>
+                <constraint firstItem="s1B-oN-plY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="H0i-Cf-ThK"/>
+                <constraint firstItem="5R4-7W-ujU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Q34-4M-Kbm"/>
+                <constraint firstItem="LFy-Jw-FHP" firstAttribute="top" secondItem="DWc-Jy-viN" secondAttribute="bottom" constant="28" id="bAT-er-exi"/>
+                <constraint firstAttribute="bottom" secondItem="5R4-7W-ujU" secondAttribute="bottom" id="e9t-k2-Kn0"/>
+                <constraint firstAttribute="trailing" secondItem="5R4-7W-ujU" secondAttribute="trailing" id="fa2-Mh-SaI"/>
+                <constraint firstItem="LFy-Jw-FHP" firstAttribute="centerX" secondItem="5R4-7W-ujU" secondAttribute="centerX" id="gMO-l6-rf2"/>
+                <constraint firstItem="DWc-Jy-viN" firstAttribute="centerX" secondItem="5R4-7W-ujU" secondAttribute="centerX" id="gdv-gl-bhd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="547.5" y="454.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backgroundDecoration" width="375" height="629"/>
+        <image name="logo" width="135" height="135"/>
+    </resources>
+</document>
