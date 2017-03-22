@@ -1,3 +1,6 @@
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+
 const type = {
   regular: 'Montserrat-Regular',
   bold: 'Montserrat-Bold',
@@ -50,6 +53,17 @@ const style = {
     fontSize:9.3,
     letterSpacing:0.3,
     marginTop:10,
+  },
+  subHeading:{
+    fontFamily:type.regular,
+    backgroundColor:'transparent',
+    color:'rgb(102,102,102)',
+    fontSize:16,
+    letterSpacing:2,
+    
+  },
+  input:{
+    padding:10,
   },
 
   h1: {

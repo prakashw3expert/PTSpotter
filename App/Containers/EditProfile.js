@@ -27,7 +27,7 @@ export default class EditProfile extends React.Component {
   render () {
 
     let imageView;
-    imageView = <Image source={Images.addImageCircle} style={styles.userImage}/> 
+    imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/> 
       
      
     return (
@@ -36,44 +36,48 @@ export default class EditProfile extends React.Component {
         <ScrollView>
           <Form>
               <View style={styles.headerView}>
-                <View style={styles.navbarview}>
-                  <Button transparent iconLeft onPress={NavigationActions.pop}>
-                  <Icon name='arrow-back' style={{color:'white'}}/>
+                <Image source={Images.editProfileHeader}>
+                    <View style={styles.navbarview}>
+                      <Button transparent iconLeft onPress={NavigationActions.pop}>
+                      <Icon name='arrow-back' style={{color:'white'}}/>
 
-                  </Button>
-                  <Text style={[Fonts.style.landingTitle,{flex:1, textAlign:'center',color:'white',fontWeight:'bold'}]}>EDIT PROFILE</Text>
-                  <Button transparent>
-                      <Text></Text>
-                  </Button>
-                </View>
-                <View style={styles.profileimage} >
-                  <TouchableOpacity>
-                   {imageView}
-                  </TouchableOpacity>
-                </View>
-
+                      </Button>
+                      <Text style={[Fonts.style.landingTitle,{flex:1, textAlign:'center',color:'white',fontWeight:'bold'}]}>EDIT PROFILE</Text>
+                      <Button transparent>
+                          <Text></Text>
+                      </Button>
+                    </View>
+                    <View style={styles.profileimage} >
+                      <TouchableOpacity>
+                       {imageView}
+                      </TouchableOpacity>
+                    </View>
+                </Image>
 
           </View>
 
-                      <Text style={styles.headingTitle}>GENERAL</Text>
+                      <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>GENERAL</Text>
 
-                      <Item rounded style={{marginLeft:10,marginRight:10,marginTop:10,marginBottom:5, height:35}}>
-                          <Icon name='refresh' style={{marginTop:3}}/>
-                          <Input style={{ height:30, fontSize:14}} placeholder='Name'/> 
+                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
+                          <Image source={Images.nameIcon} style={{marginTop:5,marginLeft:15}}/>
+                          <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)',marginLeft:10}} placeholder='NAME'/> 
                       </Item>
-                      <Item rounded style={{marginLeft:10,marginRight:10,marginTop:5,marginBottom:5,height:35}}>                             
-                            <Icon name='refresh'style={{marginTop:3}}/>
-                            <Input style={{ height:30,fontWeight:'bold',fontSize:14}} placeholder='tarunbardawa3@gmail.com'/>
-                      </Item> 
-                      <Item rounded style={{marginLeft:10,marginRight:10,marginTop:5,marginBottom:5, height:35}}>
-                            <Icon name='refresh' style={{marginTop:3}} />
-                            <Input style={{ height:30, fontSize:14}} placeholder='+44 (123) 458712' />
-                      </Item>                       
-                      <Item rounded style={{margin:8, height:110,borderRadius:10}}>                             
-                            <Input bordered style={{height:110, fontSize:14,fontWeight:'600', height:60}} multiline = {true} placeholder='About' /> 
+                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
+                          <Image source={Images.emailIcon} style={{marginTop:5,marginLeft:15}}/>
+                          <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='tarunbardawa3@gmail.com'/> 
+                          <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
+                      </Item>
+                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
+                          <Image source={Images.phoneIcon} style={{marginTop:5,marginLeft:15}}/>
+                          <Input style={{ flex:1,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='+91 9024503444'/> 
+                          <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
                       </Item>
 
-                      <Text style={styles.headingTitle}>MY GYMS</Text>
+                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:'13%',borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>                             
+                            <Input bordered style={{height:100,padding:10, fontSize:14,fontWeight:'600', height:60}} multiline = {true} placeholder='About' /> 
+                      </Item>
+
+                      <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>MY GYMS</Text>
 
                       <Button rounded bordered block style={{borderColor:'#777777',
                       height:36,
@@ -95,7 +99,7 @@ export default class EditProfile extends React.Component {
                           value={this.state.colorTrueSwitchIsOn} />
                       </View>
 
-                      <Text style={styles.headingTitle}>TRAINING OPTIONS</Text>
+                      <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>TRAINING OPTIONS</Text>
 
                       <Item rounded style={{marginLeft:10,marginRight:10,marginTop:10,marginBottom:5, height:35}}>
 

@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/'
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-export default StyleSheet.create({
+export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
-    backgroundColor:'#421b64',
-    height:180,
+    backgroundColor:Colors.background,
+    height:'35%',
     alignItems:'center',
 
   },
@@ -17,29 +18,24 @@ export default StyleSheet.create({
     flex:1,
     flexDirection:'row',
     height:64,
-    backgroundColor:'#421b64',
     alignItems:'center',
   },
   profileimage: {
   flex:3,
-  backgroundColor:'#421b64',
   alignItems:'center',
   alignSelf:'stretch',
 
   },
   userImage: {
     alignSelf:'center',
-    height:100,
-    width:100,
+    height:'18%',
+    width:'30%',
     margin:10,
     alignSelf:'center',
     borderRadius: 40,
 
   },
   headingTitle: {
-    fontWeight:'bold',
-    fontSize:14,
-    color: '#7a7a7a',
     marginTop:10,
     marginLeft:10,
   },
@@ -50,7 +46,15 @@ export default StyleSheet.create({
     alignItems:'center',
     marginBottom:10,
   },
-  
+  inputItem:{
+    marginLeft:'13%',
+    marginRight:'13%',
+    marginTop:'16%',
+    marginBottom:5, 
+    height:45,
+    backgroundColor:'red',
+  },
+
 
 
 

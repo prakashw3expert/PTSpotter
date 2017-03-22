@@ -28,7 +28,14 @@ const images = {
   menuIcon: require('../Images/sidemenu.png'),
   messageIcon: require('../Images/messageicon.png'),
   smsIllustration: require('../Images/smsImage.png'),
-  addImageCircle: require('../Images/addPhotoWithCircle.png')
+  addPhotoCircle: require('../Images/addPhotoWithCircle.png'),
+  addPhoto: require('../Images/addUserPhoto.png'),
+  editProfileHeader: require('../Images/editProfileHeader1.png'),
+  nameIcon: require('../Images/nameImage1.png'),
+  emailIcon: require('../Images/emailIcon.png'),
+  phoneIcon: require('../Images/phoneIcon.png'),
+  discardChangeIcon: require('../Images/discardChangeIcon.png'),
+  
 
 }
 
