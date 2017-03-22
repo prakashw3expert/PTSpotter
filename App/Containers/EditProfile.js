@@ -14,8 +14,6 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/EditProfileStyle'
 
-
-//<Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
 export default class EditProfile extends React.Component {
 
   state = {
@@ -32,8 +30,9 @@ export default class EditProfile extends React.Component {
      
     return (
 
-      <Content>
+      
         <ScrollView>
+          <View>
           <Form>
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader}>
@@ -54,89 +53,74 @@ export default class EditProfile extends React.Component {
                     </View>
                 </Image>
 
-          </View>
+              </View>
 
-                      <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>GENERAL</Text>
+              <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>GENERAL</Text>
 
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
-                          <Image source={Images.nameIcon} style={{marginTop:5,marginLeft:15}}/>
-                          <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)',marginLeft:10}} placeholder='NAME'/> 
-                      </Item>
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
-                          <Image source={Images.emailIcon} style={{marginTop:5,marginLeft:15}}/>
-                          <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='tarunbardawa3@gmail.com'/> 
-                          <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
-                      </Item>
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
-                          <Image source={Images.phoneIcon} style={{marginTop:5,marginLeft:15}}/>
-                          <Input style={{ flex:1,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='+91 9024503444'/> 
-                          <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
-                      </Item>
+              <Item rounded style={Fonts.style.inputBox}>
+                  <Image source={Images.nameIcon} style={{marginTop:5,marginLeft:15}}/>
+                  <Input style={Fonts.style.textInput} placeholder='NAME'/> 
+              </Item>
+              <Item rounded style={Fonts.style.inputBox}>
+                  <Image source={Images.emailIcon} style={{marginTop:5,marginLeft:15}}/>
+                  <Input style={{ flex:1,alignSelf:'stretch',fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='tarunbardawa3@gmail.com'/> 
+                  <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
+              </Item>
+              <Item rounded style={Fonts.style.inputBox}>
+                  <Image source={Images.phoneIcon} style={{marginTop:5,marginLeft:15}}/>
+                  <Input style={{ flex:1,alignSelf:'stretch',fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='+91 9024503444'/> 
+                  <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
+              </Item>
 
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:'13%',borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>                             
-                            <Input bordered style={{height:100,padding:10, fontSize:14,fontWeight:'600', height:60}} multiline = {true} placeholder='About' /> 
-                      </Item>
+              <Item rounded style={Fonts.style.textArea}>                             
+                    <Input bordered style={{padding:10, fontSize:14,fontWeight:'600',height:'100%'}} multiline = {true} placeholder='About' /> 
+              </Item>
 
-                      <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>MY GYMS</Text>
-
-                      <Button rounded bordered block style={{borderColor:'#777777',
-                      height:36,
-                      marginLeft:30,
-                      marginRight:30,
-                      marginTop:10,
-                      marginBottom:5,borderWidth:2}}>
-                        <Text style={{color:'darkgray',fontWeight:'bold'}}>ADD GYM</Text>
-                    </Button>
-                    <View style={styles.switchView}>
-                        <Text style={{fontWeight:'bold',fontSize:12,color:'#777777',flex:1, marginLeft:10}}>AVAILABILITY UPON REQUEST</Text>
-
-                        <Switch
-                          onValueChange={(value) => this.setState({colorTrueSwitchIsOn: value})}
-                          onTintColor="#d007df"
-                          thumbTintColor="#fff"
-                          tintColor="#777777"
-                          style={{marginRight:10}}
-                          value={this.state.colorTrueSwitchIsOn} />
-                      </View>
-
-                      <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>TRAINING OPTIONS</Text>
-
-                      <Item rounded style={{marginLeft:10,marginRight:10,marginTop:10,marginBottom:5, height:35}}>
-
-                            <Input style={{ height:30, fontSize:12,fontWeight:'600' }} placeholder='SEARCH AND ADD'/>
-                      </Item>
-
-                      <Button rounded block style={{backgroundColor:'#d007df',
-                      height:41,
-                      marginLeft:30,
-                      marginRight:30,
-                      marginTop:10,
-                      marginBottom:20}}>
-                        <Text style={{color:'white',fontWeight:'bold',fontSize:12}}>CONTINUE</Text>
-                    </Button>
+              <Text style={[Fonts.style.subHeading,{marginTop:'8%',marginLeft:10}]}>MY GYMS</Text>
 
 
+              <Button rounded bordered block style={{borderColor:'#777777',
+              height:45,
+              marginLeft:30,
+              marginRight:30,
+              marginTop:'8%',
+              marginBottom:5,borderWidth:2}}>
+                <Text style={{color:'darkgray',fontWeight:'bold'}}>ADD GYM</Text>
+            </Button>
+            <View style={styles.switchView}>
+                <Text style={[Fonts.style.regular14,{marginLeft:10,flex:1}]}>AVAILABILITY UPON REQUEST</Text>
 
-                  </Form>
+                <Switch
+                  onValueChange={(value) => this.setState({colorTrueSwitchIsOn: value})}
+                  onTintColor="#d007df"
+                  thumbTintColor="#fff"
+                  tintColor="#777777"
+                  style={{marginRight:10}}
+                  value={this.state.colorTrueSwitchIsOn} />
+            </View>
 
+            <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10,marginBottom:20}]}>TRAINING OPTIONS</Text>
 
+            <Item rounded style={Fonts.style.inputBox}>
+                  <Input style={Fonts.style.regular14} placeholder='SEARCH AND ADD' placeholderTextColor='rgba(102,102,102,0.5)'/> 
+                  <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
+              </Item>
 
+            <Button rounded block style={{backgroundColor:'#d007df',
+            height:41,
+            marginLeft:30,
+            marginRight:30,
+            marginTop:10,
+            marginBottom:20}}>
+              <Text style={{color:'white',fontWeight:'bold',fontSize:12}}>CONTINUE</Text>
+          </Button>
+
+        </Form>
+        </View>
         </ScrollView>
-        </Content>
+
     )
   }
 }
 
 
-class FormView extends React.Component {
-
- render () {
-   return (
-
-         <View style={styles.HealthFeedsView}>
-            <Text>Header </Text>
-         </View>
-
-   )
- }
-}
