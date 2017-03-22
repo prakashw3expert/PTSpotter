@@ -58,32 +58,32 @@ export default class EditProfile extends React.Component {
 
                       <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>GENERAL</Text>
 
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
+                      <Item rounded style={Fonts.style.inputBox}>
                           <Image source={Images.nameIcon} style={{marginTop:5,marginLeft:15}}/>
                           <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)',marginLeft:10}} placeholder='NAME'/> 
                       </Item>
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
+                      <Item rounded style={Fonts.style.inputBox}>
                           <Image source={Images.emailIcon} style={{marginTop:5,marginLeft:15}}/>
                           <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='tarunbardawa3@gmail.com'/> 
                           <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
                       </Item>
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:45,borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>
+                      <Item rounded style={Fonts.style.inputBox}>
                           <Image source={Images.phoneIcon} style={{marginTop:5,marginLeft:15}}/>
                           <Input style={{ flex:1,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='+91 9024503444'/> 
                           <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
                       </Item>
 
-                      <Item rounded style={{marginLeft:'5%',marginRight:'5%',marginTop:'5%',marginBottom:5, height:'13%',borderColor:'rgba(234,234,234,0.5)',borderWidth:2,backgroundColor:'red'}}>                             
+                      <Item rounded style={Fonts.style.textArea}>                             
                             <Input bordered style={{height:100,padding:10, fontSize:14,fontWeight:'600', height:60}} multiline = {true} placeholder='About' /> 
                       </Item>
-
-                      <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>MY GYMS</Text>
+                      
+                      <Text style={[Fonts.style.subHeading,{marginTop:'8%',marginLeft:10}]}>MY GYMS</Text>
 
                       <Button rounded bordered block style={{borderColor:'#777777',
-                      height:36,
+                      height:45,
                       marginLeft:30,
                       marginRight:30,
-                      marginTop:10,
+                      marginTop:'8%',
                       marginBottom:5,borderWidth:2}}>
                         <Text style={{color:'darkgray',fontWeight:'bold'}}>ADD GYM</Text>
                     </Button>

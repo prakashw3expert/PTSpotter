@@ -62,10 +62,26 @@ const style = {
     letterSpacing:2,
     
   },
-  input:{
-    padding:10,
-  },
+  inputBox:{
+    marginLeft:'5%',
+    marginRight:'5%',
+    marginTop:'5%',
+    marginBottom:5, 
+    height:50,
+    borderColor:'rgba(234,234,234,0.5)',
+    borderWidth:2,
 
+  },
+  textArea:{
+    marginLeft:'5%',
+    marginRight:'5%',
+    marginTop:'5%',
+    marginBottom:5, 
+    height:'13%',
+    borderColor:'rgba(234,234,234,0.5)',
+    borderWidth:2,
+    
+  },
   h1: {
     fontFamily: type.base,
     fontSize: size.h1
