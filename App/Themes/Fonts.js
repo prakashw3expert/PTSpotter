@@ -30,6 +30,11 @@ const size = {
 
 }
 
+const colors = {
+  input : 'rgba(102,102,102,0.5)',
+
+}
+
 const style = {
 
   cardTitle: {
@@ -98,10 +103,19 @@ const style = {
     fontFamily: type.base,
     fontSize: size.medium
   },
-  input : {
-    height:45,
+  inputWrapper : {
+
     backgroundColor:'white',
     marginBottom : 15,
+  },
+
+  input : {
+    fontFamily:type.regular,
+    fontSize:size.regular,
+    lineHeight:23,
+    letterSpacing:1.8,
+    height:45,
+    color:colors.input,
   },
 
   facebook: {
@@ -118,7 +132,9 @@ const style = {
     fontFamily: type.regular,
     letterSpacing:1.9,
     color:'white',
-
+  },
+  textBold : {
+    fontFamily: type.bold,
   },
 
   textGrey:{
@@ -135,7 +151,7 @@ const style = {
     marginTop: 5
   },
   mt15 : {
-    marginTop: 26
+    marginTop: 15
   },
   mb5 : {
     marginBottom: 5
@@ -155,5 +171,6 @@ const style = {
 export default {
   type,
   size,
-  style
+  style,
+  colors
 }

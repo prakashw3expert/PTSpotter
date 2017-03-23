@@ -5,8 +5,8 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
   container: {
     paddingTop: 40,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 28,
+    paddingRight: 28,
     backgroundColor: Colors.background,
 
   },

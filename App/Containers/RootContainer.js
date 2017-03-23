@@ -22,7 +22,7 @@ class RootContainer extends Component {
 
       <View style={styles.applicationView}>
         <StatusBar barStyle='dark-content' />
-        <NavigationRouter style={styles.xyz}/>
+        <NavigationRouter />
       </View>
     )
   }
