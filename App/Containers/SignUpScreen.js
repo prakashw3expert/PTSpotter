@@ -106,7 +106,7 @@ class SignUpScreen extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-        
+
         <View style={Styles.topHeading}>
           <View style={Styles.navigationbar} >
             <TouchableOpacity onPress={NavigationActions.pop}  style={{flex:1,marginLeft:'5%'}}>
@@ -116,17 +116,17 @@ class SignUpScreen extends React.Component {
             <Text style={[Fonts.style.landingTitle,{flex:1}]}></Text>
           </View>
               <Text style={Styles.slogan}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
-            
+
         </View>
 
         <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'16%',marginBottom:5, height:45,backgroundColor:'white'}}>
             <Icon name='mail' style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
-            <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='EMAIL'/> 
+            <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='EMAIL'/>
         </Item>
-        <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'3%',marginBottom:5,height:45,backgroundColor:'white'}}>                             
+        <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'3%',marginBottom:5,height:45,backgroundColor:'white'}}>
               <Icon name='lock'style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
               <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='PASSWORD'/>
-        </Item> 
+        </Item>
 
         <View style={Styles.btnSelect}>
             <TouchableOpacity style={Styles.SignupBtn} onPress={NavigationActions.mobile}>
@@ -143,7 +143,7 @@ class SignUpScreen extends React.Component {
         <View style={Styles.btnSelect}>
             <TouchableOpacity style={Styles.facebookBtn}>
                     <Text style={Styles.SignupText} > SIGNUP VIA FACEBOOK </Text>
-                
+
             </TouchableOpacity>
         </View>
 
@@ -152,7 +152,7 @@ class SignUpScreen extends React.Component {
               By clicking Sign Up you agree to our Terms of Use and Privacy Policy
             </Text>
         </View>
-        
+
 
       </ScrollView>
     )

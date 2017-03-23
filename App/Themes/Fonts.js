@@ -1,38 +1,42 @@
-import EStyleSheet from 'react-native-extended-stylesheet';
-
+import {Dimensions} from 'react-native';
+const { width, height } = Dimensions.get('window')
 
 const type = {
   regular: 'Montserrat-Regular',
   bold: 'Montserrat-Bold',
-  
+
 }
 
 const size = {
-  title:18.6,
-  heading:16,
   subHeadingRegular:16,
   normalText: 14,
   descriptionText: 12,
-  // h1: 38,
-  // h2: 34,
-  // h3: 30,
-  // h4: 26,
-  // h5: 20,
-  // h6: 19,
-  // input: 18,
-  // regular: 17,
-  // medium: 14,
-  // small: 12,
-  // tiny: 8.5
+  h1: 38,
+  h2: 34,
+  h3: 30,
+  h4: 26,
+  h5: 20,
+  h6: 18,
+  h6: 18,
+  large:22,
+  heading: 18.6,
+  button: 15.1,
+  input: 14,
+  regular: 14,
+  medium: 12,
+  small: 10.4,
+  tiny: 9.3,
+  buttonHeight: (width >= 375) ? 57 : 45
+
+}
+
+const colors = {
+  input : 'rgba(102,102,102,0.5)',
+
 }
 
 const style = {
-  landingTitle: {
-    fontFamily:type.bold,
-    fontSize:size.title,
-    letterSpacing:3.8,
-    color:'rgb(102,102,102)'
-  },
+
   cardTitle: {
     color: 'white',
     fontSize: 17.4,
@@ -59,47 +63,12 @@ const style = {
     backgroundColor:'transparent',
     color:'rgb(102,102,102)',
     fontSize:16,
-    letterSpacing:2,
-    
-  },
-  inputBox:{
-    marginLeft:'5%',
-    marginRight:'5%',
-    marginTop:'5%',
-    marginBottom:5, 
-    height:50,
-    borderColor:'rgba(234,234,234,0.5)',
-    borderWidth:2,
-
-  },
-  textInput:{
-     
-     alignSelf:'stretch',
-     fontWeight:'bold',
-     fontSize:14,
-     color:'rgba(102,102,102,0.5)',
-     marginLeft:10,
-  },
-  textArea:{
-    marginLeft:'5%',
-    marginRight:'5%',
-    marginTop:'5%',
-    marginBottom:5, 
-    height:'13%',
-    borderColor:'rgba(234,234,234,0.5)',
-    borderWidth:2,
-
-  },
-  regular14:{
-    fontFamily:type.regular,
-    backgroundColor:'transparent',
-    color:'rgb(102,102,102)',
-    fontSize:14,
-    letterSpacing:1.8,
+    letterSpacing:2
   },
   h1: {
-    fontFamily: type.base,
-    fontSize: size.h1
+    fontFamily:type.bold,
+    fontSize:size.heading,
+    letterSpacing:3.8,
   },
   h2: {
     fontWeight: 'bold',
@@ -118,22 +87,90 @@ const style = {
     fontSize: size.h5
   },
   h6: {
-    fontFamily: type.emphasis,
-    fontSize: size.h6
+    fontFamily:type.regular,
+    fontSize:size.small,
+    letterSpacing:2,
+    lineHeight:17,
+    color:'rgb(102,102,102)',
+    textAlign:'center',
   },
   normal: {
     fontFamily: type.base,
-    fontSize: size.regular
+    fontSize: size.regular,
+    color: 'white',
   },
   description: {
     fontFamily: type.base,
     fontSize: size.medium
+  },
+  inputWrapper : {
+
+    backgroundColor:'white',
+    marginBottom : 15,
+  },
+
+  input : {
+    fontFamily:type.regular,
+    fontSize:size.regular,
+    lineHeight:23,
+    letterSpacing:1.8,
+    height:45,
+    color:colors.input,
+  },
+
+  facebook: {
+    backgroundColor:'rgb(59,90,154)',
+    height: size.buttonHeight,
+
+  },
+  default: {
+    backgroundColor:'rgb(172,14,250)',
+    height: size.buttonHeight,
+  },
+  buttonText : {
+    fontSize: (width >= 375) ? size.button : size.regular,
+    fontFamily: type.regular,
+    letterSpacing:1.9,
+    color:'white',
+  },
+  textBold : {
+    fontFamily: type.bold,
+  },
+
+  textGrey:{
+    color: 'rgb(102,102,102)'
+  },
+  textWhite:{
+    color: 'rgb(255,255,255)'
+  },
+
+  mt5 : {
+    marginTop: 5
+  },
+  mt10 : {
+    marginTop: 5
+  },
+  mt15 : {
+    marginTop: 15
+  },
+  mb5 : {
+    marginBottom: 5
+  },
+  mb10 : {
+    marginBottom: 5
+  },
+  mb15 : {
+    marginBottom: 5
+  },
+  mb25 : {
+    marginBottom: (width >= 375) ? '6%' : '2%',
+
   }
 }
 
 export default {
   type,
   size,
-  style
+  style,
+  colors
 }
-

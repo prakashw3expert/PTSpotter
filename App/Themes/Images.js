@@ -16,14 +16,15 @@ const images = {
   usageExamples: require('../Images/Icons/icon-usage-examples.png'),
   chevronRight: require('../Images/Icons/chevron-right.png'),
   hamburger: require('../Images/Icons/hamburger.png'),
-  onBoarding1: require('../Images/onboarding1.png'),
-  onBoarding2: require('../Images/onboarding2.png'),
-  onBoarding3: require('../Images/onboarding3.png'),
+  onBoarding1: require('../Images/onboardingIllustration@3x.png'),
+  onBoarding2: require('../Images/onboardingIllustration2@3x.png'),
+  onBoarding3: require('../Images/onboardingIllustration3@3x.png'),
   buttonBackground: require('../Images/buttonBackground.png'),
   cardBackground: require('../Images/rectangle.png'),
   cardillustration1: require('../Images/cardIllustration.png'),
-  cardillustration0: require('../Images/cardIllustration_on.png'),
+  cardillustration0: require('../Images/cardIllustration_on@3x.png'),
   backButton: require('../Images/back.png'),
+  backButtonWhite: require('../Images/backButtonWhite.png'),
   avatarImage: require('../Images/avatar.jpg'),
   menuIcon: require('../Images/sidemenu.png'),
   messageIcon: require('../Images/messageicon.png'),
@@ -35,7 +36,7 @@ const images = {
   emailIcon: require('../Images/emailIcon.png'),
   phoneIcon: require('../Images/phoneIcon.png'),
   discardChangeIcon: require('../Images/discardChangeIcon.png'),
-  
+
 
 }
 
