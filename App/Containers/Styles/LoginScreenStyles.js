@@ -126,24 +126,21 @@ export default EStyleSheet.create({
   },
   loginView: {
     flexDirection:'row',
-    marginTop:'2%',
     alignItems:'center',
     justifyContent:'center',
-    marginTop:'10%'
+    marginTop:'12.5%'
   },
   loginText: {
-    color:'rgba(102,102,102,0.5)',
-    fontSize:14,
-    fontWeight:'bold',
-    backgroundColor: 'transparent',
+    color:'rgba(255,255,255,0.5)',
+    fontSize:Fonts.size.button,
+    fontFamily:Fonts.type.regular,
+    letterSpacing : 0.2
+
   },
   loginBtn: {
     color:'rgb(255,255,255)',
-    fontWeight:'bold',
-    fontSize:15,
+    fontFamily:Fonts.type.bold,
+    fontSize:Fonts.size.button
   },
-  Input:{
-    height:45,
-    backgroundColor:'white'
-  }
+
 })

@@ -109,18 +109,17 @@ class LoginScreen extends React.Component {
 
 
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-
-        <View style={Styles.topHeading}>
+      <TouchableOpacity onPress={NavigationActions.pop} style={{marginLeft:"0%"}}>
+          <Image source={Images.backButtonWhite} />
+      </TouchableOpacity>
+        <View style={[Styles.topHeading, {marginTop: '-8%'}]}>
 
           <View style={Styles.navigationbar} >
-          <TouchableOpacity onPress={NavigationActions.pop}  style={{flex:1}}>
-              <Image source={Images.backButtonWhite} />
-          </TouchableOpacity>
-          <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb25, {flex:2}]}>PT SPOTTER</Text>
-          <Text style={[Fonts.style.landingTitle,{flex:1}]}></Text>
+
+          <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20]}>PT SPOTTER</Text>
 
           </View>
-          <Text style={[Fonts.style.h6, Fonts.style.textWhite, {marginBottom: 59}]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
+          <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
 
         </View>
 
@@ -140,7 +139,9 @@ class LoginScreen extends React.Component {
         </View>
 
         <View style={Styles.orView}>
-                <Hr lineColor='white' text='OR' textColor='white' textSize="18"/>
+                <Hr lineColor='white' text='OR' textColor='white' textSize="18" style={{fontWeight:'bold',
+                fontSize:18.6,
+                letterSpacing: 3.8, fontFamily:Fonts.type.bold}}/>
         </View>
 
 
