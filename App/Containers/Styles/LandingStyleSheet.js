@@ -107,6 +107,9 @@ export default EStyleSheet.create({
       fontSize: Fonts.size.medium,
       lineHeight:21,
     },
+    heading : {
+      marginBottom: 20
+    }
 
   },
 

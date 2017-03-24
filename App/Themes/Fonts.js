@@ -19,7 +19,7 @@ const size = {
   h6: 18,
 
   large:22,
-  heading: 18.6,
+  heading: (width >= 375) ? 18.6 : 18.6,
   button: 15.1,
   input: 14,
   regular: 14,
@@ -68,7 +68,7 @@ const style = {
   h1: {
     fontFamily:type.bold,
     fontSize:size.heading,
-    letterSpacing:3.8,
+    letterSpacing:4.8,
   },
   h2: {
     fontWeight: 'bold',
@@ -113,7 +113,7 @@ const style = {
     fontFamily:type.regular,
     fontSize:size.regular,
     lineHeight:23,
-    letterSpacing:1.8,
+    letterSpacing:3.8,
     height:45,
     color:colors.input,
   },
@@ -170,10 +170,13 @@ const style = {
   mb15 : {
     marginBottom: 5
   },
-  mb25 : {
-    marginBottom: (width >= 375) ? '6%' : '2%',
-
-  }
+  mb20 : {
+    marginBottom: 20,
+  },
+  mb60 : {
+    marginBottom: 60
+  },
+  
 }
 
 export default {
