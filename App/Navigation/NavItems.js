@@ -37,7 +37,7 @@ export default {
   messageIcon () {
     return (
       <TouchableOpacity >
-      <Image source={Images.messageIcon} style={styles.messageIcon}/>
+      <Image source={Images.DotmessageIcon} style={styles.messageIcon}/>
       </TouchableOpacity>
     )
   },

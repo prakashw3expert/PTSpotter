@@ -35,7 +35,7 @@ class CustomNavBar extends React.Component {
       return <SearchBar onSearch={this.props.performSearch} searchTerm={this.props.searchTerm} onCancel={this.cancelSearch} />
     } else {
       return (
-        <Text style={styles.customeTitle}>HOME</Text>
+        <Text style={[Fonts.style.h1,styles.customTitle]}>HOME</Text>
       )
     }
   }

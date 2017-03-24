@@ -6,7 +6,6 @@ const colors = {
   silver: '#F7F7F7',
   steel: '#CCCCCC',
   error: 'rgba(200, 0, 0, 0.8)',
-  ricePaper: 'rgba(255,255,255, 0.75)',
   frost: '#D8D8D8',
   cloud: 'rgba(200,200,200, 0.35)',
   windowTint: 'rgba(0, 0, 0, 0.4)',
@@ -24,6 +23,7 @@ const colors = {
   text: '#E0D7E5',
   subHeadingRegular:'rgb(102,102,102)',
   mutedColor:'rgba(102,102,102,0.5)',
+  whiteMuted: 'rgba(255,255,255, 0.5)',
 }
 
 export default colors

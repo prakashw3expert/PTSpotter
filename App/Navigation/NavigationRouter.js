@@ -13,6 +13,7 @@ import SignUpScreen from '../Containers/SignUpScreen'
 import HomeScreen from '../Containers/Home'
 import EditProfile from '../Containers/EditProfile'
 import MobileVerification from '../Containers/MobileVerification'
+import PostDetail from '../Containers/PostDetail'
 
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
@@ -30,7 +31,9 @@ class NavigationRouter extends Component {
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='mobile' component={MobileVerification} title='VERIFICATION' hideNavBar />
             <Scene key='homeScreen' component={HomeScreen} title='Home' hideNavBar={false} navBar={CustomNavBar} />
+            <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
+
           </Scene>
         </Scene>
       </Router>
