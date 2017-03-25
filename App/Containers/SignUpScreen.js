@@ -17,13 +17,12 @@ import { Container, Content,Input,
   Card, CardItem,Label } from 'native-base';
 
 import { connect } from 'react-redux'
-import Styles from './Styles/SignupScreenStyle'
+import Styles from './Styles/LoginScreenStyles'
 import {Images, Metrics,Fonts} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 class SignUpScreen extends React.Component {
-
   static propTypes = {
     dispatch: PropTypes.func,
     fetching: PropTypes.bool,
@@ -107,49 +106,46 @@ class SignUpScreen extends React.Component {
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
 
-        <View style={Styles.topHeading}>
-          <View style={Styles.navigationbar} >
-            <TouchableOpacity onPress={NavigationActions.pop}  style={{flex:1,marginLeft:'5%'}}>
-                <Image source={Images.backButton} />
-            </TouchableOpacity>
-            <Text style={[Fonts.style.landingTitle,{flex:2,color:'white'}]}>PT SPOTTER</Text>
-            <Text style={[Fonts.style.landingTitle,{flex:1}]}></Text>
-          </View>
-              <Text style={Styles.slogan}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
-
+      <View style={[Styles.topHeading]}>
+        <View style={Styles.navigationbar} >
+        <TouchableOpacity onPress={NavigationActions.pop} style={{height:40, flex:.5}}>
+            <Image source={Images.backButtonWhite}  />
+        </TouchableOpacity>
+        <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
+        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
+      </View>
 
-        <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'16%',marginBottom:5, height:45,backgroundColor:'white'}}>
-            <Icon name='mail' style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
-            <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='EMAIL'/>
-        </Item>
-        <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'3%',marginBottom:5,height:45,backgroundColor:'white'}}>
-              <Icon name='lock'style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
-              <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='PASSWORD'/>
-        </Item>
+      <Item rounded style={Fonts.style.inputWrapper}>
+          <Icon name='mail' style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
+          <Input  style={Fonts.style.input} placeholder='EMAIL' placeholderTextColor={Fonts.colors.input}/>
+      </Item>
 
-        <View style={Styles.btnSelect}>
-            <TouchableOpacity style={Styles.SignupBtn} onPress={NavigationActions.mobile}>
-                <Image source={Images.buttonBackground} style={Styles.SignupBtn}>
-                    <Text style={Styles.SignupText} > SIGNUP VIA EMAIL </Text>
-                </Image>
-            </TouchableOpacity>
-        </View>
+      <Item rounded style={Fonts.style.inputWrapper}>
+            <Icon name='lock'style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
+            <Input  style={Fonts.style.input} placeholder='PASSWORD' placeholderTextColor={Fonts.colors.input}/>
+      </Item>
 
-        <View style={Styles.orView}>
-                <Hr lineColor='white' text='OR' textColor='white'/>
-        </View>
+      <View style={Fonts.style.mt15}>
+        <Button light full rounded style={Fonts.style.default}  onPress={NavigationActions.mobile}>
+            <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA EMAIL</Text>
+        </Button>
+      </View>
 
-        <View style={Styles.btnSelect}>
-            <TouchableOpacity style={Styles.facebookBtn}>
-                    <Text style={Styles.SignupText} > SIGNUP VIA FACEBOOK </Text>
+      <View style={Styles.separater}>
+          <Hr lineColor='white' text='OR' textColor='white' textSize="18" style={{fontWeight:'bold',fontSize:18.6,letterSpacing: 3.8, fontFamily:Fonts.type.bold}}/>
+      </View>
 
-            </TouchableOpacity>
-        </View>
 
-        <View style={Styles.bottomView}>
-            <Text style={Styles.bottomText}>
-              By clicking Sign Up you agree to our Terms of Use and Privacy Policy
+      <View style={Fonts.style.mt50}>
+        <Button light full rounded style={Fonts.style.facebook}>
+            <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
+        </Button>
+      </View>
+
+        <View style={Styles.footerSingup}>
+            <Text style={[Styles.footeText,Styles.footerTextSingup]}>
+              By clicking Sign Up you agree to our <Text style={Styles.footeSingupLink}> Terms of Use </Text> and <Text style={Styles.footeSingupLink}> Privacy Policy </Text>
             </Text>
         </View>
 

@@ -1,12 +1,8 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch,TouchableOpacity } from 'react-native'
-import { Container, Content,Input,
-  Form,Item, Left,Icon,
-  Body, Right, ListItem,
-  Thumbnail,List,Button,
-  Card, CardItem,Label } from 'native-base';
+import { ScrollView, Text, Image, View,TouchableOpacity } from 'react-native'
+import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button, Switch,Left, Right, ListItem } from 'native-base';
 
 import { Images,Fonts } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
@@ -21,13 +17,13 @@ export default class EditProfile extends React.Component {
       colorFalseSwitchIsOn: false,
     };
 
-   
+
   render () {
 
     let imageView;
-    imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/> 
-      
-     
+    imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/>
+
+
     return (
 
         <ScrollView>
@@ -40,7 +36,7 @@ export default class EditProfile extends React.Component {
                       <Icon name='arrow-back' style={{color:'white'}}/>
 
                       </Button>
-                      <Text style={[Fonts.style.landingTitle,{flex:1, textAlign:'center',color:'white',fontWeight:'bold'}]}>EDIT PROFILE</Text>
+                      <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}>EDIT PROFILE</Text>
                       <Button transparent>
                           <Text></Text>
                       </Button>
@@ -54,65 +50,59 @@ export default class EditProfile extends React.Component {
 
               </View>
 
-              <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10}]}>GENERAL</Text>
+              <View style={styles.containers}>
 
-              <Item rounded style={Fonts.style.inputBox}>
-                  <Image source={Images.nameIcon} style={{marginTop:5,marginLeft:15}}/>
-                  <Input style={Fonts.style.textInput} placeholder='NAME'/> 
-              </Item>
-              <Item rounded style={Fonts.style.inputBox}>
-                  <Image source={Images.emailIcon} style={{marginTop:5,marginLeft:15}}/>
-                  <Input style={{ flex:1,alignSelf:'stretch',fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='tarunbardawa3@gmail.com'/> 
-                  <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
-              </Item>
-              <Item rounded style={Fonts.style.inputBox}>
-                  <Image source={Images.phoneIcon} style={{marginTop:5,marginLeft:15}}/>
-                  <Input style={{ flex:1,alignSelf:'stretch',fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='+91 9024503444'/> 
-                  <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
-              </Item>
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> GENERAL</Text>
+                  <View style={Fonts.style.inputWrapperBordered}>
+                    <Icon name='person' style={Fonts.style.borderedIcon} />
+                    <Input  style={Fonts.style.inputBordered} placeholder='NAME' placeholderTextColor={Fonts.colors.input}/>
+                  </View>
 
-              <Item rounded style={Fonts.style.textArea}>                             
-                    <Input bordered style={{padding:10, fontSize:14,fontWeight:'600',height:'100%'}} multiline = {true} placeholder='About' /> 
-              </Item>
+                  <View style={Fonts.style.inputWrapperBordered}>
+                    <Icon name='mail' style={Fonts.style.borderedIcon} />
+                    <Input  style={Fonts.style.inputBordered} placeholder='EMAIL ADDRESS' placeholderTextColor={Fonts.colors.input}/>
+                  </View>
 
-              <Text style={[Fonts.style.subHeading,{marginTop:'8%',marginLeft:10}]}>MY GYMS</Text>
+                  <View style={Fonts.style.inputWrapperBordered}>
+                    <Icon name='call' style={Fonts.style.borderedIcon} />
+                    <Input  style={Fonts.style.inputBordered} placeholder='PHONE NUMBER' placeholderTextColor={Fonts.colors.input}/>
+                  </View>
 
+                  <View style={Fonts.style.inputWrapperBordered}>
+                    <Input multiline={true} numberOfLines = {30} style={Fonts.style.inputMultipleBordered} placeholder='ABOUT' placeholderTextColor={Fonts.colors.input}/>
+                  </View>
 
-              <Button rounded bordered block style={{borderColor:'#777777',
-              height:45,
-              marginLeft:30,
-              marginRight:30,
-              marginTop:'8%',
-              marginBottom:5,borderWidth:2}}>
-                <Text style={{color:'darkgray',fontWeight:'bold'}}>ADD GYM</Text>
-            </Button>
-            <View style={styles.switchView}>
-                <Text style={[Fonts.style.regular14,{marginLeft:10,flex:1}]}>AVAILABILITY UPON REQUEST</Text>
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text>
 
-                <Switch
-                  onValueChange={(value) => this.setState({colorTrueSwitchIsOn: value})}
-                  onTintColor="#d007df"
-                  thumbTintColor="#fff"
-                  tintColor="#777777"
-                  style={{marginRight:10}}
-                  value={this.state.colorTrueSwitchIsOn} />
-            </View>
+                  <View style={Fonts.style.mt15}>
+                    <Button light full rounded bordered style={Fonts.style.bordered}  onPress={NavigationActions.mobile}>
+                        <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD GYM</Text>
+                    </Button>
+                  </View>
 
-            <Text style={[Fonts.style.subHeading,{marginTop:10,marginLeft:10,marginBottom:20}]}>TRAINING OPTIONS</Text>
+                  <ListItem style={{borderBottomWidth:0}}>
+                    <Body>
+                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: "-7%"}]}> AVAILABILITY UPON REQUEST</Text>
+                    </Body>
+                    <Right style={{marginTop:15}}>
+                        <Switch valur={true} color="blue" />
+                    </Right>
+                  </ListItem>
 
-            <Item rounded style={Fonts.style.inputBox}>
-                  <Input style={Fonts.style.regular14} placeholder='SEARCH AND ADD' placeholderTextColor='rgba(102,102,102,0.5)'/> 
-                  <Image source={Images.discardChangeIcon} style={{marginTop:3,marginRight:15}}/>
-              </Item>
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> TRAINING OPTIONS</Text>
 
-            <Button rounded block style={{backgroundColor:'#d007df',
-            height:41,
-            marginLeft:30,
-            marginRight:30,
-            marginTop:10,
-            marginBottom:20}}>
-              <Text style={{color:'white',fontWeight:'bold',fontSize:12}}>CONTINUE</Text>
-          </Button>
+                  <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
+                    <Input  style={Fonts.style.inputBordered} placeholder='SEARCH AND ADD' placeholderTextColor={Fonts.colors.input}/>
+                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                  </View>
+
+                  <View style={Fonts.style.mt40}>
+                    <Button light full rounded bordered style={Fonts.style.default}  onPress={NavigationActions.mobile}>
+                        <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>CONTINUE</Text>
+                    </Button>
+                  </View>
+
+              </View>
 
         </Form>
         </View>
@@ -121,5 +111,3 @@ export default class EditProfile extends React.Component {
     )
   }
 }
-
-

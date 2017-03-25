@@ -10,7 +10,7 @@ import {
   LayoutAnimation
 } from 'react-native'
 import Hr from 'react-native-hr'
-import { Container, Content,Input,
+import { Container, Content,Input,Picker,
   Form,Item, Left,Icon,
   Body, Right, ListItem,
   Thumbnail,List,Button,
@@ -40,10 +40,22 @@ class MobileVerification extends React.Component {
       username: 'reactnative@infinite.red',
       password: 'password',
       visibleHeight: Metrics.screenHeight,
-      topLogo: { width: Metrics.screenWidth }
+      topLogo: { width: Metrics.screenWidth },
+      selectedItem: undefined,
+      selected1: '44',
+      results: {
+          items: []
+      }
     }
     this.isAttempting = false
   }
+
+  onValueChange (value: string) {
+        this.setState({
+            selected1 : value
+        });
+    }
+
 
   componentWillReceiveProps (newProps) {
     this.forceUpdate()
@@ -105,45 +117,45 @@ class MobileVerification extends React.Component {
     const editable = !fetching
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
-      <ScrollView contentContainerStyle={{justifyContent: 'center', alignItems:'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-        
-        <View style={Styles.topHeading}>
-          <View style={Styles.navigationbar} >
-            <TouchableOpacity onPress={NavigationActions.pop}  style={{flex:1,marginLeft:'5%'}}>
-                <Image source={Images.backButton} />
-            </TouchableOpacity>
-            <Text style={[Fonts.style.landingTitle,{flex:3,color:'white'}]}>VERIFICATION</Text>
-            <Text style={[Fonts.style.landingTitle,{flex:1}]}></Text>
-          </View>
-              
+      <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
 
-            
-        </View>
-          <Image 
-                  source={Images.smsIllustration}
-                  style={{marginTop:'9%'}}
-                  />
-        <Text style={Styles.slogan}>PLEASE ENTER YOUR PHONE NUMBER BELOW TO VERIFY YOUR ACCOUNT</Text>
+      <TouchableOpacity onPress={NavigationActions.pop} style={{marginLeft:"-2%"}}>
+          <Image source={Images.backButtonWhite} />
+      </TouchableOpacity>
 
-        <Item rounded style={{marginLeft:'13%',marginRight:'13%',marginTop:'10%',marginBottom:5, height:45,backgroundColor:'white'}}>
-            <Item rounded style={{marginLeft:4,marginRight:4,marginTop:0,marginBottom:0,width:77, height:37,backgroundColor:'rgb(172,14,250)'}}>
-              <Input style={{ height:37,fontWeight:'bold',fontSize:14,color:'white'}} placeholder='+44' placeholderTextColor='white'/> 
-              <Icon name='arrow-down' style={{marginTop:5,marginRight:7,color:'white'}} />
-            </Item>
-            <Input style={{ height:45,fontWeight:'bold',fontSize:14,color:'rgba(102,102,102,0.5)'}} placeholder='(12) 345-67-89'/> 
-        </Item>
-        
-
-        <View style={Styles.btnSelect}>
-            <TouchableOpacity style={Styles.VerifyBtn} onPress={NavigationActions.editProfile}>
-                <Image source={Images.buttonBackground} style={Styles.VerifyBtn}>
-                    <Text style={Styles.SignupText} > VERIFY </Text>
-                </Image>
-            </TouchableOpacity>
+      <View style={[Styles.topHeading, {marginTop: '-8%'}]}>
+        <View style={Styles.navigationbar} >
+        <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20]}>VERIFICATION</Text>
         </View>
 
-        
-        
+      </View>
+
+      <View style={[ {marginTop:'9%', alignItems: 'center', marginBottom: '10%' }]}>
+        <Image source={Images.smsIllustration} />
+      </View>
+
+      <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb20, Fonts.style.mt20]}>PLEASE ENTER YOUR PHONE NUMBER BELOW TO VERIFY YOUR ACCOUNT</Text>
+
+      <Item rounded style={Fonts.style.inputWrapper}>
+
+          <Picker iosHeader="Select one"
+                        selectedValue={this.state.selected1}
+                        onValueChange={this.onValueChange.bind(this)}  >
+                        <Item label="+44" value="44" />
+                        <Item label="+91" value="99" />
+                        <Item label="+1" value="1" />
+                   </Picker>
+
+
+          <Input  style={Fonts.style.input} placeholder='(12) 345-67-89' placeholderTextColor={Fonts.colors.input}/>
+      </Item>
+
+      <View style={Fonts.style.mt15}>
+        <Button light full rounded style={Fonts.style.default}  onPress={NavigationActions.editProfile}>
+            <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SEND OPT</Text>
+        </Button>
+      </View>
+
 
       </ScrollView>
     )

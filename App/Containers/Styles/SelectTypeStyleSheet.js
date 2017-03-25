@@ -1,33 +1,42 @@
 import { StyleSheet } from 'react-native'
 import { Fonts, Colors, Metrics } from '../../Themes'
 import EStyleSheet from 'react-native-extended-stylesheet';
+
+
 export default EStyleSheet.create({
   container: {
     flex:1,
     alignItems:'center',
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
   },
-  wrapper: {
-
-  },
-  slide1: {
+  slide: {
     flex: 1,
     //justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
     flexDirection:'column',
   },
-  slide2: {
-    flex: 1,
-   // justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+
+  dots : {
+      backgroundColor: 'rgba(0,0,0,.2)',
+      '@media (width: 320)': {
+        backgroundColor: '#fff',
+      },
+      width: 5,
+      height: 5,
+      borderRadius: 4,
+      margin: 1
   },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+
+  activeDot : {
+    backgroundColor: '#525252',
+    '@media (width: 320)': {
+      backgroundColor: '#fff',
+    },
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    margin: 2
   },
 
   cardText: {
@@ -42,35 +51,30 @@ export default EStyleSheet.create({
   },
   topHeading: {
     marginTop: '6%',
-    flex:2,
     //backgroundColor:'green',
     alignSelf:'stretch',
     alignItems:'center'
   },
-  // heading: {
-  //   fontWeight:'bold',
-  //   fontSize:18.6,
-  //   color:'#525252',
-  //   fontFamily:'Montserrat-Bold'
-  // },
+
   bottomView: {
-    flex:3,
+    flex:5,
+    '@media (width: 320)': {
+      flex:2
+    },
     justifyContent:'center',
-    marginTop:'1%',
-  //  backgroundColor:'red',
     alignSelf:'stretch',
     alignItems:'center',
   },
   swiperView: {
-    flex:10,
+    flex:11.5,
     alignSelf:'stretch',
   },
   StartBtn: {
     backgroundColor:'transparent',
     justifyContent:'center',
     alignItems:'center',
-    
-    
+
+
       },
   StartText: {
     padding:5,
@@ -108,20 +112,13 @@ export default EStyleSheet.create({
     marginTop:'2%',
 
   },
-  slogan: {
-    marginTop:'3%',
-    color: 'rgb(102, 102, 102)',
-    fontSize: 10.4,
-    textAlign:'center',
-    fontFamily:'Montserrat-Regular',
-    lineHeight:17,
-    letterSpacing:2
-  },
-  btnSelect: {
-    //backgroundColor:'red',
-    
-
-  },
+  item:{
+    resizeMode: 'contain',
+    alignItems:'center',
+     '@media (width: 320)': {
+       width:'85%',
+     },
+   },
   navigationbar: {
     flexDirection:'row',
     justifyContent:'space-between'

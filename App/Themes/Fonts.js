@@ -12,8 +12,8 @@ const size = {
   normalText: 14,
   descriptionText: 12,
   h1: 38,
-  h2: 34,
-  h3: 30,
+  h2: 16,
+  h3: (width >= 375) ? 14 : 10,
   h4: 26,
   h5: 20,
   h6: 18,
@@ -26,7 +26,9 @@ const size = {
   medium: 12,
   small: 10.4,
   tiny: 9.3,
-  buttonHeight: (width >= 375) ? 57 : 45
+  buttonHeight: (width >= 375) ? 57 : 45,
+  containerPaddingLeft: (width <= 320) ? 20: 43,
+  containerPaddingRight: (width <= 320) ? 20: 43,
 
 }
 
@@ -68,15 +70,21 @@ const style = {
   h1: {
     fontFamily:type.bold,
     fontSize:size.heading,
-    letterSpacing:4.8,
+    letterSpacing:3.8,
   },
   h2: {
-    fontWeight: 'bold',
-    fontSize: size.h2
+    fontFamily: type.regular,
+    fontSize: size.h2,
+    color: "rgb(102,102,102)",
+    lineHeight:23,
+    letterSpacing:2
   },
   h3: {
-    fontFamily: type.emphasis,
-    fontSize: size.h3
+    fontFamily: type.regular,
+    fontSize: size.h3,
+    color: "rgb(102,102,102)",
+    lineHeight:23,
+    letterSpacing:2
   },
   h4: {
     fontFamily: type.base,
@@ -117,7 +125,53 @@ const style = {
     height:45,
     color:colors.input,
   },
+  inputWrapperBordered : {
+    flex: 1,
+    flexDirection: 'row',
+    borderWidth:2,
+    borderColor:"rgb(234,234,234)",
+    borderRadius:25,
+    paddingLeft:10,
+    marginTop:16,
+  },
+  borderedIcon : {
+    marginTop: (width >= 375) ? 10 : 8,
+    marginLeft:5,
+    color:'rgb(172,14,250)',
+    fontSize:22,
+  },
+  borderedIconRight : {
+    width:18,
+    height:18,
+    color:'rgb(255,255,255)',
+    fontSize:18,
+    margin:5,
+    marginLeft:8,
+    fontWeight:'bold'
+  },
+  inputBordered : {
+    fontFamily:type.regular,
+    fontSize:size.regular,
+    lineHeight:23,
+    letterSpacing:3.8,
+    height:(width >= 375) ? 45 : 40,
+    color:colors.input,
+    width:"90%",
+    color: 'rgb(102,102,102)',
+    paddingLeft: (width >= 375) ? 14 : 10
+  },
 
+  inputMultipleBordered : {
+    fontFamily:type.regular,
+    fontSize:size.regular,
+    lineHeight:23,
+    letterSpacing:3.8,
+    height:150,
+    color:colors.input,
+    width:"100%",
+    padding:(width >= 375) ? 15 : 10,
+    color: 'rgb(102,102,102)'
+  },
   facebook: {
     backgroundColor:'rgb(59,90,154)',
     height: size.buttonHeight,
@@ -126,6 +180,13 @@ const style = {
   default: {
     backgroundColor:'rgb(172,14,250)',
     height: size.buttonHeight,
+  },
+
+  bordered: {
+    backgroundColor:'rgb(255,255,255)',
+    height: 45,
+    borderColor: 'rgb(102,102,102)',
+    borderWidth: 2
   },
   buttonText : {
     fontSize: (width >= 375) ? size.button : size.regular,
@@ -140,6 +201,13 @@ const style = {
   textGrey:{
     color: 'rgb(102,102,102)'
   },
+  buttonTextNormalGrey : {
+    fontFamily:type.regular,
+    fontSize: size.input,
+    lineHeight:23,
+    letterSpacing:1.8,
+    color:'rgb(102,102,102)'
+  },
   textWhite:{
     color: 'rgb(255,255,255)'
   },
@@ -153,6 +221,15 @@ const style = {
   mt15 : {
     marginTop: 15
   },
+  mt20 : {
+    marginTop : 20
+  },
+  mt40 : {
+    marginTop : 40
+  },
+  mt50 : {
+    marginTop: (width >= 375) ? 50 : 40
+  },
   mb5 : {
     marginBottom: 5
   },
@@ -165,10 +242,16 @@ const style = {
   mb20 : {
     marginBottom: 20,
   },
-  mb60 : {
-    marginBottom: 60
+  mb50 : {
+    marginBottom: 50
   },
-  
+  mb60 : {
+    marginBottom: (width >= 375) ? 60 : 40
+  },
+  pt20:{
+    paddingTop:20
+  }
+
 }
 
 export default {

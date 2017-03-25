@@ -1201,6 +1201,7 @@
 			files = (
 				469C0CC71E7BEC9400A4356B /* MontserratAlternates-Bold.otf in Resources */,
 				469C0CCB1E7BEC9400A4356B /* MontserratAlternates-Medium.otf in Resources */,
+				469C0CC41E7BEC9400A4356B /* Montserrat-SemiBold.otf in Resources */,
 				469C0CC81E7BEC9400A4356B /* MontserratAlternates-ExtraBold.otf in Resources */,
 				469C0CC31E7BEC9400A4356B /* Montserrat-Regular.otf in Resources */,
 				469C0CBF1E7BEC9400A4356B /* Montserrat-ExtraBold.otf in Resources */,
@@ -1212,7 +1213,6 @@
 				E4A0C8494DF34A869F5DCE09 /* EvilIcons.ttf in Resources */,
 				05E31C4B270447398E106E1A /* FontAwesome.ttf in Resources */,
 				469C0CC21E7BEC9400A4356B /* Montserrat-Medium.otf in Resources */,
-				469C0CC41E7BEC9400A4356B /* Montserrat-SemiBold.otf in Resources */,
 				469C0CCE1E7BEC9400A4356B /* MontserratAlternates-Thin.otf in Resources */,
 				469C0CCD1E7BEC9400A4356B /* MontserratAlternates-SemiBold.otf in Resources */,
 				2E62185AF29C43CCA03FD297 /* Foundation.ttf in Resources */,

@@ -51,7 +51,7 @@ export default EStyleSheet.create({
     resizeMode: 'contain'
   },
   topHeading: {
-  
+
     alignSelf:'stretch',
     alignItems:'center'
   },
@@ -93,7 +93,7 @@ export default EStyleSheet.create({
       flexDirection:'row',
       justifyContent:'center',
   },
-  
+
   orText: {
     textAlign:'center',
     fontSize:18.6,
@@ -130,5 +130,5 @@ export default EStyleSheet.create({
   links: {
 
   },
-  
+
 })
