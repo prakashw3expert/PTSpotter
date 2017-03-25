@@ -17,7 +17,7 @@ const size = {
   h4: 26,
   h5: 20,
   h6: 18,
-  h6: 18,
+
   large:22,
   heading: (width >= 375) ? 18.6 : 18.6,
   button: 15.1,
@@ -208,8 +208,16 @@ const style = {
     letterSpacing:1.8,
     color:'rgb(102,102,102)'
   },
+  textGreyLight:{
+    color: 'rgba(102,102,102,0.5)'
+  },
   textWhite:{
     color: 'rgb(255,255,255)'
+  },
+
+  commentSectionColor: {
+
+    backgroundColor:'rgb(249,249,249)',
   },
 
   mt5 : {

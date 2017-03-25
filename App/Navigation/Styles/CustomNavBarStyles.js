@@ -39,11 +39,11 @@ export default {
     flexDirection: 'row',
     marginTop:21,
   },
-  customeTitle:{
+  customTitle:{
     color:'white',
     alignSelf:'center',
     marginTop:21,
-    fontSize:18.6,
+    fontSize:Fonts.size.heading,
     fontFamily:Fonts.type.bold,
     letterSpacing:3.8
 },

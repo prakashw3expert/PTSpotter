@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ScrollView, Text, Image, View,Dimensions } from 'react-native'
-import { Container, Content, Left,Icon, Body, Right, ListItem, Thumbnail,List,Button,Card, CardItem } from 'native-base';
+import { Container, Content, Left,Icon, Body, Right, ListItem, Thumbnail,List,Button,Card, CardItem,Grid,Col } from 'native-base';
 
 import { Images } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
@@ -13,16 +13,12 @@ const { width, height } = Dimensions.get('window')
 //<Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
 export default class HomeScreen extends React.Component {
 
-
   render () {
     return (
       <View style={styles.mainContainer}>
-
         <ScrollView style={styles.container}>
-
           <Schedule />
           <HealthFeeds />
-
         </ScrollView>
       </View>
     )
@@ -62,7 +58,6 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.titleText}>
               TODAYS SCHEDULE
             </Text>
-
                 <Content>
                 <List dataArray={this.state.results.items} renderRow={(item) =>
                             <ListItem button avatar >
@@ -70,14 +65,12 @@ export default class HomeScreen extends React.Component {
                                   <Thumbnail source={item.image} />
                                 </Left>
                                 <Body>
-                                  <Text style={styles.listTime}>{item.Time}</Text>
+                                  <Text style={styles.listText}>{item.Time}</Text>
                                   <Text style={styles.listDetail} note>{item.title}</Text>
                                 </Body>
                             </ListItem>
                         } />
                 </Content>
-
-
           </View>
 
     )
@@ -92,131 +85,83 @@ goToDetailScreen(){
 
  render () {
    return (
-
          <View style={styles.HealthFeedsView}>
             <View style={{flexDirection:'row',alignItems:'center'}}>
                 <Text style={{flex:1}}></Text>
                 <Text style={styles.HealthFeedstitle}>
                   HEALTH FEED
                 </Text>
-
-                <Button iconRight dark transparent style={{height:45}}>
+                <Button iconRight dark transparent >
                       <Icon name='refresh' />
-
                   </Button>
-
             </View>
 
-
                <Content>
-               <Card >
-                        <CardItem>
-                            <Left>
+               <Card>
+                  <CardItem onPress={this.goToDetailScreen}>
+                          <Body>
+                              <Text style={[styles.listText,]}>Natural Home Remedies For Oily Skin</Text>
+                              <Text note style={styles.cardDate}>23/03/2017</Text>
+                          </Body>
+                      <Right>
+                            <Image source={Images.articleArrow} />
+                      </Right>
+                    </CardItem>
+                    <CardItem content>
+                        <Text style={styles.cardContent}>Modern medicine has known a rapid progress in the last decades and many traditional
+                         forms of treatment have been replaced by new, improved medical techniques. 
+                         While in the past open surgery was the only option available for most patients…</Text>
+                    </CardItem>
+                    <CardItem cardBody button onPress={this.goToDetailScreen} >
+                          <Image source={Images.ignite} style={styles.cardImage} resizeMode="contain"/>
+                    </CardItem>
 
-                                <Body>
-                                    <Text>Natural Home Remedies For Oily Skin</Text>
-                                    <Text note>GeekyAnts</Text>
-                                </Body>
-                            </Left>
-                          </CardItem>
-                          <CardItem cardBody button onPress={this.goToDetailScreen} >
-                              <Image source={Images.ignite} style={{height:180,width:width, margin:10,alignSelf:'center'}} resizeMode="contain"/>
-                          </CardItem>
-                          <CardItem content>
-                              <Text>Wait a minute. Wait a minute, Doc. Uhhh...
-                              Are you telling me that you built a time machine... out of a DeLorean?!
-                              Whoa. This is heavy.</Text>
-                          </CardItem>
-                          <CardItem>
+                    <CardItem>
+                        <Grid>
+                            <Col style={{  height: 40, width:65 }}>
+                              <Button transparent>
+                                <Image source={Images.likeIcon} />
+                            </Button>
+                            </Col>
+                            <Col style={{height: 40,width:40  }}>
                               <Left>
-                                  <Button transparent>
-                                      <Icon active name="thumbs-up" />
-                                      <Text>12 Likes</Text>
-                                  </Button>
+                                <Thumbnail small source={Images.avatarImage}/>
                               </Left>
-                            <Body>
-                                <Button transparent>
-                                    <Icon active name="chatbubbles" />
-                                    <Text>4 Comments</Text>
-                                </Button>
-                            </Body>
-                            <Right>
-                                <Text>11h ago</Text>
-                            </Right>
-                        </CardItem>
-                   </Card>
-                   <Card >
-                            <CardItem>
-                                <Left>
+                            </Col>
+                            <Col style={{height: 40,width:40  }}>
+                              <Left>
+                                <Thumbnail small source={Images.avatarImage}/>
+                              </Left>
+                            </Col>
+                            <Col style={{height: 40,width:40  }}>
+                              <Left>
+                                <Thumbnail small source={Images.avatarImage}/>
+                              </Left>
+                            </Col>
+                            <Col style={{height: 40,width:40  }}>
+                              <Left>
+                                <Thumbnail small source={Images.avatarImage}/>
+                              </Left>
+                            </Col>
+                            <Col style={{height: 40,width:40  }}>
+                              <Left>
+                                <Thumbnail small source={Images.avatarImage}/>
+                              </Left>
+                            </Col>
+                        </Grid>
+                    </CardItem>
+                    <CardItem style={{marginTop:-12}}>
+                        <Grid>
+                            <Col>
+                              <Button transparent>
+                                <Image source={Images.commentIcon} />
+                                <Text style={styles.commentText}>5 comments</Text>
+                            </Button>
+                            </Col>
+                        </Grid>
+                    </CardItem>
+                </Card>
 
-                                    <Body>
-                                        <Text>NativeBase</Text>
-                                        <Text note>GeekyAnts</Text>
-                                    </Body>
-                                </Left>
-                              </CardItem>
-                              <CardItem cardBody >
-                                  <Image source={Images.ignite} style={{height:180,width:width, margin:10,alignSelf:'center'}} resizeMode="contain"/>
-                              </CardItem>
-                              <CardItem content>
-                                  <Text>Wait a minute. Wait a minute, Doc. Uhhh...
-                                  Are you telling me that you built a time machine... out of a DeLorean?!
-                                  Whoa. This is heavy.</Text>
-                              </CardItem>
-                              <CardItem>
-                                  <Left>
-                                      <Button transparent>
-                                          <Icon active name="thumbs-up" />
-                                          <Text>12 Likes</Text>
-                                      </Button>
-                                  </Left>
-                                <Body>
-                                    <Button transparent>
-                                        <Icon active name="chatbubbles" />
-                                        <Text>4 Comments</Text>
-                                    </Button>
-                                </Body>
-                                <Right>
-                                    <Text>11h ago</Text>
-                                </Right>
-                            </CardItem>
-                       </Card>
-                       <Card >
-                            <CardItem>
-                                <Left>
-
-                                    <Body>
-                                        <Text>NativeBase</Text>
-                                        <Text note>GeekyAnts</Text>
-                                    </Body>
-                                </Left>
-                              </CardItem>
-                              <CardItem cardBody >
-                                  <Image source={Images.ignite} style={{height:180,width:width, margin:10,alignSelf:'center'}} resizeMode="contain"/>
-                              </CardItem>
-                              <CardItem content>
-                                  <Text>Wait a minute. Wait a minute, Doc. Uhhh...
-                                  Are you telling me that you built a time machine... out of a DeLorean?!
-                                  Whoa. This is heavy.</Text>
-                              </CardItem>
-                              <CardItem>
-                                  <Left>
-                                      <Button transparent>
-                                          <Icon active name="thumbs-up" />
-                                          <Text>12 Likes</Text>
-                                      </Button>
-                                  </Left>
-                                <Body>
-                                    <Button transparent>
-                                        <Icon active name="chatbubbles" />
-                                        <Text>4 Comments</Text>
-                                    </Button>
-                                </Body>
-                                <Right>
-                                    <Text>11h ago</Text>
-                                </Right>
-                            </CardItem>
-                       </Card>
                </Content>
 
          </View>
