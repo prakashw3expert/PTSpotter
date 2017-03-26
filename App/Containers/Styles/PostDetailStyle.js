@@ -4,22 +4,22 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
-    backgroundColor:'transparent',
+    backgroundColor:Colors.background,
     height:'37%',
   },
   centered: {
     alignItems: 'center'
   },
   navbarview: {
-    marginTop:21,
-    height:64,
+    marginTop : 30,
     backgroundColor:'transparent',
   },
- 
+
   postImage: {
     flex:1,
     width:Metrics.screenWidth,
     alignSelf:'center',
+
   },
   headingTitle: {
     fontWeight:'bold',
@@ -38,8 +38,10 @@ export default EStyleSheet.create({
   },
   postTitleView:{
     position:'absolute',
-    bottom:10,
+    bottom:20,
     margin:20,
+    backgroundColor : "transparent"
+
   },
   postHeading: {
     color:'white',
@@ -51,6 +53,7 @@ export default EStyleSheet.create({
     color:Colors.whiteMuted,
     marginTop:5,
     fontSize:Fonts.size.regular,
+    letterSpacing : 1.2
 
   },
   descriptionView : {
@@ -59,16 +62,15 @@ export default EStyleSheet.create({
   },
 
   desc: {
-    marginTop:10, 
+    marginTop:10,
     fontSize:Fonts.size.subHeadingRegular,
     color:Colors.mutedColor,
     fontFamily:Fonts.type.regular,
-    textAlign:'justify',
     letterSpacing:1.1,
     lineHeight:21,
   },
   commentSectionColor: {
-    
+
     backgroundColor:'gray',
   },
   commentName: {
@@ -93,11 +95,12 @@ export default EStyleSheet.create({
     color : Colors.subHeadingRegular,
   },
   bottomview: {
-    height:60,
     backgroundColor:'white',
-    margin:10,
-  },
-  
+    position: 'absolute',
+    flexDirection: 'row',
+    bottom: 0,
+    justifyContent: 'space-between'
 
+  },
 
 })

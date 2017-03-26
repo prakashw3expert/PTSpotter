@@ -22,7 +22,7 @@ const images = {
   backButton: require('../Images/back.png'),
   backButtonWhite: require('../Images/backButtonWhite.png'),
   menuIcon: require('../Images/sidemenu.png'),
-  messageIcon: require('../Images/messageicon.png'),
+  /* messageIcon: require('../Images/messageicon.png'), */
   smsIllustration: require('../Images/smsIllustration@3x.png'),
   messageIcon: require('../Images/messageIcon.png'),
   DotmessageIcon: require('../Images/DotmessageIcon@3x.png'),
@@ -36,6 +36,17 @@ const images = {
   articleArrow: require('../Images/articleSelectButton.png'),
   likeIcon: require('../Images/likeIcon.png'),
   commentIcon: require('../Images/combinedShape.png'),
+  menuTopBekground: require('../Images/navigationDrawerBackground@3x.png'),
+  commentAdd: require('../Images/sendCommentIcon.png'),
+  avatar: require('../Images/avatar.jpg'),
+
+  user1: require('../Images/dummy/user1.jpg'),
+  user2: require('../Images/dummy/user2.jpeg'),
+  user3: require('../Images/dummy/user3.jpg'),
+  user4: require('../Images/dummy/user4.jpeg'),
+  user5: require('../Images/dummy/user6.jpeg'),
+  blogImage: require('../Images/dummy/blog.jpeg'),
+  blog2: require('../Images/dummy/blog2.jpg'),
 
 
 }

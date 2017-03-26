@@ -41,13 +41,13 @@ class CustomNavBar extends React.Component {
   }
 
   renderRightButtons () {
-    
+
       return (
         <View style={styles.rightButtons}>
           {NavItems.messageIcon()}
         </View>
       )
-    
+
   }
 
   renderLeftButtons () {

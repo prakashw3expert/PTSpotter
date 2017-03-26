@@ -13,7 +13,7 @@ const size = {
   descriptionText: 12,
   h1: 38,
   h2: 16,
-  h3: (width >= 375) ? 14 : 10,
+  h3: (width >= 375) ? 14 : 14,
   h4: 26,
   h5: 20,
   h6: 18,
@@ -214,6 +214,9 @@ const style = {
   textWhite:{
     color: 'rgb(255,255,255)'
   },
+  textCenter:{
+    textAlign: 'center'
+  },
 
   commentSectionColor: {
 
@@ -258,7 +261,59 @@ const style = {
   },
   pt20:{
     paddingTop:20
-  }
+  },
+  drawerUserText : {
+    fontSize:12,
+    letterSpacing:0.6,
+    color:"rgba(255,255,255,0.5)",
+    marginTop:4,
+  },
+  commnetBox : {
+    margin:15,
+    marginBottom:10,
+    borderRadius:10,
+    shadowColor : 'rgb(0, 0, 0)',
+    borderWidth:5,
+    borderColor : '#fff',
+    shadowOpacity : 0.2, shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 0
+  },
+
+  sessionCard : {
+    marginBottom:10,
+    marginLeft:20,
+    borderRadius:10,
+    shadowColor : 'rgb(0, 0, 0)',
+    borderWidth:5,
+    borderColor : '#fff',
+    shadowOpacity : 0.2, shadowOpacity: 0.1,
+    shadowRadius: 2.5,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 0
+  },
+
+  commnetBox2 : {
+    margin:15,
+    marginTop : 10,
+    marginBottom:10,
+    borderRadius:10,
+    shadowColor : 'rgb(0, 0, 0)',
+    borderWidth:5,
+    borderColor : '#fff',
+    shadowOpacity : 0.2, shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 0,
+    position : 'absolute',
+    top:-15,
+    width:"94.5%",
+    left:-10,
+
+  },
+
+
 
 }
 

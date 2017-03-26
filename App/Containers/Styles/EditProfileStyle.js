@@ -7,7 +7,7 @@ export default EStyleSheet.create({
   headerView: {
     backgroundColor:Colors.background,
     alignItems:'center',
-    
+
   },
   containers : {
     marginLeft: 16,
