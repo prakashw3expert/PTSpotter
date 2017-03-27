@@ -53,7 +53,7 @@ class DrawerContent extends Component {
 
   handlePressSettings = () => {
     this.toggleDrawer()
-    NavigationActions.settingScreen()
+    NavigationActions.settings()
   }
 
   handleUserProfileClick = () => {
@@ -87,7 +87,7 @@ class DrawerContent extends Component {
           <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressHome} />
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressHome} />
           <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressHome} />
-          <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressHome} />
+          <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
 
       </View>
 

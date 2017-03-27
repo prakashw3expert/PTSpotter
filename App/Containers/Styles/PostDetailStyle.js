@@ -101,8 +101,9 @@ export default EStyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
     bottom: 0,
-    justifyContent: 'space-between'
-
+    justifyContent: 'space-between',
+    height: 77,
+    width:'100%'
   },
 
 })

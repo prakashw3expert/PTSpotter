@@ -14,7 +14,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/PostDetailStyle'
 
-export default class PostDetailScreen extends React.Component {
+ class PostDetailScreen extends React.Component {
 
 like() {
   alert('post liked')
@@ -22,7 +22,7 @@ like() {
   render () {
     return (
       <Container>
-      <Content style={{marginBottom:(width >= 375) ? 60 : 60,}}>
+      <Content>
           <View style={styles.headerView}>
             <Image source={Images.blogImage} style={styles.postImage}>
                 <View style={styles.navbarview}>
@@ -123,26 +123,48 @@ like() {
                   </Card>
             </Content>
 
+          </View>
+
+        </Content>
+        
+  </Container>
+
+
+    )
+  }
+}
+
+ class AddComment extends React.Component {
+
+like() {
+  alert('post liked')
+}
+  render () {
+    return (
+    
+          
             <View style={styles.bottomview}>
             <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45}]}>
               <Input  style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
               <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
             </View>
             </View>
-          </View>
+   
+    )
+  }
+}
 
-        </Content>
-        <View style={styles.bottomview}>
-             
-                <Item>
-                    <Input style={{borderWidth:1,borderColor:'black',borderRadius:25,paddingLeft:10,}} placeholder='ADD COMMENT'/> 
-                    <Button transparent>
-                      <Image source={Images.discardChangeIcon} />
-                    </Button>
-                </Item>
-              
-        </View>
-  </Container>
+export default class Main extends React.Component {
+
+like() {
+  alert('post liked')
+}
+  render () {
+    return (
+      <Container>
+      <PostDetailScreen />
+      <AddComment />
+      </Container>
     )
   }
 }
