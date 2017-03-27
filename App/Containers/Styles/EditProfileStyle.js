@@ -6,18 +6,18 @@ export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
     backgroundColor:Colors.background,
-    height:'35%',
     alignItems:'center',
 
   },
-  centered: {
-    alignItems: 'center'
+  containers : {
+    marginLeft: 16,
+    marginRight : 16,
+    marginBottom : 20
   },
   navbarview: {
     marginTop:21,
     flex:1,
     flexDirection:'row',
-    height:64,
     alignItems:'center',
   },
   profileimage: {
@@ -35,28 +35,5 @@ export default EStyleSheet.create({
     borderRadius: 40,
 
   },
-  headingTitle: {
-    marginTop:10,
-    marginLeft:10,
-  },
-  switchView: {
-    marginTop:15,
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center',
-    marginBottom:10,
-  },
-  inputItem:{
-    marginLeft:'13%',
-    marginRight:'13%',
-    marginTop:'16%',
-    marginBottom:5, 
-    height:45,
-    backgroundColor:'red',
-  },
-
-
-
-
 
 })

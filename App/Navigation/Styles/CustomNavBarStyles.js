@@ -7,11 +7,12 @@ export default {
     left: 0,
     right: 0,
     height: Metrics.navBarHeight,
-    paddingTop: Metrics.smallMargin,
+    paddingTop: Metrics.doubleBaseMargin,
     paddingHorizontal: 5,
     backgroundColor: Colors.background,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+
   },
   title: {
     flex: 1,
@@ -42,9 +43,11 @@ export default {
   customTitle:{
     color:'white',
     alignSelf:'center',
-    marginTop:21,
+    
     fontSize:Fonts.size.heading,
     fontFamily:Fonts.type.bold,
     letterSpacing:3.8
 },
+
+
 }

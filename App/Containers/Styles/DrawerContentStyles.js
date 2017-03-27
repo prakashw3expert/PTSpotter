@@ -1,33 +1,47 @@
-import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/'
 
-export default {
-  container: {
-    flex: 1,
+import { StyleSheet } from 'react-native'
+import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/'
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+export default EStyleSheet.create({
+  ...ApplicationStyles.screen,
+  container : {
+    backgroundColor : '#fff'
   },
-  logo: {
-    alignSelf: 'center'
+  menuTopBekground : {
+    width : '100%',
+    backgroundColor : Colors.background,
   },
-  profileView: {
-  	backgroundColor:'transparent',
-  	bottom:10,
-  	position:'absolute'
+  usesrDeatils : {
+    marginTop : 67,
+    marginLeft : 24,
+    marginBottom : 20,
+    '@media (width: 320)': {
+      marginTop : 57,
+      marginLeft : 18,
+      marginBottom : 20
+    },
   },
-  avatarImage: {
-	width: 70, 
-	height: 70, 
-	borderRadius: 35,
+  username : {
+    fontSize:10, letterSpacing:0.6, color:"rgba(255,255,255,0.5)", marginTop:4
   },
-  username: {
-  	fontSize: Fonts.size.regular,
-  	fontFamily: Fonts.type.bold,
-  	letterSpacing:0.7,
-  	color:'white',
+  nav : {
+    marginTop : 45,
+    marginLeft : 41,
+    marginRight : 41,
+    '@media (width: 320)': {
+      marginLeft : 30,
+      marginRight : 30
+    },
   },
-  userAddress: {
-  	fontSize: Fonts.size.small,
-  	fontFamily: Fonts.type.regular,
-  	letterSpacing:0.6,
-  	color:'white',
+  navItem : {
+    borderBottomWidth : 0,
+    marginBottom : 36,
   },
-  
-}
+  naveItermborder : {
+    borderBottomWidth:0
+  },
+  iconStyle : {
+    fontSize : 22, color: 'rgb(102,102,102)'
+  }
+})

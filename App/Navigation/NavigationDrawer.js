@@ -26,6 +26,12 @@ class NavigationDrawer extends Component {
         openDrawerOffset={0.245}
         panCloseMask={0.245}
         negotiatePan
+        styles={
+          {
+            mainOverlay: {shadowColor: "#fff", shadowOpacity: 0.2, shadowRadius: 15},
+
+        }
+      }
         tweenHandler={(ratio) => ({
           main: { opacity: Math.max(0.54, 1 - ratio) }
         })}

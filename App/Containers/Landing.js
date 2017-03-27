@@ -23,7 +23,8 @@ class Landing extends Component {
       <View style={styles.container}>
         <View style={styles.topHeading}>
             <Text style={[Fonts.style.h1, Fonts.style.textGrey, Fonts.style.mb25]}>PT SPOTTER</Text>
-            <Text style={Fonts.style.h6}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
+
+            <Text style={[Fonts.style.h6, Fonts.style.pt20]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
         </View>
         <View style={styles.swiperView}>
           <Swiper style={styles.wrapper} height={(width >= 375) ? height * 0.65: height * 0.70}

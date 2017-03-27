@@ -1,13 +1,15 @@
 // @flow
 
 import React, { Component } from 'react'
-import { ScrollView, Image, BackAndroid, View } from 'react-native'
+import { ScrollView, Image, BackAndroid, View , TouchableOpacity} from 'react-native'
 import styles from './Styles/DrawerContentStyles'
-import font from '../Themes/Fonts'
-import { Images } from '../Themes'
+
 import DrawerButton from '../Components/DrawerButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import { Button, Text,Card,CardItem,Body,Left,Right,Thumbnail } from 'native-base';
+
+import { Button, Text, Icon, ListItem, Left, Right, Body, Thumbnail,Badge } from 'native-base';
+
+import { Images,Fonts } from '../Themes'
 
 class DrawerContent extends Component {
 
@@ -53,37 +55,42 @@ class DrawerContent extends Component {
     this.toggleDrawer()
     NavigationActions.settingScreen()
   }
+
+  handleUserProfileClick = () => {
+    this.toggleDrawer()
+    NavigationActions.editProfile()
+  }
+
   render () {
+    let imageView;
+    imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/>
     return (
       <ScrollView style={styles.container}>
-        
-          <Image source={Images.navigationDrawerBackground} resizeMode="cover">
-            
-                  <CardItem style={styles.profileView}>
-                      <Thumbnail style={styles.avatarImage} source={Images.avatarImage} />
-                    <Body style={{marginLeft:15}}>
-                        <Text style={styles.username}>Tarun Bardawa</Text>
-                        <Text note style={styles.userAddress}>Bristol, BS4 5SS, UK</Text>
-                        <Text note style={styles.userAddress}>Personal Trainer</Text>
-                    </Body>
-                  </CardItem>
-           
-          </Image>
-        
-        <View style={{flex:1,}}>
-            <DrawerButton text='Home' onPress={this.handlePressHome} />
-            <DrawerButton text='Inbox' onPress={this.handlePressInbox} />
-            <DrawerButton text='Search' onPress={this.handlePressSearch} />
-            <DrawerButton text='Sessions' onPress={this.handlePressSessions} />
-            <DrawerButton text='Availability' onPress={this.handlePressAvailability} />
-            <DrawerButton text='Settings' onPress={this.handlePressSettings} />
-        </View>
-        <View style={{ justifyContent:'flex-end',}}>
-            <Button bordered block style={{borderColor:'lightgray', borderWidth:2,}}>
-                <Text style={{color:'darkgray', fontWeight:'600'}}> LOG OUT</Text>
-            </Button>
-        </View>
-        
+
+      <Image source={Images.menuTopBekground} style={styles.menuTopBekground}>
+          <View style={styles.usesrDeatils}>
+          <ListItem avatar style={{borderBottomWidth:0}} onPress={this.handleUserProfileClick}>
+                <Left>
+                    <Thumbnail source={Images.avatar} />
+                </Left>
+                <Body style={{borderBottomWidth:0}}>
+                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>Kumar Pratik</Text>
+                    <Text note style={Fonts.style.drawerUserText}>Bristol, BS4 5SS, UK</Text>
+                    <Text note style={Fonts.style.drawerUserText}>Personal Trainer</Text>
+                </Body>
+            </ListItem>
+          </View>
+      </Image>
+      <View style={styles.nav}>
+          <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
+          <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressHome} />
+          <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressHome} />
+          <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressHome} />
+          <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressHome} />
+          <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressHome} />
+
+      </View>
+
       </ScrollView>
     )
   }

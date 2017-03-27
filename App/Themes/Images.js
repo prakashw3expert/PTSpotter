@@ -1,10 +1,6 @@
 const images = {
   logo: require('../Images/ir.png'),
-  clearLogo: require('../Images/top_logo.png'),
-  launch: require('../Images/launch-icon.png'),
   ready: require('../Images/your-app.png'),
-  ignite: require('../Images/ignite_logo.png'),
-  igniteClear: require('../Images/ignite-logo-transparent.png'),
   tileBg: require('../Images/tile_bg.png'),
   background: require('../Images/BG.png'),
   api: require('../Images/Icons/icon-api-testing.png'),
@@ -25,14 +21,14 @@ const images = {
   cardillustration0: require('../Images/cardIllustration_on@3x.png'),
   backButton: require('../Images/back.png'),
   backButtonWhite: require('../Images/backButtonWhite.png'),
-  avatarImage: require('../Images/avatar.jpg'),
   menuIcon: require('../Images/sidemenu.png'),
+  /* messageIcon: require('../Images/messageicon.png'), */
+  smsIllustration: require('../Images/smsIllustration@3x.png'),
   messageIcon: require('../Images/messageIcon.png'),
   DotmessageIcon: require('../Images/DotmessageIcon@3x.png'),
-  smsIllustration: require('../Images/smsImage.png'),
   addPhotoCircle: require('../Images/addPhotoWithCircle.png'),
   addPhoto: require('../Images/addUserPhoto.png'),
-  editProfileHeader: require('../Images/editProfileHeader1.png'),
+  editProfileHeader: require('../Images/editProfileHeaderBackground@2x.png'),
   nameIcon: require('../Images/nameImage1.png'),
   emailIcon: require('../Images/emailIcon.png'),
   phoneIcon: require('../Images/phoneIcon.png'),
@@ -41,15 +37,18 @@ const images = {
   likeIcon: require('../Images/likeIcon.png'),
   commentIcon: require('../Images/combinedShape.png'),
 
-  homeIcon: require('../Images/homeIcon.png'),
-  inboxIcon: require('../Images/inboxIcon.png'),
-  searchIconSideBar: require('../Images/searchIconSideBar.png'),
-  sessionIcon: require('../Images/sessionsIcon.png'),
-  availabilityIcon: require('../Images/availabilityIcon.png'),
-  settingsIcon: require('../Images/settingsIcon.png'),
-  navigationDrawerBackground: require('../Images/navigationDrawerBackground.png'),
+  menuTopBekground: require('../Images/navigationDrawerBackground@3x.png'),
+  commentAdd: require('../Images/sendCommentIcon.png'),
+  avatar: require('../Images/avatar.jpg'),
 
-  
+  user1: require('../Images/dummy/user1.jpg'),
+  user2: require('../Images/dummy/user2.jpeg'),
+  user3: require('../Images/dummy/user3.jpg'),
+  user4: require('../Images/dummy/user4.jpeg'),
+  user5: require('../Images/dummy/user6.jpeg'),
+  blogImage: require('../Images/dummy/blog.jpeg'),
+  blog2: require('../Images/dummy/blog2.jpg'),
+
 
 }
 

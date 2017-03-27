@@ -5,6 +5,12 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
   container: {
     paddingTop: 40,
+    paddingLeft: 43,
+    paddingRight: 34,
+    '@media (width: 320)': {
+      paddingLeft: 25,
+      paddingRight: 25,
+    },
     backgroundColor: Colors.background
   },
   form: {
@@ -51,7 +57,7 @@ export default EStyleSheet.create({
     resizeMode: 'contain'
   },
   topHeading: {
-  
+
     alignSelf:'stretch',
     alignItems:'center'
   },
@@ -93,7 +99,7 @@ export default EStyleSheet.create({
       flexDirection:'row',
       justifyContent:'center',
   },
-  
+
   orText: {
     textAlign:'center',
     fontSize:18.6,
@@ -130,5 +136,5 @@ export default EStyleSheet.create({
   links: {
 
   },
-  
+
 })

@@ -106,59 +106,50 @@ class LoginScreen extends React.Component {
     const editable = !fetching
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
-
-
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-      <TouchableOpacity onPress={NavigationActions.pop} style={{marginLeft:"0%"}}>
-          <Image source={Images.backButtonWhite} />
-      </TouchableOpacity>
-        <View style={[Styles.topHeading, {marginTop: '-8%'}]}>
-
-          <View style={Styles.navigationbar} >
-
-          <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20]}>PT SPOTTER</Text>
-
-          </View>
-          <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
-
+      <View style={[Styles.topHeading]}>
+        <View style={Styles.navigationbar} >
+        <TouchableOpacity onPress={NavigationActions.pop} style={{height:40, flex:.5}}>
+            <Image source={Images.backButtonWhite}  />
+        </TouchableOpacity>
+        <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
+        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
+      </View>
 
         <Item rounded style={Fonts.style.inputWrapper}>
             <Icon name='mail' style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
             <Input  style={Fonts.style.input} placeholder='EMAIL' placeholderTextColor={Fonts.colors.input}/>
         </Item>
+
         <Item rounded style={Fonts.style.inputWrapper}>
               <Icon name='lock'style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
               <Input  style={Fonts.style.input} placeholder='PASSWORD' placeholderTextColor={Fonts.colors.input}/>
         </Item>
 
         <View style={Fonts.style.mt15}>
-        <Button light full rounded style={Fonts.style.default}  onPress={Actions.homeScreen}>
-            <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA EMAIL</Text>
-        </Button>
+          <Button light full rounded style={Fonts.style.default}  onPress={Actions.homeScreen}>
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA EMAIL</Text>
+          </Button>
         </View>
 
-        <View style={Styles.orView}>
-                <Hr lineColor='white' text='OR' textColor='white' textSize="18" style={{fontWeight:'bold',
-                fontSize:18.6,
-                letterSpacing: 3.8, fontFamily:Fonts.type.bold}}/>
+        <View style={Styles.separater}>
+            <Hr lineColor='white' text='OR' textColor='white' textSize="18" style={{fontWeight:'bold',fontSize:18.6,letterSpacing: 3.8, fontFamily:Fonts.type.bold}}/>
         </View>
 
-
-        <View style={{marginTop:50}}>
+        <View style={Fonts.style.mt50}>
           <Button light full rounded style={Fonts.style.facebook}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
           </Button>
         </View>
 
-
-
-        <View style={Styles.loginView}>
-                <Text style={Styles.loginText}> Register as</Text>
-                <TouchableOpacity onPress={Actions.signup}>
-                 <Text style={Styles.loginBtn}> Personal Trainer </Text>
-                 </TouchableOpacity>
+        <View style={Styles.foooter}>
+          <Text style={Styles.footeText}> Register as</Text>
+            <TouchableOpacity onPress={Actions.signup}>
+              <Text style={Styles.footeLink}> Personal Trainer </Text>
+            </TouchableOpacity>
         </View>
+
       </ScrollView>
     )
   }
