@@ -1,13 +1,13 @@
 
 
 import React from 'react'
-import { ScrollView,Text, Image, View,TouchableHighlight } from 'react-native'
+import { ScrollView,Text, Image, View,TouchableHighlight,Dimensions } from 'react-native'
 import { Container, Content,Input,
   Form,Item, Left,Icon,
   Body, Right, ListItem,
   Thumbnail,List,Button,
-  Card, CardItem,Label,Grid,Col } from 'native-base';
-
+  Card, CardItem,Label,Grid,Col,Footer,FooterTab } from 'native-base';
+const { width, height } = Dimensions.get('window')
 import { Images,Metrics,Fonts } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -21,7 +21,8 @@ like() {
 }
   render () {
     return (
-      <Content>
+      <Container>
+      <Content style={{marginBottom:(width >= 375) ? 60 : 60,}}>
           <View style={styles.headerView}>
             <Image source={Images.avatarImage} style={styles.postImage}> 
                 <View style={styles.navbarview}>
@@ -113,56 +114,21 @@ like() {
                               </CardItem>
                        </Card>
                     </Content>
-                 
-
-                    <View style={styles.bottomview}>
-                        <Item rounded style={{ backgroundColor:'gray'}}>
-                            <Input style={Fonts.style.input} placeholder='ADD COMMENT'/> 
-                            <Button transparent>
-                              <Image source={Images.discardChangeIcon} />
-                            </Button>
-                        </Item>
-                    </View>
           </View>
             
         </Content>
+        <View style={styles.bottomview}>
+             
+                <Item>
+                    <Input style={{borderWidth:1,borderColor:'black',borderRadius:25,paddingLeft:10,}} placeholder='ADD COMMENT'/> 
+                    <Button transparent>
+                      <Image source={Images.discardChangeIcon} />
+                    </Button>
+                </Item>
+              
+        </View>
+  </Container>
     )
   }
 }
 
-/*
-
-
- <Content>
-                    <Card style={{margin:8}}>
-                            <CardItem>
-                                <Left>
-                                    <Thumbnail source={Images.avatarImage} style={{height:40,width:40,borderRadius:20}}/>
-                                    <Body>
-                                        <Text>Aron Finch</Text>
-                                        <Text style={styles.commentDate}>05/03/1992</Text>
-                                    </Body>
-                                </Left>
-                              </CardItem>
-                              <CardItem content>
-                                  <Text>Wait a minute. Wait a minute, Doc. Uhhh...
-                                  Are you telling me that you built a time machine... out of a DeLorean?!
-                                  Whoa. This is heavy.</Text>
-                              </CardItem>
-                       </Card>
-                       <Card style={{margin:8}}>
-                            <CardItem>
-                                <Left>
-                                    <Thumbnail source={Images.avatarImage} style={{height:40,width:40,borderRadius:20}}/>
-                                    <Body>
-                                        <Text>Tarun Bardawa</Text>
-                                        <Text style={styles.commentDate}>05/03/1992</Text>
-                                    </Body>
-                                </Left>
-                              </CardItem>
-                              <CardItem content>
-                                  <Text>i dont agree this at all!!</Text>
-                              </CardItem>
-                       </Card>
-                    </Content>
-*/

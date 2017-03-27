@@ -7,7 +7,8 @@ import font from '../Themes/Fonts'
 import { Images } from '../Themes'
 import DrawerButton from '../Components/DrawerButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import { Button, Text } from 'native-base';
+import { Button, Text,Card,CardItem,Body,Left,Right,Thumbnail } from 'native-base';
+
 class DrawerContent extends Component {
 
   componentDidMount () {
@@ -52,16 +53,23 @@ class DrawerContent extends Component {
     this.toggleDrawer()
     NavigationActions.settingScreen()
   }
-//<Image source={Images.logo} style={styles.logo} />
   render () {
     return (
       <ScrollView style={styles.container}>
-        <View style={{height:150,backgroundColor:'#0f0b31',marginLeft:0,marginTop:0,marginRight:0}}>
-          <View style={styles.profileview}>
-              <Text style={{color:'white'}}>Tarun Bardawa </Text>
-          </View>
-          
-        </View>
+        
+          <Image source={Images.navigationDrawerBackground} resizeMode="cover">
+            
+                  <CardItem style={styles.profileView}>
+                      <Thumbnail style={styles.avatarImage} source={Images.avatarImage} />
+                    <Body style={{marginLeft:15}}>
+                        <Text style={styles.username}>Tarun Bardawa</Text>
+                        <Text note style={styles.userAddress}>Bristol, BS4 5SS, UK</Text>
+                        <Text note style={styles.userAddress}>Personal Trainer</Text>
+                    </Body>
+                  </CardItem>
+           
+          </Image>
+        
         <View style={{flex:1,}}>
             <DrawerButton text='Home' onPress={this.handlePressHome} />
             <DrawerButton text='Inbox' onPress={this.handlePressInbox} />

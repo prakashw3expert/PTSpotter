@@ -40,6 +40,15 @@ const images = {
   articleArrow: require('../Images/articleSelectButton.png'),
   likeIcon: require('../Images/likeIcon.png'),
   commentIcon: require('../Images/combinedShape.png'),
+
+  homeIcon: require('../Images/homeIcon.png'),
+  inboxIcon: require('../Images/inboxIcon.png'),
+  searchIconSideBar: require('../Images/searchIconSideBar.png'),
+  sessionIcon: require('../Images/sessionsIcon.png'),
+  availabilityIcon: require('../Images/availabilityIcon.png'),
+  settingsIcon: require('../Images/settingsIcon.png'),
+  navigationDrawerBackground: require('../Images/navigationDrawerBackground.png'),
+
   
 
 }

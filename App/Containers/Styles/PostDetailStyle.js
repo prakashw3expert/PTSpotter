@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
+const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
@@ -43,7 +44,7 @@ export default EStyleSheet.create({
   },
   postHeading: {
     color:'white',
-    fontSize:Fonts.size.large,
+    fontSize:(width >= 375) ? Fonts.size.large : Fonts.size.heading,
     fontFamily:Fonts.type.bold,
     letterSpacing : 1.9
   },
@@ -60,7 +61,7 @@ export default EStyleSheet.create({
 
   desc: {
     marginTop:10, 
-    fontSize:Fonts.size.subHeadingRegular,
+    fontSize:(width >= 375) ? Fonts.size.subHeadingRegular : Fonts.size.regular,
     color:Colors.mutedColor,
     fontFamily:Fonts.type.regular,
     textAlign:'justify',
@@ -73,7 +74,7 @@ export default EStyleSheet.create({
   },
   commentName: {
     fontFamily : Fonts.type.regular,
-    fontSize : Fonts.size.subHeadingRegular,
+    fontSize : (width >= 375) ? Fonts.size.subHeadingRegular : Fonts.size.regular,
     lineHeight : 23,
     letterSpacing : 0.1,
     color : Colors.subHeadingRegular,
@@ -87,16 +88,22 @@ export default EStyleSheet.create({
   },
   commentContent : {
     fontFamily : Fonts.type.regular,
-    fontSize : Fonts.size.button,
+    fontSize : (width >= 375) ? Fonts.size.regular : Fonts.size.medium,
     lineHeight : 23,
     letterSpacing : 0.1,
     color : Colors.subHeadingRegular,
   },
   bottomview: {
-    height:60,
+    height:(width >= 375) ? 60 : 60,
+    width:width,
     backgroundColor:'white',
     margin:10,
+    alignItems:'center',
+    justifyContent:'center',
+    position:'absolute',
+    bottom:0,
   },
+  
   
 
 
