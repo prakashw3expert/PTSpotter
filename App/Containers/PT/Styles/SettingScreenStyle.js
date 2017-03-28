@@ -35,7 +35,32 @@ export default EStyleSheet.create({
     color:'rgb(102,102,102)',
     textAlign:'center',
   },
-
+  textHours : {
+    textAlign:'right', 
+    marginRight:30,
+    fontSize:14,
+    fontFamily:Fonts.type.bold,
+    lineHeight:17,
+    letterSpacing:2.6,
+    color:Colors.subHeadingRegular,
+  },
+  textMinutes : {
+    marginLeft:5,
+    fontSize:14,
+    fontFamily:Fonts.type.bold,
+    lineHeight:17,
+    letterSpacing:2.6,
+    color:Colors.subHeadingRegular,
+  },
+  pickerStyle : {
+    fontSize: 32, 
+    letterSpacing:3.9, 
+    color: 'rgb(102,102,102)', 
+    textAlign: 'center', 
+    fontWeight: 'bold',
+    width:100,
+    marginRight:10 
+  },
   
   
  

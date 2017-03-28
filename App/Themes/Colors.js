@@ -24,6 +24,8 @@ const colors = {
   subHeadingRegular:'rgb(102,102,102)',
   mutedColor:'rgba(102,102,102,0.5)',
   whiteMuted: 'rgba(255,255,255, 0.5)',
+  purpleColor:'rgb(172,14,250)',
+  mutedPurple:'rgba(172,14,250,0.5)',
 }
 
 export default colors

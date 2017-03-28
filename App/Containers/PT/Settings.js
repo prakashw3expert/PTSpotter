@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS } from 'react-native'
 import { Container, Content, Input,
-  Form, Item, Icon, List, ListItem, Right, Button, Body, Left  } from 'native-base';
+  Form, Item, Icon, List, ListItem, Right, Button, Body, Left, Grid, Col  } from 'native-base';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -38,9 +38,14 @@ state = {
   render () {
 
     var hours = [];
+    var minutes = [];
     for(i = 0; i < 24; i++) {
       
       hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
+    }
+    for(i = 0; i < 60; i++) {
+      
+      minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     return (
 
@@ -156,8 +161,8 @@ state = {
                           style={{alignItems: 'center'}}>
                           <View>
                             <View style={{flexDirection:'row',alignItems:'center'}}>
-                                <Text style={{marginLeft:20}}></Text>
-                                <Text style={[Fonts.style.h2,{flex:1,textAlign:'center'}]}>ADD ALERT</Text>
+                                <Text style={{marginLeft:20,flex:1}}></Text>
+                                <Text style={[Fonts.style.h2,{flex:4,textAlign:'center'}]}>ADD ALERT</Text>
                                 <Button transparent onPress={() => this.setState({open: false})}>
                                     <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
                                 </Button>
@@ -167,14 +172,34 @@ state = {
                               CHOOSE THE AMOUNT OF TIME PRIOR TO ANY EVENT YOU WOULD LIKE TO BE NOTIFIED
                             </Text>
 
+                            <Grid style={{marginTop:20}}>
+                                <Col style={{ height: 20 }}>
+                                  <Text style={styles.textHours}>HOURS</Text>
+                                </Col>
+                                <Col style={{height: 20  }}>
+                                  <Text style={styles.textMinutes}> MINUTES </Text>
+                                </Col>
+                            </Grid>
+                            
+                            
+                          <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
                             <PickerIOS
-                              selectedValue={2}
-                              itemStyle={{fontSize: 25, color: 'rgb(102,102,102)', textAlign: 'center', fontWeight: 'bold',width:100}}
+                              selectedValue={3}
+                              itemStyle={styles.pickerStyle}
                               onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
                                   
                               {hours}
                                     
                             </PickerIOS>
+                            <PickerIOS
+                              selectedValue={25}
+                              itemStyle={styles.pickerStyle}
+                              onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
+                                  
+                              {minutes}
+                                    
+                            </PickerIOS>
+                          </View>
                             <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
                               <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>
                                   <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD</Text>

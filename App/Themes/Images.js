@@ -48,7 +48,7 @@ const images = {
   user5: require('../Images/dummy/user6.jpeg'),
   blogImage: require('../Images/dummy/blog.jpeg'),
   blog2: require('../Images/dummy/blog2.jpg'),
-
+  emptyAvailability: require('../Images/emptyAvailability.png'),
 
 }
 

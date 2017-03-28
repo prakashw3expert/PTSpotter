@@ -1,4 +1,5 @@
 import {Dimensions} from 'react-native';
+import { Colors } from '../../Themes'
 const { width, height } = Dimensions.get('window')
 
 const type = {
@@ -321,6 +322,12 @@ const style = {
   settingList:{
     marginLeft:15,
     marginRight:15
+  },
+
+  purpleButton : {
+    borderColor:Colors.purpleColor,
+    borderWidth:2, 
+    backgroundColor:Colors.mutedPurple
   },
 
 
