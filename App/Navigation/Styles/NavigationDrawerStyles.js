@@ -2,7 +2,7 @@ import {Colors} from '../../Themes/'
 
 export default {
   drawer: {
-    backgroundColor: Colors.background
+    backgroundColor: 'white'
   },
   main: {
     backgroundColor: Colors.clear

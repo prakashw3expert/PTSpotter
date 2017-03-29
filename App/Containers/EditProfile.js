@@ -33,7 +33,8 @@ export default class EditProfile extends React.Component {
                 <Image source={Images.editProfileHeader}>
                     <View style={styles.navbarview}>
                       <Button transparent iconLeft onPress={NavigationActions.pop}>
-                      <Icon name='arrow-back' style={{color:'white'}}/></Button>
+                        <Icon name='arrow-back' style={{color:'white'}}/>
+                      </Button>
                       <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}>EDIT PROFILE</Text>
                       <Button transparent>
                           <Text></Text>

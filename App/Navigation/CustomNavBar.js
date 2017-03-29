@@ -19,7 +19,7 @@ class CustomNavBar extends React.Component {
   showSearchBar = () => {
     this.setState({showSearchBar: true})
   }
-
+  
   cancelSearch = () => {
     this.setState({showSearchBar: false})
     this.props.cancelSearch()
@@ -31,13 +31,10 @@ class CustomNavBar extends React.Component {
 
   renderMiddle () {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-    if (this.state.showSearchBar) {
-      return <SearchBar onSearch={this.props.performSearch} searchTerm={this.props.searchTerm} onCancel={this.cancelSearch} />
-    } else {
       return (
-        <Text style={[Fonts.style.h1,styles.customTitle]}>HOME</Text>
+        <Text style={[Fonts.style.h1,styles.customTitle]}>{this.props.title}</Text>
       )
-    }
+    
   }
 
   renderRightButtons () {

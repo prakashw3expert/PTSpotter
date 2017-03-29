@@ -6,6 +6,7 @@ import styles from './Styles/DrawerContentStyles'
 
 import DrawerButton from '../Components/DrawerButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+
 import { Button, Text, Icon, ListItem, Left, Right, Body, Thumbnail,Badge } from 'native-base';
 
 import { Images,Fonts } from '../Themes'
@@ -52,18 +53,20 @@ class DrawerContent extends Component {
 
   handlePressSettings = () => {
     this.toggleDrawer()
-    NavigationActions.settingScreen()
+    NavigationActions.settings()
   }
+
   handleUserProfileClick = () => {
     this.toggleDrawer()
     NavigationActions.editProfile()
   }
-//<Image source={Images.logo} style={styles.logo} />
+
   render () {
     let imageView;
     imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/>
     return (
       <ScrollView style={styles.container}>
+
       <Image source={Images.menuTopBekground} style={styles.menuTopBekground}>
           <View style={styles.usesrDeatils}>
           <ListItem avatar style={{borderBottomWidth:0}} onPress={this.handleUserProfileClick}>
@@ -83,8 +86,8 @@ class DrawerContent extends Component {
           <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressHome} />
           <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressHome} />
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressHome} />
-          <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressHome} />
-          <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressHome} />
+          <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
+          <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
 
       </View>
 

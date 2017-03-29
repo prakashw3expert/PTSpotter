@@ -1,26 +1,27 @@
 
 
 import React from 'react'
-import { ScrollView,Text, Image, View,TouchableHighlight } from 'react-native'
+import { ScrollView,Text, Image, View,TouchableHighlight,Dimensions } from 'react-native'
 import { Container, Content,Input,
   Form,Item, Left,Icon,
   Body, Right, ListItem,
   Thumbnail,List,Button,
   Card, CardItem,Label,Grid,Col, Badge } from 'native-base';
-
+const { width, height } = Dimensions.get('window')
 import { Images,Metrics,Fonts } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/PostDetailStyle'
 
-export default class PostDetailScreen extends React.Component {
+ class PostDetailScreen extends React.Component {
 
 like() {
   alert('post liked')
 }
   render () {
     return (
+      <Container>
       <Content>
           <View style={styles.headerView}>
             <Image source={Images.blogImage} style={styles.postImage}>
@@ -46,6 +47,7 @@ like() {
               Your DVDs usually come coated with directly printable lacquer films with ability to absorb ink, and the process of directly printing the lacquer films on your DVDs is technically known as dvd printing. Your dvd printing solution lies in – inkjet dvd printing, thermal transfer dvd printing, screen dvd printing, and offset dvd printing – which you may choose according to need and requirement. The printing process using CMYK Inkjet printers is known as inkjet printing. The inkjet dvd printing offers you the stunning results with high resolution and vibrant colors. The inkjet dvd printing is good choice for small runs of dvds, or when
               </Text>
         </View>
+
 
         <View style={[Fonts.style.commentSectionColor]}>
             <CardItem  style={Fonts.style.commentSectionColor}>
@@ -121,52 +123,49 @@ like() {
                   </Card>
             </Content>
 
+          </View>
+
+        </Content>
+        
+  </Container>
+
+
+    )
+  }
+}
+
+ class AddComment extends React.Component {
+
+like() {
+  alert('post liked')
+}
+  render () {
+    return (
+    
+          
             <View style={styles.bottomview}>
             <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45}]}>
               <Input  style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
               <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
             </View>
             </View>
-          </View>
-
-        </Content>
+   
     )
   }
 }
 
-/*
+export default class Main extends React.Component {
 
+like() {
+  alert('post liked')
+}
+  render () {
+    return (
+      <Container>
+      <PostDetailScreen />
+      <AddComment />
+      </Container>
+    )
+  }
+}
 
- <Content>
-                    <Card style={{margin:8}}>
-                            <CardItem>
-                                <Left>
-                                    <Thumbnail source={Images.avatarImage} style={{height:40,width:40,borderRadius:20}}/>
-                                    <Body>
-                                        <Text>Aron Finch</Text>
-                                        <Text style={styles.commentDate}>05/03/1992</Text>
-                                    </Body>
-                                </Left>
-                              </CardItem>
-                              <CardItem content>
-                                  <Text>Wait a minute. Wait a minute, Doc. Uhhh...
-                                  Are you telling me that you built a time machine... out of a DeLorean?!
-                                  Whoa. This is heavy.</Text>
-                              </CardItem>
-                       </Card>
-                       <Card style={{margin:8}}>
-                            <CardItem>
-                                <Left>
-                                    <Thumbnail source={Images.avatarImage} style={{height:40,width:40,borderRadius:20}}/>
-                                    <Body>
-                                        <Text>Tarun Bardawa</Text>
-                                        <Text style={styles.commentDate}>05/03/1992</Text>
-                                    </Body>
-                                </Left>
-                              </CardItem>
-                              <CardItem content>
-                                  <Text>i dont agree this at all!!</Text>
-                              </CardItem>
-                       </Card>
-                    </Content>
-*/

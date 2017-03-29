@@ -245,10 +245,10 @@ const style = {
     marginBottom: 5
   },
   mb10 : {
-    marginBottom: 5
+    marginBottom: 10
   },
   mb15 : {
-    marginBottom: 5
+    marginBottom: 15
   },
   mb20 : {
     marginBottom: 20,
@@ -261,6 +261,12 @@ const style = {
   },
   pt20:{
     paddingTop:20
+  },
+  ml20 : {
+    marginLeft: 20,
+  },
+  mr20 : {
+    marginRight: 20,
   },
   drawerUserText : {
     fontSize:12,
@@ -311,6 +317,23 @@ const style = {
     width:"94.5%",
     left:-10,
 
+  },
+  settingList:{
+    marginLeft:15,
+    marginRight:15
+  },
+
+  purpleButtonAvailability : {
+    borderColor:'rgb(172,14,250)',
+    borderWidth:2, 
+    backgroundColor:'rgba(172,14,250,0.5)',
+    marginBottom:15,
+  },
+  grayButtonAvailability : {
+    borderColor:'rgb(221,221,221)',
+    borderWidth:2, 
+    backgroundColor:'rgba(221,221,221,0.5)',
+    marginBottom:15,
   },
 
 
