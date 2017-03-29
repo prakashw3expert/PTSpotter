@@ -41,9 +41,9 @@ export default class EditProfile extends React.Component {
                       </Button>
                     </View>
                     <View style={styles.profileimage} >
-                      
+
                        {imageView}
-                      
+
                       <Text style={styles.username}> Ernest Woods </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
                     </View>
@@ -59,7 +59,7 @@ export default class EditProfile extends React.Component {
                   <Tab heading={ <TabHeading><Text>Notes</Text></TabHeading>}>
                       <Notes />
                   </Tab>
-                  
+
             </Tabs>
 
               </View>
@@ -77,7 +77,7 @@ class About extends Component {
             <Container>
                 <Content>
                     <Text>Square Thumbnail</Text>
-                    
+
 
                     <Text>Circular Thumbnail</Text>
                 </Content>
@@ -92,7 +92,7 @@ class Notes extends Component {
             <Container>
                 <Content>
                     <Text>Square Thumbnail</Text>
-                    
+
                     <Text>Circular Thumbnail</Text>
                 </Content>
             </Container>

@@ -29,7 +29,7 @@ class DrawerContent extends Component {
 
   handlePressSessions =() => {
     this.toggleDrawer()
-    NavigationActions.sessionScreen()
+    NavigationActions.sessions()
   }
   handlePressHome = () => {
     this.toggleDrawer()
@@ -85,7 +85,7 @@ class DrawerContent extends Component {
           <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
           <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressHome} />
           <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressHome} />
-          <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressHome} />
+          <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
           <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
           <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
 

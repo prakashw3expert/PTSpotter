@@ -23,9 +23,11 @@ const colors = {
   text: '#E0D7E5',
   subHeadingRegular:'rgb(102,102,102)',
   mutedColor:'rgba(102,102,102,0.5)',
+  white: 'rgb(255,255,255)',
   whiteMuted: 'rgba(255,255,255, 0.5)',
   purpleColor:'rgb(172,14,250)',
   mutedPurple:'rgba(172,14,250,0.5)',
+
 }
 
 export default colors

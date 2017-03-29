@@ -214,9 +214,6 @@ const style = {
   textWhite:{
     color: 'rgb(255,255,255)'
   },
-  textWhiteLight:{
-    color: 'rgba(255,255,255,0.5)'
-  },
   textCenter:{
     textAlign: 'center'
   },
@@ -339,9 +336,8 @@ const style = {
     marginBottom:15,
   },
 
-  SessionTabs : {
-    backgroundColor:'rgb(13, 7, 56)',
-    borderBottomWidth:0
+  tabs : {
+    backgroundColor:'#000'
   },
 
 
