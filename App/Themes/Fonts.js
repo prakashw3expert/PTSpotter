@@ -181,6 +181,11 @@ const style = {
     backgroundColor:'rgb(172,14,250)',
     height: size.buttonHeight,
   },
+   red: {
+    backgroundColor:'rgb(255,113,113)',
+    height: size.buttonHeight,
+    marginTop:10
+  },
 
   bordered: {
     backgroundColor:'rgb(255,255,255)',

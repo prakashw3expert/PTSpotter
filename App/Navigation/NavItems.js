@@ -42,6 +42,14 @@ export default {
     )
   },
 
+  messageIconPlus () {
+    return (
+      <TouchableOpacity >
+      <Image source={Images.messageIcon} style={styles.messageIcon}/>
+      </TouchableOpacity>
+    )
+  },
+
   searchButton (callback) {
     return (
       <TouchableOpacity onPress={callback}>

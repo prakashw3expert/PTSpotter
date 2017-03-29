@@ -40,7 +40,6 @@ export default class AvailabilityScreen extends React.Component {
       <View style={styles.mainContainer}>
         <ScrollView style={[styles.container,{marginBottom : 110}]}>
             <View style={styles.topView}>
-                
                 <Text style={[Fonts.style.h2,styles.dayTitle]}>MONDAY</Text>
                 <View style={styles.buttonsView}>
                       <DayButton text='MO'

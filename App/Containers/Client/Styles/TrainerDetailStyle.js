@@ -21,7 +21,7 @@ export default EStyleSheet.create({
     alignItems:'center',
   },
   profileimage: {
-  flex:5,
+  flex:7,
   alignItems:'center',
   alignSelf:'stretch',
   
@@ -46,10 +46,21 @@ export default EStyleSheet.create({
     color : Colors.whiteMuted,
     letterSpacing : 0.1,
   },
+  ratingtext : {
+    fontSize : Fonts.size.small,
+    fontFamily : Fonts.type.regular,
+    color : Colors.whiteMuted,
+    letterSpacing : 0.1,
+  },
   emptyView: {
     justifyContent : 'center',
     alignItems : 'center',
     marginTop : '10%',
+  },
+  availabilityView: {
+    justifyContent : 'center',
+    alignItems : 'center',
+    marginTop : 15,
   },
   emptyText: {
     textAlign : 'center',
@@ -109,6 +120,22 @@ export default EStyleSheet.create({
     flex : 1,
     justifyContent : 'flex-start',
     marginTop : 15,
+  },
+  gymButton : {
+    textAlign:'center',
+    backgroundColor:'transparent',
+    fontFamily: Fonts.type.regular,
+    fontSize: Fonts.size.medium,
+    color: "rgb(102,102,102)",
+    lineHeight:23,
+    letterSpacing:1.5
+  },
+  gymColumns : {
+     backgroundColor: 'rgb(235,235,235)',  
+     marginRight:10, 
+     borderRadius:10, 
+     padding:5,
+     height:57 
   },
 
 })
