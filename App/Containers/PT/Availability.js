@@ -10,6 +10,7 @@ import { Container, Content,Input,
 import { Images,Colors,Fonts } from '../../Themes'
 import DayButton from '../../Components/DayButton'
 import Hr from 'react-native-hr'
+import { Actions } from 'react-native-router-flux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/AvailabilityStyle'
@@ -19,21 +20,37 @@ const { width, height } = Dimensions.get('window')
 //<Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
 export default class AvailabilityScreen extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+    };
+  }
+
   render () {
+    var showItem;
+    if(this.state.show == false) {
+      showItem = <DataAvailability />
+    }
+    else{
+      showItem = <EmptyAvailability />    
+    }
     return (
 
       <View style={styles.mainContainer}>
-        <ScrollView style={styles.container}>
+        <ScrollView style={[styles.container,{marginBottom : 110}]}>
             <View style={styles.topView}>
                 
                 <Text style={[Fonts.style.h2,styles.dayTitle]}>MONDAY</Text>
                 <View style={styles.buttonsView}>
                       <DayButton text='MO'
-                        onPress={() => window.alert('Monday Pressed!')
-                        
-                        } />
+                        onPress={() => {
+                          this.setState({ show: !this.state.show });
+                        }} />
                         <DayButton text='TU'
-                        onPress={() => window.alert('Tuesday Pressed!')} />
+                        onPress={() => {
+                          this.setState({ show: !this.state.show });
+                        }} />
                         <DayButton text='WE'
                         onPress={() => window.alert('Wednesday Pressed!')} />
                         <DayButton text='TH'
@@ -47,10 +64,9 @@ export default class AvailabilityScreen extends React.Component {
                   </View>
             </View>
             <Hr lineColor='rgb(234, 234, 234)' />
-
-            <EmptyAvailability />
-            <DataAvailability />
+            {showItem}
         </ScrollView>
+        <Save />
         </View>
     )
   }
@@ -84,11 +100,54 @@ class DataAvailability extends React.Component {
 
       <View style={styles.emptyView}>
           <View style={{width:'80%'}} >
-            <Button block bordered block large style={Fonts.style.purpleButton}>
-                <Text>Dark</Text>
+            <Button block bordered block large style={Fonts.style.purpleButtonAvailability}>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'white', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>6:30 pm</Text>
             </Button>
+
+            <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
+                <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
+            </Button>
+            
+            <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
+                <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
+            </Button>
+
+            <Button block bordered block large style={Fonts.style.purpleButtonAvailability}>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'white', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>6:30 pm</Text>
+            </Button>
+
+            <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
+                <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
+            </Button>
+
           </View>
       </View>
+    )
+  }
+}
+
+class Save extends React.Component {
+
+  render () {
+    return (
+    
+          
+            <View style={styles.bottomview}>
+              <Button light full rounded style={Fonts.style.default}  onPress={Actions.homeScreen}>
+                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SAVE</Text>
+              </Button>
+            </View>
+   
     )
   }
 }

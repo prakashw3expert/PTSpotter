@@ -49,6 +49,7 @@ const images = {
   blogImage: require('../Images/dummy/blog.jpeg'),
   blog2: require('../Images/dummy/blog2.jpg'),
   emptyAvailability: require('../Images/emptyAvailability.png'),
+  emptyNote: require('../Images/emptyComments.png'),
 
 }
 

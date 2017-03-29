@@ -1,5 +1,4 @@
 import {Dimensions} from 'react-native';
-import { Colors } from '../../Themes'
 const { width, height } = Dimensions.get('window')
 
 const type = {
@@ -324,10 +323,17 @@ const style = {
     marginRight:15
   },
 
-  purpleButton : {
-    borderColor:Colors.purpleColor,
+  purpleButtonAvailability : {
+    borderColor:'rgb(172,14,250)',
     borderWidth:2, 
-    backgroundColor:Colors.mutedPurple
+    backgroundColor:'rgba(172,14,250,0.5)',
+    marginBottom:15,
+  },
+  grayButtonAvailability : {
+    borderColor:'rgb(221,221,221)',
+    borderWidth:2, 
+    backgroundColor:'rgba(221,221,221,0.5)',
+    marginBottom:15,
   },
 
 

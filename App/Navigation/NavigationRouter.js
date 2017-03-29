@@ -16,6 +16,7 @@ import MobileVerification from '../Containers/MobileVerification'
 import PostDetail from '../Containers/PostDetail'
 import Settings from '../Containers/PT/Settings'
 import Availability from '../Containers/PT/Availability'
+import ClientDetail from '../Containers/PT/ClientDetail'
 
 
 /* **************************
@@ -36,8 +37,9 @@ class NavigationRouter extends Component {
             <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
-            <Scene initial key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene initial key='availability' component={Availability} title='AVAILABILITY' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='availability' component={Availability} title='AVAILABILITY' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene initial key='clientDetails' component={ClientDetail} title='' hideNavBar/>
           </Scene>
         </Scene>
       </Router>

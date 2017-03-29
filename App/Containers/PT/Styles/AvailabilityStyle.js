@@ -42,5 +42,16 @@ export default StyleSheet.create({
   btnEmptyText : {
     fontFamily : Fonts.type.bold,
   },
+  bottomview: {
+    backgroundColor:'white',
+    position: 'absolute',
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems:'center',
+    height: 110,
+    width:'100%',
+    paddingLeft : 40,
+    paddingRight : 40,
+  },
   
 })
