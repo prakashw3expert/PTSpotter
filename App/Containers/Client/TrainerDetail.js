@@ -9,21 +9,35 @@ import RoundedButton from '../../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Foundation from 'react-native-vector-icons/Foundation';
 // Styles
-import styles from './Styles/ClientDetailStyle'
+import StarRating from 'react-native-star-rating';
+import styles from './Styles/TrainerDetailStyle'
 
-export default class ClientDetail extends React.Component {
+export default class TrainerDetail extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      starCount: 4
+    };
+  }
+
+  onStarRatingPress(rating) {
+    this.setState({
+      starCount: rating
+    });
+  }
   render () {
 
     let imageView;
-    imageView = <Image source={Images.user4} style={styles.userImage}/>
+    imageView = <Image source={Images.user5} style={styles.userImage}/>
+
 
 
     return (
 
         <ScrollView scrollEnabled={false}>
           <View>
-          <Form>
+          
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader} style={{height:248}}>
                     <View style={styles.navbarview}>
@@ -36,21 +50,45 @@ export default class ClientDetail extends React.Component {
                       </Button>
                     </View>
                     <View style={styles.profileimage} >
-
+                      
                        {imageView}
-
-                      <Text style={styles.username}> Ernest Woods </Text>
+                      
+                      <Text style={styles.username}> Aaron Castillo </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
+                      <TouchableOpacity onPress={() => window.alert('StarRating Pressed')}>
+                      <StarRating
+                        disabled={true}
+                        emptyStar={'ios-star-outline'}
+                        fullStar={'ios-star'}
+                        halfStar={'ios-star-half'}
+                        iconSet={'Ionicons'}
+                        maxStars={5}
+                        starSize={20}
+                        rating={this.state.starCount}
+                        selectedStar={(rating) => this.onStarRatingPress(rating)}
+                        starColor={'yellow'}
+
+                      />
+                      </TouchableOpacity>
+                      <Text style={styles.ratingtext}> Avg. rating from completed sessions </Text>
+
                     </View>
                 </Image>
 
               </View>
 
               <View style={styles.containers}>
+
                 <Tabs>
                   <Tab heading={ <TabHeading><Text style={styles.tabheading}>About</Text></TabHeading>}>
                    <ScrollView style={{height:350}}>
                       <AboutData />
+                    </ScrollView>
+                  </Tab>
+
+                  <Tab heading={ <TabHeading><Text style={styles.tabheading}>Schedule</Text></TabHeading>}>
+                   <ScrollView style={{height:350}}>
+                      <Schedule />
                     </ScrollView>
                   </Tab>
 
@@ -62,21 +100,20 @@ export default class ClientDetail extends React.Component {
                       <NoteCard />
                       <AddNote />
                     </ScrollView>
+                    
                     </Content>
                   </Tab>
                 </Tabs>
 
               </View>
-
-        </Form>
         </View>
         </ScrollView>
 
     )
   }
 }
-
 class About extends React.Component {
+
   render () {
     return (
 
@@ -86,10 +123,11 @@ class About extends React.Component {
             NO CURRENT NOTES AVAILABLE
           </Text>
       </View>
-
+      
     )
   }
 }
+
 
 
 class Notes extends React.Component {
@@ -102,7 +140,7 @@ class Notes extends React.Component {
           <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
             NO CURRENT NOTES AVAILABLE
           </Text>
-
+          
       </View>
 
 
@@ -153,7 +191,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-
+          
           <View style={Fonts.style.mt15}>
 
              <Grid>
@@ -166,10 +204,10 @@ class AboutData extends React.Component {
                      </Text>
                   </Col>
               </Grid>
+        
+            <Workouts />
 
-            <WorkoutInterest />
-
-            <Button light full rounded style={Fonts.style.red} >
+            <Button light full rounded style={Fonts.style.red}  onPress={NavigationActions.homeScreen}>
                 <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
             </Button>
         </View>
@@ -177,12 +215,12 @@ class AboutData extends React.Component {
   }
 }
 
-class WorkoutInterest extends React.Component {
+class Workouts extends React.Component {
 
   render () {
     return (
           <View style={Fonts.style.mt10}>
-              <Text style={[Fonts.style.h2, Fonts.style.mt20]}> WORKOUT INTERESTS</Text>
+              <Text style={[Fonts.style.h2, Fonts.style.mt20]}> WORKOUTS</Text>
               <View style={styles.buttonsView}>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
@@ -192,8 +230,105 @@ class WorkoutInterest extends React.Component {
 
               <Button light full rounded style={Fonts.style.default} >
                 <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
-            </Button>
+            </Button>    
           </View>
     )
   }
 }
+
+class Schedule extends React.Component {
+
+  render () {
+    return (
+          <View style={Fonts.style.mt5}>
+            <Text style={[Fonts.style.h2, Fonts.style.mt20, {textAlign:'center'}]}> GYMS </Text>
+            <Gyms />
+            <PrivateAvailability />
+        </View>
+    )
+  }
+}
+
+class Availabilities extends React.Component {
+
+  render () {
+    return (
+
+      <View style={styles.availabilityView}>
+      <Text style={[Fonts.style.h2, Fonts.style.mt5,Fonts.style.mb20, {textAlign:'center'}]}> AVAILABILITY </Text>
+          <View style={{width:'80%'}} >
+            <Button block bordered block large style={Fonts.style.purpleButtonAvailability}>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'white', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>6:30 pm</Text>
+            </Button>
+
+            <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
+                <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
+            </Button>
+            
+            <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
+                <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
+            </Button>
+
+            <Button block bordered block large style={Fonts.style.purpleButtonAvailability}>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'white', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading,{color:'white'}]}>6:30 pm</Text>
+            </Button>
+
+            <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
+                <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
+                <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
+                <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
+            </Button>
+
+          </View>
+      </View>
+    )
+  }
+}
+
+class Gyms extends React.Component {
+
+  render () {
+    return (
+
+      <View style={styles.availabilityView}>
+          <Grid>
+              <Col style={[styles.gymColumns,{width:'60%'}]}>
+                <Text style={styles.gymButton}> Frame Gym </Text>
+                <Text style={[styles.gymButton,{color:Colors.mutedColor}]}> BS4 5SS </Text>
+              </Col>
+              <Col style={styles.gymColumns}>
+                <Text style={styles.gymButton}> Core Collective </Text>
+                <Text style={[styles.gymButton,{color:Colors.mutedColor}]}> BS4 5SS </Text>
+              </Col>
+          </Grid>
+      </View>
+    )
+  }
+}
+
+class PrivateAvailability extends React.Component {
+
+  render () {
+    return (
+
+      <View style={[styles.availabilityView,{marginTop:20}]}>
+        <Image source={Images.PrivateAvailability} style={{width:214,height:177,marginBottom:20,marginTop:20}}/>
+        <View style={{width:'80%'}}>
+          <Button light full rounded style={Fonts.style.default} >
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>CHECK AVAILABILITY</Text>
+          </Button>
+        </View>
+      </View>
+    )
+  }
+}
+
+

@@ -38,7 +38,7 @@ export default {
     flex: 1,
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    marginTop:21,
+    marginTop:0,
   },
   customTitle:{
     color:'white',
