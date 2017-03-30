@@ -4,7 +4,8 @@ const { width, height } = Dimensions.get('window')
 const type = {
   regular: 'Montserrat-Regular',
   bold: 'Montserrat-Bold',
-
+  LucidaGrandeBold: 'LucidaGrande-Bold',
+  LucidaGrandeRegular: 'LucidaGrande-Regular',
 }
 
 const size = {
@@ -344,10 +345,19 @@ const style = {
     marginBottom:15,
   },
 
-  SessionTabs : {
-    backgroundColor:'rgb(13, 7, 56)',
-    borderBottomWidth:0
-  },
+  tabBorderSytel : {
+    backgroundColor:'#fff',
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 5,
+    borderBottomWidth: 6,
+    borderLeftWidth: 5,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'white',
+    borderLeftColor: 'transparent',  marginLeft:20,marginRight:30, width:'22%'
+  }
 
 
 

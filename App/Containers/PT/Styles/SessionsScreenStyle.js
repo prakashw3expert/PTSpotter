@@ -10,7 +10,7 @@ export default EStyleSheet.create({
     fontSize : Fonts.size.regular,
     letterSpacing : 0.3,
     fontFamily : Fonts.type.regular,
-    marginBottom:-25
+
   },
   tabsSection : {
     padding:20
@@ -27,6 +27,31 @@ export default EStyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: 'white',
     borderLeftColor: 'transparent',  marginLeft:20,marginRight:30, width:'22%'
-  }
+  },
+  tabContent : {
+    paddingTop:28
+  },
+  dateBadge : {
+    width:40,
+    height : 40,
+    borderRadius : 40,
+    backgroundColor:'rgb(172, 14, 250)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  },
+  badgeDate : {
+    fontSize:14,
+    color:Colors.white,
+    lineHeight:23,
+    letterSpacing:1.8,
+    fontFamily:Fonts.type.LucidaGrandeBold
+  },
+  badgeText : {
+    fontSize:8,
+    color:Colors.whiteMuted,
+    fontFamily:Fonts.type.LucidaGrandeBold,
+
+  },
 
 })

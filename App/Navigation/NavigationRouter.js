@@ -34,19 +34,19 @@ class NavigationRouter extends Component {
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-            <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
+            <Scene  key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene key='selectType' component={SelectType} title='PT SPOTTER'  />
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
-            <Scene initial key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
+            <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
             <Scene key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='availability' component={Availability} title='AVAILABILITY' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene  initial key='sessions' component={Sessions} title='SESSIONS' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene initial key='sessions' component={Sessions} title='SESSIONS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='clientDetails' component={ClientDetail} title='' hideNavBar/>
             <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
-            <Scene initial key='ratingScreen' component={RatingScreen} title='' hideNavBar={false} navBar={RatingNavbar}/>
+            <Scene key='ratingScreen' component={RatingScreen} title='' hideNavBar={false} navBar={RatingNavbar}/>
           </Scene>
         </Scene>
       </Router>

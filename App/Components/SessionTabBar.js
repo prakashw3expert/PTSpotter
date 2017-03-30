@@ -5,8 +5,8 @@ const {
   Text,
   View,
   Animated,
+  Button
 } = ReactNative;
-import {Button } from 'native-base';
 
 const DefaultTabBar = React.createClass({
   propTypes: {
