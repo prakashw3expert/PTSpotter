@@ -43,7 +43,7 @@ class NavigationRouter extends Component {
             <Scene key='availability' component={Availability} title='AVAILABILITY' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='clientDetails' component={ClientDetail} title='' hideNavBar/>
             <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/> 
-            <Scene initial key='ratingScreen' component={RatingScreen} title='' hideNavBar={false} navBar={RatingNavbar}/> 
+            <Scene initial key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar={false} navBar={RatingNavbar}/> 
           </Scene>
         </Scene>
       </Router>

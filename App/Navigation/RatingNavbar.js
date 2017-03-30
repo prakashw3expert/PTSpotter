@@ -12,18 +12,18 @@ class RatingNavbar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      showSearchBar: false
+     
     }
   }
 
-  showSearchBar = () => {
-    this.setState({showSearchBar: true})
-  }
+ 
   
   renderMiddle () {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
       return (
+        <View style={{flexDirection:'row',flex:1}}>
         <Text style={[Fonts.style.h1,styles.customTitle]}>{this.props.title}</Text>
+        </View>
       )
     
   }
