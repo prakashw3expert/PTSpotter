@@ -36,9 +36,9 @@ export default class ClientDetail extends React.Component {
                       </Button>
                     </View>
                     <View style={styles.profileimage} >
-                      
+
                        {imageView}
-                      
+
                       <Text style={styles.username}> Ernest Woods </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
                     </View>
@@ -53,8 +53,8 @@ export default class ClientDetail extends React.Component {
                       <AboutData />
                     </ScrollView>
                   </Tab>
+
                   <Tab heading={ <TabHeading><Text style={styles.tabheading}>Notes</Text></TabHeading>}>
-                  
                   <Content>
                     <ScrollView style={{height:350}}>
                       <NoteCard />
@@ -62,7 +62,6 @@ export default class ClientDetail extends React.Component {
                       <NoteCard />
                       <AddNote />
                     </ScrollView>
-                    
                     </Content>
                   </Tab>
                 </Tabs>
@@ -76,8 +75,8 @@ export default class ClientDetail extends React.Component {
     )
   }
 }
-class About extends React.Component {
 
+class About extends React.Component {
   render () {
     return (
 
@@ -87,11 +86,10 @@ class About extends React.Component {
             NO CURRENT NOTES AVAILABLE
           </Text>
       </View>
-      
+
     )
   }
 }
-
 
 
 class Notes extends React.Component {
@@ -104,7 +102,7 @@ class Notes extends React.Component {
           <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
             NO CURRENT NOTES AVAILABLE
           </Text>
-          
+
       </View>
 
 
@@ -155,7 +153,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-          
+
           <View style={Fonts.style.mt15}>
 
              <Grid>
@@ -168,7 +166,7 @@ class AboutData extends React.Component {
                      </Text>
                   </Col>
               </Grid>
-        
+
             <WorkoutInterest />
 
             <Button light full rounded style={Fonts.style.red} >
@@ -194,12 +192,8 @@ class WorkoutInterest extends React.Component {
 
               <Button light full rounded style={Fonts.style.default} >
                 <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
-            </Button>    
+            </Button>
           </View>
     )
   }
 }
-
-
-
-

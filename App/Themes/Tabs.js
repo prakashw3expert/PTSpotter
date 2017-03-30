@@ -4,8 +4,7 @@ const { width, height } = Dimensions.get('window')
 const type = {
   regular: 'Montserrat-Regular',
   bold: 'Montserrat-Bold',
-  LucidaGrandeBold: 'LucidaGrande-Bold',
-  LucidaGrandeRegular: 'LucidaGrande-Regular',
+
 }
 
 const size = {
@@ -182,11 +181,6 @@ const style = {
     backgroundColor:'rgb(172,14,250)',
     height: size.buttonHeight,
   },
-   red: {
-    backgroundColor:'rgb(255,113,113)',
-    height: size.buttonHeight,
-    marginTop:10
-  },
 
   bordered: {
     backgroundColor:'rgb(255,255,255)',
@@ -219,9 +213,6 @@ const style = {
   },
   textWhite:{
     color: 'rgb(255,255,255)'
-  },
-  textWhiteLight:{
-    color: 'rgba(255,255,255,0.5)'
   },
   textCenter:{
     textAlign: 'center'
@@ -345,19 +336,9 @@ const style = {
     marginBottom:15,
   },
 
-  tabBorderSytel : {
-    backgroundColor:'#fff',
-    backgroundColor: 'transparent',
-    borderStyle: 'solid',
-    borderTopWidth: 0,
-    borderRightWidth: 5,
-    borderBottomWidth: 6,
-    borderLeftWidth: 5,
-    borderTopColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderBottomColor: 'white',
-    borderLeftColor: 'transparent',  marginLeft:20,marginRight:30, width:'22%'
-  }
+  tabs : {
+    backgroundColor:'#000'
+  },
 
 
 

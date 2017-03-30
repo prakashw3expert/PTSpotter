@@ -76,6 +76,8 @@
 		5B2A38D484A94D3ABB3BD5B3 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5A8A7F5EDDA471EADABC384 /* Zocial.ttf */; };
 		5DB07F2CDCCD4DCDB498B027 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F7E66AE2EC4C469670334B /* SimpleLineIcons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6C36BA4F1E8CB64B00A306FF /* LucidaGrandeBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C36BA4D1E8CB64B00A306FF /* LucidaGrandeBold.ttf */; };
+		6C36BA501E8CB64B00A306FF /* LucidaGrandeRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C36BA4E1E8CB64B00A306FF /* LucidaGrandeRegular.ttf */; };
 		7B79DB7F92E248A08334E567 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A2645080D7E4A5BA63132F3 /* Ionicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8CC5D62068FE4D38921275DD /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADBADD6DBBB94C2F8DD0B2B0 /* Rubik-Medium.ttf */; };
@@ -397,6 +399,8 @@
 		5F795B0AC2FA4298ABDA3FDB /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-UI-Text-Regular.otf"; path = "../node_modules/native-base/Fonts/SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		5FD00A51A2AD4F6D85F78296 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		6A59F4AB13454BA28AB3C5B7 /* Georgia.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Georgia.ttf; path = "../node_modules/native-base/Fonts/Georgia.ttf"; sourceTree = "<group>"; };
+		6C36BA4D1E8CB64B00A306FF /* LucidaGrandeBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LucidaGrandeBold.ttf; sourceTree = "<group>"; };
+		6C36BA4E1E8CB64B00A306FF /* LucidaGrandeRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LucidaGrandeRegular.ttf; sourceTree = "<group>"; };
 		6CA6F1611E87DB2400D1D3E8 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		6CA6F1621E87DB2400D1D3E8 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		6CA6F1631E87DB2400D1D3E8 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -684,6 +688,8 @@
 			isa = PBXGroup;
 			children = (
 				6CA6F1611E87DB2400D1D3E8 /* Entypo.ttf */,
+				6C36BA4D1E8CB64B00A306FF /* LucidaGrandeBold.ttf */,
+				6C36BA4E1E8CB64B00A306FF /* LucidaGrandeRegular.ttf */,
 				6CA6F1621E87DB2400D1D3E8 /* EvilIcons.ttf */,
 				6CA6F1631E87DB2400D1D3E8 /* FontAwesome.ttf */,
 				6CA6F1641E87DB2400D1D3E8 /* Foundation.ttf */,
@@ -1225,7 +1231,9 @@
 				469C0CC81E7BEC9400A4356B /* MontserratAlternates-ExtraBold.otf in Resources */,
 				469C0CC31E7BEC9400A4356B /* Montserrat-Regular.otf in Resources */,
 				469C0CBF1E7BEC9400A4356B /* Montserrat-ExtraBold.otf in Resources */,
+				6C36BA4F1E8CB64B00A306FF /* LucidaGrandeBold.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				6C36BA501E8CB64B00A306FF /* LucidaGrandeRegular.ttf in Resources */,
 				469C0CC11E7BEC9400A4356B /* Montserrat-Light.otf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				469C0CC61E7BEC9400A4356B /* MontserratAlternates-Black.otf in Resources */,
