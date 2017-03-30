@@ -42,7 +42,7 @@ export default {
   },
   customTitle:{
     color:'white',
-    alignSelf:'center',
+    alignSelf:'flex-start',
     fontSize:Fonts.size.heading,
     fontFamily:Fonts.type.bold,
     letterSpacing:3.8
