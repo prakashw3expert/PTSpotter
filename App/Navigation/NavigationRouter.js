@@ -5,7 +5,6 @@ import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
 // screens identified by the router
 import CustomNavBar from '../Navigation/CustomNavBar'
-import RatingNavbar from '../Navigation/RatingNavbar'
 
 import LaunchScreen from '../Containers/Landing'
 import SelectType from '../Containers/SelectType'
@@ -21,6 +20,10 @@ import ClientDetail from '../Containers/PT/ClientDetail'
 import Sessions from '../Containers/PT/Sessions'
 import TrainerDetail from '../Containers/Client/TrainerDetail'
 import RatingScreen from '../Containers/Client/RatingScreen'
+import SearchScreen from '../Containers/PT/Search'
+import PTSearch from '../Containers/Client/PTSearch'
+import Inbox from '../Containers/PT/Messages'
+import ChatScreen from '../Containers/PT/ChatScreen'
 
 
 
@@ -46,7 +49,11 @@ class NavigationRouter extends Component {
             <Scene key='sessions' component={Sessions} title='SESSIONS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='clientDetails' component={ClientDetail} title='' hideNavBar/>
             <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/> 
-            <Scene initial key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/> 
+            <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/> 
+            <Scene key='search' component={SearchScreen} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='ptsearch' component={PTSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene initial key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
+            <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={false}/>
           </Scene>
         </Scene>
       </Router>

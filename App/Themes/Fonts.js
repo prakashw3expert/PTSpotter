@@ -357,7 +357,25 @@ const style = {
     borderRightColor: 'transparent',
     borderBottomColor: 'white',
     borderLeftColor: 'transparent',  marginLeft:20,marginRight:30, width:'22%'
-  }
+  },
+
+  filterbutton : {
+    height:60,
+    width:60,
+    borderRadius:30,
+    backgroundColor:'#a716f6',
+    shadowRadius:10,
+    shadowColor:'#a716f6',
+    shadowOffset: {
+      width: 1,
+      height: 1
+    },
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    position: 'absolute',
+    bottom:20,
+    right:20,
+  },
 
 
 

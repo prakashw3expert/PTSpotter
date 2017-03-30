@@ -38,7 +38,7 @@ class DrawerContent extends Component {
 
   handlePressSearch = () => {
     this.toggleDrawer()
-    NavigationActions.searchScreen()
+    NavigationActions.search()
   }
 
   handlePressInbox = () => {
@@ -84,7 +84,7 @@ class DrawerContent extends Component {
       <View style={styles.nav}>
           <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
           <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressHome} />
-          <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressHome} />
+          <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} />
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
           <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
           <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />

@@ -27,6 +27,7 @@ const colors = {
   whiteMuted: 'rgba(255,255,255, 0.5)',
   purpleColor:'rgb(172,14,250)',
   mutedPurple:'rgba(172,14,250,0.5)',
+  separetorLineColor:'rgb(234,234,234)',
 
 }
 
