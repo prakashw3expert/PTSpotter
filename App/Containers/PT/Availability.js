@@ -37,7 +37,7 @@ export default class AvailabilityScreen extends React.Component {
       showItem = <DataAvailability />
     }
     else{
-      showItem = <EmptyAvailability />    
+      showItem = <EmptyAvailability />
     }
 
     var hours = [];
@@ -191,7 +191,7 @@ class EmptyAvailability extends React.Component {
           <Button transparent style={{marginTop:-12,alignSelf:'center'}}>
             <Text style={[Fonts.style.buttonTextNormalGrey,styles.btnEmptyText,{color:Colors.purpleColor}]}>CLICK HERE TO DO SO </Text>
           </Button>
-        
+
       </View>
     )
   }
@@ -215,7 +215,7 @@ class DataAvailability extends React.Component {
                 <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
                 <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
             </Button>
-            
+
             <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
                 <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
                 <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
@@ -244,15 +244,14 @@ class Save extends React.Component {
 
   render () {
     return (
-    
-          
+
+
             <View style={styles.bottomview}>
               <Button light full rounded style={Fonts.style.default}  onPress={Actions.homeScreen}>
                   <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SAVE</Text>
               </Button>
             </View>
-   
+
     )
   }
 }
-

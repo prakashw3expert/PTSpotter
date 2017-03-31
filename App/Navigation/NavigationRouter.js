@@ -20,7 +20,7 @@ import ClientDetail from '../Containers/PT/ClientDetail'
 import Sessions from '../Containers/PT/Sessions'
 import TrainerDetail from '../Containers/Client/TrainerDetail'
 import RatingScreen from '../Containers/Client/RatingScreen'
-import SearchScreen from '../Containers/PT/Search'
+import ClientSearch from '../Containers/PT/Search'
 import PTSearch from '../Containers/Client/PTSearch'
 import Inbox from '../Containers/PT/Messages'
 import ChatScreen from '../Containers/PT/ChatScreen'
@@ -41,18 +41,18 @@ class NavigationRouter extends Component {
             <Scene key='selectType' component={SelectType} title='PT SPOTTER'  />
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
-            <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
+            <Scene  key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene initial key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
             <Scene key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='availability' component={Availability} title='AVAILABILITY' hideNavBar/>
             <Scene key='sessions' component={Sessions} title='SESSIONS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='clientDetails' component={ClientDetail} title='' hideNavBar/>
-            <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/> 
-            <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/> 
-            <Scene key='search' component={SearchScreen} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene key='ptsearch' component={PTSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
+            <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
+            <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/>
+            <Scene initial key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='ptsearch' component={PTSearch} title='PT SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene  key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
             <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={false}/>
           </Scene>
         </Scene>
