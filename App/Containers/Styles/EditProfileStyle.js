@@ -28,11 +28,11 @@ export default EStyleSheet.create({
   },
   userImage: {
     alignSelf:'center',
-    height:'18%',
-    width:'30%',
+    height:85,
+    width:85,
     margin:10,
     alignSelf:'center',
-    borderRadius: 40,
+    borderRadius: 42.5,
 
   },
 

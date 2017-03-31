@@ -50,8 +50,10 @@ const images = {
   blog2: require('../Images/dummy/blog2.jpg'),
   emptyAvailability: require('../Images/emptyAvailability.png'),
   emptyNote: require('../Images/emptyComments.png'),
+  emptyMessage: require('../Images/emptyMessage.png'),
   PrivateAvailability: require('../Images/LockedAvailability.png'),
   EmptySessions: require('../Images/EmptySessions.png'),
+  SearchEmpty: require('../Images/searchEmpty.png'),
 
 }
 

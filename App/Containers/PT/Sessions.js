@@ -9,7 +9,6 @@ import styles from './Styles/SessionsScreenStyle'
 
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
-import { SessionTabBar } from '../../Components/SessionTabBar'
 
 import Hr from 'react-native-hr'
 
