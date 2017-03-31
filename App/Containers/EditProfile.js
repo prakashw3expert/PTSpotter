@@ -1,22 +1,29 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity } from 'react-native'
-import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button, Switch,Left, Right, ListItem } from 'native-base';
+import { ScrollView, Text, Image, View,TouchableOpacity,PickerIOS } from 'react-native'
+import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Grid,Col, Switch,Left, Right, ListItem } from 'native-base';
 
-import { Images,Fonts } from '../Themes'
+import { Images,Fonts,Colors } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/EditProfileStyle'
-
+import Modal from 'react-native-simple-modal';
+var PickerItemIOS = PickerIOS.Item
 export default class EditProfile extends React.Component {
 
   state = {
+    open: false,
+    modalVisible: false,
       colorTrueSwitchIsOn: true,
       colorFalseSwitchIsOn: false,
     };
 
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
 
   render () {
 
@@ -74,7 +81,7 @@ export default class EditProfile extends React.Component {
                   <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text>
 
                   <View style={Fonts.style.mt15}>
-                    <Button light full rounded bordered style={Fonts.style.bordered}  onPress={NavigationActions.mobile}>
+                    <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: true})}>
                         <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD GYM</Text>
                     </Button>
                   </View>
@@ -102,6 +109,52 @@ export default class EditProfile extends React.Component {
                   </View>
 
               </View>
+
+              <Modal
+                offset={this.state.offset}
+                open={this.state.open}
+                overlayBackground={Colors.popupoverlayBackground}
+                modalDidOpen={() => console.log('modal did open')}
+                modalDidClose={() => this.setState({open: false})}
+                style={{alignItems: 'center'}}>
+                <View>
+                  <View style={{flexDirection:'row',alignItems:'center'}}>
+                      <Text style={{marginLeft:20,flex:1}}></Text>
+                      <Text style={[Fonts.style.h2,{flex:4,textAlign:'center'}]}>ADD GYM</Text>
+                      <Button transparent onPress={() => this.setState({open: false})}>
+                          <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
+                      </Button>
+                  </View>
+
+                  <Text style={styles.modelText}>
+                    THE CLIENTS SEARCH RESULT WILL BE BASED ON YOUR GYM(S) LOCATION
+                  </Text>
+
+                  <View style={styles.containers}>
+
+                  
+                  <View style={[Fonts.style.inputWrapperBordered,{height:45}]}>
+                    <MaterialCommunityIcons name='dumbbell' style={[Fonts.style.borderedIcon,{color:'rgba(172,14,250,0.5)'}]} />
+                    <Input  style={Fonts.style.inputBordered} placeholder='GYM NAME' placeholderTextColor={Fonts.colors.input}/>
+                  </View>
+
+                  <View style={[Fonts.style.inputWrapperBordered,{height:45}]}>
+                    <MaterialCommunityIcons name='barcode' style={[Fonts.style.borderedIcon,{color:'rgba(172,14,250,0.5)'}]} />
+                    <Input  style={Fonts.style.inputBordered} placeholder='POSTCODE' placeholderTextColor={Fonts.colors.input}/>
+                  </View>
+
+              </View>
+
+                  
+                
+                  <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
+                    <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>
+                        <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD GYM</Text>
+                    </Button>
+                  </View>
+                  
+                </View>
+              </Modal>
 
         </Form>
         </View>

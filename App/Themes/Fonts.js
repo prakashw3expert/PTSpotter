@@ -127,7 +127,7 @@ const style = {
     color:colors.input,
   },
   inputWrapperBordered : {
-    flex: 1,
+   /* flex: 1, */
     flexDirection: 'row',
     borderWidth:2,
     borderColor:"rgb(234,234,234)",

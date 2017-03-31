@@ -33,7 +33,14 @@ export default EStyleSheet.create({
     margin:10,
     alignSelf:'center',
     borderRadius: 42.5,
-
+  },
+  modelText: {
+    fontSize:10.4,
+    fontFamily : Fonts.type.regular,
+    lineHeight:17,
+    letterSpacing:1.4,
+    color:'rgb(102,102,102)',
+    textAlign:'center',
   },
 
 })
