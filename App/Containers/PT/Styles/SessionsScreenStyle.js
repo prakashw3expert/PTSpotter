@@ -6,52 +6,75 @@ export default EStyleSheet.create({
   tabs : {
     backgroundColor:'#000'
   },
-  tabText : {
-    fontSize : Fonts.size.regular,
-    letterSpacing : 0.3,
-    fontFamily : Fonts.type.regular,
 
-  },
   tabsSection : {
     padding:20
-  },
-  tabBorderSytel : {
-    backgroundColor:'#fff',
-    backgroundColor: 'transparent',
-    borderStyle: 'solid',
-    borderTopWidth: 0,
-    borderRightWidth: 5,
-    borderBottomWidth: 6,
-    borderLeftWidth: 5,
-    borderTopColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderBottomColor: 'white',
-    borderLeftColor: 'transparent',  marginLeft:20,marginRight:30, width:'22%'
   },
   tabContent : {
     paddingTop:28
   },
-  dateBadge : {
+  tabHeading : {
+    marginBottom : 20
+  },
+
+  dateBadgeActive : {
     width:40,
     height : 40,
     borderRadius : 40,
     backgroundColor:'rgb(172, 14, 250)',
     justifyContent: 'center',
     alignItems: 'center',
-    
+    marginRight:10
+
   },
-  badgeDate : {
+  badgeDateActive : {
     fontSize:14,
     color:Colors.white,
     lineHeight:23,
     letterSpacing:1.8,
     fontFamily:Fonts.type.LucidaGrandeBold
   },
-  badgeText : {
+  badgeTextActive : {
     fontSize:8,
     color:Colors.whiteMuted,
     fontFamily:Fonts.type.LucidaGrandeBold,
 
   },
+
+  dateBadge : {
+    width:40,
+    height : 40,
+    borderRadius : 40,
+    // backgroundColor:'rgb(172, 14, 250)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight:10,
+    borderWidth : 2,
+    borderColor : 'rgb(234, 234, 234)'
+
+  },
+  badgeDate : {
+    fontSize:14,
+    color:Colors.subHeadingRegular,
+    lineHeight:18,
+    letterSpacing:1.8,
+    fontFamily:Fonts.type.LucidaGrandeRegular,
+    fontWeight:'normal'
+  },
+  badgeText : {
+    fontSize:8,
+    color:Colors.mutedColor,
+    fontFamily:Fonts.type.LucidaGrandeRegular,
+    fontWeight:'normal'
+  },
+
+  containerListView : {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginLeft : 20,
+
+  },
+
 
 })

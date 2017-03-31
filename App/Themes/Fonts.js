@@ -5,7 +5,7 @@ const type = {
   regular: 'Montserrat-Regular',
   bold: 'Montserrat-Bold',
   LucidaGrandeBold: 'LucidaGrande-Bold',
-  LucidaGrandeRegular: 'LucidaGrande-Regular',
+  LucidaGrandeRegular: 'Lucida Grande',
 }
 
 const size = {

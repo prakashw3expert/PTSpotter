@@ -51,6 +51,7 @@ const images = {
   emptyAvailability: require('../Images/emptyAvailability.png'),
   emptyNote: require('../Images/emptyComments.png'),
   PrivateAvailability: require('../Images/LockedAvailability.png'),
+  EmptySessions: require('../Images/EmptySessions.png'),
 
 }
 
