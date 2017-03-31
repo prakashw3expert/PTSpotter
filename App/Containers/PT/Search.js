@@ -15,12 +15,12 @@ const { width, height } = Dimensions.get('window')
 
 export default class SearchScreen extends React.Component {
 
- 
+
   render () {
     return (
 
       <View style={styles.mainContainer}>
-        
+
         <ScrollableTabView
         locked={true}
               tabBarStyle={{borderWidth:0, height:40}}
@@ -34,9 +34,9 @@ export default class SearchScreen extends React.Component {
 
               <ListView tabLabel='List View'/>
               <MapView tabLabel='Map View'/>
-                    
+
             </ScrollableTabView>
-            
+
         </View>
     )
   }
@@ -100,7 +100,7 @@ state = {
 
             </Container>
           </Modal>
-            
+
          </Content>
 
 
@@ -136,7 +136,7 @@ class DataListView extends React.Component {
                      "image" : require('../../Images/dummy/user4.jpeg'),
                      "title" : "OO Frami Port",
                    },
-                   
+
                    {
                      "Time" : "Robert Reld",
                      "image" : require('../../Images/dummy/user7.jpeg'),
@@ -160,15 +160,15 @@ class DataListView extends React.Component {
 
                 <Content style={{marginBottom:20}}>
                 <List dataArray={this.state.results.items} renderRow={(item) =>
-                            <ListItem button avatar style={{marginTop:10,marginBottom:2}}>
+                            <ListItem button avatar style={{marginTop:14,marginBottom:14, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:20}}>
                                 <Left>
                                   <Image source={item.image} style={styles.listImage}/>
                                 </Left>
-                                <Body>
+                                <Body style={{borderBottomWidth:0}}>
                                   <Text style={styles.listname}>{item.Time}</Text>
                                   <Text style={styles.listAddress} note>{item.title}</Text>
                                 </Body>
-                                <Right>
+                                <Right style={{borderBottomWidth:0}}>
                                   <Icon name="arrow-forward" />
                                 </Right>
                             </ListItem>
@@ -249,15 +249,15 @@ class NoSearchResult extends React.Component {
       <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
              NO CLIENTS WERE FOUND NEARBY
       </Text>
-         
-      
+
+
       </Content>
     )
   }
 }
 
 class Filter extends React.Component {
-  
+
   static defaultProps = {
     value: 3,
   };
@@ -270,7 +270,7 @@ class Filter extends React.Component {
    return (
 
          <ScrollView style={{backgroundColor:Colors.background}}>
-            
+
             <Text style={styles.filtertitles}>
               SEARCH RADIUS
             </Text>
@@ -284,7 +284,7 @@ class Filter extends React.Component {
               minimumTrackTintColor='white'
               style={{marginTop:10,marginLeft:25,marginRight:25}}
                />
-              
+
               <View style={styles.milesView}>
                 <Text style={styles.mileText} >
                   1 MILE
@@ -317,7 +317,7 @@ class Filter extends React.Component {
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:57, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
 
               </View>
-            
+
 
             <View style={styles.horizontalRow} />
 
@@ -326,8 +326,8 @@ class Filter extends React.Component {
                     <Text style={styles.applyBtnText}> APPLY</Text>
                 </Button>
             </View>
-            
-            
+
+
          </ScrollView>
 
 
@@ -335,5 +335,3 @@ class Filter extends React.Component {
    )
  }
 }
-
-
