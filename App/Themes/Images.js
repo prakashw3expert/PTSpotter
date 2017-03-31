@@ -52,8 +52,9 @@ const images = {
   emptyNote: require('../Images/emptyComments.png'),
   emptyMessage: require('../Images/emptyMessage.png'),
   PrivateAvailability: require('../Images/LockedAvailability.png'),
-  EmptySessions: require('../Images/EmptySessions.png'),
+  EmptySessions: require('../Images/EmptySession.png'),
   SearchEmpty: require('../Images/searchEmpty.png'),
+  mapIcon: require('../Images/mapIcon2.png'),
 
 }
 

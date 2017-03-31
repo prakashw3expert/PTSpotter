@@ -24,6 +24,7 @@ import ClientSearch from '../Containers/PT/Search'
 import PTSearch from '../Containers/Client/PTSearch'
 import Inbox from '../Containers/PT/Messages'
 import ChatScreen from '../Containers/PT/ChatScreen'
+import Feedback from '../Containers/Client/Feedback'
 
 
 
@@ -37,13 +38,13 @@ class NavigationRouter extends Component {
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-            <Scene  key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
+            <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene key='selectType' component={SelectType} title='PT SPOTTER'  />
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
-            <Scene  key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
+            <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
-            <Scene initial key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
+            <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
             <Scene key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='availability' component={Availability} title='AVAILABILITY' hideNavBar/>
             <Scene key='sessions' component={Sessions} title='SESSIONS' hideNavBar={false} navBar={CustomNavBar}/>
@@ -52,8 +53,9 @@ class NavigationRouter extends Component {
             <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/>
             <Scene initial key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='ptsearch' component={PTSearch} title='PT SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene  key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
+            <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
             <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={false}/>
+            <Scene key='feedback' component={Feedback} title='FEEDBACK' hideNavBar/>
           </Scene>
         </Scene>
       </Router>

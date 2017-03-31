@@ -43,7 +43,7 @@ class DrawerContent extends Component {
 
   handlePressInbox = () => {
     this.toggleDrawer()
-    NavigationActions.messageScreen()
+    NavigationActions.inbox()
   }
 
   handlePressAvailability = () => {
@@ -59,6 +59,22 @@ class DrawerContent extends Component {
   handleUserProfileClick = () => {
     this.toggleDrawer()
     NavigationActions.editProfile()
+  }
+  handlePressPTSearch = () => {
+    this.toggleDrawer()
+    NavigationActions.ptsearch()
+  }
+  handlePressRating = () => {
+    this.toggleDrawer()
+    NavigationActions.ratingScreen()
+  }
+  handlePressTrainerDetail = () => {
+    this.toggleDrawer()
+    NavigationActions.trainerDetails()
+  }
+  handlePressClientDetail = () => {
+    this.toggleDrawer()
+    NavigationActions.clientDetails()
   }
 
   render () {
@@ -83,11 +99,15 @@ class DrawerContent extends Component {
       </Image>
       <View style={styles.nav}>
           <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
-          <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressHome} />
+          <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressInbox} />
           <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} />
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
           <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
           <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
+          <DrawerButton icon='md-search' text='PT Search'  onPress={this.handlePressPTSearch} />
+          <DrawerButton icon='md-star' text='Rating'  onPress={this.handlePressRating} />
+          <DrawerButton icon='md-eye' text='Trainer Detail'  onPress={this.handlePressTrainerDetail} />
+          <DrawerButton icon='md-film' text='Client Detail'  onPress={this.handlePressClientDetail} />
 
       </View>
 

@@ -26,10 +26,10 @@ export default class MessageScreen extends React.Component {
               <View style={styles.navbarCenterView}>
                   <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',flex:1}]}> MESSAGES </Text>
               </View>
-              <View style={{flex:1}}>
-              <Button transparent>
-                  <Text></Text>
-              </Button>
+              <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
+                <Button transparent>
+                    <Ionicons name="md-more" size={30} style={{color:'white',alignSelf:'center'}}/>
+                </Button>
               </View>
 
           </View>
@@ -57,26 +57,31 @@ class DataListView extends React.Component {
                      "Name" : "Ernest Woods",
                      "image" : require('../../Images/dummy/user1.jpg'),
                      "last_message" : "Hey ! whats about our meeting on friday",
+                     "unreadCount": 26,
                    },
                    {
                      "Name" : "Arthur Moran",
                      "image" : require('../../Images/dummy/user2.jpeg'),
                      "last_message" : "waiting in gym!",
+                     "unreadCount": 2,
                    },
                    {
                      "Name" : "Curtis Stone",
                      "image" : require('../../Images/dummy/user3.jpg'),
-                     "last_message" : "Google has announced that its bringing the Google Assistant to more Android phones starting this week...",
+                     "last_message" : "Google has announced that its bringing the Google ...",
+                     "unreadCount": 0,
                    },
                    {
                      "Name" : "Mike Nguyen",
                      "image" : require('../../Images/dummy/user4.jpeg'),
                      "last_message" : "All phones running Android 6.0 Marshmallow and 7.0",
+                     "unreadCount": 10,
                    },
                    {
                      "Name" : "Jesus McDonald",
                      "image" : require('../../Images/dummy/user6.jpeg'),
                      "last_message" : "The Google Assistant will begin rolling out this week.",
+                     "unreadCount": 0,
                    },
                    
 
@@ -97,18 +102,17 @@ class DataListView extends React.Component {
             
                 <Content>
                 <List dataArray={this.state.results.items}  renderRow={(item)  =>
-                            <ListItem button avatar onPress={this.navigateToChat} style={{marginTop:10,marginBottom:2}}>
-                                <Left>
-                                  <Thumbnail source={item.image} style={{margin:-5}}/>
+                            <ListItem button avatar onPress={this.navigateToChat} style={{marginTop:14,paddingBottom:14, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:20}}>
+                                <Left style={{justifyContent: 'flex-end',alignItems:'flex-end'}}>
+                                  <Image source={item.image} style={styles.listImage}/>
                                 </Left>
-                                <Body>
+                                <Body style={{borderBottomWidth:0,marginRight:15}}>
                                   <Text style={styles.senderName}>{item.Name}</Text>
                                   <Text style={styles.lastMessage} note>{item.last_message}</Text>
                                 </Body>
-                                <Right>
-                                  <View style={styles.unreadCircle}>
-                                    <Text style={styles.unreadCounterText}>05</Text>
-                                  </View>
+                                <Right style={{borderBottomWidth:0,justifyContent: 'flex-end'}}>
+                                  {item.unreadCount > 0 ? <View style={styles.unreadCircle}><Text style={styles.unreadCounterText}>{item.unreadCount}</Text></View> : <Text></Text>}
+                                  
                                   <Text style={styles.messageTime}>3:20 pm </Text>
                                 </Right>
                             </ListItem>
