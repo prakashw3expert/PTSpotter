@@ -32,15 +32,15 @@ export default StyleSheet.create({
     borderTopColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'white',
-    borderLeftColor: 'transparent',  
+    borderLeftColor: 'transparent',
     marginLeft:'11%',
-    marginRight:30, 
+    marginRight:30,
     width:'22%'
   },
   tabContent : {
     paddingTop:28
   },
- 
+
   listname: {
     fontSize:(width >= 375) ? 14 : 13,
     fontFamily:Fonts.type.bold,
