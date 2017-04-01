@@ -7,7 +7,6 @@ export default EStyleSheet.create({
   headerView: {
     backgroundColor:Colors.background,
     alignItems:'center',
-
   },
   containers : {
     marginLeft: 16,
@@ -15,10 +14,15 @@ export default EStyleSheet.create({
     marginBottom : 20
   },
   navbarview: {
-    marginTop:21,
+    marginTop:30,
     flex:1,
     flexDirection:'row',
     alignItems:'center',
+  },
+  navbarCenterView : {
+    alignItems:'center',
+    flexDirection:'row',
+    width:(width >= 375) ? 250 : 200,
   },
   profileimage: {
   flex:7,
@@ -117,6 +121,7 @@ export default EStyleSheet.create({
     flex : 1,
     justifyContent : 'flex-start',
     marginTop : 15,
+    marginBottom:(width >= 375) ? 0 : 15,
   },
   gymButton : {
     textAlign:'center',
@@ -137,7 +142,6 @@ export default EStyleSheet.create({
   tabText : {
     fontFamily: Fonts.type.regular,
     fontSize: Fonts.size.medium,
-    color: "rgb(102,102,102)",
     letterSpacing : 0.3
   },
 

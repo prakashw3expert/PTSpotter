@@ -78,6 +78,9 @@ export default EStyleSheet.create({
     width:'100%',
     paddingLeft : 40,
     paddingRight : 40,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      height: 90,
+    },
   },
   modelText: {
     fontSize:10.4,
@@ -86,6 +89,9 @@ export default EStyleSheet.create({
     letterSpacing:1.4,
     color:'rgb(102,102,102)',
     textAlign:'center',
+    marginLeft:10,
+    marginRight:10,
+   
   },
   textHours : {
     textAlign:'right',
@@ -94,6 +100,10 @@ export default EStyleSheet.create({
     lineHeight:25,
     letterSpacing:2.7,
     color:Colors.purpleColor,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      fontSize:19,
+      letterSpacing:2.1,
+    },
   },
   textMinutes : {
     textAlign:'right',
@@ -102,6 +112,10 @@ export default EStyleSheet.create({
     lineHeight:24,
     letterSpacing:2.7,
     color:Colors.subHeadingRegular,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      fontSize:19,
+      letterSpacing:2.1,
+    },
   },
   pickerStyle : {
     fontSize: 32, 
@@ -110,13 +124,17 @@ export default EStyleSheet.create({
     textAlign: 'center', 
     fontWeight: 'bold',
     width:50,
-    marginRight:35 
+    marginRight:35, 
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      marginRight:20,
+      fontSize: 28,
+    },
   },
   dayBold: {
     fontFamily:Fonts.type.bold,
     fontSize:Fonts.size.small,
     letterSpacing:2,
-    lineHeight:17,
+    lineHeight:18,
     color:'rgb(102,102,102)',
     
   },

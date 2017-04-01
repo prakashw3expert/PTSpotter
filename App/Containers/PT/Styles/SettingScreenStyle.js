@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
+const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   
@@ -58,8 +59,8 @@ export default EStyleSheet.create({
     color: 'rgb(102,102,102)', 
     textAlign: 'center', 
     fontWeight: 'bold',
-    width:100,
-    marginRight:10 
+    width:(width >= 375) ? 100 : 70,
+    marginRight:(width >= 375) ? 10 : 30, 
   },
   
   

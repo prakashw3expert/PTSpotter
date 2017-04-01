@@ -38,7 +38,7 @@ class NavigationRouter extends Component {
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-            <Scene initial key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
+            <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene key='selectType' component={SelectType} title='PT SPOTTER'  />
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
@@ -54,7 +54,7 @@ class NavigationRouter extends Component {
             <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/>
             <Scene key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='ptsearch' component={PTSearch} title='PT SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene  key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
+            <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
             <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={false}/>
             <Scene key='feedback' component={Feedback} title='FEEDBACK' hideNavBar/>
           </Scene>

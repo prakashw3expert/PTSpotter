@@ -66,7 +66,7 @@ constructor(props) {
                       </View>
                       <View>
                       <Button transparent>
-                          <Image source={Images.messageIcon} />
+                          <Image source={Images.messageIcon} style={{height:25,width:25,marginLeft:10}}/>
                       </Button>
                       </View>
 

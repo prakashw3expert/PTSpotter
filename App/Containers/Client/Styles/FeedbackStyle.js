@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
-
+const { width, height } = Dimensions.get('window')
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
@@ -33,14 +33,19 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.bold,
     letterSpacing:1.7,
     color:'white',
-    marginTop:22
+    marginTop:(width >= 375) ? 22 : 15
   },
   ptaddress : {
     fontSize: 12,
     fontFamily: Fonts.type.regular,
     letterSpacing:0.1,
     color:Colors.whiteMuted,
-    marginTop:6
+    marginTop:(width >= 375) ? 6 : 4
+  },
+  ptImage : {
+    height:(width >= 375) ? 128 : 100, 
+    width:(width >= 375) ? 128 : 100, 
+    borderRadius:(width >= 375) ? 64 : 50,
   },
 
 

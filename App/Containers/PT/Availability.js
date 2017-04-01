@@ -75,7 +75,7 @@ export default class AvailabilityScreen extends React.Component {
 
               </View>
             </View>
-            <Content style={{marginBottom:110}}>
+            <Content style={{marginBottom:(width >= 375) ? 110 : 90}}>
             <View style={styles.topView}>
                 <Text style={[Fonts.style.h2,styles.dayTitle]}>MONDAY</Text>
                 <View style={styles.buttonsView}>
@@ -114,9 +114,9 @@ export default class AvailabilityScreen extends React.Component {
               style={{alignItems: 'center'}}>
               <View>
                 <View style={{flexDirection:'row',alignItems:'center'}}>
-                    <Text style={{marginLeft:20,flex:(width >= 375) ? 1 : 0}}></Text>
-                    <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 2,textAlign:'center'}]}>ADD AVAILABILITY</Text>
-                    <View style={{flex:(width >= 375) ? 1 : 0,flexDirection:'row',alignItems:'flex-start'}}>
+                    <Text style={{marginLeft:20,flex:1}}></Text>
+                    <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:13}]}>ADD AVAILABILITY</Text>
+                    <View style={{flexDirection:'row',alignItems:'flex-end'}}>
                     <Button transparent onPress={() => this.setState({open: false})} >
                         <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
                     </Button>

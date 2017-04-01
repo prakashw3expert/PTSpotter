@@ -41,15 +41,24 @@ export default class TrainerDetail extends React.Component {
           
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader} style={{height:248}}>
-                    <View style={styles.navbarview}>
-                      <Button transparent iconLeft onPress={NavigationActions.pop}>
-                        <Icon name='arrow-back' style={{color:'white'}}/>
-                      </Button>
-                      <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}></Text>
+
+                  <View style={styles.navbarview}>
+                      <View style={{flex:1}}>
+                        <Button transparent iconLeft onPress={NavigationActions.pop}>
+                          <Icon name='arrow-back' style={{color:'white'}}/>
+                        </Button>
+                      </View>
+                      <View style={styles.navbarCenterView}>
+                        <Text></Text>
+                      </View>
+                      <View style={{flex:1}}>
                       <Button transparent>
-                          <Image source={Images.messageIcon} />
+                          <Image source={Images.messageIcon} style={{height:25,width:25,marginLeft:10}}/>
                       </Button>
+                      </View>
+
                     </View>
+                    
                     <View style={styles.profileimage} >
                       
                        {imageView}
@@ -93,8 +102,6 @@ export default class TrainerDetail extends React.Component {
                       renderTabBar={() => <DefaultTabBar />}>
 
                       <AboutData tabLabel='About' />
-
-
                       <Schedule tabLabel='Schedule' />
                       <NoteCard tabLabel='Notes' />
                     </ScrollableTabView>
@@ -106,7 +113,7 @@ export default class TrainerDetail extends React.Component {
     )
   }
 }
-class About extends React.Component {
+class EmptyAbout extends React.Component {
 
   render () {
     return (
@@ -124,7 +131,7 @@ class About extends React.Component {
 
 
 
-class Notes extends React.Component {
+class EmptyNotes extends React.Component {
 
   render () {
     return (
@@ -217,7 +224,7 @@ class Workouts extends React.Component {
 
   render () {
     return (
-          <View style={Fonts.style.mt10}>
+          <View style={(width >= 375) ? Fonts.style.mt10 : Fonts.style.mt20}>
               <Text style={[Fonts.style.h2, Fonts.style.mt20]}> WORKOUTS</Text>
               <View style={styles.buttonsView}>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>

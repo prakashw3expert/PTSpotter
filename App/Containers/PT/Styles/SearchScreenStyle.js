@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
-
+const { width, height } = Dimensions.get('window')
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
@@ -42,18 +42,18 @@ export default StyleSheet.create({
   },
 
   listname: {
+    fontSize:(width >= 375) ? 14 : 13,
     fontFamily:Fonts.type.bold,
     letterSpacing:1.1,
     color:Colors.subHeadingRegular,
-    fontSize:14,
-    marginBottom:5,
+    marginBottom:(width >= 375) ? 10 : 5,
   },
   listAddress: {
+    fontSize:12,
     fontFamily:Fonts.type.regular,
     letterSpacing:0.1,
     color:Colors.mutedColor,
-    fontSize:12,
-    marginBottom:5,
+    marginBottom:(width >= 375) ? 5 : 1,
 
   },
 
@@ -142,16 +142,15 @@ export default StyleSheet.create({
     marginLeft:20,
   },
   horizontalRow:{
-    backgroundColor:'lightgray',
     height:0.5,
     marginTop:15
   },
   listImage: {
-    height:72,
-    width:72,
+    height:(width >= 375) ? 72 : 60,
+    width:(width >= 375) ? 72 : 60,
     borderColor:Colors.purpleColor,
     borderWidth:2,
-    borderRadius:36,
+    borderRadius:(width >= 375) ? 36 : 30,
   },
 
 
