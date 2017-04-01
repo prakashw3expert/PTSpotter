@@ -20,7 +20,7 @@ const size = {
   h6: 18,
 
   large:22,
-  heading: (width >= 375) ? 18.6 : 18.6,
+  heading: (width >= 375) ? 18.6 : 17,
   button: 15.1,
   input: 14,
   regular: 14,
@@ -376,7 +376,45 @@ const style = {
     bottom:20,
     right:20,
   },
+  avatar: {
+    height:(width >= 375) ? 70 : 60,
+    width:(width >= 375) ? 70 : 60,
+    borderRadius:(width >= 375) ? 35 : 30,
+  },
 
+  avatarBordered: {
+    height:(width >= 375) ? 70 : 60,
+    width:(width >= 375) ? 70 : 60,
+    borderColor:'rgb(172,14,250)',
+    borderWidth:2,
+    borderRadius:(width >= 375) ? 36 : 34,
+  },
+  categoryTag : {
+    paddingLeft:(width >= 375) ? 15 : 10,
+    paddingRight:(width >= 375) ? 15 : 10,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width >= 375) ? 35 : 30,
+    backgroundColor:'rgb(31,199,116)',
+    marginRight : 5
+  },
+  categoryTagGray : {
+    paddingLeft:(width >= 375) ? 15 : 10,
+    paddingRight:(width >= 375) ? 15 : 10,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width >= 375) ? 35 : 30,
+    backgroundColor : 'rgb(36, 195, 200)',
+    marginRight : 5
+  },
+
+  categoryTagText : {
+    fontSize:12,
+    fontFamily:type.regular,
+    color:'#fff',
+    lineHeight:23,
+    letterSpacing:1.5
+  }
 
 
 }

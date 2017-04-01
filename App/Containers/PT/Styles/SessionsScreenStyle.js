@@ -11,10 +11,16 @@ export default EStyleSheet.create({
     padding:20
   },
   tabContent : {
-    paddingTop:28
+    paddingTop:28,
+    '@media (width: 320)': {
+        paddingTop : 15
+    },
   },
   tabHeading : {
-    marginBottom : 20
+    marginBottom : 20,
+    '@media (width: 320)': {
+        marginBottom : 10
+    },
   },
 
   dateBadgeActive : {
@@ -26,11 +32,12 @@ export default EStyleSheet.create({
     alignItems: 'center',
     marginRight:10
 
+
   },
   badgeDateActive : {
     fontSize:14,
     color:Colors.white,
-    lineHeight:23,
+    lineHeight:18,
     letterSpacing:1.8,
     fontFamily:Fonts.type.LucidaGrandeBold
   },
@@ -53,6 +60,10 @@ export default EStyleSheet.create({
     borderColor : 'rgb(234, 234, 234)'
 
   },
+  yearBadge : {
+    width:60, borderRadius:30
+
+  },
   badgeDate : {
     fontSize:14,
     color:Colors.subHeadingRegular,
@@ -67,14 +78,55 @@ export default EStyleSheet.create({
     fontFamily:Fonts.type.LucidaGrandeRegular,
     fontWeight:'normal'
   },
-
+  cotentsHeight : {
+    height : '80%',
+    '@media (width: 320)': {
+        height : '75%',
+    },
+  },
   containerListView : {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginLeft : 20,
+    marginBottom : 25
 
   },
+  listSeparater : {
+      borderBottomWidth:1,
+      borderColor:'rgb(234, 234, 234)',
+      marginRight:19,
+      paddingTop:15,
+      paddingBottom:10
+  },
+  username : {
+    fontFamily:Fonts.type.bold,
+    fontSize:Fonts.size.input,
+    '@media (width: 320)': {
+        fontSize:12,
+    },
+    color: Colors.subHeadingRegular,
+    letterSpacing : 1.1
+  },
+  location : {
+    fontFamily: Fonts.type.regular,
+    fontSize : Fonts.size.medium,
+    '@media (width: 320)': {
+        fontSize:11,
+    },
+    letterSpacing : 0.1,
+    color:Colors.mutedColor
+  },
+  time : {
+    fontSize:Fonts.size.medium,
+    '@media (width: 320)': {
+        fontSize:10,
+    },
+    letterSpacing : 0.9,
+    color: Colors.subHeadingRegular,
+    fontFamily : Fonts.type.regular
+  }
+
 
 
 })
