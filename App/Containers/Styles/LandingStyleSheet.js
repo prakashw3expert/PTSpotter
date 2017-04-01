@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Platform } from 'react-native'
 import { Fonts, Colors, Metrics } from '../../Themes'
 import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
@@ -6,8 +6,8 @@ export default EStyleSheet.create({
     flex:1,
     alignItems:'center',
     backgroundColor:'#fff',
-    marginLeft: 28,
-    marginRight: 28
+    marginLeft: (Platform.OS === 'ios') ? 28 : 0,
+    marginRight: (Platform.OS === 'ios') ? 28 : 0
   },
   topHeading: {
     marginTop: '6%',

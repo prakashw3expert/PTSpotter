@@ -18,9 +18,10 @@ import { Container, Content,Input,
 
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyles'
-import {Images, Metrics,Fonts} from '../Themes'
+import {Images, Metrics,Fonts, Colors} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class SignUpScreen extends React.Component {
   static propTypes = {
@@ -109,7 +110,7 @@ class SignUpScreen extends React.Component {
       <View style={[Styles.topHeading]}>
         <View style={Styles.navigationbar} >
         <TouchableOpacity onPress={NavigationActions.pop} style={{height:40, flex:.5}}>
-            <Image source={Images.backButtonWhite}  />
+            <FontAwesome name='angle-left' style={{fontSize:32, color : Colors.white}}/>
         </TouchableOpacity>
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
@@ -137,7 +138,7 @@ class SignUpScreen extends React.Component {
       </View>
 
 
-      <View style={Fonts.style.mt50}>
+      <View>
         <Button light full rounded style={Fonts.style.facebook}>
             <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
         </Button>

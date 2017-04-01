@@ -14,20 +14,20 @@ const size = {
   descriptionText: 12,
   h1: 38,
   h2: 16,
-  h3: (width >= 375) ? 14 : 14,
+  h3: (width >= 325) ? 14 : 14,
   h4: 26,
   h5: 20,
   h6: 18,
 
   large:22,
-  heading: (width >= 375) ? 18.6 : 16,
+  heading: (width >= 325) ? 18.6 : 16,
   button: 15.1,
   input: 14,
   regular: 14,
   medium: 12,
   small: 10.4,
   tiny: 9.3,
-  buttonHeight: (width >= 375) ? 57 : 45,
+  buttonHeight: (width >= 325) ? 57 : 45,
   containerPaddingLeft: (width <= 320) ? 20: 43,
   containerPaddingRight: (width <= 320) ? 20: 43,
 
@@ -136,7 +136,7 @@ const style = {
     marginTop:16,
   },
   borderedIcon : {
-    marginTop: (width >= 375) ? 10 : 8,
+    marginTop: (width >= 325) ? 10 : 8,
     marginLeft:5,
     color:'rgb(172,14,250)',
     fontSize:22,
@@ -155,11 +155,11 @@ const style = {
     fontSize:size.regular,
     lineHeight:23,
     letterSpacing:3.8,
-    height:(width >= 375) ? 45 : 40,
+    height:(width >= 325) ? 45 : 40,
     color:colors.input,
     width:"90%",
     color: 'rgb(102,102,102)',
-    paddingLeft: (width >= 375) ? 14 : 10
+    paddingLeft: (width >= 325) ? 14 : 10
   },
 
   inputMultipleBordered : {
@@ -170,7 +170,7 @@ const style = {
     height:150,
     color:colors.input,
     width:"100%",
-    padding:(width >= 375) ? 15 : 10,
+    padding:(width >= 325) ? 15 : 10,
     color: 'rgb(102,102,102)'
   },
   facebook: {
@@ -195,7 +195,7 @@ const style = {
     borderWidth: 2
   },
   buttonText : {
-    fontSize: (width >= 375) ? size.button : size.regular,
+    fontSize: (width >= 325) ? size.button : size.regular,
     fontFamily: type.regular,
     letterSpacing:1.9,
     color:'white',
@@ -248,7 +248,7 @@ const style = {
     marginTop : 40
   },
   mt50 : {
-    marginTop: (width >= 375) ? 50 : 40
+    marginTop: (width >= 325) ? 50 : 40
   },
   mb5 : {
     marginBottom: 5
@@ -266,7 +266,7 @@ const style = {
     marginBottom: 50
   },
   mb60 : {
-    marginBottom: (width >= 375) ? 60 : 40
+    marginBottom: (width >= 365) ? 60 : 40
   },
   pt20:{
     paddingTop:20
@@ -390,33 +390,33 @@ const style = {
     right:20,
   },
   avatar: {
-    height:(width >= 375) ? 70 : 60,
-    width:(width >= 375) ? 70 : 60,
-    borderRadius:(width >= 375) ? 35 : 30,
+    height:(width >= 325) ? 70 : 60,
+    width:(width >= 325) ? 70 : 60,
+    borderRadius:(width >= 325) ? 35 : 30,
   },
 
   avatarBordered: {
-    height:(width >= 375) ? 70 : 60,
-    width:(width >= 375) ? 70 : 60,
+    height:(width >= 325) ? 70 : 60,
+    width:(width >= 325) ? 70 : 60,
     borderColor:'rgb(172,14,250)',
     borderWidth:2,
-    borderRadius:(width >= 375) ? 36 : 30,
+    borderRadius:(width >= 325) ? 36 : 30,
   },
   categoryTag : {
-    paddingLeft:(width >= 375) ? 15 : 10,
-    paddingRight:(width >= 375) ? 15 : 10,
+    paddingLeft:(width >= 325) ? 15 : 10,
+    paddingRight:(width >= 325) ? 15 : 10,
     paddingTop : 0,
     paddingBottom : 0,
-    height:(width >= 375) ? 35 : 30,
+    height:(width >= 325) ? 35 : 30,
     backgroundColor:'rgb(31,199,116)',
     marginRight : 5
   },
   categoryTagGray : {
-    paddingLeft:(width >= 375) ? 15 : 10,
-    paddingRight:(width >= 375) ? 15 : 10,
+    paddingLeft:(width >= 325) ? 15 : 10,
+    paddingRight:(width >= 325) ? 15 : 10,
     paddingTop : 0,
     paddingBottom : 0,
-    height:(width >= 375) ? 35 : 30,
+    height:(width >= 325) ? 35 : 30,
     backgroundColor : 'rgb(36, 195, 200)',
     marginRight : 5
   },

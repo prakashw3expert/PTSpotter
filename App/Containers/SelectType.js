@@ -5,20 +5,22 @@ import {
   View, TouchableOpacity,Image,Dimensions,
 } from 'react-native';
 
-import { Icon } from 'react-native-vector-icons'
+// import { Icon } from 'react-native-vector-icons'
 
-import { Button } from 'native-base';
+import { Button, Icon } from 'native-base';
 
 import Swiper from 'react-native-swiper';
 import styles from './Styles/SelectTypeStyleSheet'
 import Styles from './Styles/LoginScreenStyles'
-import { Fonts,Images } from '../Themes/'
+import { Fonts,Images, Colors } from '../Themes/'
 import { Actions } from 'react-native-router-flux'
 const { width, height } = Dimensions.get('window')
 
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 class SelectType extends Component {
   render() {
-    var heightRatio = (width <= 320) ?  0.65 :  0.65;
+    var heightRatio = (width <= 360) ?  0.65 :  0.65;
 
     return (
       <View style={styles.container}>
@@ -26,7 +28,7 @@ class SelectType extends Component {
       <View style={[styles.topHeading]}>
         <View style={Styles.navigationbar} >
           <TouchableOpacity onPress={Actions.pop} style={{height:30, flex:.5, paddingLeft:Fonts.size.containerPaddingLeft}}>
-              <Image source={Images.backButton}  />
+              <FontAwesome name='angle-left' style={{fontSize:32, color : Colors.subHeadingRegular}}/>
           </TouchableOpacity>
           <Text style={[Fonts.style.h1, Fonts.style.textGrey, { flex:2}]}>PT SPOTTER</Text>
         </View>
@@ -43,7 +45,7 @@ class SelectType extends Component {
                       <Image
                         source={Images.cardBackground} style={styles.item}
                       >
-                          <Image source={Images.cardillustration0} style={{marginTop:'10%'}} />
+                          <Image source={Images.cardillustration0} style={{marginTop:'10%'}}  />
                           <Text style={Fonts.style.cardTitle}> CLIENT </Text>
                           <Text style={Fonts.style.cardText}> SEARCHING FOR A PERSONAL TRAINER </Text>
 
