@@ -373,9 +373,9 @@ const style = {
   },
 
   filterbutton : {
-    height:60,
-    width:60,
-    borderRadius:30,
+    height:(width >= 375) ? 60 : 50,
+    width:(width >= 375) ? 60 : 50,
+    borderRadius:(width >= 375) ? 30 : 25,
     backgroundColor:'#a716f6',
     shadowRadius:10,
     shadowColor:'#a716f6',

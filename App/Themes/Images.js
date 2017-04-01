@@ -24,7 +24,7 @@ const images = {
   menuIcon: require('../Images/sidemenu.png'),
   /* messageIcon: require('../Images/messageicon.png'), */
   smsIllustration: require('../Images/smsIllustration@3x.png'),
-  messageIcon: require('../Images/messageIcon.png'),
+  messageIcon: require('../Images/messageIconplus1.png'),
   DotmessageIcon: require('../Images/DotmessageIcon@3x.png'),
   addPhotoCircle: require('../Images/addPhotoWithCircle.png'),
   addPhoto: require('../Images/addUserPhoto.png'),

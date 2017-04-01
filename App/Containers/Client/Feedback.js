@@ -32,7 +32,7 @@ constructor(props) {
       <View style={styles.headerView}>
         <View style={styles.navbarview}>
           <View style={{flex:1}}>
-            <Button transparent iconLeft onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>
+            <Button transparent iconLeft onPress={NavigationActions.pop}>
               <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white'}}/>
             </Button>
           </View>
@@ -50,7 +50,7 @@ constructor(props) {
 
     <Content style={{backgroundColor:Colors.background}} contentContainerStyle={{alignItems:'center'}}>
 
-      <Image source={Images.user4} style={{height:128, width:128, borderRadius:64}} />
+      <Image source={Images.user4} style={styles.ptImage} />
       <Text style={styles.ptname}>Aaron Castillo</Text>
       <Text style={styles.ptaddress}>Bristol, BS4 5SS, UK</Text>
       <StarRating
@@ -60,18 +60,18 @@ constructor(props) {
         halfStar={'ios-star-half'}
         iconSet={'Ionicons'}
         maxStars={5}
-        starSize={30}
+        starSize={(width >= 375) ? 30 : 25}
         rating={this.state.starCount}
         selectedStar={(rating) => this.onStarRatingPress(rating)}
         starColor={'yellow'}
-        starStyle={{marginTop:27.1,marginRight:5}}
+        starStyle={{marginTop:(width >= 375) ? 27.1 : 17.1,marginRight:5}}
       />
 
       <View style={[Fonts.style.inputWrapperBordered,{margin:20}]}>
         <Input multiline={true} numberOfLines = {30} style={Fonts.style.inputMultipleBordered} placeholder='LEAVE YOUR FEEDBACK' placeholderTextColor={Fonts.colors.input}/>
       </View>
       <View style={styles.submitBtnView}>
-          <Button rounded block style={{marginTop:20,marginBottom:10,marginLeft:20,marginRight:20,backgroundColor:'white', height:57,width:'80%'}}>
+          <Button rounded block style={{marginTop:(width >= 375) ? 20 : 10,marginBottom:10,marginLeft:20,marginRight:20,backgroundColor:'white', height:57,width:'80%'}}>
               <Text style={styles.submitBtnText}> SUBMIT</Text>
           </Button>
       </View>

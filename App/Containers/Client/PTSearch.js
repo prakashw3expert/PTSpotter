@@ -7,7 +7,7 @@ import { Images,Colors,Fonts } from '../../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/PTSearchStyle'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import MapView from 'react-native-maps';
 import RoundedButton from '../../Components/RoundedButton'
 import Hr from 'react-native-hr'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
@@ -32,7 +32,7 @@ export default class PTSearch extends React.Component {
               renderTabBar={() => <DefaultTabBar />}>
 
               <ListView tabLabel='List View'/>
-              <MapView tabLabel='Map View'/>
+              <MapViewTab tabLabel='Map View'/>
                     
             </ScrollableTabView>
             
@@ -68,7 +68,7 @@ state = {
 
           <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
                   style={Fonts.style.filterbutton}>
-              <MaterialCommunityIcons name="filter-outline" size={28} style={{color:'white',marginTop:5}}/>
+              <MaterialCommunityIcons name="filter-outline" size={28} size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
           </Button>
            <Modal
               animationType={"slide"}
@@ -159,29 +159,27 @@ class DataListView extends React.Component {
 
                 <Content style={{marginBottom:20}}>
                 <List dataArray={this.state.results.items} renderRow={(item) =>
-                            <ListItem button avatar style={{marginTop:10,marginBottom:2}}>
-                                <Left>
-                                  <Image source={item.image} style={styles.listImage}/>
-                                </Left>
-                                <Body>
-                                  <Text style={styles.listname}>{item.Time}</Text>
-                                  <Text style={styles.listAddress} note>{item.title}</Text>
-                                </Body>
-                                <Right>
-                                  <Icon name="arrow-forward" />
-                                </Right>
-                            </ListItem>
-                        } />
+                        <ListItem button avatar style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
+                            <Left>
+                              <Image source={item.image} style={styles.listImage}/>
+                            </Left>
+                            <Body style={{borderBottomWidth:0}}>
+                              <Text style={styles.listname}>{item.Time}</Text>
+                              <Text style={styles.listAddress} note>{item.title}</Text>
+                            </Body>
+                            <Right style={{borderBottomWidth:0}}>
+                              <Icon name="arrow-forward" />
+                            </Right>
+                        </ListItem>
+                    } />
                 </Content>
-
-
           </View>
 
     )
   }
 }
 
-class MapView extends React.Component {
+class MapViewTab extends React.Component {
 
   state = {
     modalVisible: false,
@@ -195,13 +193,60 @@ class MapView extends React.Component {
     return (
       <Content>
       <View style={{height:250}}>
-        <Text>MapView Here</Text>
+        
+        <MapView
+            style={{flex:1}}
+            clusterMarkers={true}
+            initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+        
+        
+        <MapView.Marker
+          coordinate={{latitude: 37.78825,
+            longitude: -122.4524}}
+          title="Ernest Woods"
+          description="809 Gleason Mills Suite 263"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.79825,
+            longitude: -122.4324}}
+          title="Arthur Moran"
+          description="98 Bergnaum Road Suite 807"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.75825,
+            longitude: -122.4924}}
+          title="Curtis Stone"
+          description="31 Blake Vista Apt. 815"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.80825,
+            longitude: -122.4124}}
+          title="Tarun Bardawa"
+          description="32 Blake Vista Apt. 777"
+          image={Images.mapIcon}
+        />
+        
+       
+
+        
+
+        </MapView>
+
       </View>
       <DataListView />
 
       <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
               style={Fonts.style.filterbutton}>
-        <MaterialCommunityIcons name="filter-outline" size={28} style={{color:'white',marginTop:5}}/>
+        <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
     </Button>
     <Modal
       animationType={"slide"}
@@ -237,7 +282,6 @@ class MapView extends React.Component {
     )
   }
 }
-
 
 class NoSearchResult extends React.Component {
 

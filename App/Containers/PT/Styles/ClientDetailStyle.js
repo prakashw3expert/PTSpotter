@@ -101,7 +101,6 @@ export default EStyleSheet.create({
   tabText : {
     fontFamily: Fonts.type.regular,
     fontSize: Fonts.size.regular,
-    color: "rgb(102,102,102)",
     letterSpacing:0.3
   },
   buttonsView: {

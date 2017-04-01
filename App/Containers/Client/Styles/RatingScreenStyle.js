@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes'
 import EStyleSheet from 'react-native-extended-stylesheet';
-
+const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
@@ -19,9 +19,9 @@ export default EStyleSheet.create({
     alignItems:'center',
   },
   navbarCenterView : {
-    flex:1,
     alignItems:'flex-start',
-    flexDirection:'row'
+    flexDirection:'row',
+    width:(width >= 375) ? 250 : 200,
   },
   profileimage: {
   flex:3,
@@ -30,9 +30,9 @@ export default EStyleSheet.create({
 
   },
   userImage: {
-    height:60,
-    width:60,
-    borderRadius: 30,
+    height:(width >= 375) ? 60 : 50,
+    width:(width >= 375) ? 60 : 50,
+    borderRadius: (width >= 375) ? 30 : 25,
   },
   name: {
     color:'white',
@@ -51,21 +51,21 @@ export default EStyleSheet.create({
   raterName : {
     color:Colors.subHeadingRegular,
     backgroundColor:'transparent',
-    fontSize:14,
+    fontSize:(width >= 375) ? 14 : 12,
     fontFamily:Fonts.type.bold,
-    letterSpacing:1.1,
+    letterSpacing:(width >= 375) ? 1.1 : 0.8,
   },
   raterDate : {
     color:Colors.mutedColor,
     backgroundColor:'transparent',
-    fontSize:12,
+    fontSize:(width >= 375) ? 12 : 11,
     fontFamily:Fonts.type.regular,
     letterSpacing:0.1,
   },
   raterFeedback : {
     color:Colors.mutedColor,
     backgroundColor:'transparent',
-    fontSize:14,
+    fontSize:(width >= 375) ? 14 : 12,
     fontFamily:Fonts.type.regular,
     letterSpacing:1.1,
     lineHeight:20,

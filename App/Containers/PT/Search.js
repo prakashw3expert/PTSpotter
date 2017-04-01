@@ -69,7 +69,7 @@ state = {
 
           <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
                   style={Fonts.style.filterbutton}>
-              <MaterialCommunityIcons name="filter-outline" size={28} style={{color:'white',marginTop:5}}/>
+              <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
           </Button>
            <Modal
               animationType={"slide"}
@@ -150,33 +150,30 @@ class DataListView extends React.Component {
   render () {
     return (
 
-          <View style={styles.scheduleView}>
+          <View>
             <Text style={styles.listViewTitle}>
               Found 6 clients nearby
             </Text>
             <View style={styles.separater}>
                 <Hr lineColor={Colors.separetorLineColor}/>
             </View>
-
-                <Content style={{marginBottom:20}}>
-                <List dataArray={this.state.results.items} renderRow={(item) =>
-                            <ListItem button avatar style={{marginTop:14,paddingBottom:14, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:20}}>
-                                <Left>
-                                  <Image source={item.image} style={styles.listImage}/>
-                                </Left>
-                                <Body style={{borderBottomWidth:0}}>
-                                  <Text style={styles.listname}>{item.Time}</Text>
-                                  <Text style={styles.listAddress} note>{item.title}</Text>
-                                </Body>
-                                <Right style={{borderBottomWidth:0}}>
-                                  <Icon name="arrow-forward" />
-                                </Right>
-                            </ListItem>
-                        } />
-                </Content>
-
-
-          </View>
+            <Content style={{marginBottom:20}}>
+               <List dataArray={this.state.results.items} renderRow={(item) =>
+                        <ListItem button avatar style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
+                            <Left>
+                              <Image source={item.image} style={styles.listImage}/>
+                            </Left>
+                            <Body style={{borderBottomWidth:0}}>
+                              <Text style={styles.listname}>{item.Time}</Text>
+                              <Text style={styles.listAddress} note>{item.title}</Text>
+                            </Body>
+                            <Right style={{borderBottomWidth:0}}>
+                              <Icon name="arrow-forward" />
+                            </Right>
+                        </ListItem>
+                    } />
+          </Content>
+        </View>
 
     )
   }
@@ -237,118 +234,8 @@ class MapViewTab extends React.Component {
           description="32 Blake Vista Apt. 777"
           image={Images.mapIcon}
         />
-        <MapView.Marker
-          coordinate={{latitude: 37.78825,
-            longitude: -122.4524}}
-          title="Ernest Woods"
-          description="809 Gleason Mills Suite 263"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.79825,
-            longitude: -102.4324}}
-          title="Arthur Moran"
-          description="98 Bergnaum Road Suite 807"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.75825,
-            longitude: -102.4924}}
-          title="Curtis Stone"
-          description="31 Blake Vista Apt. 815"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.80825,
-            longitude: -102.4124}}
-          title="Tarun Bardawa"
-          description="32 Blake Vista Apt. 777"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.78825,
-            longitude: -102.4524}}
-          title="Ernest Woods"
-          description="809 Gleason Mills Suite 263"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.79825,
-            longitude: -102.4324}}
-          title="Arthur Moran"
-          description="98 Bergnaum Road Suite 807"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.75825,
-            longitude: -102.4924}}
-          title="Curtis Stone"
-          description="31 Blake Vista Apt. 815"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.80825,
-            longitude: -102.4124}}
-          title="Tarun Bardawa"
-          description="32 Blake Vista Apt. 777"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 39.78825,
-            longitude: -102.4524}}
-          title="Ernest Woods"
-          description="809 Gleason Mills Suite 263"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.79825,
-            longitude: -122.4324}}
-          title="Arthur Moran"
-          description="98 Bergnaum Road Suite 807"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.75825,
-            longitude: -122.4924}}
-          title="Curtis Stone"
-          description="31 Blake Vista Apt. 815"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.80825,
-            longitude: -122.4124}}
-          title="Tarun Bardawa"
-          description="32 Blake Vista Apt. 777"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.78825,
-            longitude: -122.4524}}
-          title="Ernest Woods"
-          description="809 Gleason Mills Suite 263"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.79825,
-            longitude: -122.4324}}
-          title="Arthur Moran"
-          description="98 Bergnaum Road Suite 807"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.75825,
-            longitude: -122.4924}}
-          title="Curtis Stone"
-          description="31 Blake Vista Apt. 815"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.80825,
-            longitude: -122.4124}}
-          title="Tarun Bardawa"
-          description="32 Blake Vista Apt. 777"
-          image={Images.mapIcon}
-        />
+        
+       
 
         
 
@@ -359,7 +246,7 @@ class MapViewTab extends React.Component {
 
       <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
               style={Fonts.style.filterbutton}>
-        <MaterialCommunityIcons name="filter-outline" size={28} style={{color:'white',marginTop:5}}/>
+        <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
     </Button>
     <Modal
       animationType={"slide"}
@@ -454,14 +341,14 @@ class Filter extends React.Component {
               <Text style={styles.filtertitles}>
               GYM NAME
               </Text>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:57, borderRadius:30}]}>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45, borderRadius:30}]}>
                 <Input  style={Fonts.style.inputBordered} placeholder='Gym Name' placeholderTextColor={Fonts.colors.input}/>
               </View>
 
               <Text style={styles.filtertitles}>
                 POSTCODE
               </Text>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:57,borderRadius:30}]}>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45,borderRadius:30}]}>
                 <Input  style={Fonts.style.inputBordered} placeholder='Postcode' placeholderTextColor={Fonts.colors.input}/>
               </View>
             <Text style={styles.filtertitles}>
@@ -469,14 +356,16 @@ class Filter extends React.Component {
             </Text>
 
             <View style={styles.buttonsView}>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:57, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Yoga</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:57, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Cardio</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:57, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Yoga</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Cardio</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'transparent',borderWidth:2,borderColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
 
               </View>
 
 
-            <View style={styles.horizontalRow} />
+            <View style={styles.horizontalRow}>
+             <Hr lineColor='white'/>
+            </View>
 
             <View style={styles.applyBtnView}>
                 <Button rounded block style={{marginTop:20,marginBottom:10,marginLeft:20,marginRight:20,backgroundColor:'white', height:57}}>

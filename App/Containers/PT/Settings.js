@@ -24,12 +24,8 @@ state = {
       open: false,
       locationTrueSwitchIsOn: true,
       locationFalseSwitchIsOn: false,
-
+      modalVisible: false,
     };
-
-    state = {
-    modalVisible: false,
-  }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
@@ -85,14 +81,14 @@ state = {
                         
                         <Text style={styles.listText}>10 Minutes Prior</Text>
                         <Right>
-                          <MaterialCommunityIcons name="close" size={16} color="rgb(178,178,178)"/>
+                          <MaterialCommunityIcons name="close" size={(width >= 375) ? 18 : 16} color="rgb(178,178,178)"/>
                         </Right>
                     </ListItem>
                     <ListItem>
                         
                         <Text style={styles.listText}>1 Hour 12 Minutes Prior</Text>
                         <Right>
-                          <MaterialCommunityIcons name="close" size={16} color="rgb(178,178,178)"/>
+                          <MaterialCommunityIcons name="close" size={(width >= 375) ? 18 : 16} color="rgb(178,178,178)"/>
                         </Right>
                     </ListItem>
                     </List>
@@ -104,42 +100,42 @@ state = {
 
                     <List style={Fonts.style.settingList}>
                     <ListItem >
-                        <Ionicons name="md-time" size={16} color="rgb(213,134,252)"/>
+                        <Ionicons name="md-time" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Availability</Text>
                         <Right>
                           <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
-                        <MaterialCommunityIcons name="comment-text-outline" size={16} color="rgb(213,134,252)"/>
+                        <MaterialCommunityIcons name="comment-text-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Leave Feedback</Text>
                         <Right>
                           <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
-                        <MaterialIcons name="help-outline" size={16} color="rgb(213,134,252)" />
+                        <MaterialIcons name="help-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Support</Text>
                         <Right>
                           <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
-                        <MaterialCommunityIcons name="information-outline" size={16} color="rgb(213,134,252)" />
+                        <MaterialCommunityIcons name="information-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>About</Text>
                         <Right>
                           <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
-                        <Ionicons name="md-list-box" size={16} color="rgb(213,134,252)" />
+                        <Ionicons name="md-list-box" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Terms of Service</Text>
                         <Right>
                           <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
-                        <SimpleLineIcons name="eye" size={16} color="rgb(213,134,252)" />
+                        <SimpleLineIcons name="eye" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Privacy Policy</Text>
                         <Right>
                           <Icon name="arrow-forward" />
