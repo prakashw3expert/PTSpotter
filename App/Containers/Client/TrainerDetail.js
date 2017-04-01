@@ -11,6 +11,7 @@ import Foundation from 'react-native-vector-icons/Foundation';
 // Styles
 import StarRating from 'react-native-star-rating';
 import styles from './Styles/TrainerDetailStyle'
+import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 export default class TrainerDetail extends React.Component {
 
@@ -79,31 +80,24 @@ export default class TrainerDetail extends React.Component {
 
               <View style={styles.containers}>
 
-                <Tabs>
-                  <Tab heading={ <TabHeading><Text style={styles.tabheading}>About</Text></TabHeading>}>
-                   <ScrollView style={{height:350}}>
-                      <AboutData />
-                    </ScrollView>
-                  </Tab>
+                    <ScrollableTabView
+                    locked={false}
 
-                  <Tab heading={ <TabHeading><Text style={styles.tabheading}>Schedule</Text></TabHeading>}>
-                   <ScrollView style={{height:350}}>
-                      <Schedule />
-                    </ScrollView>
-                  </Tab>
+                      tabBarStyle={{borderWidth:0, height:46}}
+                      tabBarBackgroundColor={'white'}
+                      tabBarActiveTextColor={Colors.purpleColor}
+                      tabBarInactiveTextColor={Colors.subHeadingRegular}
+                      tabBarUnderlineStyle={Fonts.style.tabBorderSytelPurple}
+                      tabBarTextStyle={[styles.tabText]}
+                      tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
+                      renderTabBar={() => <DefaultTabBar />}>
 
-                  <Tab heading={ <TabHeading><Text style={styles.tabheading}>Notes</Text></TabHeading>}>
-                  <Content>
-                    <ScrollView style={{height:350}}>
-                      <NoteCard />
-                      <NoteCard />
-                      <NoteCard />
-                      <AddNote />
-                    </ScrollView>
-                    
-                    </Content>
-                  </Tab>
-                </Tabs>
+                      <AboutData tabLabel='About' />
+
+
+                      <Schedule tabLabel='Schedule' />
+                      <NoteCard tabLabel='Notes' />
+                    </ScrollableTabView>
 
               </View>
         </View>
@@ -166,7 +160,7 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-
+       <ScrollView style={{height:350}}>
       <View style={styles.notesView}>
 
           <Card style={Fonts.style.commnetBox}>
@@ -181,6 +175,8 @@ class NoteCard extends React.Component {
         </Card>
 
       </View>
+      </ScrollView>
+
 
     )
   }
@@ -191,6 +187,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
+          <ScrollView style={{height:350}} showsVerticalScrollIndicator={false}>
           
           <View style={Fonts.style.mt15}>
 
@@ -211,6 +208,7 @@ class AboutData extends React.Component {
                 <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
             </Button>
         </View>
+     </ScrollView>
     )
   }
 }
@@ -240,11 +238,15 @@ class Schedule extends React.Component {
 
   render () {
     return (
+
+      <ScrollView style={{height:350}} showsVerticalScrollIndicator={false}>
+                    
           <View style={Fonts.style.mt5}>
             <Text style={[Fonts.style.h2, Fonts.style.mt20, {textAlign:'center'}]}> GYMS </Text>
             <Gyms />
             <PrivateAvailability />
         </View>
+     </ScrollView>
     )
   }
 }

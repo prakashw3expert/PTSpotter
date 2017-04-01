@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
-
-export default StyleSheet.create({
+import EStyleSheet from 'react-native-extended-stylesheet';
+export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
     backgroundColor:'#0f0b31',
@@ -12,22 +12,32 @@ export default StyleSheet.create({
   navbarview: {
     marginTop:30,
     flexDirection:'row',
+
   },
   navbarCenterView : {
     flex:2,
     alignItems:'center',
     flexDirection:'row',
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      flex:3,
+    },
   },
   topView: {
     flex : 1,
     alignItems : 'center',
-   marginBottom : 20,
+    marginBottom : 20,
+   '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      marginBottom:15,
+    },
   },
   dayTitle: {
-    fontFamily : Fonts.type.bold,
+    fontFamily : Fonts.type.LucidaGrandeBold,
     marginTop : 25,
     marginLeft : 8,
-    color : '#7a7a7a',
+    color : Colors.subHeadingRegular,
+    fontSize:16,
+    lineHeight:23,
+    letterSpacing:2,
   },
   buttonsView: {
     flexDirection : 'row',
@@ -39,12 +49,21 @@ export default StyleSheet.create({
     justifyContent : 'center',
     alignItems : 'center',
     marginTop : 20,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      marginTop:10,
+    },
+
   },
   emptyText: {
     textAlign : 'center',
     marginLeft : '5%',
     marginRight : '5%',
     marginTop : 10,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      marginLeft : '8%',
+      marginRight : '8%',
+      marginTop : 5,
+    },
   },
   btnEmptyText : {
     fontFamily : Fonts.type.bold,

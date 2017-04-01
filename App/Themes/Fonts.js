@@ -20,7 +20,7 @@ const size = {
   h6: 18,
 
   large:22,
-  heading: (width >= 375) ? 18.6 : 18.6,
+  heading: (width >= 375) ? 18.6 : 16,
   button: 15.1,
   input: 14,
   regular: 14,
@@ -356,6 +356,19 @@ const style = {
     borderTopColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'white',
+    borderLeftColor: 'transparent',  marginLeft:20,marginRight:30, width:'22%'
+  },
+  tabBorderSytelPurple : {
+    backgroundColor:'rgb(172,14,250)',
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 5,
+    borderBottomWidth: 6,
+    borderLeftWidth: 5,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'rgb(172,14,250)',
     borderLeftColor: 'transparent',  marginLeft:20,marginRight:30, width:'22%'
   },
 

@@ -98,7 +98,7 @@ export default EStyleSheet.create({
     lineHeight:23,
     letterSpacing:0.1
   },
-  tabheading : {
+  tabText : {
     fontFamily: Fonts.type.regular,
     fontSize: Fonts.size.regular,
     color: "rgb(102,102,102)",
@@ -110,5 +110,22 @@ export default EStyleSheet.create({
     justifyContent : 'flex-start',
     marginTop : 15,
   },
+  tabBorderSytel : {
+    backgroundColor:'#fff',
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 5,
+    borderBottomWidth: 6,
+    borderLeftWidth: 5,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: Colors.purpleColor,
+    borderLeftColor: 'transparent',  
+    marginLeft:'12%',
+    marginRight:30, 
+    width:'22%'
+  },
+  
 
 })

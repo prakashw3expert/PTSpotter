@@ -33,7 +33,7 @@ export default StyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: 'white',
     borderLeftColor: 'transparent',  
-    marginLeft:'10%',
+    marginLeft:'11%',
     marginRight:30, 
     width:'22%'
   },

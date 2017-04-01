@@ -102,7 +102,7 @@ class DataListView extends React.Component {
             
                 <Content>
                 <List dataArray={this.state.results.items}  renderRow={(item)  =>
-                            <ListItem button avatar onPress={this.navigateToChat} style={{marginTop:14,paddingBottom:14, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:20}}>
+                            <ListItem button avatar onPress={this.navigateToChat} style={{marginTop:(width >= 375) ? 14 : 5,paddingBottom:(width >= 375) ? 14 : 2, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
                                 <Left style={{justifyContent: 'flex-end',alignItems:'flex-end'}}>
                                   <Image source={item.image} style={styles.listImage}/>
                                 </Left>

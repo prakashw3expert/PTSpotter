@@ -114,11 +114,13 @@ export default class AvailabilityScreen extends React.Component {
               style={{alignItems: 'center'}}>
               <View>
                 <View style={{flexDirection:'row',alignItems:'center'}}>
-                    <Text style={{marginLeft:20,flex:1}}></Text>
-                    <Text style={[Fonts.style.h2,{flex:4,textAlign:'center'}]}>ADD AVAILABILITY</Text>
-                    <Button transparent onPress={() => this.setState({open: false})}>
+                    <Text style={{marginLeft:20,flex:(width >= 375) ? 1 : 0}}></Text>
+                    <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 2,textAlign:'center'}]}>ADD AVAILABILITY</Text>
+                    <View style={{flex:(width >= 375) ? 1 : 0,flexDirection:'row',alignItems:'flex-start'}}>
+                    <Button transparent onPress={() => this.setState({open: false})} >
                         <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
                     </Button>
+                    </View>
                 </View>
 
                 <Text style={styles.modelText}>
@@ -247,7 +249,7 @@ class Save extends React.Component {
 
 
             <View style={styles.bottomview}>
-              <Button light full rounded style={Fonts.style.default}  onPress={Actions.homeScreen}>
+              <Button light full rounded style={Fonts.style.default}>
                   <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SAVE</Text>
               </Button>
             </View>

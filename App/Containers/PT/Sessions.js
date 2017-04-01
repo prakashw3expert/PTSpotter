@@ -38,8 +38,8 @@ export default class SettingScreen extends React.Component {
               <Text tabLabel='Yearly'>project</Text>
             </ScrollableTabView>
 
-            </View>
-            </Container>
+        </View>
+      </Container>
     )
   }
 }
