@@ -154,8 +154,9 @@ state = {
                           </Button>
                       </View>
                       <Modal
-                          offset={this.state.offset}
+                          offset={-100}
                           open={this.state.open}
+                          overlayBackground={Colors.popupoverlayBackground}
                           modalDidOpen={() => console.log('modal did open')}
                           modalDidClose={() => this.setState({open: false})}
                           style={{alignItems: 'center'}}>

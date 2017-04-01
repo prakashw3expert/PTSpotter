@@ -57,7 +57,7 @@ export default StyleSheet.create({
     backgroundColor:Colors.purpleColor,
     alignItems:'center',
     justifyContent:'center',
-    marginBottom:15
+    marginBottom:27
   },
   unreadCounterText : {
     backgroundColor:'transparent',
@@ -84,6 +84,13 @@ export default StyleSheet.create({
     fontSize:14,
     letterSpacing:0.1,
     lineHeight:23,
+  },
+  listImage: {
+    height:72,
+    width:72,
+    borderColor:Colors.purpleColor,
+    borderWidth:2,
+    borderRadius:36,
   },
   
 

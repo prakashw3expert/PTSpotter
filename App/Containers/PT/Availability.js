@@ -1,31 +1,35 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight, Modal,Dimensions } from 'react-native'
-import { Container, Content,Input,
-  Form,Item,
-  Body, ListItem,Icon,
-  Thumbnail,List,Button,
-  Card, CardItem,Label,Left,Right } from 'native-base';
+import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS } from 'react-native'
+import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Grid,Col } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import DayButton from '../../Components/DayButton'
 import Hr from 'react-native-hr'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Actions } from 'react-native-router-flux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-// Styles
 import styles from './Styles/AvailabilityStyle'
-import FullButton from '../../Components/FullButton'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Modal from 'react-native-simple-modal';
 const { width, height } = Dimensions.get('window')
+var PickerItemIOS = PickerIOS.Item;
 
-//<Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
 export default class AvailabilityScreen extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false,
+  state = {
+      open: false,
     };
+
+    state = {
+    modalVisible: false,
+    open: false,
   }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
 
   render () {
     var showItem;
@@ -35,10 +39,43 @@ export default class AvailabilityScreen extends React.Component {
     else{
       showItem = <EmptyAvailability />
     }
+
+    var hours = [];
+    var minutes = [];
+    for(i = 0; i < 24; i++) {
+      
+      hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
+    }
+    for(i = 0; i < 60; i++) {
+      
+      minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
+    }
+
+
     return (
 
-      <View style={styles.mainContainer}>
-        <ScrollView style={[styles.container,{marginBottom : 110}]}>
+
+      <Container>
+      
+          <View style={styles.headerView}>
+                <View style={styles.navbarview}>
+                  <View style={{flex:1}}>
+                    <Button transparent iconLeft onPress={NavigationActions.pop}>
+                      <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white'}}/>
+                    </Button>
+                  </View>
+                  <View style={styles.navbarCenterView}>
+                      <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',flex:1}]}> AVAILABILITY </Text>
+                  </View>
+                  <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
+                  <Button transparent onPress={() => this.setState({open: true})}>
+                      <Ionicons name="md-add" size={30} style={{color:'white',justifyContent:'center'}}/>
+                  </Button>
+                  </View>
+
+              </View>
+            </View>
+            <Content style={{marginBottom:110}}>
             <View style={styles.topView}>
                 <Text style={[Fonts.style.h2,styles.dayTitle]}>MONDAY</Text>
                 <View style={styles.buttonsView}>
@@ -64,9 +101,77 @@ export default class AvailabilityScreen extends React.Component {
             </View>
             <Hr lineColor='rgb(234, 234, 234)' />
             {showItem}
-        </ScrollView>
-        <Save />
-        </View>
+           
+            
+           </Content>
+          <Save />
+          <Modal
+              offset={this.state.offset}
+              open={this.state.open}
+              overlayBackground={Colors.popupoverlayBackground}
+              modalDidOpen={() => console.log('modal did open')}
+              modalDidClose={() => this.setState({open: false})}
+              style={{alignItems: 'center'}}>
+              <View>
+                <View style={{flexDirection:'row',alignItems:'center'}}>
+                    <Text style={{marginLeft:20,flex:1}}></Text>
+                    <Text style={[Fonts.style.h2,{flex:4,textAlign:'center'}]}>ADD AVAILABILITY</Text>
+                    <Button transparent onPress={() => this.setState({open: false})}>
+                        <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
+                    </Button>
+                </View>
+
+                <Text style={styles.modelText}>
+                  CHOOSE YOUR TIME OF AVAILABILITY FOR <Text style={styles.dayBold}>MONDAY</Text>
+                </Text>
+
+                <Grid style={{marginTop:20}}>
+                    <Col style={{ height: 25,width:'40%' }}>
+                      <Text style={styles.textHours}>9:45 am</Text>
+                    </Col>
+                    <Col style={{height: 25,alignItems:'center',width:'20%'  }}>
+                      <Icon name="ios-arrow-round-forward" style={{color:'rgba(102,102,102,0.5)'}}/>
+                    </Col>
+                    <Col style={{height: 25,width:'40%'  }}>
+                      <Text style={styles.textMinutes}> 6:30 pm </Text>
+                    </Col>
+                </Grid>
+                
+                
+              <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
+                <PickerIOS
+                  selectedValue={3}
+                  itemStyle={styles.pickerStyle}
+                  onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
+                      
+                  {hours}
+                        
+                </PickerIOS>
+                <PickerIOS
+                  selectedValue={25}
+                  itemStyle={styles.pickerStyle}
+                  onValueChange={(minute) => this.setState({minute, modelIndex: 0})}>
+                      
+                  {minutes}
+                        
+                </PickerIOS>
+                <PickerIOS
+                  selectedValue="pm"
+                  itemStyle={styles.pickerStyle}
+                  onValueChange={(ampm) => this.setState({ampm, modelIndex: 0})}>
+                    <PickerItemIOS key="am" value="am" label="am" />
+                    <PickerItemIOS key="pm" value="pm" label="pm" />
+                </PickerIOS>
+              </View>
+                <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
+                  <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>
+                      <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD</Text>
+                  </Button>
+                </View>
+                
+              </View>
+            </Modal>
+        </Container>
     )
   }
 }

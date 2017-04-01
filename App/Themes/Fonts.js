@@ -127,7 +127,7 @@ const style = {
     color:colors.input,
   },
   inputWrapperBordered : {
-    flex: 1,
+   /* flex: 1, */
     flexDirection: 'row',
     borderWidth:2,
     borderColor:"rgb(234,234,234)",
@@ -387,7 +387,7 @@ const style = {
     width:(width >= 375) ? 70 : 60,
     borderColor:'rgb(172,14,250)',
     borderWidth:2,
-    borderRadius:(width >= 375) ? 36 : 34,
+    borderRadius:(width >= 375) ? 36 : 30,
   },
   categoryTag : {
     paddingLeft:(width >= 375) ? 15 : 10,

@@ -7,7 +7,7 @@ import { Images,Colors,Fonts } from '../../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/SearchScreenStyle'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import MapView from 'react-native-maps';
 import RoundedButton from '../../Components/RoundedButton'
 import Hr from 'react-native-hr'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
@@ -22,7 +22,7 @@ export default class SearchScreen extends React.Component {
       <View style={styles.mainContainer}>
 
         <ScrollableTabView
-        locked={true}
+              locked={true}
               tabBarStyle={{borderWidth:0, height:40}}
               tabBarBackgroundColor={Colors.background}
               tabBarActiveTextColor={Colors.white}
@@ -33,7 +33,7 @@ export default class SearchScreen extends React.Component {
               renderTabBar={() => <DefaultTabBar />}>
 
               <ListView tabLabel='List View'/>
-              <MapView tabLabel='Map View'/>
+              <MapViewTab tabLabel='Map View'/>
 
             </ScrollableTabView>
 
@@ -160,7 +160,7 @@ class DataListView extends React.Component {
 
                 <Content style={{marginBottom:20}}>
                 <List dataArray={this.state.results.items} renderRow={(item) =>
-                            <ListItem button avatar style={{marginTop:14,marginBottom:14, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:20}}>
+                            <ListItem button avatar style={{marginTop:14,paddingBottom:14, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:20}}>
                                 <Left>
                                   <Image source={item.image} style={styles.listImage}/>
                                 </Left>
@@ -182,7 +182,7 @@ class DataListView extends React.Component {
   }
 }
 
-class MapView extends React.Component {
+class MapViewTab extends React.Component {
 
   state = {
     modalVisible: false,
@@ -196,7 +196,164 @@ class MapView extends React.Component {
     return (
       <Content>
       <View style={{height:250}}>
-        <Text>MapView Here</Text>
+        
+        <MapView
+            style={{flex:1}}
+            clusterMarkers={true}
+            initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+        
+        
+        <MapView.Marker
+          coordinate={{latitude: 37.78825,
+            longitude: -122.4524}}
+          title="Ernest Woods"
+          description="809 Gleason Mills Suite 263"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.79825,
+            longitude: -122.4324}}
+          title="Arthur Moran"
+          description="98 Bergnaum Road Suite 807"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.75825,
+            longitude: -122.4924}}
+          title="Curtis Stone"
+          description="31 Blake Vista Apt. 815"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.80825,
+            longitude: -122.4124}}
+          title="Tarun Bardawa"
+          description="32 Blake Vista Apt. 777"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.78825,
+            longitude: -122.4524}}
+          title="Ernest Woods"
+          description="809 Gleason Mills Suite 263"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.79825,
+            longitude: -102.4324}}
+          title="Arthur Moran"
+          description="98 Bergnaum Road Suite 807"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.75825,
+            longitude: -102.4924}}
+          title="Curtis Stone"
+          description="31 Blake Vista Apt. 815"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.80825,
+            longitude: -102.4124}}
+          title="Tarun Bardawa"
+          description="32 Blake Vista Apt. 777"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.78825,
+            longitude: -102.4524}}
+          title="Ernest Woods"
+          description="809 Gleason Mills Suite 263"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.79825,
+            longitude: -102.4324}}
+          title="Arthur Moran"
+          description="98 Bergnaum Road Suite 807"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.75825,
+            longitude: -102.4924}}
+          title="Curtis Stone"
+          description="31 Blake Vista Apt. 815"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.80825,
+            longitude: -102.4124}}
+          title="Tarun Bardawa"
+          description="32 Blake Vista Apt. 777"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 39.78825,
+            longitude: -102.4524}}
+          title="Ernest Woods"
+          description="809 Gleason Mills Suite 263"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.79825,
+            longitude: -122.4324}}
+          title="Arthur Moran"
+          description="98 Bergnaum Road Suite 807"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.75825,
+            longitude: -122.4924}}
+          title="Curtis Stone"
+          description="31 Blake Vista Apt. 815"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.80825,
+            longitude: -122.4124}}
+          title="Tarun Bardawa"
+          description="32 Blake Vista Apt. 777"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.78825,
+            longitude: -122.4524}}
+          title="Ernest Woods"
+          description="809 Gleason Mills Suite 263"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.79825,
+            longitude: -122.4324}}
+          title="Arthur Moran"
+          description="98 Bergnaum Road Suite 807"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.75825,
+            longitude: -122.4924}}
+          title="Curtis Stone"
+          description="31 Blake Vista Apt. 815"
+          image={Images.mapIcon}
+        />
+        <MapView.Marker
+          coordinate={{latitude: 37.80825,
+            longitude: -122.4124}}
+          title="Tarun Bardawa"
+          description="32 Blake Vista Apt. 777"
+          image={Images.mapIcon}
+        />
+
+        
+
+        </MapView>
+
       </View>
       <DataListView />
 
