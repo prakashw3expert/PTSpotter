@@ -10,6 +10,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import Foundation from 'react-native-vector-icons/Foundation';
 // Styles
 import styles from './Styles/ClientDetailStyle'
+import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 export default class ClientDetail extends React.Component {
 
@@ -23,7 +24,6 @@ export default class ClientDetail extends React.Component {
 
         <ScrollView scrollEnabled={false}>
           <View>
-          <Form>
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader} style={{height:248}}>
                     <View style={styles.navbarview}>
@@ -47,28 +47,25 @@ export default class ClientDetail extends React.Component {
               </View>
 
               <View style={styles.containers}>
-                <Tabs>
-                  <Tab heading={ <TabHeading><Text style={styles.tabheading}>About</Text></TabHeading>}>
-                   <ScrollView style={{height:350}}>
-                      <AboutData />
-                    </ScrollView>
-                  </Tab>
 
-                  <Tab heading={ <TabHeading><Text style={styles.tabheading}>Notes</Text></TabHeading>}>
-                  <Content>
-                    <ScrollView style={{height:350}}>
-                      <NoteCard />
-                      <NoteCard />
-                      <NoteCard />
-                      <AddNote />
-                    </ScrollView>
-                    </Content>
-                  </Tab>
-                </Tabs>
+              <ScrollableTabView
+              locked={false}
+              tabBarStyle={{borderWidth:0, height:46}}
+              tabBarBackgroundColor={'white'}
+              tabBarActiveTextColor={Colors.purpleColor}
+              tabBarInactiveTextColor={Colors.subHeadingRegular}
+              tabBarUnderlineStyle={styles.tabBorderSytel}
+              tabBarTextStyle={[styles.tabText]}
+              tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
+              renderTabBar={() => <DefaultTabBar />}>
 
-              </View>
+              <AboutData tabLabel='About'/>
+              <NoteCard tabLabel='Notes'/>
 
-        </Form>
+            </ScrollableTabView>
+          </View>
+
+        
         </View>
         </ScrollView>
 
@@ -76,20 +73,7 @@ export default class ClientDetail extends React.Component {
   }
 }
 
-class About extends React.Component {
-  render () {
-    return (
 
-      <View style={styles.emptyView}>
-          <Image source={Images.emptyNote} style={{height:106, width:140,marginTop:0}} />
-          <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
-            NO CURRENT NOTES AVAILABLE
-          </Text>
-      </View>
-
-    )
-  }
-}
 
 
 class Notes extends React.Component {
@@ -114,12 +98,14 @@ class AddNote extends React.Component {
 
   render () {
     return (
+      
           <View style={styles.bottomview}>
               <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45}]}>
                 <Input style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
                 <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
               </View>
           </View>
+      
     )
   }
 }
@@ -128,7 +114,7 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-
+      <ScrollView style={{height:350}}>
       <View style={styles.notesView}>
 
           <Card style={Fonts.style.commnetBox}>
@@ -143,6 +129,7 @@ class NoteCard extends React.Component {
         </Card>
 
       </View>
+    </ScrollView>
 
     )
   }
@@ -153,7 +140,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-
+      <ScrollView style={{height:350}} showsVerticalScrollIndicator={false}>
           <View style={Fonts.style.mt15}>
 
              <Grid>
@@ -173,6 +160,7 @@ class AboutData extends React.Component {
                 <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
             </Button>
         </View>
+      </ScrollView>
     )
   }
 }

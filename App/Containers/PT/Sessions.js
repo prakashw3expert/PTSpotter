@@ -42,8 +42,8 @@ export default class SettingScreen extends React.Component {
 
             </ScrollableTabView>
 
-            </View>
-            </Container>
+        </View>
+      </Container>
     )
   }
 }

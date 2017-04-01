@@ -1,4 +1,3 @@
-// @flow
 
 import { StyleSheet } from 'react-native'
 import { Fonts, Colors, Metrics } from '../../Themes/'
@@ -17,10 +16,11 @@ export default StyleSheet.create({
   buttonText: {
     color: Colors.subHeadingRegular,
     textAlign: 'center',
-    fontFamily:Fonts.type.regular,
+    fontFamily:Fonts.type.LucidaGrandeBold,
     fontSize: 14,
-    marginVertical: Metrics.baseMargin,
-    backgroundColor:'transparent'
+    backgroundColor:'transparent',
+    letterSpacing:1.8,
+    lineHeight:23,
 
   }
 })

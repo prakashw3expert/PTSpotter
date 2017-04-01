@@ -99,9 +99,6 @@ export default EStyleSheet.create({
     alignItems : 'center',
     marginTop : '1%',
   },
-  activetab : {
-    borderBottomColor:'green'
-  },
   aboutInfo : {
     fontFamily: Fonts.type.regular,
     fontSize: Fonts.size.regular,
@@ -136,6 +133,12 @@ export default EStyleSheet.create({
      borderRadius:10, 
      padding:5,
      height:57 
+  },
+  tabText : {
+    fontFamily: Fonts.type.regular,
+    fontSize: Fonts.size.medium,
+    color: "rgb(102,102,102)",
+    letterSpacing : 0.3
   },
 
 })
