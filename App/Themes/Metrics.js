@@ -11,6 +11,7 @@ const metrics = {
   doubleBaseMargin: (Platform.OS === 'ios') ? 20 : 0,
   smallMargin: 5,
   doubleSection: 50,
+  titleBarTop: 40,
   horizontalLineHeight: 1,
   searchBarHeight: 30,
   screenWidth: width < height ? width : height,

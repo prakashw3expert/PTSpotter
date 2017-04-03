@@ -17,25 +17,27 @@ class NavigationDrawer extends Component {
       <Drawer
         ref='navigation'
         type='overlay'
-        open={state.open}
         onOpen={() => NavigationActions.refresh({key: state.key, open: true})}
         onClose={() => NavigationActions.refresh({key: state.key, open: false})}
-        content={<DrawerContent />}
-        styles={Styles}
-        tapToClose
-        openDrawerOffset={0.245}
-        panCloseMask={0.245}
-        negotiatePan
-        styles={
-          {
-            mainOverlay: {shadowColor: "#fff", shadowOpacity: 0.2, shadowRadius: 15},
+        openDrawerOffset={.3}
+        closedDrawerOffset={0}
+        panOpenMask={.1}
 
-        }
-      }
-        tweenHandler={(ratio) => ({
-          main: { opacity: Math.max(0.54, 1 - ratio) }
-        })}
-      >
+        relativeDrag={false}
+        panThreshold={.25}
+        content={<DrawerContent />}
+        open={state.open}
+        disabled={false}
+        tweenDuration={150}
+        tweenEasing="easeInOutQuad"
+        acceptDoubleTap={true}
+        acceptTap={true}
+        acceptPan={true}
+        negotiatePan={false}
+        openDrawerOffset={0.245}
+        panCloseMask={0.345}
+        side='left'  >
+
         <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
       </Drawer>
     )

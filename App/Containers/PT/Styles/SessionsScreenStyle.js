@@ -125,7 +125,21 @@ export default EStyleSheet.create({
     letterSpacing : 0.9,
     color: Colors.subHeadingRegular,
     fontFamily : Fonts.type.regular
-  }
+  },
+
+  usernameSet : {
+    fontFamily : Fonts.type.bold,
+    fontSize : Fonts.size.h2,
+    letterSpacing: 1.7,
+    color : Colors.subHeadingRegular,
+  },
+
+  locationSet : {
+    fontFamily: Fonts.type.regular,
+    fontSize : Fonts.size.medium,
+    letterSpacing : 0.1,
+    color:Colors.mutedColor
+  },
 
 
 

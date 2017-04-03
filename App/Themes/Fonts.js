@@ -297,16 +297,18 @@ const style = {
   },
 
   sessionCard : {
+    margin:15,
+    marginTop : 10,
     marginBottom:10,
-    marginLeft:20,
     borderRadius:10,
     shadowColor : 'rgb(0, 0, 0)',
     borderWidth:5,
     borderColor : '#fff',
-    shadowOpacity : 0.2, shadowOpacity: 0.1,
-    shadowRadius: 2.5,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 0
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 0,
+    width:"94.5%",
   },
 
   commnetBox2 : {
@@ -317,12 +319,12 @@ const style = {
     shadowColor : 'rgb(0, 0, 0)',
     borderWidth:5,
     borderColor : '#fff',
-    shadowOpacity : 0.2, shadowOpacity: 0.2,
+    shadowOpacity: 0.2,
     shadowRadius: 3.5,
     shadowOffset: { width: 0, height: 0 },
     elevation: 0,
     position : 'absolute',
-    top:-15,
+    top:-10,
     width:"94.5%",
     left:-10,
 

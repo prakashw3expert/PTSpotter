@@ -49,18 +49,10 @@ export default class HomeScreen extends React.Component {
                             <Body style={{ marginBottom:10}}>
                                 <Text style={styles.CardHeading}>Ernest Woods</Text>
                                 <Text style={styles.CardText}>809 Gleason Mills Suite 263</Text>
-                                <Grid style={{marginTop:10}}>
-                                   <Col>
-                                       <Button rounded small style={{paddingLeft:15, paddingRight:15, height:26, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
-                                   </Col>
-                                   <Col>
-                                       <Button rounded small style={{paddingLeft:15, paddingRight:15, height:26, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
-                                   </Col>
-                                   <Col>
-                                       <Button rounded small style={{paddingLeft:15, paddingRight:15, height:26, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
-                                   </Col>
-
-                                </Grid>
+                                <View style={{marginTop:10, flexDirection:'row'}}>
+                                   <Button rounded small style={Fonts.style.categoryTag}><Text style={Fonts.style.categoryTagText}>Yoga</Text></Button>
+                                   <Button rounded small style={Fonts.style.categoryTagGray}><Text style={Fonts.style.categoryTagText}>Cardio</Text></Button>
+                                </View>
                             </Body>
                         </Left>
                       </CardItem>
@@ -73,18 +65,10 @@ export default class HomeScreen extends React.Component {
                              <Body style={{ marginBottom:10}}>
                                  <Text style={styles.CardHeading}>Ernest Woods</Text>
                                  <Text style={styles.CardText}>809 Gleason Mills Suite 263</Text>
-                                 <Grid style={{marginTop:10}}>
-                                    <Col>
-                                        <Button rounded small style={{paddingLeft:15, paddingRight:15, height:26, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
-                                    </Col>
-                                    <Col>
-                                        <Button rounded small style={{paddingLeft:15, paddingRight:15, height:26, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
-                                    </Col>
-                                    <Col>
-                                        <Button rounded small style={{paddingLeft:15, paddingRight:15, height:26, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
-                                    </Col>
-
-                                 </Grid>
+                                 <View style={{marginTop:10, flexDirection:'row'}}>
+                                    <Button rounded small style={Fonts.style.categoryTag}><Text style={Fonts.style.categoryTagText}>Yoga</Text></Button>
+                                    <Button rounded small style={Fonts.style.categoryTagGray}><Text style={Fonts.style.categoryTagText}>Cardio</Text></Button>
+                                 </View>
                              </Body>
                          </Left>
                        </CardItem>
