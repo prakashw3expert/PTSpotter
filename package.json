@@ -40,6 +40,7 @@
     "react-native-image-picker": "^0.26.2",
     "react-native-linear-gradient": "^2.0.0",
     "react-native-maps": "^0.13.1",
+    "react-native-option-select": "^1.0.4",
     "react-native-router-flux": "^3.37.0",
     "react-native-scrollable-tab-view": "git+https://github.com/prakashw3expert/react-native-scrollable-tab-view.git",
     "react-native-simple-modal": "^5.0.0",

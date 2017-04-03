@@ -413,6 +413,40 @@ const style = {
     backgroundColor:'rgb(31,199,116)',
     marginRight : 5
   },
+  categoryTagLarge : {
+    paddingLeft:(width >= 325) ? 22 : 10,
+    paddingRight:(width >= 325) ? 22 : 10,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width >= 325) ? 48 : 30,
+    backgroundColor:'rgb(31,199,116)',
+    marginRight : 5
+  },
+  categoryTagGrayLarge : {
+    paddingLeft:(width >= 325) ? 22 : 10,
+    paddingRight:(width >= 325) ? 22 : 10,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width >= 325) ? 48 : 30,
+    backgroundColor : 'rgb(36, 195, 200)',
+    marginRight : 5
+  },
+  categoryTagGreeLarge : {
+    paddingLeft:(width >= 325) ? 22 : 10,
+    paddingRight:(width >= 325) ? 22 : 10,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width >= 325) ? 48 : 30,
+    backgroundColor : 'rgb(251, 179, 39)',
+    marginRight : 5
+  },
+  categoryTagTextLarge : {
+    fontSize:16.4,
+    fontFamily:type.regular,
+    color:'#fff',
+    lineHeight:31.4,
+    letterSpacing:2.1
+  },
   categoryTagGray : {
     paddingLeft:(width >= 325) ? 15 : 10,
     paddingRight:(width >= 325) ? 15 : 10,

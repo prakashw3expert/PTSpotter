@@ -134,11 +134,24 @@ export default EStyleSheet.create({
     color : Colors.subHeadingRegular,
   },
 
-  locationSet : {
-    fontFamily: Fonts.type.regular,
-    fontSize : Fonts.size.medium,
-    letterSpacing : 0.1,
-    color:Colors.mutedColor
+  selectBox : {
+    paddingLeft:22,
+    paddingRight:22,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:57,
+    marginRight : 5,
+    borderColor : 'rgb(234, 234, 234)',
+    borderWidth:2,
+    borderRadius:30
+  },
+
+  selectBoxText : {
+    fontSize:16.4,
+    fontFamily:Fonts.type.regular,
+    color:'#000',
+    lineHeight:31.4,
+    letterSpacing:2.1
   },
 
 
