@@ -32,7 +32,7 @@ export default class ClientDetail extends React.Component {
                       </Button>
                       <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}></Text>
                       <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:24,width:24,marginRight:(width >= 375) ? 0 : 20}}/>
+                          <Image source={Images.messageIcon} style={{height:23,width:23,marginRight:(width >= 375) ? 0 : 20}}/>
                       </Button>
                     </View>
                     <View style={styles.profileimage} >
@@ -114,10 +114,30 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-      <ScrollView style={{height:350}}>
+      <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
 
           <Card style={Fonts.style.commnetBox}>
+             <CardItem content>
+                 <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
+             </CardItem>
+             <CardItem style={{marginTop : 0, paddingBottom : 0}}>
+               <Body>
+                   <Text style={styles.commentDate}>12/28/2017</Text>
+               </Body>
+             </CardItem>
+        </Card>
+        <Card style={Fonts.style.commnetBox}>
+             <CardItem content>
+                 <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
+             </CardItem>
+             <CardItem style={{marginTop : 0, paddingBottom : 0}}>
+               <Body>
+                   <Text style={styles.commentDate}>12/28/2017</Text>
+               </Body>
+             </CardItem>
+        </Card>
+        <Card style={Fonts.style.commnetBox}>
              <CardItem content>
                  <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
              </CardItem>
@@ -140,7 +160,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-      <ScrollView style={{height:350}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
           <View style={Fonts.style.mt15}>
 
              <Grid>
@@ -170,7 +190,7 @@ class WorkoutInterest extends React.Component {
   render () {
     return (
           <View style={(width >= 375) ? Fonts.style.mt10 : Fonts.style.mt20}>
-              <Text style={[Fonts.style.h2, Fonts.style.mt10]}> WORKOUT INTERESTS</Text>
+              <Text style={[Fonts.style.h2, Fonts.style.mt20]}> WORKOUT INTERESTS</Text>
               <View style={styles.buttonsView}>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
@@ -180,7 +200,7 @@ class WorkoutInterest extends React.Component {
 
               <Button light full rounded style={Fonts.style.default} >
                 <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
-            </Button>
+            </Button>    
           </View>
     )
   }

@@ -45,7 +45,7 @@ export default class TrainerDetail extends React.Component {
                   <View style={styles.navbarview}>
                       <View style={{flex:1}}>
                         <Button transparent iconLeft onPress={NavigationActions.pop}>
-                          <Icon name='arrow-back' style={{color:'white'}}/>
+                          <Icon name='arrow-back' style={{color:'white',marginLeft:(width >= 375) ? 0 : 20}}/>
                         </Button>
                       </View>
                       <View style={styles.navbarCenterView}>
@@ -53,7 +53,7 @@ export default class TrainerDetail extends React.Component {
                       </View>
                       <View style={{flex:1}}>
                       <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:25,width:25,marginLeft:10}}/>
+                          <Image source={Images.messageIcon} style={{height:23,width:23,marginLeft:10}}/>
                       </Button>
                       </View>
 
@@ -167,10 +167,31 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-       <ScrollView style={{height:350}}>
+       <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
-
           <Card style={Fonts.style.commnetBox}>
+             <CardItem content>
+                 <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
+             </CardItem>
+             <CardItem style={{marginTop : 0, paddingBottom : 0}}>
+               <Body>
+                   <Text style={styles.commentDate}>12/28/2017</Text>
+               </Body>
+             </CardItem>
+        </Card>
+
+        <Card style={Fonts.style.commnetBox}>
+             <CardItem content>
+                 <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
+             </CardItem>
+             <CardItem style={{marginTop : 0, paddingBottom : 0}}>
+               <Body>
+                   <Text style={styles.commentDate}>12/28/2017</Text>
+               </Body>
+             </CardItem>
+        </Card>
+
+        <Card style={Fonts.style.commnetBox}>
              <CardItem content>
                  <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
              </CardItem>
@@ -194,7 +215,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-          <ScrollView style={{height:350}} showsVerticalScrollIndicator={false}>
+          <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
           
           <View style={Fonts.style.mt15}>
 
@@ -246,7 +267,7 @@ class Schedule extends React.Component {
   render () {
     return (
 
-      <ScrollView style={{height:350}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
                     
           <View style={Fonts.style.mt5}>
             <Text style={[Fonts.style.h2, Fonts.style.mt20, {textAlign:'center'}]}> GYMS </Text>
@@ -332,7 +353,7 @@ class PrivateAvailability extends React.Component {
         <Image source={Images.PrivateAvailability} style={{width:214,height:177,marginBottom:20,marginTop:20}}/>
         <View style={{width:'80%'}}>
           <Button light full rounded style={Fonts.style.default} >
-              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>CHECK AVAILABILITY</Text>
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold,{fontSize:(width >= 325) ? Fonts.size.button : Fonts.size.medium}]}>CHECK AVAILABILITY</Text>
           </Button>
         </View>
       </View>

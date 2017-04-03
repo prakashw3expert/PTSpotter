@@ -9,6 +9,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/RatingScreenStyle'
 import StarRating from 'react-native-star-rating';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default class RatingScreen extends React.Component {
 
@@ -39,7 +40,7 @@ constructor(props) {
                     <View style={styles.navbarview}>
                       <View>
                         <Button transparent iconLeft onPress={NavigationActions.pop}>
-                          <Icon name='arrow-back' style={{color:'white'}}/>
+                          <Ionicons name='ios-arrow-back' style={{color:'white'}} size={30}/>
                         </Button>
                       </View>
                       <View style={styles.navbarCenterView}>
@@ -66,7 +67,7 @@ constructor(props) {
                       </View>
                       <View>
                       <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:25,width:25,marginLeft:10}}/>
+                          <Image source={Images.messageIcon} style={{height:23,width:23,marginLeft:20}}/>
                       </Button>
                       </View>
 
@@ -76,8 +77,8 @@ constructor(props) {
 
               </View>
 
-              <Content>
-                <Card >
+              <Content style={{marginTop : 10}}>
+                <Card style={Fonts.style.ratingCards}>
                   <CardItem>
                       <Left>
                           <Thumbnail source={Images.user2} />
@@ -110,7 +111,7 @@ constructor(props) {
                     
              </Card>
 
-             <Card >
+             <Card style={Fonts.style.ratingCards}>
                   <CardItem>
                       <Left>
                           <Thumbnail source={Images.user5} />
@@ -136,7 +137,7 @@ constructor(props) {
                     </CardItem>
              </Card>
 
-             <Card >
+             <Card style={Fonts.style.ratingCards}>
                   <CardItem>
                       <Left>
                           <Thumbnail source={Images.user1} />

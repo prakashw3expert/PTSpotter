@@ -147,6 +147,10 @@ class DataListView extends React.Component {
              }
          }
      }
+
+     navigateToDetails() {
+      NavigationActions.clientDetails()
+     }
   render () {
     return (
 
@@ -159,7 +163,7 @@ class DataListView extends React.Component {
             </View>
             <Content style={{marginBottom:20}}>
                <List dataArray={this.state.results.items} renderRow={(item) =>
-                        <ListItem button avatar style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
+                        <ListItem button avatar onPress={() => this.navigateToDetails()} style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
                             <Left>
                               <Image source={item.image} style={styles.listImage}/>
                             </Left>
