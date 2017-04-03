@@ -19,7 +19,7 @@ export default EStyleSheet.create({
 
   dots : {
       backgroundColor: 'rgba(0,0,0,.2)',
-      '@media (width: 320)': {
+      '@media (min-width: 320) AND (max-width: 360)': {
         backgroundColor: '#fff',
       },
       width: 5,
@@ -30,7 +30,7 @@ export default EStyleSheet.create({
 
   activeDot : {
     backgroundColor: '#525252',
-    '@media (width: 320)': {
+    '@media (min-width: 320) AND (max-width: 360)': {
       backgroundColor: '#fff',
     },
     width: 8,
@@ -58,7 +58,7 @@ export default EStyleSheet.create({
 
   bottomView: {
     flex:5,
-    '@media (width: 320)': {
+    '@media (min-width: 320) AND (max-width: 360)': {
       flex:2
     },
     justifyContent:'center',
@@ -115,9 +115,10 @@ export default EStyleSheet.create({
   item:{
     resizeMode: 'contain',
     alignItems:'center',
-     '@media (width: 320)': {
+     '@media (min-width: 320) AND (max-width: 360)': {
        width:'85%',
      },
+
    },
   navigationbar: {
     flexDirection:'row',

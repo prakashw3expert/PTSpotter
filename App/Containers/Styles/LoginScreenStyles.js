@@ -11,6 +11,10 @@ export default EStyleSheet.create({
       paddingLeft: 25,
       paddingRight: 25,
     },
+    '@media (width: 360)': {
+      paddingLeft: 25,
+      paddingRight: 25,
+    },
     backgroundColor: Colors.background,
 
   },
@@ -25,6 +29,11 @@ export default EStyleSheet.create({
 
   separater: {
       marginTop:'7%',
+      marginBottom : 50,
+      '@media (width: 360)': {
+        marginTop:30,
+        marginBottom : 30
+      },
       height:25,
       alignItems:'center',
       flexDirection:'row',
@@ -40,9 +49,10 @@ export default EStyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     marginTop:'12.5%',
-    '@media (width: 320)': {
-      marginTop:'8%',
+    '@media (min-width: 320) AND (max-width: 360)': {
+      marginTop:'6%',
     },
+
   },
   footerSingup: {
     flexDirection:'row',
@@ -51,7 +61,7 @@ export default EStyleSheet.create({
     marginTop:'11%',
     marginLeft:15,
     marginRight:15,
-    '@media (width: 320)': {
+    '@media (min-width: 320) AND (max-width: 360)': {
       marginTop:'5%',
     },
   },

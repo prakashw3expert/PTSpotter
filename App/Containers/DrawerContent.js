@@ -106,8 +106,6 @@ class DrawerContent extends Component {
           <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
           <DrawerButton icon='md-search' text='PT Search'  onPress={this.handlePressPTSearch} />
           <DrawerButton icon='md-star' text='Rating'  onPress={this.handlePressRating} />
-          <DrawerButton icon='md-eye' text='Trainer Detail'  onPress={this.handlePressTrainerDetail} />
-          <DrawerButton icon='md-film' text='Client Detail'  onPress={this.handlePressClientDetail} />
 
       </View>
 

@@ -15,13 +15,13 @@ import {
   Form, Button, Item, Icon } from 'native-base';
 
 
-import { Actions } from 'react-native-router-flux'
-
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyles'
-import {Images, Metrics,Fonts} from '../Themes'
+import {Images, Metrics,Fonts, Colors} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
-import { Actions as NavigationActions } from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux'
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class LoginScreen extends React.Component {
 
@@ -109,8 +109,8 @@ class LoginScreen extends React.Component {
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
       <View style={[Styles.topHeading]}>
         <View style={Styles.navigationbar} >
-        <TouchableOpacity onPress={NavigationActions.pop} style={{height:40, flex:.5}}>
-            <Image source={Images.backButtonWhite}  />
+        <TouchableOpacity onPress={Actions.pop} style={{height:40, flex:.5}}>
+            <FontAwesome name='angle-left' style={{fontSize:32, color : Colors.white}}/>
         </TouchableOpacity>
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
@@ -137,7 +137,7 @@ class LoginScreen extends React.Component {
             <Hr lineColor='white' text='OR' textColor='white' textSize="18" style={{fontWeight:'bold',fontSize:18.6,letterSpacing: 3.8, fontFamily:Fonts.type.bold}}/>
         </View>
 
-        <View style={Fonts.style.mt50}>
+        <View>
           <Button light full rounded style={Fonts.style.facebook}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
           </Button>
