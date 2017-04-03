@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View } from 'react-native'
+import { ScrollView,Dimensions, Text, Image, View } from 'react-native'
 import {Container,Content, TabHeading, Badge,List, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
 
 import { Images, Colors, Fonts } from '../../Themes'
@@ -9,7 +9,7 @@ import styles from './Styles/SessionsScreenStyle'
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-
+const { width, height } = Dimensions.get('window')
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 
@@ -238,7 +238,7 @@ class Daily extends React.Component {
               <Hr lineColor='rgb(234, 234, 234)'  />
             </View>
 
-            <ScrollView horizontal={false}>
+            <ScrollView style={{height:(width >= 325) ? 410 : 340}} horizontal={false}>
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
@@ -433,7 +433,7 @@ class Yearly extends React.Component {
               <Hr lineColor='rgb(234, 234, 234)'  />
             </View>
 
-            <ScrollView horizontal={false} >
+            <ScrollView style={{height:(width >= 325) ? 460 : 370}} horizontal={false} >
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>

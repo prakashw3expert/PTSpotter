@@ -1,24 +1,27 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity,PickerIOS } from 'react-native'
+import { ScrollView, Text, Image, View,TouchableOpacity,PickerIOS,Dimensions } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Grid,Col, Switch,Left, Right, ListItem } from 'native-base';
 
 import { Images,Fonts,Colors } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/EditProfileStyle'
 import Modal from 'react-native-simple-modal';
 var PickerItemIOS = PickerIOS.Item
+const { width, height } = Dimensions.get('window')
 export default class EditProfile extends React.Component {
 
   state = {
     open: false,
     modalVisible: false,
-      colorTrueSwitchIsOn: true,
-      colorFalseSwitchIsOn: false,
+      availabilityTrueSwitchIsOn: true,
+      availabilityFalseSwitchIsOn: false,
     };
 
   setModalVisible(visible) {
@@ -33,16 +36,16 @@ export default class EditProfile extends React.Component {
 
     return (
 
-        <ScrollView>
+        <Content>
           <View>
           <Form>
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader}>
                     <View style={styles.navbarview}>
                       <Button transparent iconLeft onPress={NavigationActions.pop}>
-                        <Icon name='arrow-back' style={{color:'white'}}/>
+                        <Ionicons name='ios-arrow-back' size={30} style={{color:'white',marginLeft:(width >= 375 ? 0 : 20)}}/>
                       </Button>
-                      <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}>EDIT PROFILE</Text>
+                      <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center',marginRight:(width >= 375 ? 0 : 20)}]}>EDIT PROFILE</Text>
                       <Button transparent>
                           <Text></Text>
                       </Button>
@@ -91,7 +94,13 @@ export default class EditProfile extends React.Component {
                       <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: "-7%"}]}> AVAILABILITY UPON REQUEST</Text>
                     </Body>
                     <Right style={{marginTop:15}}>
-                        <Switch valur={true} color="blue" />
+                        <Switch
+                          onValueChange={(value) => this.setState({availabilityTrueSwitchIsOn: value})}
+                          onTintColor="rgb(172,14,250)"
+                          thumbTintColor="#fff"
+                          tintColor="#777777"
+                          style={{marginRight:0}}
+                          value={this.state.availabilityTrueSwitchIsOn} />
                     </Right>
                   </ListItem>
 
@@ -158,7 +167,7 @@ export default class EditProfile extends React.Component {
 
         </Form>
         </View>
-        </ScrollView>
+        </Content>
 
     )
   }

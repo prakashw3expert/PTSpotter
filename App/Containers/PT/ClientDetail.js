@@ -32,7 +32,7 @@ export default class ClientDetail extends React.Component {
                       </Button>
                       <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}></Text>
                       <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:24,width:24,marginRight:(width >= 375) ? 0 : 20}}/>
+                          <Image source={Images.messageIcon} style={{height:23,width:23,marginRight:(width >= 375) ? 0 : 20}}/>
                       </Button>
                     </View>
                     <View style={styles.profileimage} >
@@ -190,7 +190,7 @@ class WorkoutInterest extends React.Component {
   render () {
     return (
           <View style={(width >= 375) ? Fonts.style.mt10 : Fonts.style.mt20}>
-              <Text style={[Fonts.style.h2, Fonts.style.mt10]}> WORKOUT INTERESTS</Text>
+              <Text style={[Fonts.style.h2, Fonts.style.mt20]}> WORKOUT INTERESTS</Text>
               <View style={styles.buttonsView}>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
@@ -200,7 +200,7 @@ class WorkoutInterest extends React.Component {
 
               <Button light full rounded style={Fonts.style.default} >
                 <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
-            </Button>
+            </Button>    
           </View>
     )
   }

@@ -429,7 +429,19 @@ const style = {
     color:'#fff',
     lineHeight:23,
     letterSpacing:1.5
-  }
+  },
+  ratingCards : {
+     borderLeftWidth : 0,
+    borderRightWidth : 0,
+    borderTopWidth : 0,
+    shadowOffset:{width: 0, height: 0},
+    marginTop:-5,
+    borderBottomLeftRadius:15,
+    borderBottomRightRadius : 15,
+    borderBottomColor:'rgb(234,234,234)',
+    paddingBottom:15,
+    paddingTop:(width >= 325) ? 10 : 5,
+  },
 
 
 }

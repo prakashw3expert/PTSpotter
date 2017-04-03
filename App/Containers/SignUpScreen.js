@@ -118,14 +118,14 @@ class SignUpScreen extends React.Component {
       </View>
 
       <Item rounded style={Fonts.style.inputWrapper}>
-          <Icon name='mail' style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
-          <Input  style={Fonts.style.input} placeholder='EMAIL' placeholderTextColor={Fonts.colors.input}/>
-      </Item>
+            <Icon name='mail' style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
+            <Input  style={Fonts.style.input} placeholder='EMAIL' placeholderTextColor={Fonts.colors.input}/>
+        </Item>
 
-      <Item rounded style={Fonts.style.inputWrapper}>
-            <Icon name='lock'style={{marginTop:3,marginLeft:5,color:'rgb(172,14,250)'}}/>
-            <Input  style={Fonts.style.input} placeholder='PASSWORD' placeholderTextColor={Fonts.colors.input}/>
-      </Item>
+        <Item rounded style={Fonts.style.inputWrapper}>
+              <Icon name='lock'style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
+              <Input  style={Fonts.style.input} placeholder='PASSWORD' placeholderTextColor={Fonts.colors.input}/>
+        </Item>
 
       <View style={Fonts.style.mt15}>
         <Button light full rounded style={Fonts.style.default}  onPress={NavigationActions.mobile}>

@@ -67,7 +67,7 @@ constructor(props) {
                       </View>
                       <View>
                       <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:25,width:25,marginLeft:20}}/>
+                          <Image source={Images.messageIcon} style={{height:23,width:23,marginLeft:20}}/>
                       </Button>
                       </View>
 
@@ -77,8 +77,8 @@ constructor(props) {
 
               </View>
 
-              <Content>
-                <Card >
+              <Content style={{marginTop : 10}}>
+                <Card style={Fonts.style.ratingCards}>
                   <CardItem>
                       <Left>
                           <Thumbnail source={Images.user2} />
@@ -111,7 +111,7 @@ constructor(props) {
                     
              </Card>
 
-             <Card >
+             <Card style={Fonts.style.ratingCards}>
                   <CardItem>
                       <Left>
                           <Thumbnail source={Images.user5} />
@@ -137,7 +137,7 @@ constructor(props) {
                     </CardItem>
              </Card>
 
-             <Card >
+             <Card style={Fonts.style.ratingCards}>
                   <CardItem>
                       <Left>
                           <Thumbnail source={Images.user1} />

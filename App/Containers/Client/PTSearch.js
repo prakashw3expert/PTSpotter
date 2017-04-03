@@ -146,6 +146,12 @@ class DataListView extends React.Component {
              }
          }
      }
+
+     navigateToDetails() {
+      NavigationActions.trainerDetails()
+     }
+
+
   render () {
     return (
 
@@ -159,7 +165,7 @@ class DataListView extends React.Component {
 
                 <Content style={{marginBottom:20}}>
                 <List dataArray={this.state.results.items} renderRow={(item) =>
-                        <ListItem button avatar style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
+                        <ListItem button avatar onPress={() => this.navigateToDetails()} style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
                             <Left>
                               <Image source={item.image} style={styles.listImage}/>
                             </Left>
@@ -299,7 +305,7 @@ class NoSearchResult extends React.Component {
   }
 }
 
-//7976075614
+
 class Filter extends React.Component {
   
   static defaultProps = {
@@ -313,7 +319,7 @@ class Filter extends React.Component {
  render () {
    return (
 
-         <ScrollView style={{backgroundColor:Colors.background}}>
+         <Content style={{backgroundColor:Colors.background}}>
             
             <Text style={styles.filtertitles}>
               SEARCH RADIUS
@@ -341,14 +347,14 @@ class Filter extends React.Component {
               <Text style={styles.filtertitles}>
               GYM NAME
               </Text>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:57, borderRadius:30}]}>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:(width >= 325 ? 57 : 50), borderRadius:30}]}>
                 <Input  style={Fonts.style.inputBordered} placeholder='Gym Name' placeholderTextColor={Fonts.colors.input}/>
               </View>
 
               <Text style={styles.filtertitles}>
                 POSTCODE
               </Text>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:57,borderRadius:30}]}>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:(width >= 325 ? 57 : 50),borderRadius:30}]}>
                 <Input  style={Fonts.style.inputBordered} placeholder='Postcode' placeholderTextColor={Fonts.colors.input}/>
               </View>
             <Text style={styles.filtertitles}>
@@ -356,9 +362,9 @@ class Filter extends React.Component {
             </Text>
 
             <View style={styles.buttonsView}>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:57, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Yoga</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:57, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Cardio</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:57, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:(width >= 325 ? 57 : 50), backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Yoga</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:(width >= 325 ? 57 : 50), backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Cardio</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'transparent',borderWidth:2,borderColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
 
               </View>
             
@@ -366,13 +372,13 @@ class Filter extends React.Component {
             <View style={styles.horizontalRow} />
 
             <View style={styles.applyBtnView}>
-                <Button rounded block style={{marginTop:20,marginBottom:10,marginLeft:20,marginRight:20,backgroundColor:'white', height:57}}>
+                <Button rounded block style={{marginTop:20,marginBottom:10,marginLeft:20,marginRight:20,backgroundColor:'white', height:(width >= 325 ? 57 : 50)}}>
                     <Text style={styles.applyBtnText}> APPLY</Text>
                 </Button>
             </View>
             
             
-         </ScrollView>
+         </Content>
 
 
 

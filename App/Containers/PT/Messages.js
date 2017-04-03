@@ -27,9 +27,7 @@ export default class MessageScreen extends React.Component {
                   <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',flex:1}]}> MESSAGES </Text>
               </View>
               <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
-                <Button transparent>
-                    <Ionicons name="md-more" size={30} style={{color:'white',alignSelf:'center'}}/>
-                </Button>
+                
               </View>
 
           </View>

@@ -53,7 +53,7 @@ export default class TrainerDetail extends React.Component {
                       </View>
                       <View style={{flex:1}}>
                       <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:24,width:24,marginLeft:10}}/>
+                          <Image source={Images.messageIcon} style={{height:23,width:23,marginLeft:10}}/>
                       </Button>
                       </View>
 
@@ -353,7 +353,7 @@ class PrivateAvailability extends React.Component {
         <Image source={Images.PrivateAvailability} style={{width:214,height:177,marginBottom:20,marginTop:20}}/>
         <View style={{width:'80%'}}>
           <Button light full rounded style={Fonts.style.default} >
-              <Text style={[Fonts.style.buttonText, Fonts.style.textBold,]}>CHECK AVAILABILITY</Text>
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold,{fontSize:(width >= 325) ? Fonts.size.button : Fonts.size.medium}]}>CHECK AVAILABILITY</Text>
           </Button>
         </View>
       </View>

@@ -22,7 +22,7 @@ export default EStyleSheet.create({
     alignItems:'flex-start',
     flexDirection:'row',
     width:(width >= 375) ? 250 : 200,
-    
+
   },
   profileimage: {
   flex:3,
@@ -70,6 +70,11 @@ export default EStyleSheet.create({
     fontFamily:Fonts.type.regular,
     letterSpacing:1.1,
     lineHeight:20,
+  },
+  cards : {
+    borderLeftWidth : 0,
+    borderRightWidth : 0,
+    borderTopWidth : 0,
   },
 
 
