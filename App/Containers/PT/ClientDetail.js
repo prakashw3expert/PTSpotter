@@ -114,10 +114,30 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-      <ScrollView style={{height:350}}>
+      <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
 
           <Card style={Fonts.style.commnetBox}>
+             <CardItem content>
+                 <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
+             </CardItem>
+             <CardItem style={{marginTop : 0, paddingBottom : 0}}>
+               <Body>
+                   <Text style={styles.commentDate}>12/28/2017</Text>
+               </Body>
+             </CardItem>
+        </Card>
+        <Card style={Fonts.style.commnetBox}>
+             <CardItem content>
+                 <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
+             </CardItem>
+             <CardItem style={{marginTop : 0, paddingBottom : 0}}>
+               <Body>
+                   <Text style={styles.commentDate}>12/28/2017</Text>
+               </Body>
+             </CardItem>
+        </Card>
+        <Card style={Fonts.style.commnetBox}>
              <CardItem content>
                  <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
              </CardItem>
@@ -140,7 +160,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-      <ScrollView style={{height:350}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
           <View style={Fonts.style.mt15}>
 
              <Grid>

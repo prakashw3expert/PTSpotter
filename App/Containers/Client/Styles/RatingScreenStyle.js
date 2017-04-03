@@ -22,6 +22,7 @@ export default EStyleSheet.create({
     alignItems:'flex-start',
     flexDirection:'row',
     width:(width >= 375) ? 250 : 200,
+    
   },
   profileimage: {
   flex:3,

@@ -195,7 +195,7 @@ const style = {
     borderWidth: 2
   },
   buttonText : {
-    fontSize: (width >= 375) ? size.button : size.regular,
+    fontSize: (width >= 375) ? size.button : size.medium,
     fontFamily: type.regular,
     letterSpacing:1.9,
     color:'white',
