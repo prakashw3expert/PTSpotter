@@ -133,6 +133,12 @@ export default EStyleSheet.create({
     letterSpacing: 1.7,
     color : Colors.subHeadingRegular,
   },
+  locationSet : {
+    fontFamily : Fonts.type.regular,
+    fontSize : Fonts.size.medium,
+    letterSpacing: 0.1,
+    color : Colors.mutedColor,
+  },
 
   selectBox : {
     paddingLeft:22,
@@ -143,15 +149,42 @@ export default EStyleSheet.create({
     marginRight : 5,
     borderColor : 'rgb(234, 234, 234)',
     borderWidth:2,
-    borderRadius:30
+    borderRadius:30,
+    alignItems : 'center',
+    justifyContent : 'center',
   },
 
   selectBoxText : {
     fontSize:16.4,
     fontFamily:Fonts.type.regular,
-    color:'#000',
+    color:Colors.subHeadingRegular,
     lineHeight:31.4,
     letterSpacing:2.1
+  },
+  emptyText: {
+    textAlign : 'center',
+    marginLeft : '5%',
+    marginRight : '5%',
+    marginTop : 20,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      marginLeft : '8%',
+      marginRight : '8%',
+      marginTop : 5,
+    },
+  },
+  btnEmptyText : {
+    fontFamily : Fonts.type.bold,
+  },
+  modelText: {
+    fontSize:10.4,
+    fontFamily : Fonts.type.regular,
+    lineHeight:17,
+    letterSpacing:1.4,
+    color:'rgb(102,102,102)',
+    textAlign:'center',
+    marginLeft : 35,
+    marginRight : 35,
+    marginTop:10,
   },
 
 

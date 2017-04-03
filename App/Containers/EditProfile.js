@@ -18,8 +18,8 @@ const { width, height } = Dimensions.get('window')
 export default class EditProfile extends React.Component {
 
   state = {
-    open: false,
-    modalVisible: false,
+      open: false,
+      modalVisible: false,
       availabilityTrueSwitchIsOn: true,
       availabilityFalseSwitchIsOn: false,
     };

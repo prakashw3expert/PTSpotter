@@ -23,9 +23,7 @@ export default class TrainerDetail extends React.Component {
   }
 
   onStarRatingPress(rating) {
-    this.setState({
-      starCount: rating
-    });
+    NavigationActions.ratingScreen()
   }
   render () {
 
@@ -65,9 +63,9 @@ export default class TrainerDetail extends React.Component {
                       
                       <Text style={styles.username}> Aaron Castillo </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
-                      <TouchableOpacity onPress={() => window.alert('StarRating Pressed')}>
+                      <View onPress={() => alert('StarRating Pressed')}>
                       <StarRating
-                        disabled={true}
+                        disabled={false}
                         emptyStar={'ios-star-outline'}
                         fullStar={'ios-star'}
                         halfStar={'ios-star-half'}
@@ -79,7 +77,7 @@ export default class TrainerDetail extends React.Component {
                         starColor={'yellow'}
 
                       />
-                      </TouchableOpacity>
+                      </View>
                       <Text style={styles.ratingtext}> Avg. rating from completed sessions </Text>
 
                     </View>
