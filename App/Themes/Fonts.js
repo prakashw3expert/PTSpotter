@@ -1,4 +1,4 @@
-import {Dimensions} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 const { width, height } = Dimensions.get('window')
 
 const type = {
@@ -290,39 +290,40 @@ const style = {
     shadowColor : 'rgb(0, 0, 0)',
     borderWidth:5,
     borderColor : '#fff',
-    shadowOpacity : 0.2, shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 0
+    shadowOpacity : 0.2,
+    shadowRadius: 2.5,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: (Platform.OS === 'ios') ? 0 : 3,
   },
 
   sessionCard : {
     margin:15,
-    marginTop : 10,
+    marginTop : 15,
     marginBottom:10,
     borderRadius:10,
     shadowColor : 'rgb(0, 0, 0)',
     borderWidth:5,
     borderColor : '#fff',
     shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 0,
+    shadowRadius: 2.5,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: (Platform.OS === 'ios') ? 0 : 3,
     width:"94.5%",
+
   },
 
   commnetBox2 : {
     margin:15,
-    marginTop : 10,
+    marginTop : 15,
     marginBottom:10,
     borderRadius:10,
     shadowColor : 'rgb(0, 0, 0)',
     borderWidth:5,
     borderColor : '#fff',
     shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 0,
+    shadowRadius: 2.5,
+    shadowOffset: (Platform.OS === 'ios') ? { width: 0, height: 2 } : { width: 10, height: 10 },
+    elevation: (Platform.OS === 'ios') ? 0 : 6,
     position : 'absolute',
     top:-10,
     width:"94.5%",
@@ -465,16 +466,15 @@ const style = {
     letterSpacing:1.5
   },
   ratingCards : {
-     borderLeftWidth : 0,
+    borderLeftWidth : 0,
     borderRightWidth : 0,
     borderTopWidth : 0,
     shadowOffset:{width: 0, height: 0},
-    marginTop:-5,
-    borderBottomLeftRadius:15,
-    borderBottomRightRadius : 15,
-    borderBottomColor:'rgb(234,234,234)',
     paddingBottom:15,
     paddingTop:(width >= 325) ? 10 : 5,
+    borderWidth:0,
+    shadowColor:'#fff',
+    elevation:0
   },
 
 

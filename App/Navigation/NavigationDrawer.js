@@ -21,7 +21,7 @@ class NavigationDrawer extends Component {
         onClose={() => NavigationActions.refresh({key: state.key, open: false})}
         openDrawerOffset={.3}
         closedDrawerOffset={0}
-        panOpenMask={.1}
+        panOpenMask={0}
 
         relativeDrag={false}
         panThreshold={.25}

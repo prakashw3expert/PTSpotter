@@ -41,7 +41,7 @@ export default class HomeScreen extends React.Component {
               <Text style={[Fonts.style.h2, Fonts.style.textCenter, Fonts.style.mb10]}>
                 SESSION REQUESTS
               </Text>
-              <Content style={{paddingTop:10, marginBottom:10}}>
+              <Content style={{paddingTop:5, marginBottom:10}}>
               <Card style={Fonts.style.sessionCard}>
                     <CardItem style={{marginBottom:0, paddingBottom:0}}>
                         <Left>
@@ -157,14 +157,14 @@ goToDetailScreen(){
 
                <Content>
                  <Hr lineColor='rgb(234, 234, 234)' />
-                 <Card style={{borderWidth:0,shadowColor:'#fff'}}>
+                 <Card style={{borderWidth:0,shadowColor:'#fff', elevation:0}}>
                       <CardItem onPress={this.goToDetailScreen} style={{ paddingBottom : 0, marginBottom : 0}}>
                             <Body>
                                 <Text style={[styles.listText,]}>Natural Home Remedies For Oily Skin</Text>
                                 <Text note style={styles.cardDate}>23/03/2017</Text>
                             </Body>
                         <Right>
-                              <Icon name='arrow-forward' style={{color:"rgb(102, 102, 102)"}} />
+                              <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                         </Right>
                       </CardItem>
                       <CardItem content style={{ paddingBottom : 0, marginBottom : 0}}>
@@ -178,25 +178,25 @@ goToDetailScreen(){
 
                       <CardItem style={{paddingTop: 0}}>
                         <Grid>
-                            <Col style={{height:30,width:30, marginRight : 14}}>
+                            <Col style={{height:30,width:30, marginRight : 13}}>
                                 <Icon name='md-heart' style={{color:"rgb(255, 113, 113)", fontSize : 40}} />
                             </Col>
-                            <Col style={{height:30,width:30, marginRight : 14}}>
+                            <Col style={{height:30,width:30, marginRight : 13}}>
                                 <Thumbnail small source={Images.user1}  />
                             </Col>
-                            <Col style={{height:30,width:30, marginRight : 14}}>
+                            <Col style={{height:30,width:30, marginRight : 13}}>
                                 <Thumbnail small source={Images.user2}  />
                             </Col>
-                            <Col style={{height:30,width:30, marginRight : 14}}>
+                            <Col style={{height:30,width:30, marginRight : 13}}>
                                 <Thumbnail small source={Images.user3} />
                             </Col>
-                            <Col style={{height:30,width:30, marginRight : 14}}>
+                            <Col style={{height:30,width:30, marginRight : 13}}>
                                 <Thumbnail small source={Images.user4}  />
                             </Col>
-                            <Col style={{height:30,width:30, marginRight : 14}}>
+                            <Col style={{height:30,width:30, marginRight : 13}}>
                                 <Thumbnail small source={Images.avatar}  />
                             </Col>
-                            <Col style={{height:30,width:30, marginRight : 14}}>
+                            <Col style={{height:30,width:30, marginRight : 13}}>
                                 <Thumbnail small source={Images.user4}  />
                             </Col>
                             <Col style={{height:30,width:30, marginRight : 10}}>
@@ -216,14 +216,14 @@ goToDetailScreen(){
                       </CardItem>
                   </Card>
                   <Hr lineColor='rgb(234, 234, 234)' />
-                  <Card style={{borderWidth:0,shadowColor:'#fff'}}>
+                  <Card style={{borderWidth:0,shadowColor:'#fff', elevation:0}}>
                        <CardItem onPress={this.goToDetailScreen} style={{ paddingBottom : 0, marginBottom : 0}}>
                              <Body>
                                  <Text style={[styles.listText,]}>What Can Happen If High Blood Pressure Is Left Untreated</Text>
                                  <Text note style={styles.cardDate}>10/25/2017</Text>
                              </Body>
                          <Right>
-                               <Icon name='arrow-forward' style={{color:"rgb(102, 102, 102)"}} />
+                               <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                          </Right>
                        </CardItem>
                        <CardItem content style={{ marginTop : 0, marginBottom : 0, paddingBottom : 0}}>
@@ -235,16 +235,16 @@ goToDetailScreen(){
 
                        <CardItem style={{paddingTop: 0, marginTop : 0, marginBottom : 0}}>
                          <Grid>
-                             <Col style={{height:35,width:35, marginRight : 14, marginTop:2}}>
+                             <Col style={{height:35,width:35, marginRight : 13, marginTop:2}}>
                                  <FontAwesome name='heart-o'  size={32} color="rgb(178, 178, 178)"  />
                              </Col>
-                             <Col style={{height:30,width:30, marginRight : 14}}>
+                             <Col style={{height:30,width:30, marginRight : 13}}>
                                  <Thumbnail small source={Images.user3}  />
                              </Col>
-                             <Col style={{height:30,width:30, marginRight : 14}}>
+                             <Col style={{height:30,width:30, marginRight : 13}}>
                                  <Thumbnail small source={Images.user4}  />
                              </Col>
-                             <Col style={{height:30,width:30, marginRight : 14}}>
+                             <Col style={{height:30,width:30, marginRight : 13}}>
                                  <Thumbnail small source={Images.user6} />
                              </Col>
 

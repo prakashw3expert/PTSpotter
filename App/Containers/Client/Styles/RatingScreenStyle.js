@@ -17,11 +17,12 @@ export default EStyleSheet.create({
     flex:1,
     flexDirection:'row',
     alignItems:'center',
+
   },
   navbarCenterView : {
     alignItems:'flex-start',
     flexDirection:'row',
-    width:(width >= 375) ? 250 : 200,
+    width:(width >= 325) ? 250 : 200,
 
   },
   profileimage: {
@@ -48,6 +49,8 @@ export default EStyleSheet.create({
     fontSize:10,
     fontFamily:Fonts.type.regular,
     letterSpacing:0.1,
+    marginTop:2,
+    marginBottom:6,
   },
   raterName : {
     color:Colors.subHeadingRegular,
@@ -64,7 +67,7 @@ export default EStyleSheet.create({
     letterSpacing:0.1,
   },
   raterFeedback : {
-    color:Colors.mutedColor,
+    color:Colors.subHeadingRegular,
     backgroundColor:'transparent',
     fontSize:(width >= 375) ? 14 : 12,
     fontFamily:Fonts.type.regular,
