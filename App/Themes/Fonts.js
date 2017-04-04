@@ -446,7 +446,8 @@ const style = {
     fontFamily:type.regular,
     color:'#fff',
     lineHeight:31.4,
-    letterSpacing:2.1
+    letterSpacing:2.1,
+    backgroundColor : 'transparent'
   },
   categoryTagGray : {
     paddingLeft:(width >= 325) ? 15 : 10,
@@ -458,12 +459,22 @@ const style = {
     marginRight : 5
   },
 
+  categoryTagPink : {
+    paddingLeft:(width >= 325) ? 15 : 10,
+    paddingRight:(width >= 325) ? 15 : 10,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width >= 325) ? 35 : 30,
+    backgroundColor : 'rgb(172, 14, 250)',
+    marginRight : 5,
+  },
+
   categoryTagText : {
     fontSize:12,
     fontFamily:type.regular,
     color:'#fff',
     lineHeight:23,
-    letterSpacing:1.5
+    letterSpacing:1.5,
   },
   ratingCards : {
     borderLeftWidth : 0,

@@ -18,8 +18,10 @@ const { width, height } = Dimensions.get('window')
 export default class EditProfile extends React.Component {
 
   state = {
-    open: false,
-    modalVisible: false,
+      open: false,
+      modalVisible: false,
+      trainigOptionOpen : false,
+      trainigModalVisible : false,
       availabilityTrueSwitchIsOn: true,
       availabilityFalseSwitchIsOn: false,
     };
@@ -105,14 +107,14 @@ export default class EditProfile extends React.Component {
                   </ListItem>
 
                   <Text style={[Fonts.style.h2, Fonts.style.mt20]}> TRAINING OPTIONS</Text>
-
-                  <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
-                    <Input  style={Fonts.style.inputBordered} placeholder='SEARCH AND ADD' placeholderTextColor={Fonts.colors.input}/>
-                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                  <TouchableOpacity onPress={() => this.setState({trainigOptionOpen: true})}>
+                  <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
+                    <Text style={styles.searchBox}> SEARCH AND ADD</Text>
+                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:7,marginRight:5, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
                   </View>
-
+                  </TouchableOpacity>
                   <View style={Fonts.style.mt40}>
-                    <Button light full rounded bordered style={Fonts.style.default}  onPress={NavigationActions.mobile}>
+                    <Button light full rounded bordered style={Fonts.style.default} >
                         <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>CONTINUE</Text>
                     </Button>
                   </View>
@@ -120,7 +122,7 @@ export default class EditProfile extends React.Component {
               </View>
 
               <Modal
-                offset={this.state.offset}
+                offset={100}
                 open={this.state.open}
                 overlayBackground={Colors.popupoverlayBackground}
                 modalDidOpen={() => console.log('modal did open')}
@@ -164,6 +166,43 @@ export default class EditProfile extends React.Component {
                   
                 </View>
               </Modal>
+
+          <Modal
+            offset={150}
+            open={this.state.trainigOptionOpen}
+            overlayBackground={Colors.popupoverlayBackground}
+            modalDidOpen={() => console.log('modal did open')}
+            modalDidClose={() => this.setState({trainigOptionOpen: false})}
+            style={{alignItems: 'center'}}>
+            <View>
+              <View style={{flexDirection:'row',alignItems:'center'}}>
+                  <Text style={{marginLeft:20}}></Text>
+                  <Text style={[Fonts.style.h2,{flex:1,textAlign:'center',marginLeft:20,fontSize:(width >= 325) ? 16 : 12}]}>ADD NEW WORKOUT</Text>
+                  <Button transparent onPress={() => this.setState({trainigOptionOpen: false})}>
+                      <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
+                  </Button>
+              </View>
+
+              <Text style={styles.modelText}>
+                SEARCH AND ADD WORKOUTS FOR 10 OF OCTOBER
+              </Text>
+
+              <View style={styles.containers}>
+
+                  <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
+                    <Input  style={Fonts.style.inputBordered} placeholder='SEARCH AND ADD' placeholderTextColor={Fonts.colors.input}/>
+                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:7, paddingRight:20,marginRight:5}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                  </View>
+
+                  <View style={{marginTop:10, flexDirection:'row'}}>
+                     <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Yoga <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:10}}/></Text></Button>
+                     <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
+                  </View>
+                  
+              </View>
+
+            </View>
+          </Modal>
 
         </Form>
         </View>

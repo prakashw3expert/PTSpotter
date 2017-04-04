@@ -8,6 +8,7 @@ type DayButtonProps = {
   onPress: () => void,
   text?: string,
   children?: string,
+  style: PropTypes.object,
   navigator?: Object
 }
 
@@ -22,7 +23,7 @@ export default class DayButton extends React.Component {
 
   render () {
     return (
-      <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
+      <TouchableOpacity style={[styles.button, this.props.style]} onPress={this.props.onPress}>
         <Text style={styles.buttonText}>{this.getText()}</Text>
       </TouchableOpacity>
     )

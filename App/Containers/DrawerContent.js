@@ -64,10 +64,7 @@ class DrawerContent extends Component {
     this.toggleDrawer()
     NavigationActions.ptsearch()
   }
-  handlePressRating = () => {
-    this.toggleDrawer()
-    NavigationActions.ratingScreen()
-  }
+  
   handlePressTrainerDetail = () => {
     this.toggleDrawer()
     NavigationActions.trainerDetails()
@@ -101,11 +98,12 @@ class DrawerContent extends Component {
           <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
           <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressInbox} />
           <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} />
+          <DrawerButton icon='md-search' text='PT Search'  onPress={this.handlePressPTSearch} />
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
           <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
           <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
-          <DrawerButton icon='md-search' text='PT Search'  onPress={this.handlePressPTSearch} />
-          <DrawerButton icon='md-star' text='Rating'  onPress={this.handlePressRating} />
+          
+          
 
       </View>
 

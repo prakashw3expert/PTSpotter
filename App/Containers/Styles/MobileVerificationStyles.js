@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Colors, Metrics, Fonts } from '../../Themes'
 import EStyleSheet from 'react-native-extended-stylesheet';
-
+const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   container: {
     paddingTop: 40,
@@ -136,5 +136,10 @@ export default EStyleSheet.create({
   links: {
 
   },
+  image : {
+    height : (width >= 325) ? 179 : 150,
+    width : (width >= 325) ? 179 : 150,
+
+  }
 
 })

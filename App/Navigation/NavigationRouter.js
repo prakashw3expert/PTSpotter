@@ -58,7 +58,7 @@ class NavigationRouter extends Component {
             <Scene key='ptsearch' component={PTSearch} title='PT SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
             <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={false}/>
-            <Scene key='feedback' component={Feedback} title='FEEDBACK' hideNavBar/>
+            <Scene key='feedback' component={Feedback} title='FEEDBACK' hideNavBar />
           </Scene>
         </Scene>
       </Router>

@@ -17,13 +17,10 @@ var PickerItemIOS = PickerIOS.Item;
 
 export default class AvailabilityScreen extends React.Component {
 
-  state = {
-      open: false,
-    };
-
     state = {
     modalVisible: false,
     open: false,
+    show:true,
   }
 
   setModalVisible(visible) {
@@ -33,7 +30,7 @@ export default class AvailabilityScreen extends React.Component {
 
   render () {
     var showItem;
-    if(this.state.show == false) {
+    if(this.state.show == true) {
       showItem = <DataAvailability />
     }
     else{
@@ -74,7 +71,7 @@ export default class AvailabilityScreen extends React.Component {
                   </View>
 
               </View>
-            </View>
+          </View>
             <Content style={{marginBottom:(width >= 375) ? 110 : 90}}>
             <View style={styles.topView}>
                 <Text style={[Fonts.style.h2,styles.dayTitle]}>MONDAY</Text>
@@ -82,7 +79,7 @@ export default class AvailabilityScreen extends React.Component {
                       <DayButton text='MO'
                         onPress={() => {
                           this.setState({ show: !this.state.show });
-                        }} />
+                        }} style={{borderColor:Colors.purpleColor}}/>
                         <DayButton text='TU'
                         onPress={() => {
                           this.setState({ show: !this.state.show });

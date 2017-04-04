@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
-
+const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
@@ -41,6 +41,20 @@ export default EStyleSheet.create({
     letterSpacing:1.4,
     color:'rgb(102,102,102)',
     textAlign:'center',
+    marginLeft : (width > 325) ? 35 : 20,
+    marginRight : 35,
+    marginTop:10,
+  },
+  searchBox : {
+    fontFamily:Fonts.type.regular,
+    fontSize:Fonts.size.regular,
+    lineHeight:23,
+    letterSpacing:3.8,
+    height:(width >= 325) ? 45 : 40,
+    color:Fonts.colors.input,
+    width:"76%",
+    color: 'rgb(102,102,102)',
+    padding: (width >= 325) ? 8 : 7
   },
 
 })
