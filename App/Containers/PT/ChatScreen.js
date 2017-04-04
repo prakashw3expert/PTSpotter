@@ -1,6 +1,11 @@
 import React from 'react'
-import { GiftedChat } from 'react-native-gifted-chat';
-
+import { GiftedChat, Bubble,MessageText } from 'react-native-gifted-chat';
+import { Container, Content, Button } from 'native-base';
+import styles from './Styles/ChatScreenStyle'
+import { Actions as NavigationActions } from 'react-native-router-flux'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Images,Colors,Fonts } from '../../Themes'
+import { ScrollView, Text, Image, View,Dimensions, } from 'react-native'
 export default class ChatScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -66,16 +71,58 @@ export default class ChatScreen extends React.Component {
       };
     });
   }
+
+renderBubble(props) {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          left: {
+            backgroundColor: 'rgb(234,234,234)',
+          },
+          right: {
+            backgroundColor: 'rgb(172,14,250)',
+          }
+        }}
+      />
+    );
+  }
+  
+  renderMessageText(props) {
+    return (
+      <MessageText
+        {...props}
+        textStyle={{
+          left: {
+            color: 'rgb(102,102,102)',
+            letterSpacing : 0.1,
+          },
+          right: {
+            letterSpacing : 0.1
+          }
+        }}
+      />
+    );
+  }
   render() {
 
     return (
-      <GiftedChat
-        messages={this.state.messages}
-        onSend={this.onSend}
-        user={{
-          _id: 1,
-        }}
-      />
+
+      <Container>
+          
+              <GiftedChat
+                messages={this.state.messages}
+                onSend={this.onSend}
+                user={{
+                  _id: 1,
+                }}
+                renderBubble={this.renderBubble}
+                renderMessageText={this.renderMessageText}
+              />
+          
+      </Container>
+
+      
     );
   }
 }

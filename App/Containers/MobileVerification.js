@@ -7,15 +7,16 @@ import {
   TouchableOpacity,
   Image,
   Keyboard,
-  LayoutAnimation
+  LayoutAnimation,Dimensions
 } from 'react-native'
 import Hr from 'react-native-hr'
+const { width, height } = Dimensions.get('window')
 import { Container, Content,Input,Picker,
   Form,Item, Left,Icon,
   Body, Right, ListItem,
   Thumbnail,List,Button,
   Card, CardItem,Label } from 'native-base';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux'
 import Styles from './Styles/MobileVerificationStyles'
 import {Images, Metrics,Fonts, Colors} from '../Themes'
@@ -118,12 +119,12 @@ class MobileVerification extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-
-      <TouchableOpacity onPress={NavigationActions.pop} style={{marginLeft:"-2%"}}>
-          <Image source={Images.backButtonWhite} />
+      <Content>
+      <TouchableOpacity onPress={NavigationActions.pop}>
+          <Ionicons name="ios-arrow-back" size={28} color="rgb(255,255,255)" style={{marginTop :-2}}/>
       </TouchableOpacity>
 
-      <View style={[Styles.topHeading, {marginTop: '-8%'}]}>
+      <View style={[Styles.topHeading, {marginTop: '-9%'}]}>
         <View style={Styles.navigationbar} >
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20]}>VERIFICATION</Text>
         </View>
@@ -131,7 +132,7 @@ class MobileVerification extends React.Component {
       </View>
 
       <View style={[ {marginTop:'9%', alignItems: 'center', marginBottom: '10%' }]}>
-        <Image source={Images.smsIllustration} />
+        <Image source={Images.smsIllustration} style={Styles.image}/>
       </View>
 
       <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb20, Fonts.style.mt20]}>PLEASE ENTER YOUR PHONE NUMBER BELOW TO VERIFY YOUR ACCOUNT</Text>
@@ -156,7 +157,7 @@ class MobileVerification extends React.Component {
         </Button>
       </View>
 
-
+      </Content>
       </ScrollView>
     )
   }

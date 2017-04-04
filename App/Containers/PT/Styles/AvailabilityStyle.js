@@ -69,6 +69,8 @@ export default EStyleSheet.create({
     fontFamily : Fonts.type.bold,
   },
   bottomview: {
+    borderTopWidth:1.5,
+    borderTopColor:'rgb(234,234,234)',
     backgroundColor:'white',
     position: 'absolute',
     bottom: 0,

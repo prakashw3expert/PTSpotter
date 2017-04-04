@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
+const { width, height } = Dimensions.get('window')
+
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   tabs : {
@@ -129,33 +131,34 @@ export default EStyleSheet.create({
 
   usernameSet : {
     fontFamily : Fonts.type.bold,
-    fontSize : Fonts.size.h2,
+    fontSize : (width > 325) ? Fonts.size.h2 : Fonts.size.h3,
     letterSpacing: 1.7,
     color : Colors.subHeadingRegular,
   },
   locationSet : {
     fontFamily : Fonts.type.regular,
-    fontSize : Fonts.size.medium,
+    fontSize : (width > 325) ? Fonts.size.medium : Fonts.size.small,
     letterSpacing: 0.1,
     color : Colors.mutedColor,
   },
 
   selectBox : {
-    paddingLeft:22,
-    paddingRight:22,
+    paddingLeft:(width > 325) ? 14 : 8,
+    paddingRight:(width > 325) ? 14 : 8,
     paddingTop : 0,
     paddingBottom : 0,
-    height:57,
+    height:(width > 325) ? 57 : 50,
     marginRight : 5,
     borderColor : 'rgb(234, 234, 234)',
     borderWidth:2,
     borderRadius:30,
     alignItems : 'center',
     justifyContent : 'center',
+    flexDirection:'row'
   },
 
   selectBoxText : {
-    fontSize:16.4,
+    fontSize:(width > 325) ? 16.4 : 15.4,
     fontFamily:Fonts.type.regular,
     color:Colors.subHeadingRegular,
     lineHeight:31.4,
@@ -182,9 +185,46 @@ export default EStyleSheet.create({
     letterSpacing:1.4,
     color:'rgb(102,102,102)',
     textAlign:'center',
-    marginLeft : 35,
+    marginLeft : (width > 325) ? 35 : 20,
     marginRight : 35,
     marginTop:10,
+  },
+ pickerStyle : {
+    fontSize: 32, 
+    letterSpacing:3.9, 
+    color: 'rgb(102,102,102)', 
+    textAlign: 'center', 
+    fontWeight: 'bold',
+    width:100,
+     
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      
+      fontSize: 28,
+    },
+  },
+  dayBold: {
+    fontFamily:Fonts.type.bold,
+    fontSize:Fonts.size.small,
+    letterSpacing:2,
+    lineHeight:18,
+    color:'rgb(102,102,102)',
+    
+  },
+  bottomview: {
+    borderTopWidth:1.5,
+    borderTopColor:'rgb(234,234,234)',
+    backgroundColor:'white',
+    position: 'absolute',
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems:'center',
+    height: 110,
+    width:'100%',
+    paddingLeft : 40,
+    paddingRight : 40,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      height: 90,
+    },
   },
 
 
