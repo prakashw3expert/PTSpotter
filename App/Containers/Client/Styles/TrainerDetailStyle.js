@@ -81,7 +81,7 @@ export default EStyleSheet.create({
     flexDirection: 'row',
     bottom: 0,
     justifyContent: 'space-between',
-    height: 40,
+    height: (width >= 325) ? 77 : 50,
     width:'100%'
   },
   commentDate: {
@@ -119,6 +119,7 @@ export default EStyleSheet.create({
   buttonsView: {
     flexDirection : 'row',
     flex : 1,
+    flexWrap: 'wrap',
     justifyContent : 'flex-start',
     marginTop : 15,
     marginBottom:(width >= 375) ? 0 : 15,
@@ -143,6 +144,27 @@ export default EStyleSheet.create({
     fontFamily: Fonts.type.regular,
     fontSize: Fonts.size.medium,
     letterSpacing : 0.3
+  },
+  selectBox : {
+    paddingLeft:(width > 325) ? 14 : 8,
+    paddingRight:(width > 325) ? 14 : 8,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:35,
+    marginRight : 5,
+    backgroundColor:'rgb(178,178,178)',
+    borderRadius:30,
+    alignItems : 'center',
+    justifyContent : 'center',
+    flexDirection:'row'
+  },
+
+  selectBoxText : {
+    fontSize:12,
+    fontFamily:Fonts.type.regular,
+    color:Colors.white,
+    lineHeight:23,
+    letterSpacing:1.5
   },
   
 

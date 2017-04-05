@@ -9,19 +9,26 @@ import RoundedButton from '../../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Foundation from 'react-native-vector-icons/Foundation';
 // Styles
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
 import styles from './Styles/TrainerDetailStyle'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 export default class TrainerDetail extends React.Component {
 
+
+
   constructor(props) {
     super(props);
     this.state = {
+      currentTab : 0,
       starCount: 4
     };
   }
 
+  handleChangeTab({i, ref }) {
+    this.setState({currentTab : i});
+  }
   onStarRatingPress(rating) {
     NavigationActions.ratingScreen()
   }
@@ -38,7 +45,7 @@ export default class TrainerDetail extends React.Component {
                   <View style={styles.navbarview}>
                       <View style={{flex:1}}>
                         <Button transparent iconLeft onPress={NavigationActions.pop}>
-                          <Icon name='arrow-back' style={{color:'white',marginLeft:(width >= 375) ? 0 : 20}}/>
+                          <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white',marginLeft:(width >= 375) ? 0 : 20}}/>
                         </Button>
                       </View>
                       <View style={styles.navbarCenterView}>
@@ -85,7 +92,7 @@ export default class TrainerDetail extends React.Component {
 
                     <ScrollableTabView
                     locked={false}
-
+                      onChangeTab={this.handleChangeTab.bind(this)}
                       tabBarStyle={{borderWidth:0, height:46}}
                       tabBarBackgroundColor={'white'}
                       tabBarActiveTextColor={Colors.purpleColor}
@@ -100,6 +107,10 @@ export default class TrainerDetail extends React.Component {
                       <NoteCard tabLabel='Notes' />
                     </ScrollableTabView>
 
+                    {
+
+                      (this.state.currentTab == 2) ? <AddNote /> : null 
+                    }
               </View>
         </View>
         </ScrollView>
@@ -146,9 +157,10 @@ class EmptyNotes extends React.Component {
 class AddNote extends React.Component {
 
   render () {
+   
     return (
           <View style={styles.bottomview}>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45}]}>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:5, height:45}]}>
                 <Input style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
                 <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
               </View>
@@ -161,7 +173,7 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-       <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
+       <ScrollView style={{height:(width >= 375) ? 200 : 210,marginBottom : (width >= 325) ? 77 : 50}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
           <Card style={Fonts.style.commnetBox}>
              <CardItem content>
@@ -209,7 +221,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-          <ScrollView style={{height:(width >= 375) ? 350 : 270}} showsVerticalScrollIndicator={false}>
+          <ScrollView style={{height:(width >= 375) ? 370 : 270}} showsVerticalScrollIndicator={false}>
           
           <View style={Fonts.style.mt15}>
 
@@ -226,9 +238,6 @@ class AboutData extends React.Component {
         
             <Workouts />
 
-            <Button light full rounded style={Fonts.style.red}  onPress={NavigationActions.homeScreen}>
-                <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
-            </Button>
         </View>
      </ScrollView>
     )
@@ -242,15 +251,24 @@ class Workouts extends React.Component {
           <View style={(width >= 375) ? Fonts.style.mt10 : Fonts.style.mt20}>
               <Text style={[Fonts.style.h2, Fonts.style.mt20]}> WORKOUTS</Text>
               <View style={styles.buttonsView}>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:16,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:16,marginBottom:10, height:35, backgroundColor:'rgb(178,178,178)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:16,marginBottom:10, height:35, backgroundColor:'rgb(251,179,39)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
+                
+                <TouchableOpacity>
+                    <View style={styles.selectBox} >
+                      <Text style={styles.selectBoxText}> Show 6 More </Text>
+                      <Ionicons name="ios-arrow-forward-outline" size={18} style={{color:'white'}}/>
+                    </View>
+                  </TouchableOpacity>
 
               </View>
-
-              <Button light full rounded style={Fonts.style.default} >
-                <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
-            </Button>    
+              <View style={{marginTop:60, marginLeft:20, marginRight:20,marginBottom:20}}>
+                <Button light full rounded style={Fonts.style.red} >
+                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
+              </Button>
+              </View>
+              
           </View>
     )
   }
@@ -345,7 +363,7 @@ class PrivateAvailability extends React.Component {
 
       <View style={[styles.availabilityView,{marginTop:20}]}>
         <Image source={Images.PrivateAvailability} style={{width:214,height:177,marginBottom:20,marginTop:20}}/>
-        <View style={{width:'80%'}}>
+        <View style={{width:'80%',marginBottom : 20}}>
           <Button light full rounded style={Fonts.style.default} >
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold,{fontSize:(width >= 325) ? Fonts.size.button : Fonts.size.medium}]}>CHECK AVAILABILITY</Text>
           </Button>

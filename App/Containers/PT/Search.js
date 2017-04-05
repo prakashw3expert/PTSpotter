@@ -36,7 +36,10 @@ export default class SearchScreen extends React.Component {
               <MapViewTab tabLabel='Map View'/>
 
             </ScrollableTabView>
-
+            <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
+                  style={Fonts.style.filterbutton}>
+              <MaterialCommunityIcons name="filter-outline" size={28} size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
+          </Button>
         </View>
     )
   }
@@ -67,10 +70,10 @@ state = {
 
             <DataListView />
 
-          <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
-                  style={Fonts.style.filterbutton}>
-              <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5}}/>
-          </Button>
+          {/*<Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
+                            style={Fonts.style.filterbutton}>
+                        <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5}}/>
+                    </Button>*/}
            <Modal
               animationType={"slide"}
               transparent={false}
@@ -256,10 +259,10 @@ class MapViewTab extends React.Component {
       </View>
       <DataListView />
 
-      <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
-              style={Fonts.style.filterbuttonMapView}>
-        <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
-    </Button>
+      {/*<Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
+                    style={Fonts.style.filterbuttonMapView}>
+              <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
+          </Button>*/}
     <Modal
       animationType={"slide"}
       transparent={false}

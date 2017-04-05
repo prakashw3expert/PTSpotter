@@ -66,7 +66,7 @@ export default EStyleSheet.create({
     flexDirection: 'row',
     bottom: 0,
     justifyContent: 'space-between',
-    height: 40,
+    height: (width >= 325) ? 77 : 50,
     width:'100%'
   },
   commentDate: {
@@ -121,7 +121,7 @@ export default EStyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: Colors.purpleColor,
     borderLeftColor: 'transparent',  
-    marginLeft:(width >= 325) ? '12%' : '15%',
+    marginLeft:'15%',
     marginRight:30, 
     width:'22%'
   },

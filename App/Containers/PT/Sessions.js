@@ -291,7 +291,7 @@ class Daily extends React.Component {
               <Hr lineColor='rgb(234, 234, 234)'  />
             </View>
 
-            <ScrollView style={{height:(width >= 325) ? 410 : 350}} horizontal={false}>
+            <ScrollView style={{height:(width >= 325) ? 405 : 380}} horizontal={false}>
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
@@ -485,7 +485,7 @@ class Yearly extends React.Component {
               <Hr lineColor='rgb(234, 234, 234)'  />
             </View>
 
-            <ScrollView style={{height:(width >= 325) ? 460 : 380}} horizontal={false} >
+            <ScrollView style={{height:(width >= 325) ? 450 : 380}} horizontal={false} >
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
