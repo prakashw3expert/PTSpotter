@@ -129,7 +129,7 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-      <ScrollView style={{height:(width >= 325) ? 200 : 270, marginBottom : (width >= 325) ? 77 : 50}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 325) ? 200 : 210, marginBottom : (width >= 325) ? 77 : 50}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
 
           <Card style={Fonts.style.commnetBox}>

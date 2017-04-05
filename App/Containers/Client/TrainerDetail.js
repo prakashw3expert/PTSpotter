@@ -176,7 +176,7 @@ class NoteCard extends React.Component {
        <ScrollView style={{height:(width >= 375) ? 200 : 210,marginBottom : (width >= 325) ? 77 : 50}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
           <Card style={Fonts.style.commnetBox}>
-             <CardItem content>
+             <CardItem content style={{marginBottom:0, paddingBottom:0}}>
                  <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
              </CardItem>
              <CardItem style={{marginTop : 0, paddingBottom : 0}}>
@@ -187,7 +187,7 @@ class NoteCard extends React.Component {
         </Card>
 
         <Card style={Fonts.style.commnetBox}>
-             <CardItem content>
+             <CardItem content style={{marginBottom:0, paddingBottom:0}}>
                  <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
              </CardItem>
              <CardItem style={{marginTop : 0, paddingBottom : 0}}>
@@ -198,7 +198,7 @@ class NoteCard extends React.Component {
         </Card>
 
         <Card style={Fonts.style.commnetBox}>
-             <CardItem content>
+             <CardItem content style={{marginBottom:0, paddingBottom:0}}>
                  <Text style={styles.commentContent}>The Buddha is kept in the Chapel of the Emerald Buddha, which is located on the grounds of the Grand Palace in Bangkok.</Text>
              </CardItem>
              <CardItem style={{marginTop : 0, paddingBottom : 0}}>
