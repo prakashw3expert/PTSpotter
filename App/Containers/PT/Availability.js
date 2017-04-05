@@ -6,6 +6,7 @@ import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Thumbnail,List,B
 import { Images,Colors,Fonts } from '../../Themes'
 import DayButton from '../../Components/DayButton'
 import Hr from 'react-native-hr'
+import NavItems from '../../Navigation/NavItems'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Actions } from 'react-native-router-flux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -56,15 +57,15 @@ export default class AvailabilityScreen extends React.Component {
       
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>
-                  <View style={{flex:1}}>
+                  <View style={{flex:1,marginBottom:5}}>
                     <Button transparent iconLeft onPress={NavigationActions.pop}>
-                      <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white'}}/>
+                      {NavItems.hamburgerButton()}
                     </Button>
                   </View>
-                  <View style={styles.navbarCenterView}>
+                  <View style={[styles.navbarCenterView,{marginBottom:5}]}>
                       <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',flex:1}]}> AVAILABILITY </Text>
                   </View>
-                  <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
+                  <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end',}}>
                   <Button transparent onPress={() => this.setState({open: true})}>
                       <Ionicons name="md-add" size={30} style={{color:'white',justifyContent:'center'}}/>
                   </Button>

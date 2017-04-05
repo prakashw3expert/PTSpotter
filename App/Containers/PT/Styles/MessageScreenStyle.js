@@ -88,8 +88,6 @@ export default StyleSheet.create({
   listImage: {
     height:(width >= 375) ? 72 : 60,
     width:(width >= 375) ? 72 : 60,
-    borderColor:Colors.purpleColor,
-    borderWidth:2,
     borderRadius:(width >= 375) ? 36 : 30,
   },
   

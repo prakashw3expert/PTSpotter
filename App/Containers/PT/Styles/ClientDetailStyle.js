@@ -121,7 +121,7 @@ export default EStyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: Colors.purpleColor,
     borderLeftColor: 'transparent',  
-    marginLeft:'12%',
+    marginLeft:(width >= 325) ? '12%' : '15%',
     marginRight:30, 
     width:'22%'
   },

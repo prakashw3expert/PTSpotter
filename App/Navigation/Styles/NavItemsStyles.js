@@ -21,14 +21,14 @@ export default StyleSheet.create({
   menuIcon:{
     height:18,
     width:18,
-    marginTop:7,
+    marginTop:0,
     marginLeft:10,
   },
   messageIcon: {
     ...navButton,
     height:23,
     width:24,
-    marginTop: Metrics.section,
+    marginTop: 20,
     marginRight: Metrics.baseMargin,
     alignItems: 'center'
   },

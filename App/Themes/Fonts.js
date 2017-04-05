@@ -392,6 +392,23 @@ const style = {
     bottom:20,
     right:20,
   },
+  filterbuttonMapView : {
+    height:(width >= 375) ? 60 : 50,
+    width:(width >= 375) ? 60 : 50,
+    borderRadius:(width >= 375) ? 30 : 25,
+    backgroundColor:'#a716f6',
+    shadowRadius:10,
+    shadowColor:'#a716f6',
+    shadowOffset: {
+      width: 1,
+      height: 1
+    },
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    position: 'absolute',
+    top:(width >= 375) ? 220 : 220,
+    right:20,
+  },
   avatar: {
     height:(width >= 325) ? 70 : 60,
     width:(width >= 325) ? 70 : 60,
@@ -486,6 +503,51 @@ const style = {
     borderWidth:0,
     shadowColor:'#fff',
     elevation:0
+  },
+  offlineDot : {
+    backgroundColor : 'rgb(197,197,197)',
+    height : 22,
+    width : 22,
+    borderRadius : 11,
+    borderWidth :2,
+    borderColor : 'rgb(13,7,56)',
+    position : 'absolute',
+    right : 10,
+    top:10
+  },
+  onlineDot : {
+    backgroundColor : 'rgb(87,210,46)',
+    height : 22,
+    width : 22,
+    borderRadius : 11,
+    borderWidth :2,
+    borderColor : 'rgb(13,7,56)',
+    position : 'absolute',
+    right : 10,
+    top:10
+  },
+
+  onlineDotMessages : {
+    backgroundColor : 'rgb(87,210,46)',
+    height : (width >= 325) ? 18 : 16,
+    width : (width >= 325) ? 18 : 16,
+    borderRadius : (width >= 325) ? 9 : 8,
+    borderWidth :2,
+    borderColor : 'rgb(255,255,255)',
+    position : 'absolute',
+    right : 0,
+    top:0
+  },
+  offlineDotMessages : {
+    backgroundColor : 'rgb(221,221,221)',
+    height : (width >= 325) ? 18 : 16,
+    width : (width >= 325) ? 18 : 16,
+    borderRadius : (width >= 325) ? 9 : 8,
+    borderWidth :2,
+    borderColor : 'rgb(255,255,255)',
+    position : 'absolute',
+    right : 0,
+    top:0
   },
 
 

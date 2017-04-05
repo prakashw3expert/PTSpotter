@@ -27,11 +27,6 @@ export default class TrainerDetail extends React.Component {
   }
   render () {
 
-    let imageView;
-    imageView = <Image source={Images.user5} style={styles.userImage}/>
-
-
-
     return (
 
         <ScrollView scrollEnabled={false}>
@@ -58,9 +53,10 @@ export default class TrainerDetail extends React.Component {
                     </View>
                     
                     <View style={styles.profileimage} >
-                      
-                       {imageView}
-                      
+                      <View>
+                         <Image source={Images.user5} style={styles.userImage}/>
+                         <View style={Fonts.style.offlineDot}></View>
+                      </View>
                       <Text style={styles.username}> Aaron Castillo </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
                       <View onPress={() => alert('StarRating Pressed')}>
@@ -213,7 +209,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-          <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
+          <ScrollView style={{height:(width >= 375) ? 350 : 270}} showsVerticalScrollIndicator={false}>
           
           <View style={Fonts.style.mt15}>
 

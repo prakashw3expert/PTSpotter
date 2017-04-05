@@ -144,5 +144,6 @@ export default EStyleSheet.create({
     fontSize: Fonts.size.medium,
     letterSpacing : 0.3
   },
+  
 
 })

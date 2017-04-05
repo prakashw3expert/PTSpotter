@@ -101,7 +101,7 @@ export default StyleSheet.create({
     marginTop:50
   },
   filtertitles:{
-    marginTop:20,
+    marginTop:(width >=325) ? 20 : 10,
     fontFamily:Fonts.type.bold,
     color:Colors.whiteMuted,
     fontSize:10,

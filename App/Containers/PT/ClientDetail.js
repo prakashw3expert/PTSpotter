@@ -19,10 +19,6 @@ export default class ClientDetail extends React.Component {
 
   render () {
 
-    let imageView;
-    imageView = <Image source={Images.user4} style={styles.userImage}/>
-
-
     return (
 
       <Container>
@@ -39,9 +35,10 @@ export default class ClientDetail extends React.Component {
                       </Button>
                     </View>
                     <View style={styles.profileimage} >
-
-                       {imageView}
-
+                      <View>
+                         <Image source={Images.user4} style={styles.userImage}/>
+                         <View style={Fonts.style.onlineDot}></View>
+                      </View>
                       <Text style={styles.username}> Ernest Woods </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
                     </View>

@@ -119,27 +119,32 @@ class DataListView extends React.Component {
                      "Time" : "Ernest Woods",
                      "image" : require('../../Images/dummy/user1.jpg'),
                      "title" : "809 Gleason Mills Suite 263",
+                     "online" : true
                    },
                    {
                      "Time" : "Arthur Moran",
                      "image" : require('../../Images/dummy/user2.jpeg'),
                      "title" : "98 Bergnaum Road Suite 803",
+                     "online" : false
                    },
                    {
                      "Time" : "Curtis Stone",
                      "image" : require('../../Images/dummy/user3.jpg'),
                      "title" : "31 Blake Vista Apt. 815",
+                     "online" : false
                    },
                    {
                      "Time" : "Mike Nguyen",
                      "image" : require('../../Images/dummy/user4.jpeg'),
                      "title" : "OO Frami Port",
+                     "online" : true
                    },
                    
                    {
                      "Time" : "Robert Reld",
                      "image" : require('../../Images/dummy/user7.jpeg'),
                      "title" : "5240 Padberg Highway",
+                     "online" : false
                    }
 
                  ]
@@ -167,7 +172,10 @@ class DataListView extends React.Component {
                 <List dataArray={this.state.results.items} renderRow={(item) =>
                         <ListItem button avatar onPress={() => this.navigateToDetails()} style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
                             <Left>
-                              <Image source={item.image} style={styles.listImage}/>
+                              <View>
+                                 <Image source={item.image} style={styles.listImage}/>
+                                 <View style={(item.online === true) ? Fonts.style.onlineDotMessages : Fonts.style.offlineDotMessages}></View>
+                              </View>
                             </Left>
                             <Body style={{borderBottomWidth:0}}>
                               <Text style={styles.listname}>{item.Time}</Text>
@@ -251,7 +259,7 @@ class MapViewTab extends React.Component {
       <DataListView />
 
       <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
-              style={Fonts.style.filterbutton}>
+              style={Fonts.style.filterbuttonMapView}>
         <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
     </Button>
     <Modal

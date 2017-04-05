@@ -56,30 +56,40 @@ class DataListView extends React.Component {
                      "image" : require('../../Images/dummy/user1.jpg'),
                      "last_message" : "Hey ! whats about our meeting on friday",
                      "unreadCount": 26,
+                     "online" : true,
+                     "time" : "10:32 PM"
                    },
                    {
                      "Name" : "Arthur Moran",
                      "image" : require('../../Images/dummy/user2.jpeg'),
                      "last_message" : "waiting in gym!",
                      "unreadCount": 2,
+                     "online" : true,
+                     "time" : "9:17 PM"
                    },
                    {
                      "Name" : "Curtis Stone",
                      "image" : require('../../Images/dummy/user3.jpg'),
                      "last_message" : "Google has announced that its bringing the Google ...",
                      "unreadCount": 0,
+                     "online" : false,
+                     "time" : "3:20 PM"
                    },
                    {
                      "Name" : "Mike Nguyen",
                      "image" : require('../../Images/dummy/user4.jpeg'),
                      "last_message" : "All phones running Android 6.0 Marshmallow and 7.0",
                      "unreadCount": 10,
+                     "online" : true,
+                     "time" : "8:20 AM"
                    },
                    {
                      "Name" : "Jesus McDonald",
                      "image" : require('../../Images/dummy/user6.jpeg'),
                      "last_message" : "The Google Assistant will begin rolling out this week.",
                      "unreadCount": 0,
+                     "online" : false,
+                     "time" : "7:15 AM"
                    },
                    
 
@@ -102,7 +112,11 @@ class DataListView extends React.Component {
                 <List dataArray={this.state.results.items}  renderRow={(item)  =>
                             <ListItem button avatar onPress={this.navigateToChat} style={{marginTop:(width >= 375) ? 14 : 5,paddingBottom:(width >= 375) ? 14 : 2, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
                                 <Left style={{justifyContent: 'flex-end',alignItems:'flex-end'}}>
-                                  <Image source={item.image} style={styles.listImage}/>
+                                  <View>
+                                   <Image source={item.image} style={styles.listImage}/>
+                                   <View style={(item.online === true) ? Fonts.style.onlineDotMessages : Fonts.style.offlineDotMessages}></View>
+                                </View>
+                                  
                                 </Left>
                                 <Body style={{borderBottomWidth:0,marginRight:15}}>
                                   <Text style={styles.senderName}>{item.Name}</Text>
@@ -111,7 +125,7 @@ class DataListView extends React.Component {
                                 <Right style={{borderBottomWidth:0,justifyContent: 'flex-end'}}>
                                   {item.unreadCount > 0 ? <View style={styles.unreadCircle}><Text style={styles.unreadCounterText}>{item.unreadCount}</Text></View> : <Text></Text>}
                                   
-                                  <Text style={styles.messageTime}>3:20 pm </Text>
+                                  <Text style={styles.messageTime}>{item.time} </Text>
                                 </Right>
                             </ListItem>
                         } />
