@@ -291,8 +291,8 @@ const style = {
     borderWidth:5,
     borderColor : '#fff',
     shadowOpacity : 0.2,
-    shadowRadius: 2.5,
-    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 3.5,
+    shadowOffset: (Platform.OS === 'ios') ? { width: 0, height: 0 } : { width: 1, height: 1 },
     elevation: (Platform.OS === 'ios') ? 0 : 3,
   },
 

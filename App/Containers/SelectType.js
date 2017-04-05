@@ -68,7 +68,7 @@ class SelectType extends Component {
 
       <View style={[Fonts.style.mt15, {paddingLeft:Fonts.size.containerPaddingLeft, paddingRight:Fonts.size.containerPaddingRight}]}>
 
-          <Button light full rounded style={Fonts.style.default} onPress={Actions.selectType}>
+          <Button light full rounded style={Fonts.style.default} onPress={Actions.signup}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SELECT</Text>
           </Button>
 

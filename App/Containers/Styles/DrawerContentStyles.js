@@ -30,8 +30,8 @@ export default EStyleSheet.create({
     marginLeft : 41,
     marginRight : 41,
     '@media (width: 320)': {
-      marginLeft : 30,
-      marginRight : 30
+      marginLeft : 20,
+      marginRight : 20
     },
   },
   navItem : {

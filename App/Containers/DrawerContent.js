@@ -64,7 +64,7 @@ class DrawerContent extends Component {
     this.toggleDrawer()
     NavigationActions.ptsearch()
   }
-  
+
   handlePressTrainerDetail = () => {
     this.toggleDrawer()
     NavigationActions.trainerDetails()
@@ -102,8 +102,8 @@ class DrawerContent extends Component {
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
           <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
           <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
-          
-          
+
+
 
       </View>
 
