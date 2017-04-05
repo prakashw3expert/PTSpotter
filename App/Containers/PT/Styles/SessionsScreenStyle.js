@@ -226,7 +226,40 @@ export default EStyleSheet.create({
       height: 90,
     },
   },
+  headerView: {
+    backgroundColor:Colors.background,
+    height:85,
+    alignItems:'center',
 
+  },
+  navbarview: {
+    marginTop:30,
+    flexDirection:'row',
+
+  },
+  navbarCenterView : {
+    flex:2,
+    alignItems:'center',
+    flexDirection:'row',
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      flex:3,
+    },
+  },
+searchView : {
+    paddingLeft: 20,
+    paddingRight:20,
+    marginTop:5,
+    marginBottom : 22,
+  },
+  listViewTitle: {
+    marginBottom:5,
+    fontFamily:Fonts.type.regular,
+    color:Colors.mutedColor,
+    fontSize:12,
+    textAlign:'center',
+    letterSpacing:0.6,
+    lineHeight:23
+  },
 
 
 })

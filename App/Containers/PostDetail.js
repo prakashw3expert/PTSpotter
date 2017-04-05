@@ -10,6 +10,7 @@ import { Container, Content,Input,
 const { width, height } = Dimensions.get('window')
 import { Images,Metrics,Fonts } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/PostDetailStyle'
@@ -27,7 +28,7 @@ like() {
             <Image source={Images.blogImage} style={styles.postImage}>
                 <View style={styles.navbarview}>
                     <Button transparent iconLeft onPress={NavigationActions.pop}>
-                          <Icon name='arrow-back' style={{color:'white', fontSize : 30}}/>
+                         <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white'}}/>
                     </Button>
                 </View>
                 <View style={styles.postTitleView}>

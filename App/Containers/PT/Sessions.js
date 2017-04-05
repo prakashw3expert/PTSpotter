@@ -1,27 +1,50 @@
 import React, { Component } from 'react';
-import { ScrollView,Dimensions, Text, Image, View } from 'react-native'
-import {Container,Content, TabHeading, Badge,List, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
+import { ScrollView,Dimensions,Modal, Text, Image, View,StatusBar } from 'react-native'
+import {Container,Content,Input, TabHeading, Badge,List, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
 
 import { Images, Colors, Fonts } from '../../Themes'
-
+import NavItems from '../../Navigation/NavItems'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/SessionsScreenStyle'
-
+import Hr from 'react-native-hr'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 const { width, height } = Dimensions.get('window')
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 
-import Hr from 'react-native-hr'
-
 export default class SettingScreen extends React.Component {
+  state = {
+    modalVisible: false,
+  }
 
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
   render () {
 
     return (
       <Container>
-          <View style={[styles.mainContainer]}>
+          <View style={styles.headerView}>
+                <View style={styles.navbarview}>
+                  <View style={{flex:1}}>
+                    <Button transparent iconLeft onPress={NavigationActions.pop}>
+                      {NavItems.hamburgerButton()}
+                    </Button>
+                  </View>
+                  <View style={styles.navbarCenterView}>
+                      <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',flex:1}]}> SESSIONS </Text>
+                  </View>
+                  <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
+                  <Button transparent onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>
+                      <Ionicons name="md-search" size={30} style={{color:'white',justifyContent:'center'}}/>
+                  </Button>
+                  </View>
+
+              </View>
+          </View>
+          
             <ScrollableTabView
             locked={true}
 
@@ -42,7 +65,37 @@ export default class SettingScreen extends React.Component {
 
             </ScrollableTabView>
 
-        </View>
+       
+
+        <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {alert("Modal has been closed.")}}>
+           <Container>
+              <View style={[styles.headerView,{backgroundColor:Colors.white}]}>
+                <View style={[styles.navbarview,{backgroundColor:Colors.white}]}>
+                  <View style={{flex:1}}>
+                    <Button transparent iconLeft onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>
+                      <MaterialCommunityIcons name="close" size={28} style={{color:'rgb(102,102,102)'}}/>
+                    </Button>
+                  </View>
+                  <View>
+                      <Text style={[Fonts.style.h1,Fonts.style.textGrey,{textAlign:'center',marginTop:5}]}> SEARCH </Text>
+                  </View>
+                  <View style={{flex:1}}>
+                  <Button transparent>
+                      <Text></Text>
+                  </Button>
+                  </View>
+
+              </View>
+            </View>
+
+            <Search />
+
+        </Container>
+        </Modal>
       </Container>
     )
   }
@@ -340,12 +393,9 @@ class Monthly extends React.Component {
                 <Hr lineColor='rgb(234, 234, 234)'  />
               </View>
 
-              <View style={[styles.headerView, {marginLeft:20, marginRight:20}]}>
-                <Image source={Images.EmptySessions} style={{width : '100%', height : 188, resizeMode: 'contain',marginBottom:10}}>
-                    <View style={styles.navbarview}>
-                      <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}>EDIT PROFILE</Text>
-                    </View>
-                </Image>
+              <View style={{marginLeft:20, marginRight:20}}>
+                <Image source={Images.EmptySessions} style={{width : '100%', height : 188, resizeMode: 'contain',marginBottom:10}}/>
+                                    
                 <Text style={[Fonts.style.h3, Fonts.style.textCenter, Fonts.style.mt10]}>YOU DON’T HAVE ANY SESSIONS FOR THE SELECTED DATE</Text>
               </View>
           </View>
@@ -391,6 +441,8 @@ class Yearly extends React.Component {
              }
          }
      }
+
+
   render () {
     return (
       <Container>
@@ -459,10 +511,104 @@ class Yearly extends React.Component {
             </View>
             </ScrollView>
         </View>
+
       </Container>
 
 
 
     )
   }
+}
+
+class Search extends React.Component {
+  
+  constructor(props) {
+         super(props);
+         this.state = {
+             results: {
+                 items: [
+                   {
+                     "name" : "Ernest Woods",
+                     "image" : Images.user1,
+                     "location" : "BLOK London Gym",
+                     "bordered" : true,
+                   },
+                   {
+                     "name" : "Ernest Woods",
+                     "image" : Images.user2,
+                     "location" : "Equinox",
+                     "bordered" : true,
+                   },
+                   {
+                     "name" : "Ernest Woods",
+                     "image" : Images.user3,
+                     "location" : "Another Space Gym",
+                     "bordered" : false,
+                   },
+                   {
+                     "name" : "Ernest Woods",
+                     "image" : Images.user1,
+                     "location" : "BLOK London Gym",
+                     "bordered" : true,
+                   },
+                   {
+                     "name" : "Ernest Woods",
+                     "image" : Images.user2,
+                     "location" : "Equinox",
+                     "bordered" : false,
+                   },
+
+                 ]
+             }
+         }
+     }
+
+ render () {
+   return (
+          
+         <View style={{backgroundColor:Colors.white}}>
+            <StatusBar barStyle='dark-content' />
+            <View style={styles.searchView}>
+            <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
+                    <Input  style={Fonts.style.inputBordered} placeholder='SEARCH FOR A SESSION' placeholderTextColor={Fonts.colors.input}/>
+                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6,marginRight:5, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                  </View>
+            </View>
+            <Text style={styles.listViewTitle}>
+              Found 5 sessions
+            </Text>
+            <View style={styles.separater}>
+                <Hr lineColor={Colors.separetorLineColor}/>
+            </View>
+            <ScrollView style={{height:(width >= 325) ? 460 : 340}} horizontal={false}>
+            <View style={{}}>
+              <List dataArray={this.state.results.items} renderRow={(item) =>
+                  <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
+                  <Left>
+                    <Image source={item.image} style={( item.bordered === true ) ? Fonts.style.avatarBordered : Fonts.style.avatar}/>
+                  </Left>
+                  <Body style={{borderBottomWidth:0}}>
+                    <Text style={styles.username} note>{item.name}</Text>
+                    <Text style={styles.location} note><FontAwesome name='map-marker' style={{color:"rgb(172, 14, 250)", paddingRight : 10, fontSize:15}} /> {item.location}</Text>
+                    <View style={{marginTop:10, flexDirection:'row'}}>
+                       <Button rounded small style={Fonts.style.categoryTag}><Text style={Fonts.style.categoryTagText}>Yoga</Text></Button>
+                       <Button rounded small style={Fonts.style.categoryTagGray}><Text style={Fonts.style.categoryTagText}>Cardio</Text></Button>
+                    </View>
+                  </Body>
+                  <Right style={{borderBottomWidth:0, alignItems:'center'}}>
+                    <Text style={styles.time} >09:46 AM</Text>
+                      <Icon name="ios-arrow-round-down" style={{fontSize:32, color:'rgb(221,221, 221)', fontWeight:'bold'}} />
+                    <Text style={styles.time} >03:46 AM</Text>
+                  </Right>
+
+                  </ListItem>
+              } />
+            </View>
+            </ScrollView>
+         </View>
+
+
+
+   )
+ }
 }
