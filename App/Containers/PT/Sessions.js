@@ -580,7 +580,7 @@ class Search extends React.Component {
             <View style={styles.separater}>
                 <Hr lineColor={Colors.separetorLineColor}/>
             </View>
-            <ScrollView style={{height:(width >= 325) ? 460 : 340}} horizontal={false}>
+            <ScrollView style={{height:(width >= 325) ? 460 : 380}} horizontal={false}>
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>

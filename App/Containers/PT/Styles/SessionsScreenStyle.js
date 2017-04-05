@@ -230,7 +230,9 @@ export default EStyleSheet.create({
     backgroundColor:Colors.background,
     height:85,
     alignItems:'center',
-
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      height:65,
+    },
   },
   navbarview: {
     marginTop:30,
@@ -250,6 +252,10 @@ searchView : {
     paddingRight:20,
     marginTop:5,
     marginBottom : 22,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      marginTop:0,
+      marginBottom : 10,
+    },
   },
   listViewTitle: {
     marginBottom:5,
