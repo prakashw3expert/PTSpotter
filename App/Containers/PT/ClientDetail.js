@@ -115,7 +115,7 @@ class AddNote extends React.Component {
     return (
 
           <View style={styles.bottomview}>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:5, height:45}]}>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:(width >= 325) ? 0 : 7.5,marginTop:(width >= 325) ? 0 : 7.5, height:45}]}>
                 <Input style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
                 <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
               </View>
@@ -129,7 +129,7 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-      <ScrollView style={{height:(width >= 325) ? 200 : 210, marginBottom : (width >= 325) ? 77 : 50}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 325) ? 200 : 210, marginBottom : (width >= 325) ? 77 : 60}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
 
           <Card style={Fonts.style.commnetBox}>
