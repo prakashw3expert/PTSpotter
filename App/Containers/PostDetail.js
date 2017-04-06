@@ -19,7 +19,7 @@ like() {
   render () {
     return (
       <Container>
-      <StatusBar barStyle='ligth-content' />
+      <StatusBar barStyle='light-content' />
       <Content>
           <View style={styles.headerView}>
             <Image source={Images.blogImage} style={styles.postImage}>
