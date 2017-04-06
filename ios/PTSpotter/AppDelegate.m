@@ -24,8 +24,13 @@
                                                       moduleName:@"PTSpotter"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
+  rootView.loadingViewFadeDuration = 0.25;
+  rootView.loadingViewFadeDelay = 0.25;
+  UIView* loadingView = [[[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil] firstObject];
+  loadingView.frame = CGRectMake(0, 0, self.window.frame.size.width, self.window.frame.size.height);
+  rootView.loadingView = loadingView;
+  
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
