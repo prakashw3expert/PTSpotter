@@ -266,6 +266,31 @@ searchView : {
     letterSpacing:0.6,
     lineHeight:23
   },
+  filtertitles:{
+    marginTop:(width >=325) ? 20 : 10,
+    fontFamily:Fonts.type.bold,
+    color:Colors.whiteMuted,
+    fontSize:10,
+    textAlign:'center',
+    letterSpacing:0.5,
+  },
 
-
+  buttonsView: {
+    flexDirection : 'row',
+    flex : 1,
+    justifyContent : 'flex-start',
+    marginTop : 15,
+    marginLeft:20,
+    marginBottom : 20
+  },
+  applyBtnView:{
+    justifyContent:'center',
+    padding:20
+  },
+  applyBtnText : {
+    color:Colors.subHeadingRegular,
+    fontSize:15.1,
+    fontFamily:Fonts.type.bold,
+    letterSpacing:1.9,
+  },
 })

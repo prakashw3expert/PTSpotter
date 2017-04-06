@@ -10,14 +10,17 @@ import Styles from './Styles/NavigationDrawerStyles'
 ********************/
 
 class NavigationDrawer extends Component {
+
+
   render () {
     const state = this.props.navigationState
     const children = state.children
+    
     return (
       <Drawer
         ref='navigation'
         type='overlay'
-        onOpen={() => NavigationActions.refresh({key: state.key, open: true})}
+        onOpen={() => NavigationActions.refresh({key: state.key, open: true })}
         onClose={() => NavigationActions.refresh({key: state.key, open: false})}
         openDrawerOffset={.3}
         closedDrawerOffset={0}

@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { ScrollView, Image, BackAndroid, View , TouchableOpacity} from 'react-native'
+import { ScrollView, Image, BackAndroid, View , TouchableOpacity,AsyncStorage} from 'react-native'
 import styles from './Styles/DrawerContentStyles'
 
 import DrawerButton from '../Components/DrawerButton'
@@ -13,6 +13,12 @@ import { Images,Fonts } from '../Themes'
 
 class DrawerContent extends Component {
 
+  constructor() {
+      super();
+      this.state = {
+         'user': ''
+      }
+   }
   componentDidMount () {
     BackAndroid.addEventListener('hardwareBackPress', () => {
       if (this.context.drawer.props.open) {
@@ -22,7 +28,7 @@ class DrawerContent extends Component {
       return false
     })
   }
-
+  
   toggleDrawer () {
     this.context.drawer.toggle()
   }
@@ -77,6 +83,9 @@ class DrawerContent extends Component {
   render () {
     let imageView;
     imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/>
+
+    let searchView;
+    searchView = (this.props.userIs === 'client') ? <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} /> : <DrawerButton icon='md-search' text='PT Search'  onPress={this.handlePressPTSearch} />
     return (
       <ScrollView style={styles.container}>
 
@@ -97,8 +106,7 @@ class DrawerContent extends Component {
       <View style={styles.nav}>
           <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
           <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressInbox} />
-          <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} />
-          <DrawerButton icon='md-search' text='PT Search'  onPress={this.handlePressPTSearch} />
+          {searchView}
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
           <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
           <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Keyboard,
-  LayoutAnimation,StatusBar
+  LayoutAnimation,StatusBar,AsyncStorage
 } from 'react-native'
 import Hr from 'react-native-hr'
 import {
@@ -99,7 +99,14 @@ class LoginScreen extends React.Component {
   handleChangePassword = (text) => {
     this.setState({ password: text })
   }
-
+  handleLoginClient() {
+    AsyncStorage.setItem('user', 'client');
+    Actions.clientHome()
+  }
+  handleLoginTrainer() {
+    AsyncStorage.setItem('user', 'trainer');
+    Actions.homeScreen()
+  }
   render () {
     const { username, password } = this.state
     const { fetching } = this.props
@@ -113,24 +120,14 @@ class LoginScreen extends React.Component {
         <TouchableOpacity onPress={Actions.pop} style={{height:40, flex:.5}}>
             <FontAwesome name='angle-left' style={{fontSize:32, color : Colors.white}}/>
         </TouchableOpacity>
-        <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
+        <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>TEMPORARY SCREEN (WILL BE REMOVED)</Text>
         </View>
-        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
+        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>FOR SEPARTING THE CLIENT AND PT SCREENS FROM HERE</Text>
       </View>
-
-        <Item rounded style={Fonts.style.inputWrapper}>
-            <Icon name='mail' style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
-            <Input  style={Fonts.style.input} placeholder='EMAIL' placeholderTextColor={Fonts.colors.input}/>
-        </Item>
-
-        <Item rounded style={Fonts.style.inputWrapper}>
-              <Icon name='lock'style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
-              <Input  style={Fonts.style.input} placeholder='PASSWORD' placeholderTextColor={Fonts.colors.input}/>
-        </Item>
-
+        
         <View style={Fonts.style.mt15}>
-          <Button light full rounded style={Fonts.style.default}  onPress={Actions.temp}>
-              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA EMAIL</Text>
+          <Button light full rounded style={Fonts.style.default}  onPress={this.handleLoginClient.bind(this)}>
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN AS CLIENT</Text>
           </Button>
         </View>
 
@@ -139,17 +136,11 @@ class LoginScreen extends React.Component {
         </View>
 
         <View>
-          <Button light full rounded style={Fonts.style.facebook}>
-              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
+          <Button light full rounded style={Fonts.style.default} onPress={this.handleLoginTrainer.bind(this)}>
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN AS TRAINER</Text>
           </Button>
         </View>
 
-        <View style={Styles.foooter}>
-          <Text style={Styles.footeText}> Register as</Text>
-            <TouchableOpacity onPress={Actions.signup}>
-              <Text style={Styles.footeLink}> Personal Trainer </Text>
-            </TouchableOpacity>
-        </View>
 
       </ScrollView>
     )
@@ -168,55 +159,5 @@ const mapDispatchToProps = (dispatch) => {
     attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
   }
 }
-/*<View style={Styles.form}>
-          <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>Username</Text>
-            <TextInput
-              ref='username'
-              style={textInputStyle}
-              value={username}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='next'
-              autoCapitalize='none'
-              autoCorrect={false}
-              onChangeText={this.handleChangeUsername}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={() => this.refs.password.focus()}
-              placeholder='Username' />
-          </View>
-
-          <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>Password</Text>
-            <TextInput
-              ref='password'
-              style={textInputStyle}
-              value={password}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='go'
-              autoCapitalize='none'
-              autoCorrect={false}
-              secureTextEntry
-              onChangeText={this.handleChangePassword}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={this.handlePressLogin}
-              placeholder='Password' />
-          </View>
-
-          <View style={[Styles.loginRow]}>
-            <TouchableOpacity style={Styles.loginButtonWrapper} onPress={this.handlePressLogin}>
-              <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>Sign In</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.loginButtonWrapper} onPress={NavigationActions.pop}>
-              <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>Cancel</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-        */
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)

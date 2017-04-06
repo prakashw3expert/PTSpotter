@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView,Dimensions,Modal, Text, Image, View,StatusBar } from 'react-native'
+import { ScrollView,Dimensions,Modal, Text, Image, View,StatusBar,TouchableOpacity,PickerIOS } from 'react-native'
 import {Container,Content,Input, TabHeading, Badge,List, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
-
+import ModalPopup from 'react-native-simple-modal';
 import { Images, Colors, Fonts } from '../../Themes'
 import NavItems from '../../Navigation/NavItems'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -11,16 +11,21 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const { width, height } = Dimensions.get('window')
+var PickerItemIOS = PickerIOS.Item;
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 
 export default class SettingScreen extends React.Component {
   state = {
     modalVisible: false,
+    filterVisible : false,
   }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
+  }
+  setfilterVisible(visible) {
+    this.setState({filterVisible: visible});
   }
   render () {
 
@@ -95,8 +100,45 @@ export default class SettingScreen extends React.Component {
 
             <Search />
 
+            <Button onPress={() => {this.setfilterVisible(!this.state.filterVisible)}}
+                  style={Fonts.style.filterbutton}>
+              <MaterialCommunityIcons name="filter-outline" size={28} size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
+          </Button>
         </Container>
+
+            <Modal
+              animationType={"slide"}
+              transparent={false}
+              visible={this.state.filterVisible}
+              onRequestClose={() => {alert("Modal has been closed.")}}>
+               <Container>
+               <StatusBar barStyle='light-content' />
+                  <View style={[styles.headerView,{backgroundColor:Colors.background}]}>
+                <View style={[styles.navbarview,{backgroundColor:Colors.background}]}>
+                  <View style={{flex:1}}>
+                    <Button transparent iconLeft onPress={() => {this.setfilterVisible(!this.state.filterVisible)}}>
+                      <MaterialCommunityIcons name="close" size={28} style={{color:'rgb(255,255,255)'}}/>
+                    </Button>
+                  </View>
+                  <View>
+                      <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',marginTop:5}]}> FILTER </Text>
+                  </View>
+                  <View style={{flex:1}}>
+                  <Button transparent>
+                      <Text></Text>
+                  </Button>
+                  </View>
+
+              </View>
+            </View>
+
+                <Filter />
+
+            </Container>
+          </Modal>
+
         </Modal>
+
       </Container>
     )
   }
@@ -292,7 +334,7 @@ class Daily extends React.Component {
               <Hr lineColor='rgb(234, 234, 234)'  />
             </View>
 
-            <ScrollView style={{height:(width >= 325) ? 405 : 380}} horizontal={false}>
+            <ScrollView style={{height:(width >= 325) ? 405 : 350}} horizontal={false}>
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
@@ -607,6 +649,205 @@ class Search extends React.Component {
             </View>
             </ScrollView>
          </View>
+
+   )
+ }
+}
+
+class Filter extends React.Component {
+
+         state = {
+              dateOpen : false,
+              dateModalVisible : false,
+              monthOpen : false,
+              monthModalVisible : false,
+              yearOpen : false,
+              yearModalVisible : false,
+         }
+     
+
+ render () {
+
+  var days = [];
+    var monthArray = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var years =[];
+    var months = [];
+    for(i = 1; i <= 31; i++) {
+      
+      days.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
+    }
+
+    for(i = 0; i < 12; i++) {
+      
+      months.push(<PickerItemIOS key={monthArray[i]} value={monthArray[i]} label={monthArray[i]} />)
+    }
+
+    for(i = 2017; i < 2030; i++) {
+      
+      years.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
+    }
+   return (
+
+         <ScrollView style={{backgroundColor:Colors.background}}>
+
+
+              <Text style={styles.filtertitles}>
+                SESSION’S TYPE
+              </Text>
+              <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5,marginBottom:10,marginLeft :20,marginRight:20,}]}>
+                      <Input  style={Fonts.style.inputBordered} placeholder='Upcoming ' placeholderTextColor={Fonts.colors.input}/>
+                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:10,marginRight : (width > 325) ? 10 : 10, backgroundColor:'transparent'}} />
+                </View>
+
+
+              <Text style={styles.filtertitles}>
+              GYM NAME
+              </Text>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45, borderRadius:30}]}>
+                <Input  style={Fonts.style.inputBordered} placeholder='Gym Name' placeholderTextColor={Fonts.colors.input}/>
+              </View>
+
+              <Text style={styles.filtertitles}>
+              DATE
+              </Text>
+              <View style={{marginTop:10,marginBottom:10, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
+
+                  <TouchableOpacity onPress={() => this.setState({dateOpen: true})}>
+                    <View style={styles.selectBox} >
+                      <Text style={styles.selectBoxText}> Day </Text>
+                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                    </View>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={() => this.setState({monthOpen: true})}>
+                    <View style={styles.selectBox} >
+                      <Text style={styles.selectBoxText}> Month </Text>
+                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                    </View>
+                  </TouchableOpacity>
+                   
+                  <TouchableOpacity onPress={() => this.setState({yearOpen: true})}>
+                    <View style={styles.selectBox} >
+                      <Text style={styles.selectBoxText}> Year </Text>
+                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                    </View>
+                  </TouchableOpacity>
+                  
+                </View>
+              
+            <Text style={styles.filtertitles}>
+              WORKOUTS
+            </Text>
+
+            <View style={styles.buttonsView}>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Yoga</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Cardio</Text></Button>
+                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'transparent',borderWidth:2,borderColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
+
+              </View>
+
+
+            <View style={styles.horizontalRow}>
+             <Hr lineColor='rgba(255,255,255,0.5)'/>
+            </View>
+
+            <View style={styles.applyBtnView}>
+                <Button rounded block style={{marginTop:20,marginBottom:10,marginLeft:20,marginRight:20,backgroundColor:'white', height:57}}>
+                    <Text style={styles.applyBtnText}> APPLY</Text>
+                </Button>
+            </View>
+
+            <ModalPopup
+                offset={this.state.offset}
+                open={this.state.dateOpen}
+                overlayBackground={Colors.popupoverlayBackground}
+                modalDidOpen={() => console.log('modal did open')}
+                modalDidClose={() => this.setState({dateOpen: false})}
+                style={{alignItems: 'center'}}>
+                <View>
+                  <View style={{flexDirection:'row',alignItems:'center'}}>
+                      <Text style={{marginLeft:20,flex:1}}></Text>
+                      <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:(width >= 325) ? 16 : 13}]}>SELECT DAY</Text>
+                      <View style={{flexDirection:'row',alignItems:'flex-end'}}>
+                      <Button transparent onPress={() => this.setState({dateOpen: false})} >
+                          <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
+                      </Button>
+                      </View>
+                  </View>
+                <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
+                  <PickerIOS
+                    selectedValue={10}
+                    itemStyle={styles.pickerStyle}
+                    onValueChange={(day) => this.setState({day, modelIndex: 0})}>
+                        
+                    {days}
+                          
+                  </PickerIOS>
+                </View>
+                </View>
+              </ModalPopup>
+
+              <ModalPopup
+                offset={this.state.offset}
+                open={this.state.monthOpen}
+                overlayBackground={Colors.popupoverlayBackground}
+                modalDidOpen={() => console.log('modal did open')}
+                modalDidClose={() => this.setState({dateOpen: false})}
+                style={{alignItems: 'center'}}>
+                <View>
+                  <View style={{flexDirection:'row',alignItems:'center'}}>
+                      <Text style={{marginLeft:20,flex:1}}></Text>
+                      <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:(width >= 325) ? 16 : 13}]}>SELECT MONTH</Text>
+                      <View style={{flexDirection:'row',alignItems:'flex-end'}}>
+                      <Button transparent onPress={() => this.setState({monthOpen: false})} >
+                          <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
+                      </Button>
+                      </View>
+                  </View>
+                <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
+                  <PickerIOS
+                    selectedValue={'January'}
+                    itemStyle={[styles.pickerStyle,{width:200}]}
+                    onValueChange={(month) => this.setState({month, modelIndex: 0})}>
+                        
+                    {months}
+                          
+                  </PickerIOS>
+                </View>
+                </View>
+              </ModalPopup>
+
+              <ModalPopup
+                offset={this.state.offset}
+                open={this.state.yearOpen}
+                overlayBackground={Colors.popupoverlayBackground}
+                modalDidOpen={() => console.log('modal did open')}
+                modalDidClose={() => this.setState({yearOpen: false})}
+                style={{alignItems: 'center'}}>
+                <View>
+                  <View style={{flexDirection:'row',alignItems:'center'}}>
+                      <Text style={{marginLeft:20,flex:1}}></Text>
+                      <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:(width >= 325) ? 16 : 13}]}>SELECT YEAR</Text>
+                      <View style={{flexDirection:'row',alignItems:'flex-end'}}>
+                      <Button transparent onPress={() => this.setState({yearOpen: false})} >
+                          <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
+                      </Button>
+                      </View>
+                  </View>
+                <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
+                  <PickerIOS
+                    selectedValue={2017}
+                    itemStyle={styles.pickerStyle}
+                    onValueChange={(year) => this.setState({year, modelIndex: 0})}>
+                        
+                    {years}
+                          
+                  </PickerIOS>
+                </View>
+                </View>
+              </ModalPopup>
+
+         </ScrollView>
 
 
 

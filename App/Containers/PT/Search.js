@@ -95,10 +95,10 @@ class ListView extends React.Component {
 
          <Content>
             <View style={styles.searchView}>
-            <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
-                    <Input  style={Fonts.style.inputBordered} placeholder='SEARCH FOR CLIENT ' placeholderTextColor={Fonts.colors.input}/>
-                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
-                  </View>
+              <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
+                      <Input  style={Fonts.style.inputBordered} placeholder='SEARCH FOR CLIENT ' placeholderTextColor={Fonts.colors.input}/>
+                      <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                </View>
             </View>
 
             <DataListView />

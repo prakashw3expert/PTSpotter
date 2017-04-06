@@ -10,7 +10,9 @@ import LaunchScreen from '../Containers/Landing'
 import SelectType from '../Containers/SelectType'
 import LoginScreen from '../Containers/LoginScreen'
 import SignUpScreen from '../Containers/SignUpScreen'
-import HomeScreen from '../Containers/Home'
+import TempScreen from '../Containers/TempScreen'
+import HomeScreen from '../Containers/PT/Home'
+import ClientHome from '../Containers/Client/ClientHome'
 import EditProfile from '../Containers/EditProfile'
 import MobileVerification from '../Containers/MobileVerification'
 import PostDetail from '../Containers/PostDetail'
@@ -42,9 +44,11 @@ class NavigationRouter extends Component {
             <Scene initial key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene key='selectType' component={SelectType} title='PT SPOTTER'  />
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
+            <Scene key='temp' component={TempScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='mobile' component={MobileVerification} title='Verification' hideNavBar/>
             <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
+            <Scene key='clientHome' component={ClientHome} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
             <Scene key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
