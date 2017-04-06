@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch,Dimensions,Modal,TouchableHighlight,Slider } from 'react-native'
+import { ScrollView, Text,StatusBar, Image, View,Switch,Dimensions,Modal,TouchableHighlight,Slider } from 'react-native'
 import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Tabs,Tab,TabHeading, } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -16,6 +16,7 @@ export default class MessageScreen extends React.Component {
     return (
 
         <Container>
+        <StatusBar barStyle='light-content' />
           <View style={styles.headerView}>
             <View style={styles.navbarview}>
               <View style={{flex:1}}>

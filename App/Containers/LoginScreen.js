@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Keyboard,
-  LayoutAnimation
+  LayoutAnimation,StatusBar
 } from 'react-native'
 import Hr from 'react-native-hr'
 import {
@@ -107,6 +107,7 @@ class LoginScreen extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
+      <StatusBar barStyle='light-content' />
       <View style={[Styles.topHeading]}>
         <View style={Styles.navigationbar} >
         <TouchableOpacity onPress={Actions.pop} style={{height:40, flex:.5}}>

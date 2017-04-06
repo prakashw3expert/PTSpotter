@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity } from 'react-native'
+import { ScrollView, Text, Image, View,TouchableOpacity,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Card,CardItem, Switch,Left, Right, ListItem } from 'native-base';
 
 import { Images,Fonts,Metrics } from '../../Themes'
@@ -36,7 +36,7 @@ constructor(props) {
     return (
 
         <Container>
-
+          <StatusBar barStyle='light-content' />
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader} style={{height:96}}>
                     <View style={styles.navbarview}>

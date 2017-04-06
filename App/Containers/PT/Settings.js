@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS } from 'react-native'
+import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
 import { Container, Content, Input,
   Form, Item, Icon, List, ListItem, Right, Button, Body, Left, Grid, Col  } from 'native-base';
 
@@ -46,6 +46,7 @@ state = {
     return (
 
       <View style={styles.mainContainer}>
+      <StatusBar barStyle='light-content' />
         <ScrollView style={styles.container}>
             <View style={styles.mainView}>
                 <Form>

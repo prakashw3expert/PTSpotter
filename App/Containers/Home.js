@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Dimensions } from 'react-native'
+import { ScrollView,StatusBar, Text, Image, View,Dimensions } from 'react-native'
 import { Container, Content, Left,Icon, Body, Right, ListItem, Thumbnail,List,Button,Card, CardItem,Grid,Col, Badge } from 'native-base';
 
 import { Images, Fonts } from '../Themes'
@@ -20,6 +20,7 @@ export default class HomeScreen extends React.Component {
   render () {
     return (
       <View style={styles.mainContainer}>
+      <StatusBar barStyle='light-content' />
         <ScrollView style={styles.container}>
           <Sessions />
           <Schedule />

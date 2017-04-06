@@ -26,6 +26,7 @@ export default class SettingScreen extends React.Component {
 
     return (
       <Container>
+      <StatusBar barStyle='light-content' />
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>
                   <View style={{flex:1}}>

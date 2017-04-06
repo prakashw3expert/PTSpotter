@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity, Dimensions, } from 'react-native'
+import { ScrollView, Text, Image, View,TouchableOpacity, Dimensions,StatusBar } from 'react-native'
 import { Container,Content,Form,Button,Icon,ListItem,Grid,Col, Tabs, Tab, TabHeading,Input, Thumbnail,Body,Left,Right,Card, CardItem } from 'native-base';
 const { width, height } = Dimensions.get('window')
 import { Images,Fonts,Colors } from '../../Themes'
@@ -37,6 +37,7 @@ export default class TrainerDetail extends React.Component {
     return (
 
         <ScrollView scrollEnabled={false}>
+        <StatusBar barStyle='light-content' />
           <View>
 
               <View style={styles.headerView}>

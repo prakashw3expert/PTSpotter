@@ -5,7 +5,7 @@ import styles from './Styles/ChatScreenStyle'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Images,Colors,Fonts } from '../../Themes'
-import { ScrollView, Text, Image, View,Dimensions, } from 'react-native'
+import { ScrollView, Text, Image, View,Dimensions,StatusBar } from 'react-native'
 export default class ChatScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -109,6 +109,7 @@ renderBubble(props) {
     return (
 
       <Container>
+      <StatusBar barStyle='light-content' />
           
               <GiftedChat
                 messages={this.state.messages}

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Keyboard,
-  LayoutAnimation,Dimensions
+  LayoutAnimation,Dimensions,StatusBar
 } from 'react-native'
 import Hr from 'react-native-hr'
 const { width, height } = Dimensions.get('window')
@@ -119,6 +119,7 @@ class MobileVerification extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
+      <StatusBar barStyle='light-content' />
       <Content>
       <TouchableOpacity onPress={NavigationActions.pop}>
           <Ionicons name="ios-arrow-back" size={28} color="rgb(255,255,255)" style={{marginTop :-2}}/>

@@ -1,12 +1,8 @@
 
 
 import React from 'react'
-import { ScrollView,Text, Image, View,TouchableHighlight,Dimensions } from 'react-native'
-import { Container, Content,Input,
-  Form,Item, Left,Icon,
-  Body, Right, ListItem,
-  Thumbnail,List,Button,
-  Card, CardItem,Label,Grid,Col, Badge } from 'native-base';
+import { ScrollView,Text, Image, View,TouchableHighlight,Dimensions,StatusBar } from 'react-native'
+import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thumbnail,List,Button,Card, CardItem,Label,Grid,Col, Badge } from 'native-base';
 const { width, height } = Dimensions.get('window')
 import { Images,Metrics,Fonts } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
@@ -23,6 +19,7 @@ like() {
   render () {
     return (
       <Container>
+      <StatusBar barStyle='ligth-content' />
       <Content>
           <View style={styles.headerView}>
             <Image source={Images.blogImage} style={styles.postImage}>

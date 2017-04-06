@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View, TouchableOpacity,Image,Dimensions,
+  View, TouchableOpacity,Image,Dimensions,StatusBar
 } from 'react-native';
 
 import {Button} from 'native-base';
@@ -21,6 +21,7 @@ class Landing extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar barStyle='dark-content' />
         <View style={styles.topHeading}>
             <Text style={[Fonts.style.h1, Fonts.style.textGrey, Fonts.style.mb25]}>PT SPOTTER</Text>
 

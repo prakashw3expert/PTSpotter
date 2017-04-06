@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS } from 'react-native'
+import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Grid,Col } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import DayButton from '../../Components/DayButton'
@@ -54,6 +54,7 @@ export default class AvailabilityScreen extends React.Component {
 
 
       <Container>
+      <StatusBar barStyle='light-content' />
       
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>

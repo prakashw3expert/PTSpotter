@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity,PickerIOS,Dimensions } from 'react-native'
+import { ScrollView, Text,StatusBar, Image, View,TouchableOpacity,PickerIOS,Dimensions } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Grid,Col, Switch,Left, Right, ListItem } from 'native-base';
 
 import { Images,Fonts,Colors } from '../Themes'
@@ -39,6 +39,7 @@ export default class EditProfile extends React.Component {
     return (
 
         <Content>
+        <StatusBar barStyle='light-content' />
           <View>
           <Form>
               <View style={styles.headerView}>

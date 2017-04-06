@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch,Dimensions,Modal,TouchableHighlight,Slider } from 'react-native'
+import { ScrollView, Text, Image, View,Switch,Dimensions,Modal,TouchableHighlight,Slider,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Grid,Col,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Tabs,Tab,TabHeading, } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -29,6 +29,7 @@ constructor(props) {
     return (
 
         <Container>
+        <StatusBar barStyle='light-content' />
       <View style={styles.headerView}>
         <View style={styles.navbarview}>
           <View style={{flex:1}}>
