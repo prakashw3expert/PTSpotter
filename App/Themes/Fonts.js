@@ -157,7 +157,7 @@ const style = {
     letterSpacing:3.8,
     height:(width >= 325) ? 45 : 40,
     color:colors.input,
-    width:"90%",
+    width: (width >= 325) ? "90%" : "87%",
     color: 'rgb(102,102,102)',
     paddingLeft: (width >= 325) ? 14 : 10
   },

@@ -81,7 +81,7 @@ export default EStyleSheet.create({
     flexDirection: 'row',
     bottom: 0,
     justifyContent: 'space-between',
-    height: (width >= 325) ? 77 : 50,
+    height: (width >= 325) ? 77 : 60,
     width:'100%'
   },
   commentDate: {

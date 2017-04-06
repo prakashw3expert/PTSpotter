@@ -38,7 +38,7 @@ export default class TrainerDetail extends React.Component {
 
         <ScrollView scrollEnabled={false}>
           <View>
-          
+
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader} style={{height:248}}>
 
@@ -58,7 +58,7 @@ export default class TrainerDetail extends React.Component {
                       </View>
 
                     </View>
-                    
+
                     <View style={styles.profileimage} >
                       <View>
                          <Image source={Images.user5} style={styles.userImage}/>
@@ -109,7 +109,7 @@ export default class TrainerDetail extends React.Component {
 
                     {
 
-                      (this.state.currentTab == 2) ? <AddNote /> : null 
+                      (this.state.currentTab == 2) ? <AddNote /> : null
                     }
               </View>
         </View>
@@ -129,7 +129,7 @@ class EmptyAbout extends React.Component {
             NO CURRENT NOTES AVAILABLE
           </Text>
       </View>
-      
+
     )
   }
 }
@@ -146,7 +146,7 @@ class EmptyNotes extends React.Component {
           <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
             NO CURRENT NOTES AVAILABLE
           </Text>
-          
+
       </View>
 
 
@@ -157,10 +157,10 @@ class EmptyNotes extends React.Component {
 class AddNote extends React.Component {
 
   render () {
-   
+
     return (
           <View style={styles.bottomview}>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:5, height:45}]}>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:(width >= 325) ? 0 : 7.5,marginTop:(width >= 325) ? 0 : 7.5, height:45}]}>
                 <Input style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
                 <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
               </View>
@@ -173,7 +173,7 @@ class NoteCard extends React.Component {
 
   render () {
     return (
-       <ScrollView style={{height:(width >= 375) ? 200 : 210,marginBottom : (width >= 325) ? 77 : 50}} showsVerticalScrollIndicator={false}>
+       <ScrollView style={{height:(width >= 375) ? 200 : 210,marginBottom : (width >= 325) ? 77 : 60}} showsVerticalScrollIndicator={false}>
       <View style={styles.notesView}>
           <Card style={Fonts.style.commnetBox}>
              <CardItem content style={{marginBottom:0, paddingBottom:0}}>
@@ -222,7 +222,7 @@ class AboutData extends React.Component {
     return (
 
           <ScrollView style={{height:(width >= 375) ? 370 : 270}} showsVerticalScrollIndicator={false}>
-          
+
           <View style={Fonts.style.mt15}>
 
              <Grid>
@@ -235,7 +235,7 @@ class AboutData extends React.Component {
                      </Text>
                   </Col>
               </Grid>
-        
+
             <Workouts />
 
         </View>
@@ -254,7 +254,7 @@ class Workouts extends React.Component {
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:16,marginBottom:10, height:35, backgroundColor:'rgb(31,199,116)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Yoga</Text></Button>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:16,marginBottom:10, height:35, backgroundColor:'rgb(178,178,178)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Cardio</Text></Button>
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:16,marginBottom:10, height:35, backgroundColor:'rgb(251,179,39)'}}><Text style={{fontSize:12, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
-                
+
                 <TouchableOpacity>
                     <View style={styles.selectBox} >
                       <Text style={styles.selectBoxText}> Show 6 More </Text>
@@ -268,7 +268,7 @@ class Workouts extends React.Component {
                   <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
               </Button>
               </View>
-              
+
           </View>
     )
   }
@@ -280,7 +280,7 @@ class Schedule extends React.Component {
     return (
 
       <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
-                    
+
           <View style={Fonts.style.mt5}>
             <Text style={[Fonts.style.h2, Fonts.style.mt20, {textAlign:'center'}]}> GYMS </Text>
             <Gyms />
@@ -310,7 +310,7 @@ class Availabilities extends React.Component {
                 <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
                 <Text style={[Fonts.style.subHeading]}>6:30 pm</Text>
             </Button>
-            
+
             <Button block bordered block large style={Fonts.style.grayButtonAvailability}>
                 <Text style={[Fonts.style.subHeading]}>9:45 am</Text>
                 <Icon name="ios-arrow-round-forward" style={{color:'rgb(102,102,102)', marginLeft:20,marginRight:20,}}/>
@@ -372,5 +372,3 @@ class PrivateAvailability extends React.Component {
     )
   }
 }
-
-

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/prakashsaini/Sites/ptspotter/PTSpotter/android/app/build/intermediates/res/merged/release/xml/preferences.xml",
+        "source": "/Users/prakashsaini/Sites/ptspotter/PTSpotter/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.42.0/res/xml/preferences.xml"
+    },
+    {
+        "merged": "/Users/prakashsaini/Sites/ptspotter/PTSpotter/android/app/build/intermediates/res/merged/release/xml/provider_paths.xml",
+        "source": "/Users/prakashsaini/Sites/ptspotter/PTSpotter/android/app/build/intermediates/exploded-aar/PTSpotter/react-native-image-picker/unspecified/res/xml/provider_paths.xml"
+    }
+]

@@ -15,6 +15,13 @@ const { width, height } = Dimensions.get('window')
 
 export default class PTSearch extends React.Component {
 
+  state = {
+    modalVisible: false,
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
  
   render () {
     return (
@@ -40,39 +47,7 @@ export default class PTSearch extends React.Component {
                   style={Fonts.style.filterbutton}>
               <MaterialCommunityIcons name="filter-outline" size={28} size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5,}}/>
           </Button>
-            
-        </View>
-    )
-  }
-}
-
-
-
-class ListView extends React.Component {
-
-state = {
-    modalVisible: false,
-  }
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
-
- render () {
-   return (
-
-         <Content>
-            <View style={styles.searchView}>
-            <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
-                    <Input  style={Fonts.style.inputBordered} placeholder='SEARCH FOR A PERSONAL TRAINER' placeholderTextColor={Fonts.colors.input}/>
-                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
-                  </View>
-            </View>
-
-            <DataListView />
-
-          
-           <Modal
+          <Modal
               animationType={"slide"}
               transparent={false}
               visible={this.state.modalVisible}
@@ -102,6 +77,29 @@ state = {
             </Container>
           </Modal>
             
+        </View>
+    )
+  }
+}
+
+
+
+class ListView extends React.Component {
+
+
+ render () {
+   return (
+
+         <Content>
+            <View style={styles.searchView}>
+            <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
+                    <Input  style={Fonts.style.inputBordered} placeholder='SEARCH FOR A PERSONAL TRAINER' placeholderTextColor={Fonts.colors.input}/>
+                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                  </View>
+            </View>
+
+            <DataListView />
+
          </Content>
 
 
