@@ -46,13 +46,6 @@ class LoginScreen extends React.Component {
     this.isAttempting = false
   }
 
-  componentWillReceiveProps (newProps) {
-    this.forceUpdate()
-    // Did the login attempt complete?
-    if (this.isAttempting && !newProps.fetching) {
-      NavigationActions.pop()
-    }
-  }
 
   componentWillMount () {
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
@@ -87,9 +80,11 @@ class LoginScreen extends React.Component {
 
   handlePressLogin = () => {
     const { username, password } = this.state
+    const { fetching } = this.props
     this.isAttempting = true
     // attempt a login - a saga is listening to pick it up from here.
-    this.props.attemptLogin(username, password)
+    this.props.attemptLogin(username, password);
+    Actions.homeScreen();
   }
 
   handleChangeUsername = (text) => {
@@ -115,21 +110,42 @@ class LoginScreen extends React.Component {
         </TouchableOpacity>
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
-        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
+        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER {this.props.username}</Text>
       </View>
 
         <Item rounded style={Fonts.style.inputWrapper}>
             <Icon name='mail' style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
-            <Input  style={Fonts.style.input} placeholder='EMAIL' placeholderTextColor={Fonts.colors.input}/>
+            <Input  style={Fonts.style.input}
+            placeholder='EMAIL'
+            placeholderTextColor={Fonts.colors.input}
+            keyboardType='default'
+            returnKeyType='next'
+            autoCapitalize='none'
+            autoCorrect={false}
+            onChangeText={this.handleChangeUsername}
+            underlineColorAndroid='transparent'
+            onSubmitEditing={() => this.refs.password.focus()}
+            />
         </Item>
 
         <Item rounded style={Fonts.style.inputWrapper}>
               <Icon name='lock'style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
-              <Input  style={Fonts.style.input} placeholder='PASSWORD' placeholderTextColor={Fonts.colors.input}/>
+              <Input
+              style={Fonts.style.input}
+              placeholder='PASSWORD'
+              placeholderTextColor={Fonts.colors.input}
+              editable={editable}
+              keyboardType='default'
+              returnKeyType='go'
+              autoCapitalize='none'
+              autoCorrect={false}
+              secureTextEntry
+              onChangeText={this.handleChangePassword}
+              />
         </Item>
 
         <View style={Fonts.style.mt15}>
-          <Button light full rounded style={Fonts.style.default}  onPress={Actions.temp}>
+          <Button light full rounded style={Fonts.style.default}  onPress={this.handlePressLogin}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA EMAIL</Text>
           </Button>
         </View>
@@ -159,7 +175,8 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.login.fetching
+    fetching: state.login.fetching,
+    username: state.login.username
   }
 }
 
@@ -168,55 +185,6 @@ const mapDispatchToProps = (dispatch) => {
     attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
   }
 }
-/*<View style={Styles.form}>
-          <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>Username</Text>
-            <TextInput
-              ref='username'
-              style={textInputStyle}
-              value={username}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='next'
-              autoCapitalize='none'
-              autoCorrect={false}
-              onChangeText={this.handleChangeUsername}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={() => this.refs.password.focus()}
-              placeholder='Username' />
-          </View>
 
-          <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>Password</Text>
-            <TextInput
-              ref='password'
-              style={textInputStyle}
-              value={password}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='go'
-              autoCapitalize='none'
-              autoCorrect={false}
-              secureTextEntry
-              onChangeText={this.handleChangePassword}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={this.handlePressLogin}
-              placeholder='Password' />
-          </View>
-
-          <View style={[Styles.loginRow]}>
-            <TouchableOpacity style={Styles.loginButtonWrapper} onPress={this.handlePressLogin}>
-              <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>Sign In</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.loginButtonWrapper} onPress={NavigationActions.pop}>
-              <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>Cancel</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-        */
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)

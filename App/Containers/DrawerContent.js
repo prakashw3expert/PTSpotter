@@ -11,6 +11,8 @@ import { Button, Text, Icon, ListItem, Left, Right, Body, Thumbnail,Badge } from
 
 import { Images,Fonts } from '../Themes'
 
+import { connect } from 'react-redux'
+
 class DrawerContent extends Component {
 
   constructor() {
@@ -28,7 +30,7 @@ class DrawerContent extends Component {
       return false
     })
   }
-  
+
   toggleDrawer () {
     this.context.drawer.toggle()
   }
@@ -85,7 +87,7 @@ class DrawerContent extends Component {
     imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/>
 
     let searchView;
-    searchView = (this.props.userIs === 'client') ? <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} /> : <DrawerButton icon='md-search' text='PT Search'  onPress={this.handlePressPTSearch} />
+    searchView = (this.props.username === 'client@ptspotter.co.uk') ? <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} /> : <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressPTSearch} />
     return (
       <ScrollView style={styles.container}>
 
@@ -96,7 +98,7 @@ class DrawerContent extends Component {
                     <Thumbnail source={Images.avatar} />
                 </Left>
                 <Body style={{borderBottomWidth:0}}>
-                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>Kumar Pratik</Text>
+                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>Kumar Pratik </Text>
                     <Text note style={Fonts.style.drawerUserText}>Bristol, BS4 5SS, UK</Text>
                     <Text note style={Fonts.style.drawerUserText}>Personal Trainer</Text>
                 </Body>
@@ -125,4 +127,10 @@ DrawerContent.contextTypes = {
   drawer: React.PropTypes.object
 }
 
-export default DrawerContent
+const mapStateToProps = (state) => {
+  return {
+    username: state.login.username
+  }
+}
+
+export default connect(mapStateToProps)(DrawerContent)
