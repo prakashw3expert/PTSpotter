@@ -10,7 +10,6 @@ import LaunchScreen from '../Containers/Landing'
 import SelectType from '../Containers/SelectType'
 import LoginScreen from '../Containers/LoginScreen'
 import SignUpScreen from '../Containers/SignUpScreen'
-import TempScreen from '../Containers/TempScreen'
 import HomeScreen from '../Containers/PT/Home'
 import ClientHome from '../Containers/Client/ClientHome'
 import EditProfile from '../Containers/EditProfile'
@@ -44,7 +43,6 @@ class NavigationRouter extends Component {
             <Scene initial key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene key='selectType' component={SelectType} title='PT SPOTTER'  />
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
-            <Scene key='temp' component={TempScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='mobile' component={MobileVerification} title='Verification' hideNavBar/>
             <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
