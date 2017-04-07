@@ -29,11 +29,6 @@ import ChatScreen from '../Containers/PT/ChatScreen'
 import Feedback from '../Containers/Client/Feedback'
 
 
-
-/* **************************
-* Documentation: https://github.com/aksonov/react-native-router-flux
-***************************/
-
 class NavigationRouter extends Component {
   render () {
     return (
@@ -57,7 +52,7 @@ class NavigationRouter extends Component {
             <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
             <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/>
             <Scene key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene key='ptsearch' component={PTSearch} title='PT SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='ptsearch' component={PTSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
             <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={false}/>
             <Scene key='feedback' component={Feedback} title='FEEDBACK' hideNavBar />

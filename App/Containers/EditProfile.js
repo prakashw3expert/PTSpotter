@@ -100,7 +100,6 @@ export default class EditProfile extends React.Component {
                         <Switch
                           onValueChange={(value) => this.setState({availabilityTrueSwitchIsOn: value})}
                           onTintColor="rgb(172,14,250)"
-                          thumbTintColor="#fff"
                           tintColor="#777777"
                           style={{marginRight:0}}
                           value={this.state.availabilityTrueSwitchIsOn} />
@@ -169,7 +168,7 @@ export default class EditProfile extends React.Component {
               </Modal>
 
           <Modal
-            offset={150}
+            offset={200}
             open={this.state.trainigOptionOpen}
             overlayBackground={Colors.popupoverlayBackground}
             modalDidOpen={() => console.log('modal did open')}

@@ -1,8 +1,8 @@
 
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
-
+const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   container : {
@@ -43,5 +43,12 @@ export default EStyleSheet.create({
   },
   iconStyle : {
     fontSize : 22, color: 'rgb(102,102,102)'
-  }
+  },
+  bottomLogoutView : {
+    position : 'absolute',
+    bottom : (width >= 325) ? -190 : -90,
+    right : 0,
+    left : 0,
+    height :0,
+  },
 })

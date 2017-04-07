@@ -1,7 +1,7 @@
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight, Modal,Dimensions } from 'react-native'
-import { Container, Content, Input,
+import { ScrollView, Text, Image, View, TouchableHighlight, Modal,Dimensions } from 'react-native'
+import { Container, Content, Input,Switch,
   Form, Item, Icon, List, ListItem, Right, Button, Body, Left  } from 'native-base';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -51,10 +51,10 @@ state = {
                         <Switch
                           onValueChange={(value) => this.setState({locationTrueSwitchIsOn: value})}
                           onTintColor="rgb(172,14,250)"
-                          thumbTintColor="#fff"
                           tintColor="#777777"
                           style={{marginRight:10}}
                           value={this.state.locationTrueSwitchIsOn} />
+                        
                     </ListItem>
                 
                     <Text style={[Fonts.style.h2,Fonts.style.ml20]}>

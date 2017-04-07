@@ -48,7 +48,7 @@ export default EStyleSheet.create({
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'center',
-    marginTop:'12.5%',
+    marginTop:'8%',
     '@media (min-width: 320) AND (max-width: 360)': {
       marginTop:'6%',
     },
