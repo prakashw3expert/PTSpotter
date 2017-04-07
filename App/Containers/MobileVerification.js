@@ -1,21 +1,8 @@
 import React, { PropTypes } from 'react'
-import {
-  View,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  Keyboard,
-  LayoutAnimation,Dimensions,StatusBar
-} from 'react-native'
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Image, Keyboard, LayoutAnimation, Dimensions, StatusBar } from 'react-native'
 import Hr from 'react-native-hr'
 const { width, height } = Dimensions.get('window')
-import { Container, Content,Input,Picker,
-  Form,Item, Left,Icon,
-  Body, Right, ListItem,
-  Thumbnail,List,Button,
-  Card, CardItem,Label } from 'native-base';
+import { Container, Content, Input, Picker, Form, Item, Left, Icon, Body, Right, ListItem, Thumbnail, List, Button, Card, CardItem, Label } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux'
 import Styles from './Styles/MobileVerificationStyles'

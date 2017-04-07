@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity,StatusBar } from 'react-native'
+import { ScrollView, Text, Image, View,TouchableOpacity,StatusBar,Dimensions } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Card,CardItem, Switch,Left, Right, ListItem } from 'native-base';
 
 import { Images,Fonts,Metrics } from '../../Themes'
@@ -12,7 +12,7 @@ import StarRating from 'react-native-star-rating';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Hr from 'react-native-hr'
-
+const { width, height } = Dimensions.get('window')
 export default class RatingScreen extends React.Component {
 
 constructor(props) {
@@ -79,7 +79,7 @@ constructor(props) {
 
               </View>
 
-              <Content style={{marginTop : 10}}>
+              <Content style={{marginTop : 10, marginBottom:(width >= 325 ? 90 : 70)}}>
                 <Card style={Fonts.style.ratingCards}>
                   <CardItem>
                       <Left>
@@ -175,6 +175,12 @@ constructor(props) {
              </Card>
 
               </Content>
+
+              <View style={styles.bottomview}>
+              <Button light full rounded style={Fonts.style.default} onPress={NavigationActions.feedback}>
+                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>WRITE A REVIEW</Text>
+              </Button>
+            </View>
         </Container>
 
     )

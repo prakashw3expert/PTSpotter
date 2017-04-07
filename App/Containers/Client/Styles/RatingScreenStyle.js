@@ -79,6 +79,22 @@ export default EStyleSheet.create({
     borderRightWidth : 0,
     borderTopWidth : 0,
   },
+   bottomview: {
+    borderTopWidth:1.5,
+    borderTopColor:'rgb(234,234,234)',
+    backgroundColor:'white',
+    position: 'absolute',
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems:'center',
+    height: 90,
+    width:'100%',
+    paddingLeft : 40,
+    paddingRight : 40,
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      height: 70,
+    },
+  },
 
 
 })

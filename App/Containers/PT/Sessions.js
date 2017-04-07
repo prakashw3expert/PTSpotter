@@ -15,7 +15,7 @@ var PickerItemIOS = PickerIOS.Item;
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 
-export default class SettingScreen extends React.Component {
+export default class Sessions extends React.Component {
   state = {
     modalVisible: false,
     filterVisible : false,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View, TouchableOpacity,Image,Dimensions,
+  View, TouchableOpacity,TouchableHighlight,Image,Dimensions,
 } from 'react-native';
 
 // import { Icon } from 'react-native-vector-icons'
@@ -19,6 +19,21 @@ const { width, height } = Dimensions.get('window')
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class SelectType extends Component {
+
+  swiper:Object;
+currentIndex:number;
+
+componentWillReceiveProps(nextProps) {
+if (this.currentIndex > 0) {
+this.swiper.scrollBy(this.currentIndex * -1); //offset
+}
+}
+
+_onMomentumScrollEnd(e, state, context) {
+this.currentIndex = state.index;
+
+}
+
   render() {
     var heightRatio = (width <= 360) ?  0.65 :  0.65;
 
@@ -40,7 +55,9 @@ class SelectType extends Component {
         <Swiper style={styles.wrapper} height={height*heightRatio}
          dot={<View style={styles.dots} />}
          activeDot={<View style={styles.activeDot} />}
+         ref={component => this.swiper = component} onMomentumScrollEnd = {this._onMomentumScrollEnd.bind(this)}
          showsButtons={false}>
+          <TouchableHighlight>
                <View style={styles.slide}>
                       <Image
                         source={Images.cardBackground} style={styles.item}
@@ -52,6 +69,8 @@ class SelectType extends Component {
                       </Image>
 
                </View>
+          </TouchableHighlight>
+          <TouchableHighlight>
                <View style={styles.slide}>
                  <Image
                         source={Images.cardBackground} style={styles.item}
@@ -61,6 +80,7 @@ class SelectType extends Component {
                           <Text style={Fonts.style.cardText}> SEARCHING FOR CLIENTS </Text>
                       </Image>
                </View>
+          </TouchableHighlight>
 
         </Swiper>
       </View>

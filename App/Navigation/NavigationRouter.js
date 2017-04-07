@@ -15,7 +15,8 @@ import ClientHome from '../Containers/Client/ClientHome'
 import EditProfile from '../Containers/EditProfile'
 import MobileVerification from '../Containers/MobileVerification'
 import PostDetail from '../Containers/PostDetail'
-import Settings from '../Containers/PT/Settings'
+import ClientSettings from '../Containers/Client/Settings'
+import PTSettings from '../Containers/PT/Settings'
 import Availability from '../Containers/PT/Availability'
 import ClientDetail from '../Containers/PT/ClientDetail'
 import Sessions from '../Containers/PT/Sessions'
@@ -26,6 +27,7 @@ import ClientSearch from '../Containers/PT/Search'
 import PTSearch from '../Containers/Client/PTSearch'
 import Inbox from '../Containers/PT/Messages'
 import ChatScreen from '../Containers/PT/ChatScreen'
+import Decline from '../Containers/PT/Decline'
 import Feedback from '../Containers/Client/Feedback'
 
 
@@ -44,13 +46,15 @@ class NavigationRouter extends Component {
             <Scene key='clientHome' component={ClientHome} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
-            <Scene key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='ptsettings' component={PTSettings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='clientsettings' component={ClientSettings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='availability' component={Availability} title='AVAILABILITY' hideNavBar/>
             <Scene key='sessions' component={Sessions} title='SESSIONS' hideNavBar/>
             <Scene key='SetupSessions' component={SetupSessions} title='SETUP SESSIONS'  hideNavBar={true}/>
             <Scene key='clientDetails' component={ClientDetail} title='' hideNavBar/>
             <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
             <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/>
+            <Scene key='decline' component={Decline} title='Rating' hideNavBar/>
             <Scene key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='ptsearch' component={PTSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>

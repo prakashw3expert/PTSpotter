@@ -65,7 +65,12 @@ class DrawerContent extends Component {
 
   handlePressSettings = () => {
     this.toggleDrawer()
-    NavigationActions.settings()
+    NavigationActions.clientsettings()
+  }
+
+  handlePressPTSettings = () => {
+    this.toggleDrawer()
+    NavigationActions.ptsettings()
   }
 
   handleUserProfileClick = () => {
@@ -104,8 +109,10 @@ class DrawerContent extends Component {
 
     let availabilityBtn;
     availabilityBtn = (this.props.username === 'trainer@ptspotter.co.uk') ? <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} /> : null
+    let settingButton;
+    settingButton = (this.props.username === 'client@ptspotter.co.uk') ? <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} /> : <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressPTSettings} />
     return (
-      <ScrollView style={[styles.container,{height : height}]} >
+      <ScrollView style={[styles.container]} >
 
       <Image source={Images.menuTopBekground} style={styles.menuTopBekground}>
           <View style={styles.usesrDeatils}>
@@ -127,13 +134,12 @@ class DrawerContent extends Component {
           {searchBtn}
           <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
           {availabilityBtn}
-          <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
+          {settingButton}
 
       </View>
-
+      <View style={{backgroundColor:'rgb(255,113,113)',height:2,marginTop:10}}></View>
       <View style={styles.bottomLogoutView}>
-
-        <Button transparent block style={{borderTopWidth : 2,borderTopColor:'rgb(255,113,113)'}} onPress={this.handleLogout}>
+        <Button transparent block onPress={this.handleLogout}>
             <Text style={{fontSize : 16,fontFamily : Fonts.type.regular,letterSpacing : 1,color:'rgb(255,113,113)'}}> Log Out </Text>
         </Button>
       </View>

@@ -46,7 +46,7 @@ export default EStyleSheet.create({
   },
   bottomLogoutView : {
     position : 'absolute',
-    bottom : (width >= 325) ? -190 : -90,
+    bottom : 0,
     right : 0,
     left : 0,
     height :0,
