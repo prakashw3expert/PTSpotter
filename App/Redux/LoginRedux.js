@@ -24,11 +24,16 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 // we're attempting to login
-export const request = (state) => state.merge({ fetching: true })
+export const request = (state, { username, password }) => {
+  return state.merge({ fetching: true, password, username })
+}
 
 // we've successfully logged in
-export const success = (state, { username }) =>
-  state.merge({ fetching: false, error: null, username })
+export const success = (state, { username }) => {
+  return state.merge({ fetching: false, error: null, username })
+}
+
+
 
 // we've had a problem logging in
 export const failure = (state, { error }) =>

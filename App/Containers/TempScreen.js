@@ -124,7 +124,7 @@ class LoginScreen extends React.Component {
         </View>
         <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>FOR SEPARTING THE CLIENT AND PT SCREENS FROM HERE</Text>
       </View>
-        
+
         <View style={Fonts.style.mt15}>
           <Button light full rounded style={Fonts.style.default}  onPress={this.handleLoginClient.bind(this)}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN AS CLIENT</Text>
