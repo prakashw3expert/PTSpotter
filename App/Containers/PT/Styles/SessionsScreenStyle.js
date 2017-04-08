@@ -190,15 +190,15 @@ export default EStyleSheet.create({
     marginTop:10,
   },
  pickerStyle : {
-    fontSize: 32, 
-    letterSpacing:3.9, 
-    color: 'rgb(102,102,102)', 
-    textAlign: 'center', 
+    fontSize: 32,
+    letterSpacing:3.9,
+    color: 'rgb(102,102,102)',
+    textAlign: 'center',
     fontWeight: 'bold',
     width:100,
-     
+
     '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
-      
+
       fontSize: 28,
     },
   },
@@ -208,7 +208,7 @@ export default EStyleSheet.create({
     letterSpacing:2,
     lineHeight:18,
     color:'rgb(102,102,102)',
-    
+
   },
   bottomview: {
     borderTopWidth:1.5,
@@ -259,8 +259,17 @@ searchView : {
   },
   listViewTitle: {
     marginBottom:5,
-    fontFamily:Fonts.type.regular,
+    fontFamily:Fonts.type.subHeadingRegular,
     color:Colors.mutedColor,
+    fontSize:12,
+    textAlign:'center',
+    letterSpacing:0.6,
+    lineHeight:23
+  },
+  searchResult: {
+    marginBottom:5,
+    fontFamily:Fonts.type.bold,
+    color:Colors.subHeadingRegular,
     fontSize:12,
     textAlign:'center',
     letterSpacing:0.6,
@@ -281,7 +290,9 @@ searchView : {
     justifyContent : 'flex-start',
     marginTop : 15,
     marginLeft:20,
-    marginBottom : 20
+    marginBottom : 20,
+    flexWrap : 'wrap'
+
   },
   applyBtnView:{
     justifyContent:'center',
@@ -293,4 +304,5 @@ searchView : {
     fontFamily:Fonts.type.bold,
     letterSpacing:1.9,
   },
+
 })

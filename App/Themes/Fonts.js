@@ -552,6 +552,13 @@ const style = {
     top:0
   },
 
+  workoutBoxActive : {
+    paddingLeft:25, paddingRight:25,marginRight:15,marginBottom:15, height:50, backgroundColor:'white'
+  },
+  workoutBox : {
+    paddingLeft:25, paddingRight:25,marginRight:15,marginBottom:15, height:50, backgroundColor:'transparent',borderWidth:2,borderColor:'white'
+  }
+
 
 }
 
