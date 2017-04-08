@@ -17,8 +17,9 @@ import Modal from 'react-native-simple-modal';
 var PickerItemIOS = PickerIOS.Item;
 const { width, height } = Dimensions.get('window')
 
+import { connect } from 'react-redux'
 
-export default class SettingScreen extends React.Component {
+class SettingScreen extends React.Component {
 
 state = {
       open: false,
@@ -36,11 +37,11 @@ state = {
     var hours = [];
     var minutes = [];
     for(i = 0; i < 24; i++) {
-      
+
       hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     for(i = 0; i < 60; i++) {
-      
+
       minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     return (
@@ -64,11 +65,11 @@ state = {
                           style={{marginRight:10}}
                           value={this.state.locationTrueSwitchIsOn} />
                     </ListItem>
-                
+
                     <Text style={[Fonts.style.h2,Fonts.style.ml20,{marginTop : 20}]}>
                           ALERTS
                     </Text>
-                    
+
                     <ListItem style={{borderBottomWidth:0}} onPress={() => this.setState({open: true})}>
                         <Body>
                             <Text style={[Fonts.style.h2,styles.chooseText]}>
@@ -79,34 +80,36 @@ state = {
                     </ListItem>
                     <List style={Fonts.style.settingList}>
                     <ListItem >
-                        
+
                         <Text style={styles.listText}>10 Minutes Prior</Text>
                         <Right>
                           <MaterialCommunityIcons name="close" size={(width >= 375) ? 18 : 16} color="rgb(178,178,178)"/>
                         </Right>
                     </ListItem>
                     <ListItem>
-                        
+
                         <Text style={styles.listText}>1 Hour 12 Minutes Prior</Text>
                         <Right>
                           <MaterialCommunityIcons name="close" size={(width >= 375) ? 18 : 16} color="rgb(178,178,178)"/>
                         </Right>
                     </ListItem>
                     </List>
-                        
+
                     <Text style={[Fonts.style.h2,Fonts.style.ml20,{marginTop:20}]}>
                           GENERAL
                     </Text>
-                    
+
 
                     <List style={Fonts.style.settingList}>
-                    <ListItem >
+
+                    {(this.props.username === 'trainer@ptspotter.co.uk') ? <ListItem >
                         <Ionicons name="md-time" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Availability</Text>
                         <Right>
                           <Icon name="arrow-forward" />
                         </Right>
-                    </ListItem>
+                    </ListItem> : null}
+
                     <ListItem>
                         <MaterialCommunityIcons name="comment-text-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Leave Feedback</Text>
@@ -143,10 +146,10 @@ state = {
                         </Right>
                     </ListItem>
                     </List>
-                        
+
 
                       <View style={styles.bottomView}>
-                          <Button bordered rounded block style={{height: 57,borderColor:'rgb(255,113,113)', borderWidth:2,}}>
+                          <Button bordered rounded block style={{height: 57,borderColor:'rgb(255,113,113)', borderWidth:2,}} onPress={NavigationActions.login}>
                               <Text style={[Fonts.style.buttonText,{color:'rgb(255,113,113)'}]}> LOG OUT</Text>
                           </Button>
                       </View>
@@ -178,24 +181,24 @@ state = {
                                   <Text style={styles.textMinutes}> MINUTES </Text>
                                 </Col>
                             </Grid>
-                            
-                            
+
+
                           <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
                             <PickerIOS
                               selectedValue={3}
                               itemStyle={styles.pickerStyle}
                               onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
-                                  
+
                               {hours}
-                                    
+
                             </PickerIOS>
                             <PickerIOS
                               selectedValue={25}
                               itemStyle={styles.pickerStyle}
                               onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
-                                  
+
                               {minutes}
-                                    
+
                             </PickerIOS>
                           </View>
                             <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
@@ -203,7 +206,7 @@ state = {
                                   <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD</Text>
                               </Button>
                             </View>
-                            
+
                           </View>
                         </Modal>
                 </Form>
@@ -214,3 +217,10 @@ state = {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    username: state.login.username
+  }
+}
+
+export default connect(mapStateToProps)(SettingScreen)

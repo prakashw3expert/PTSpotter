@@ -492,6 +492,8 @@ const style = {
     color:'#fff',
     lineHeight:23,
     letterSpacing:1.5,
+    alignItems : 'center',
+    justifyContent : 'center'
   },
   ratingCards : {
     borderLeftWidth : 0,
