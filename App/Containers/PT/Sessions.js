@@ -50,7 +50,7 @@ export default class Sessions extends React.Component {
 
               </View>
           </View>
-          
+
             <ScrollableTabView
             locked={true}
 
@@ -71,7 +71,7 @@ export default class Sessions extends React.Component {
 
             </ScrollableTabView>
 
-       
+
 
         <Modal
           animationType={"slide"}
@@ -438,7 +438,7 @@ class Monthly extends React.Component {
 
               <View style={{marginLeft:20, marginRight:20}}>
                 <Image source={Images.EmptySessions} style={{width : '100%', height : 188, resizeMode: 'contain',marginBottom:10}}/>
-                                    
+
                 <Text style={[Fonts.style.h3, Fonts.style.textCenter, Fonts.style.mt10]}>YOU DON’T HAVE ANY SESSIONS FOR THE SELECTED DATE</Text>
               </View>
           </View>
@@ -564,7 +564,7 @@ class Yearly extends React.Component {
 }
 
 class Search extends React.Component {
-  
+
   constructor(props) {
          super(props);
          this.state = {
@@ -608,7 +608,7 @@ class Search extends React.Component {
 
  render () {
    return (
-          
+
          <View style={{backgroundColor:Colors.white}}>
             <StatusBar barStyle='dark-content' />
             <View style={styles.searchView}>
@@ -618,7 +618,7 @@ class Search extends React.Component {
                   </View>
             </View>
             <Text style={styles.listViewTitle}>
-              Found 5 sessions
+              Found <Text style={styles.searchResult}>5 sessions </Text>
             </Text>
             <View style={styles.separater}>
                 <Hr lineColor={Colors.separetorLineColor}/>
@@ -664,7 +664,7 @@ class Filter extends React.Component {
               yearOpen : false,
               yearModalVisible : false,
          }
-     
+
 
  render () {
 
@@ -673,17 +673,17 @@ class Filter extends React.Component {
     var years =[];
     var months = [];
     for(i = 1; i <= 31; i++) {
-      
+
       days.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
 
     for(i = 0; i < 12; i++) {
-      
+
       months.push(<PickerItemIOS key={monthArray[i]} value={monthArray[i]} label={monthArray[i]} />)
     }
 
     for(i = 2017; i < 2030; i++) {
-      
+
       years.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
    return (
@@ -695,7 +695,7 @@ class Filter extends React.Component {
                 SESSION’S TYPE
               </Text>
               <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5,marginBottom:10,marginLeft :20,marginRight:20,}]}>
-                      <Input  style={Fonts.style.inputBordered} placeholder='Upcoming ' placeholderTextColor={Fonts.colors.input}/>
+                      <Input  style={Fonts.style.inputBordered} placeholder='Upcoming ' placeholderTextColor={Colors.white}/>
                       <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:10,marginRight : (width > 325) ? 10 : 10, backgroundColor:'transparent'}} />
                 </View>
 
@@ -714,35 +714,36 @@ class Filter extends React.Component {
 
                   <TouchableOpacity onPress={() => this.setState({dateOpen: true})}>
                     <View style={styles.selectBox} >
-                      <Text style={styles.selectBoxText}> Day </Text>
+                      <Text style={[styles.selectBoxText, {color:Colors.white}]}> Day </Text>
                       <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={() => this.setState({monthOpen: true})}>
                     <View style={styles.selectBox} >
-                      <Text style={styles.selectBoxText}> Month </Text>
+                      <Text style={[styles.selectBoxText, {color:Colors.white}]}> Month </Text>
                       <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
-                   
+
                   <TouchableOpacity onPress={() => this.setState({yearOpen: true})}>
                     <View style={styles.selectBox} >
-                      <Text style={styles.selectBoxText}> Year </Text>
+                      <Text style={[styles.selectBoxText, {color:Colors.white}]}> Year </Text>
                       <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
-                  
+
                 </View>
-              
+
             <Text style={styles.filtertitles}>
               WORKOUTS
             </Text>
 
             <View style={styles.buttonsView}>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Yoga</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Cardio</Text></Button>
-                <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'transparent',borderWidth:2,borderColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
+                <Button rounded small style={Fonts.style.workoutBoxActive}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Yoga</Text></Button>
+                <Button rounded small style={Fonts.style.workoutBoxActive}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:Colors.subHeadingRegular}}>Cardio</Text></Button>
+                <Button rounded small style={Fonts.style.workoutBox}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
+                <Button rounded small style={Fonts.style.workoutBox}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Anaerobic</Text></Button>
 
               </View>
 
@@ -779,9 +780,9 @@ class Filter extends React.Component {
                     selectedValue={10}
                     itemStyle={styles.pickerStyle}
                     onValueChange={(day) => this.setState({day, modelIndex: 0})}>
-                        
+
                     {days}
-                          
+
                   </PickerIOS>
                 </View>
                 </View>
@@ -809,9 +810,9 @@ class Filter extends React.Component {
                     selectedValue={'January'}
                     itemStyle={[styles.pickerStyle,{width:200}]}
                     onValueChange={(month) => this.setState({month, modelIndex: 0})}>
-                        
+
                     {months}
-                          
+
                   </PickerIOS>
                 </View>
                 </View>
@@ -839,9 +840,9 @@ class Filter extends React.Component {
                     selectedValue={2017}
                     itemStyle={styles.pickerStyle}
                     onValueChange={(year) => this.setState({year, modelIndex: 0})}>
-                        
+
                     {years}
-                          
+
                   </PickerIOS>
                 </View>
                 </View>
