@@ -77,7 +77,7 @@ state = {
                               Choose the amount of time prior to any event you would like to be notified
                             </Text>
                         </Body>
-                        <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                        <FontAwesome name='angle-right' style={{fontSize:24,color:"rgba(102, 102, 102, 0.5)"}} />
                     </ListItem>
                     <List style={Fonts.style.settingList}>
                     <ListItem >
@@ -107,7 +107,7 @@ state = {
                         <Ionicons name="md-time" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Availability</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
                         </Right>
                     </ListItem> : null}
 
@@ -115,35 +115,35 @@ state = {
                         <MaterialCommunityIcons name="comment-text-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Leave Feedback</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialIcons name="help-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Support</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialCommunityIcons name="information-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>About</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <Ionicons name="md-list-box" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Terms of Service</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <SimpleLineIcons name="eye" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Privacy Policy</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
                         </Right>
                     </ListItem>
                     </List>
