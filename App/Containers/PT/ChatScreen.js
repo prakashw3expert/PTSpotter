@@ -1,9 +1,10 @@
 import React from 'react'
-import { GiftedChat, Bubble,MessageText } from 'react-native-gifted-chat';
+import { GiftedChat, Bubble,MessageText, InputToolbar, Composer } from 'react-native-gifted-chat';
 import { Container, Content, Button } from 'native-base';
 import styles from './Styles/ChatScreenStyle'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Images,Colors,Fonts } from '../../Themes'
 import { ScrollView, Text, Image, View,Dimensions,StatusBar } from 'react-native'
 export default class ChatScreen extends React.Component {
@@ -58,9 +59,9 @@ export default class ChatScreen extends React.Component {
             avatar: 'https://facebook.github.io/react/img/logo_og.png',
           },
         },
-        
-        
-        
+
+
+
       ],
     });
   }
@@ -87,7 +88,7 @@ renderBubble(props) {
       />
     );
   }
-  
+
   renderMessageText(props) {
     return (
       <MessageText
@@ -96,34 +97,98 @@ renderBubble(props) {
           left: {
             color: 'rgb(102,102,102)',
             letterSpacing : 0.1,
+            fontFamily : Fonts.type.regular,
+            fontSize : 14,
+
           },
           right: {
-            letterSpacing : 0.1
+            letterSpacing : 0.1,
+            fontFamily : Fonts.type.regular,
+            fontSize : 14,
+
           }
         }}
       />
     );
   }
+
+  renderInputToolbar(props) {
+    return (
+      <InputToolbar
+        {...props}
+        accessoryStyle={{
+          borderTopWidth : 2,
+          borderColor : Colors.separetorLineColor,
+        }}
+
+        textStyle={{
+          fontFamily : Fonts.type.regular,
+          fontSize  : 14,
+          color  : Colors.purpleColor
+        }}
+      />
+    );
+  }
+
+  renderComposer(props) {
+    return (
+      <Composer
+        {...props}
+        placeholder = "WRITE YOUR MESSAGE"
+        placeholderTextColor = {Colors.mutedColor}
+
+        textInputStyle={{
+          fontFamily : Fonts.type.regular,
+          fontSize  : 14,
+          lineHeight  : 23,
+          letterSpacing  : 1.8,
+          color  : Colors.mutedColor
+        }}
+      />
+    );
+  }
+
+
   render() {
 
     return (
-
       <Container>
       <StatusBar barStyle='light-content' />
-          
-              <GiftedChat
-                messages={this.state.messages}
-                onSend={this.onSend}
-                user={{
-                  _id: 1,
-                }}
-                renderBubble={this.renderBubble}
-                renderMessageText={this.renderMessageText}
-              />
-          
+      <View style={styles.headerView}>
+            <View style={styles.navbarview}>
+              <View style={{flex:.5,marginBottom:5}}>
+                <Button transparent iconLeft onPress={NavigationActions.pop}>
+                  <FontAwesome name='angle-left' style={{fontSize:28,color:"rgb(255, 255, 255)"}} />
+                </Button>
+              </View>
+              <View style={[styles.navbarCenterView,{marginBottom:5}]}>
+                  <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',flex:1}]}> Ernest Woods </Text>
+              </View>
+              <View style={{flex:.5,flexDirection:'row',justifyContent:'flex-end',}}>
+              <Button transparent onPress={() => this.setState({open: true})}>
+                  <Ionicons name="md-more" size={30} style={{color:'white',justifyContent:'center'}}/>
+              </Button>
+              </View>
+
+          </View>
+      </View>
+
+      <Container>
+          <GiftedChat
+          messages={this.state.messages}
+          onSend={this.onSend}
+          user={{
+          _id: 1,
+          }}
+          renderBubble={this.renderBubble}
+          renderMessageText={this.renderMessageText}
+          renderInputToolbar={this.renderInputToolbar}
+          renderComposer={this.renderComposer}
+          />
+      </Container>
       </Container>
 
-      
+
     );
   }
 }

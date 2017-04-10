@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView,Dimensions, Text, Image, View,TouchableOpacity,PickerIOS } from 'react-native'
+import { ScrollView,Dimensions, Text, Image, View,TouchableOpacity,Picker } from 'react-native'
 import {Container,Content, TabHeading, Badge,List,Input, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
 
 import { Images, Colors, Fonts, Metrics } from '../../Themes'
@@ -9,7 +9,7 @@ import styles from './Styles/SessionsScreenStyle'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-simple-modal';
-var PickerItemIOS = PickerIOS.Item;
+var PickerItemIOS = Picker.Item;
 import Hr from 'react-native-hr'
 const { width, height } = Dimensions.get('window')
 
@@ -53,17 +53,17 @@ export default class Daily extends React.Component {
     var years =[];
     var months = [];
     for(i = 1; i <= 31; i++) {
-      
+
       days.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
 
     for(i = 0; i < 12; i++) {
-      
+
       months.push(<PickerItemIOS key={monthArray[i]} value={monthArray[i]} label={monthArray[i]} />)
     }
 
     for(i = 2017; i < 2030; i++) {
-      
+
       years.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
 
@@ -107,33 +107,35 @@ export default class Daily extends React.Component {
                   <TouchableOpacity onPress={() => this.setState({dateOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={styles.selectBoxText}> 10 </Text>
-                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={() => this.setState({monthOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={styles.selectBoxText}> January </Text>
-                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
-                   
+
                   <TouchableOpacity onPress={() => this.setState({yearOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={styles.selectBoxText}> 2017 </Text>
-                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
-                  
+
                 </View>
               </View>
 
-              <View style={{marginTop:(width > 325) ? 40 : 30, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
+              {/*}<View style={{marginTop:(width > 325) ? 40 : 30, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
                  <Button rounded small style={Fonts.style.categoryTagLarge}><Text style={Fonts.style.categoryTagTextLarge}>Yoga</Text></Button>
                  <Button rounded small style={Fonts.style.categoryTagGrayLarge}><Text style={Fonts.style.categoryTagTextLarge}>Cardio</Text></Button>
                  <Button rounded small style={Fonts.style.categoryTagGreeLarge}><Text style={Fonts.style.categoryTagTextLarge}>Fartlek</Text></Button>
               </View>
-              
+
+              */ }
+
             </View>
 
             <SaveButton />
@@ -172,7 +174,7 @@ export default class Daily extends React.Component {
                    <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Yoga <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:10}}/></Text></Button>
                    <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
                 </View>
-                
+
             </View>
 
           </View>
@@ -197,14 +199,15 @@ export default class Daily extends React.Component {
                 </View>
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-            <PickerIOS
+            <Picker
               selectedValue={10}
+              style={{width : 80}}
               itemStyle={styles.pickerStyle}
               onValueChange={(day) => this.setState({day, modelIndex: 0})}>
-                  
+
               {days}
-                    
-            </PickerIOS>
+
+            </Picker>
           </View>
           </View>
         </Modal>
@@ -227,14 +230,15 @@ export default class Daily extends React.Component {
                 </View>
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-            <PickerIOS
+            <Picker
               selectedValue={'January'}
+              style={{width : 200}}
               itemStyle={[styles.pickerStyle,{width:200}]}
               onValueChange={(month) => this.setState({month, modelIndex: 0})}>
-                  
+
               {months}
-                    
-            </PickerIOS>
+
+            </Picker>
           </View>
           </View>
         </Modal>
@@ -257,14 +261,15 @@ export default class Daily extends React.Component {
                 </View>
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-            <PickerIOS
+            <Picker
               selectedValue={2017}
               itemStyle={styles.pickerStyle}
+              style={{width : 80}}
               onValueChange={(year) => this.setState({year, modelIndex: 0})}>
-                  
+
               {years}
-                    
-            </PickerIOS>
+
+            </Picker>
           </View>
           </View>
         </Modal>
@@ -283,7 +288,7 @@ class EmptyWorkouts extends React.Component {
           <View style={{marginTop:40,alignItems: 'center'}}>
             <Image source={Images.workoutEmpty} style={{height:172, width:218}} />
             <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
-              NO WORKOUTS FOR SELECTED DATE. 
+              NO WORKOUTS FOR SELECTED DATE.
             </Text>
 
             <Button transparent style={{marginTop:-12,alignSelf:'center'}}>

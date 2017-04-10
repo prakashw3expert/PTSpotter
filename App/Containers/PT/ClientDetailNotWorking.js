@@ -15,7 +15,9 @@ import styles from './Styles/ClientDetailStyle'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Hr from 'react-native-hr'
 
-export default class ClientDetail extends React.Component {
+
+
+export default class ClientDetailNotWorking extends React.Component {
 
 
 constructor(props) {
@@ -59,36 +61,15 @@ handleChangeTab({i, ref }) {
                     </View>
                 </Image>
 
+
+
               </View>
-
-
-              <ScrollableTabView
-              locked={false}
-              onChangeTab={this.handleChangeTab.bind(this)}
-              tabBarStyle={{borderWidth:0, height:46}}
-              tabBarBackgroundColor={'white'}
-              tabBarActiveTextColor={Colors.purpleColor}
-              tabBarInactiveTextColor={Colors.subHeadingRegular}
-              tabBarUnderlineStyle={styles.tabBorderSytel}
-              tabBarTextStyle={[styles.tabText]}
-              tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
-              renderTabBar={() => <DefaultTabBar />}>
-
-              <AboutData tabLabel='About'/>
-              <NoteCard tabLabel='Notes'/>
-
-            </ScrollableTabView>
-
-            {
-
-              (this.state.currentTab == 1) ? <AddNote /> : null
-            }
+              <AboutData />
             </Container>
 
     )
   }
 }
-
 
 
 
@@ -227,8 +208,8 @@ class WorkoutInterest extends React.Component {
               </View>
 
                 <View style={{marginTop:80, marginLeft:20, marginRight:20}}>
-                <Button light full rounded style={Fonts.style.red} >
-                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
+                <Button light full rounded style={Fonts.style.default} onPress={NavigationActions.SetupSessions} >
+                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
               </Button>
               </View>
           </View>
