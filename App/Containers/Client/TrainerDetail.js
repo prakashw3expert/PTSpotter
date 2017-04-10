@@ -68,19 +68,22 @@ export default class TrainerDetail extends React.Component {
                       <Text style={styles.username}> Aaron Castillo </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
                       <View onPress={() => alert('StarRating Pressed')}>
-                      <StarRating
-                        disabled={false}
-                        emptyStar={'ios-star-outline'}
-                        fullStar={'ios-star'}
-                        halfStar={'ios-star-half'}
-                        iconSet={'Ionicons'}
-                        maxStars={5}
-                        starSize={20}
-                        rating={this.state.starCount}
-                        selectedStar={(rating) => this.onStarRatingPress(rating)}
-                        starColor={'yellow'}
 
-                      />
+                      <StarRating
+                          disabled={false}
+                          emptyStar={'star-o'}
+                          fullStar={'star'}
+                          iconSet={'FontAwesome'}
+                          maxStars={5}
+                          starSize={20}
+                          rating={4}
+                          selectedStar={(rating) => this.onStarRatingPress(rating)}
+                          starColor='rgb(252, 221, 45)'
+                          emptyStarColor='rgb(252, 221, 45)'
+                        />
+
+
+                      
                       </View>
                       <Text style={styles.ratingtext}> Avg. rating from completed sessions </Text>
 

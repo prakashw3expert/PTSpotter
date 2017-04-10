@@ -24,7 +24,7 @@ export default EStyleSheet.create({
   flex:5,
   alignItems:'center',
   alignSelf:'stretch',
-  
+
   },
   userImage: {
     alignSelf:'center',
@@ -39,6 +39,7 @@ export default EStyleSheet.create({
     fontFamily : Fonts.type.bold,
     color : 'white',
     letterSpacing : 1.7,
+    marginBottom : 7
   },
   userAddress : {
     fontSize : Fonts.size.medium,
@@ -67,7 +68,9 @@ export default EStyleSheet.create({
     bottom: 0,
     justifyContent: 'space-between',
     height: (width >= 325) ? 77 : 60,
-    width:'100%'
+    width:'100%',
+    borderWidth : 2,
+    borderColor : Colors.separetorLineColor
   },
   commentDate: {
     fontFamily : Fonts.type.regular,
@@ -120,11 +123,11 @@ export default EStyleSheet.create({
     borderTopColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: Colors.purpleColor,
-    borderLeftColor: 'transparent',  
+    borderLeftColor: 'transparent',
     marginLeft:'15%',
-    marginRight:30, 
+    marginRight:30,
     width:'22%'
   },
-  
+
 
 })

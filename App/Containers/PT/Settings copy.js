@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar, Picker } from 'react-native'
+import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
 import { Container, Content, Input,
   Form, Item, Icon, List, ListItem, Right, Button, Body, Left, Grid, Col  } from 'native-base';
 
@@ -15,7 +15,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/SettingScreenStyle'
 import FullButton from '../../Components/FullButton'
 import Modal from 'react-native-simple-modal';
-var PickerItemIOS = Picker.Item;
+var PickerItemIOS = PickerIOS.Item;
 const { width, height } = Dimensions.get('window')
 
 import { connect } from 'react-redux'
@@ -39,11 +39,11 @@ state = {
     var minutes = [];
     for(i = 0; i < 24; i++) {
 
-      hours.push(<Picker.Item key={i} value={i} label={i.toString()} />)
+      hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     for(i = 0; i < 60; i++) {
 
-      minutes.push(<Picker.Item key={i} value={i} label={i.toString()} />)
+      minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     return (
 
@@ -183,25 +183,24 @@ state = {
                                 </Col>
                             </Grid>
 
+
                           <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
-                            <Picker
+                            <PickerIOS
                               selectedValue={3}
-                              style={{width:90, alignItems : 'center'}}
                               itemStyle={styles.pickerStyle}
-                              onValueChange={(hour) => this.setState({location: hour})}>
+                              onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
 
                               {hours}
 
-                            </Picker>
-                            <Picker
+                            </PickerIOS>
+                            <PickerIOS
                               selectedValue={25}
-                              style={{width:90, alignItems : 'center'}}
                               itemStyle={styles.pickerStyle}
-                              onValueChange={(hour) => this.setState({location: hour})}>
+                              onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
 
                               {minutes}
 
-                            </Picker>
+                            </PickerIOS>
                           </View>
                             <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
                               <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>

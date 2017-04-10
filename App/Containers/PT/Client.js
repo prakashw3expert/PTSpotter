@@ -15,82 +15,6 @@ import styles from './Styles/ClientDetailStyle'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Hr from 'react-native-hr'
 
-export default class ClientDetail extends React.Component {
-
-
-constructor(props) {
-         super(props);
-         this.state = {
-            currentTab : 0,
-             }
-         }
-
-
-handleChangeTab({i, ref }) {
-     this.setState({currentTab : i});
-}
-  render () {
-
-
-
-    return (
-
-      <Container>
-      <StatusBar barStyle='light-content' />
-
-              <View style={styles.headerView}>
-                <Image source={Images.editProfileHeader} style={{height:248}}>
-                    <View style={styles.navbarview}>
-                      <Button transparent iconLeft onPress={NavigationActions.pop}>
-                        <FontAwesome name='angle-left' style={{fontSize:28,color:"rgb(255, 255, 255)", marginLeft:(width >= 375) ? 0 : 20}} />
-                      </Button>
-                      <Text style={[Fonts.style.h1, Fonts.style.textWhite,{flex:1, textAlign:'center'}]}></Text>
-                      <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:23,width:23,marginRight:(width >= 375) ? 0 : 20}}/>
-                      </Button>
-                    </View>
-                    <View style={styles.profileimage} >
-                      <View>
-                         <Image source={Images.user4} style={styles.userImage}/>
-                         <View style={Fonts.style.onlineDot}></View>
-                      </View>
-                      <Text style={styles.username}> Ernest Woods </Text>
-                      <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
-                    </View>
-                </Image>
-
-              </View>
-
-
-              <ScrollableTabView
-              locked={false}
-              onChangeTab={this.handleChangeTab.bind(this)}
-              tabBarStyle={{borderWidth:0, height:46}}
-              tabBarBackgroundColor={'white'}
-              tabBarActiveTextColor={Colors.purpleColor}
-              tabBarInactiveTextColor={Colors.subHeadingRegular}
-              tabBarUnderlineStyle={styles.tabBorderSytel}
-              tabBarTextStyle={[styles.tabText]}
-              tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
-              renderTabBar={() => <DefaultTabBar />}>
-
-              <AboutData tabLabel='About'/>
-              <NoteCard tabLabel='Notes'/>
-
-            </ScrollableTabView>
-
-            {
-
-              (this.state.currentTab == 1) ? <AddNote /> : null
-            }
-            </Container>
-
-    )
-  }
-}
-
-
-
 
 class Notes extends React.Component {
 
@@ -227,11 +151,19 @@ class WorkoutInterest extends React.Component {
               </View>
 
                 <View style={{marginTop:80, marginLeft:20, marginRight:20}}>
-                <Button light full rounded style={Fonts.style.red} >
-                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
+                <Button light full rounded style={Fonts.style.default} >
+                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
               </Button>
               </View>
           </View>
     )
   }
+}
+
+export default {
+  Notes,
+  AddNote,
+  NoteCard,
+  AboutData,
+  WorkoutInterest
 }
