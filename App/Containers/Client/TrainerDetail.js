@@ -12,7 +12,16 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
 import styles from './Styles/TrainerDetailStyle'
+import ImageViewer from 'ImageViewer';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
+
+let imgsArr = [
+  'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
+  'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
+  'https://s-media-cache-ak0.pinimg.com/originals/6b/23/b5/6b23b554561c8f4a94c8c8311c5f196d.jpg',
+  'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
+  'https://s-media-cache-ak0.pinimg.com/originals/6b/23/b5/6b23b554561c8f4a94c8c8311c5f196d.jpg',
+];
 
 export default class TrainerDetail extends React.Component {
 
@@ -22,9 +31,26 @@ export default class TrainerDetail extends React.Component {
     super(props);
     this.state = {
       currentTab : 0,
-      starCount: 4
+      starCount: 4,
+      shown:false,
+      curIndex:0
     };
   }
+
+  openViewer(index){
+        this.setState({
+            shown:true,
+            curIndex:index
+        })
+    }
+
+    closeViewer(){
+        this.setState({
+            shown:false,
+            curIndex:0
+        })
+    }
+
 
   handleChangeTab({i, ref }) {
     this.setState({currentTab : i});
@@ -39,9 +65,8 @@ export default class TrainerDetail extends React.Component {
         <ScrollView scrollEnabled={false}>
         <StatusBar barStyle='light-content' />
           <View>
-
               <View style={styles.headerView}>
-                <Image source={Images.editProfileHeader} style={{height:248}}>
+                <Image source={Images.editProfileHeader} style={{height:248}} >
 
                   <View style={styles.navbarview}>
                       <View style={{flex:1}}>
@@ -83,7 +108,7 @@ export default class TrainerDetail extends React.Component {
                         />
 
 
-                      
+
                       </View>
                       <Text style={styles.ratingtext}> Avg. rating from completed sessions </Text>
 
@@ -101,22 +126,25 @@ export default class TrainerDetail extends React.Component {
                       tabBarBackgroundColor={'white'}
                       tabBarActiveTextColor={Colors.purpleColor}
                       tabBarInactiveTextColor={Colors.subHeadingRegular}
-                      tabBarUnderlineStyle={Fonts.style.tabBorderSytelPurple}
+                      tabBarUnderlineStyle={styles.tabBorderSytelPurple}
                       tabBarTextStyle={[styles.tabText]}
                       tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
                       renderTabBar={() => <DefaultTabBar />}>
 
                       <AboutData tabLabel='About' />
                       <Schedule tabLabel='Schedule' />
+                      <PhotosVideos tabLabel='Gallery' />
                       <NoteCard tabLabel='Notes' />
                     </ScrollableTabView>
 
                     {
 
-                      (this.state.currentTab == 2) ? <AddNote /> : null
+                      (this.state.currentTab == 3) ? <AddNote /> : null
                     }
               </View>
+
         </View>
+
         </ScrollView>
 
     )
@@ -290,6 +318,60 @@ class Schedule extends React.Component {
             <Gyms />
             <PrivateAvailability />
         </View>
+     </ScrollView>
+    )
+  }
+}
+
+class PhotosVideos extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      shown:false,
+      curIndex:0
+    };
+  }
+
+  openViewer(index){
+        this.setState({
+            shown:true,
+            curIndex:index
+        })
+    }
+
+    closeViewer(){
+        this.setState({
+            shown:false,
+            curIndex:0
+        })
+    }
+  render () {
+    return (
+
+      <ScrollView style={{height:(width >= 325) ? 350 : 250}} contentContainerStyle={styles.imageCollection} showsVerticalScrollIndicator={false}>
+
+      {
+          imgsArr.map((url,index)=>{
+              return <TouchableOpacity key={index}
+                                       activeOpacity={1}
+                                       onPress={this.openViewer.bind(this,index)} style={{height:120}}>
+                      <Image
+                          source={{uri: url}}
+                          style={styles.imageThumbnail}/>
+                  </TouchableOpacity>
+          })
+      }
+      {/*<Image source={Images.user1} style={styles.imageThumbnail}/>
+      <Image source={Images.user2} style={styles.imageThumbnail}/>
+      <Image source={Images.user3} style={styles.imageThumbnail}/>
+      <Image source={Images.user4} style={styles.imageThumbnail}/>
+      <Image source={Images.user5} style={styles.imageThumbnail}/>*/}
+      <ImageViewer shown={this.state.shown}
+                   imageUrls={imgsArr}
+                   onClose={this.closeViewer.bind(this)}
+                   index={this.state.curIndex}>
+      </ImageViewer>
      </ScrollView>
     )
   }

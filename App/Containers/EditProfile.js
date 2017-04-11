@@ -1,18 +1,19 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text,StatusBar, Image, View,TouchableOpacity,PickerIOS,Dimensions } from 'react-native'
+import { ScrollView, Text,StatusBar, Image, Modal, View,TouchableOpacity,PickerIOS,Dimensions } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Grid,Col, Switch,Left, Right, ListItem } from 'native-base';
 
 import { Images,Fonts,Colors } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Hr from 'react-native-hr'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/EditProfileStyle'
-import Modal from 'react-native-simple-modal';
+import Modalss from 'react-native-simple-modal';
 var PickerItemIOS = PickerIOS.Item
 const { width, height } = Dimensions.get('window')
 
@@ -27,11 +28,19 @@ class EditProfile extends React.Component {
       trainigModalVisible : false,
       availabilityTrueSwitchIsOn: true,
       availabilityFalseSwitchIsOn: false,
+      modalPhotosVisible : false,
     };
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
+
+  setModalPhotosVisible(visible) {
+    this.setState({modalPhotosVisible: visible});
+  }
+
+
+
 
   render () {
 
@@ -121,6 +130,16 @@ class EditProfile extends React.Component {
                      <Button rounded small style={Fonts.style.categoryTagGray}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
                   </View>
                   </TouchableOpacity>
+
+                  { (this.props.username === 'trainer@ptspotter.co.uk') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> PHOTOS AND VIDEOS </Text> : null }
+
+                  { (this.props.username === 'trainer@ptspotter.co.uk') ?  <View style={Fonts.style.mt15}>
+                    <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({modalPhotosVisible: true})}>
+                        <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD PHOTOS AND VIDEOS</Text>
+                    </Button>
+                  </View> : null}
+
+
                   <View style={Fonts.style.mt40}>
                     <Button light full rounded bordered style={Fonts.style.default} >
                         <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>CONTINUE</Text>
@@ -129,7 +148,7 @@ class EditProfile extends React.Component {
 
               </View>
 
-              <Modal
+              <Modalss
                 offset={100}
                 open={this.state.open}
                 overlayBackground={Colors.popupoverlayBackground}
@@ -173,9 +192,9 @@ class EditProfile extends React.Component {
                   </View>
 
                 </View>
-              </Modal>
+              </Modalss>
 
-          <Modal
+          <Modalss
             offset={200}
             open={this.state.trainigOptionOpen}
             overlayBackground={Colors.popupoverlayBackground}
@@ -210,6 +229,36 @@ class EditProfile extends React.Component {
               </View>
 
             </View>
+          </Modalss>
+
+          <Modal
+              animationType={"slide"}
+              transparent={false}
+              visible={this.state.modalPhotosVisible}
+              onRequestClose={() => {alert("Modal has been closed.")}}>
+               <Container>
+                  <View style={styles.headerView}>
+                    <View style={styles.navbarview}>
+                      <View style={{flex:0.5}}>
+                        <Button transparent iconLeft onPress={() => {this.setModalPhotosVisible(!this.state.modalPhotosVisible)}}>
+                          <MaterialCommunityIcons name="close" size={28} style={{color:'white'}}/>
+                        </Button>
+                      </View>
+                      <View style={styles.navbarCenterView}>
+                          <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS AND VIDEOS </Text>
+                      </View>
+                      <View style={{flex:0.5}}>
+                      <Button transparent>
+                          <Text></Text>
+                      </Button>
+                      </View>
+
+                  </View>
+                </View>
+
+                <AddGallery />
+
+            </Container>
           </Modal>
 
         </Form>
@@ -218,6 +267,59 @@ class EditProfile extends React.Component {
 
     )
   }
+}
+
+class AddGallery extends React.Component {
+
+ render () {
+   return (
+
+         <View style={{backgroundColor:Colors.background,height:height}}>
+
+            <Text style={styles.filtertitles}>
+              UPLOAD PHOTO
+            </Text>
+            <View style={styles.containers} >
+              <TouchableOpacity >
+              <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
+                <Input disabled style={Fonts.style.inputBordered} placeholder='PICK IMAGE' placeholderTextColor={Fonts.colors.input}/>
+                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='cloud-upload' style={Fonts.style.borderedIconRight} /></View>
+              </View>
+              </TouchableOpacity>
+            </View>
+              <Text style={styles.filtertitles}>
+                UPLOAD VIDEO
+              </Text>
+              <View style={styles.containers} >
+              <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
+                <Input  style={Fonts.style.inputBordered} placeholder='VIDEO URL' placeholderTextColor={Fonts.colors.input}/>
+                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='cloud-upload' style={Fonts.style.borderedIconRight} /></View>
+              </View>
+              </View>
+
+
+            <View style={styles.horizontalRow}>
+             <Hr lineColor='white'/>
+            </View>
+            <View>
+            <ScrollView style={{height:365,}} contentContainerStyle={styles.imageCollection}>
+              <Image source={Images.user1} style={styles.imageThumbnail}/>
+              <Image source={Images.user2} style={styles.imageThumbnail}/>
+              <Image source={Images.user3} style={styles.imageThumbnail}/>
+              <Image source={Images.user4} style={styles.imageThumbnail}/>
+              <Image source={Images.user5} style={styles.imageThumbnail}/>
+              <Image source={Images.user1} style={styles.imageThumbnail}/>
+
+            </ScrollView>
+            </View>
+
+
+         </View>
+
+
+
+   )
+ }
 }
 
 

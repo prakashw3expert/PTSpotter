@@ -186,7 +186,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-      <ScrollView style={{height:(width >= 375) ? 350 : 270}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 325) ? 350 : 270}} showsVerticalScrollIndicator={false}>
           <View style={[Fonts.style.mt15, styles.containers]}>
 
              <Grid>
