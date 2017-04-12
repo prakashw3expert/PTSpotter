@@ -73,14 +73,17 @@ export default EStyleSheet.create({
     letterSpacing:0.5,
   },
   imageThumbnail : {
-    height:(width > 325) ? 120 : 100,
-    width :(width > 325) ? 120 : 100,
+    height:(width - 36)/3,
+    width :(width - 36)/3,
+    borderRadius : 5,
+    marginHorizontal:2,
+    marginTop:10
   },
   imageCollection : {
     flexDirection:'row',
     flexWrap:'wrap',
     paddingTop :10,
-    paddingHorizontal:(width >= 325) ? 7 : 10,
+    paddingHorizontal:(width >= 325) ? 10 : 10,
     justifyContent:'flex-start'
   },
 

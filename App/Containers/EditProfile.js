@@ -282,8 +282,8 @@ class AddGallery extends React.Component {
             <View style={styles.containers} >
               <TouchableOpacity >
               <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
-                <Input disabled style={Fonts.style.inputBordered} placeholder='PICK IMAGE' placeholderTextColor={Fonts.colors.input}/>
-                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='cloud-upload' style={Fonts.style.borderedIconRight} /></View>
+                <Input disabled style={Fonts.style.inputBordered} placeholder='PICK IMAGE' placeholderTextColor={Colors.whiteMuted}/>
+                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='cloud-upload' style={[Fonts.style.borderedIconRight,{marginLeft:6}]} /></View>
               </View>
               </TouchableOpacity>
             </View>
@@ -292,8 +292,10 @@ class AddGallery extends React.Component {
               </Text>
               <View style={styles.containers} >
               <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
-                <Input  style={Fonts.style.inputBordered} placeholder='VIDEO URL' placeholderTextColor={Fonts.colors.input}/>
-                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='cloud-upload' style={Fonts.style.borderedIconRight} /></View>
+                <Input  style={Fonts.style.inputBordered} placeholder='VIDEO URL' placeholderTextColor={Colors.whiteMuted}/>
+                <TouchableOpacity>
+                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='cloud-upload' style={[Fonts.style.borderedIconRight,{marginLeft:6}]} /></View>
+                </TouchableOpacity>
               </View>
               </View>
 

@@ -11,7 +11,7 @@ import LoginActions from '../Redux/LoginRedux'
 import { Actions } from 'react-native-router-flux'
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+var UserDefaults = require('react-native-userdefaults-ios');
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginManager, LoginButton, GraphRequest, GraphRequestManager,AccessToken
@@ -95,7 +95,16 @@ class LoginScreen extends React.Component {
                 } else {
                   console.log(result)
 
-                  alert('Login Success : ' + result.email.toString());
+                  UserDefaults.setBoolForKey(true, 'isLogin')
+                  UserDefaults.setStringForKey(result.email, 'email')
+                  .then(result => {
+                      console.log(result);
+                      Actions.homeScreen()
+                  });
+
+
+
+
                 }
               }
 
