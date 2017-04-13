@@ -48,7 +48,7 @@ export default StyleSheet.create({
     fontSize:10,
     color:Colors.mutedColor,
     fontFamily:Fonts.type.regular,
-    letterSpacing:0.1,
+
   },
   unreadCircle:{
     width:30,
