@@ -20,10 +20,10 @@ import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-vi
 
 let imgsArr = [
   'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
-  'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
-  'https://s-media-cache-ak0.pinimg.com/originals/6b/23/b5/6b23b554561c8f4a94c8c8311c5f196d.jpg',
-  'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
-  'https://s-media-cache-ak0.pinimg.com/originals/6b/23/b5/6b23b554561c8f4a94c8c8311c5f196d.jpg',
+  'http://3.bp.blogspot.com/-VGk_nvib7Sc/UN6XJyjri9I/AAAAAAAAAMM/aT1v8WFpz1Q/s400/Iron-Gym-Dip.jpg',
+  'https://s-media-cache-ak0.pinimg.com/736x/37/11/f3/3711f3f695d448eeba83a929dc740130.jpg',
+  'http://www.horizonlc.com/wp-content/uploads/2016/05/xshutterstock_290613188-400x400.jpg.pagespeed.ic.eg3BaseU6I.jpg',
+  'http://befit.ae/wp-content/uploads/2016/07/personal-trainer-1.jpg',
 ];
 
 let videoArray = [

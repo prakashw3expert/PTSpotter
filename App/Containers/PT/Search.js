@@ -8,6 +8,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/SearchScreenStyle'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MapView from 'react-native-maps';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import RoundedButton from '../../Components/RoundedButton'
 import Hr from 'react-native-hr'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
@@ -198,7 +199,7 @@ class DataListView extends React.Component {
                               <Text style={styles.listAddress} note>{item.title}</Text>
                             </Body>
                             <Right style={{borderBottomWidth:0}}>
-                              <Icon name="arrow-forward" />
+                              <FontAwesome name='angle-right' style={{fontSize:22,color:"rgba(102, 102, 102, 0.5)"}} />
                             </Right>
                         </ListItem>
                     } />

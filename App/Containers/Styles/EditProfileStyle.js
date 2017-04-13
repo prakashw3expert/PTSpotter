@@ -77,7 +77,7 @@ export default EStyleSheet.create({
     width :(width - 36)/3,
     borderRadius : 5,
     marginHorizontal:2,
-    marginTop:10
+
   },
   imageCollection : {
     flexDirection:'row',
@@ -85,6 +85,10 @@ export default EStyleSheet.create({
     paddingTop :10,
     paddingHorizontal:(width >= 325) ? 10 : 10,
     justifyContent:'flex-start'
+  },
+  imageTouch : {
+    height:(width - 36)/3,
+    marginTop:10,
   },
 
 })

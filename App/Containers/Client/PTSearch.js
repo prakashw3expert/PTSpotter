@@ -1,13 +1,14 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch,Dimensions,Modal,TouchableHighlight,Slider,StatusBar } from 'react-native'
+import { ScrollView, Text, Image, View,Switch,Dimensions,Modal,TouchableOpacity,TouchableHighlight,Slider,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Grid,Col,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Tabs,Tab,TabHeading, } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/PTSearchStyle'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MapView from 'react-native-maps';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import RoundedButton from '../../Components/RoundedButton'
 import Hr from 'react-native-hr'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
@@ -22,13 +23,13 @@ export default class PTSearch extends React.Component {
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
- 
+
   render () {
     return (
 
       <View style={styles.mainContainer}>
       <StatusBar barStyle='light-content' />
-        
+
         <ScrollableTabView
               tabBarStyle={{borderWidth:0, height:40}}
               tabBarBackgroundColor={Colors.background}
@@ -41,7 +42,7 @@ export default class PTSearch extends React.Component {
 
               <ListView tabLabel='List View'/>
               <MapViewTab tabLabel='Map View'/>
-                    
+
             </ScrollableTabView>
 
             <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
@@ -77,7 +78,7 @@ export default class PTSearch extends React.Component {
 
             </Container>
           </Modal>
-            
+
         </View>
     )
   }
@@ -95,7 +96,9 @@ class ListView extends React.Component {
             <View style={styles.searchView}>
             <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]}>
                     <Input  style={Fonts.style.inputBordered} placeholder='SEARCH FOR A PERSONAL TRAINER' placeholderTextColor={Fonts.colors.input}/>
-                    <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                    <TouchableOpacity>
+                      <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:6, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
+                    </TouchableOpacity>
                   </View>
             </View>
 
@@ -140,7 +143,7 @@ class DataListView extends React.Component {
                      "title" : "OO Frami Port",
                      "online" : true
                    },
-                   
+
                    {
                      "Time" : "Robert Reld",
                      "image" : require('../../Images/dummy/user7.jpeg'),
@@ -183,7 +186,7 @@ class DataListView extends React.Component {
                               <Text style={styles.listAddress} note>{item.title}</Text>
                             </Body>
                             <Right style={{borderBottomWidth:0}}>
-                              <Icon name="arrow-forward" />
+                              <FontAwesome name='angle-right' style={{fontSize:22,color:"rgba(102, 102, 102, 0.5)"}} />
                             </Right>
                         </ListItem>
                     } />
@@ -208,7 +211,7 @@ class MapViewTab extends React.Component {
     return (
       <Content>
       <View style={{height:250}}>
-        
+
         <MapView
             style={{flex:1}}
             clusterMarkers={true}
@@ -219,8 +222,8 @@ class MapViewTab extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
-        
-        
+
+
         <MapView.Marker
           coordinate={{latitude: 37.78825,
             longitude: -122.4524}}
@@ -249,10 +252,10 @@ class MapViewTab extends React.Component {
           description="32 Blake Vista Apt. 777"
           image={Images.mapIcon}
         />
-        
-       
 
-        
+
+
+
 
         </MapView>
 
@@ -308,8 +311,8 @@ class NoSearchResult extends React.Component {
       <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
              NO CLIENTS WERE FOUND NEARBY
       </Text>
-         
-      
+
+
       </Content>
     )
   }
@@ -317,7 +320,7 @@ class NoSearchResult extends React.Component {
 
 
 class Filter extends React.Component {
-  
+
   static defaultProps = {
     value: 3,
   };
@@ -330,7 +333,7 @@ class Filter extends React.Component {
    return (
 
          <Content style={{backgroundColor:Colors.background}}>
-            
+
             <Text style={styles.filtertitles}>
               SEARCH RADIUS
             </Text>
@@ -344,7 +347,7 @@ class Filter extends React.Component {
               minimumTrackTintColor='white'
               style={{marginTop:10,marginLeft:25,marginRight:25}}
                />
-              
+
               <View style={styles.milesView}>
                 <Text style={styles.mileText} >
                   1 MILE
@@ -377,7 +380,7 @@ class Filter extends React.Component {
                 <Button rounded small style={{paddingLeft:15, paddingRight:15,marginRight:5,marginBottom:10, height:50, backgroundColor:'transparent',borderWidth:2,borderColor:'white'}}><Text style={{fontSize:15, fontFamily:Fonts.type.regular, color:'#fff'}}>Fartlek</Text></Button>
 
               </View>
-            
+
 
             <View style={styles.horizontalRow} />
 
@@ -386,8 +389,8 @@ class Filter extends React.Component {
                     <Text style={styles.applyBtnText}> APPLY</Text>
                 </Button>
             </View>
-            
-            
+
+
          </Content>
 
 
@@ -395,5 +398,3 @@ class Filter extends React.Component {
    )
  }
 }
-
-

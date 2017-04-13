@@ -294,7 +294,7 @@ class AddGallery extends React.Component {
               <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
                 <Input  style={Fonts.style.inputBordered} placeholder='VIDEO URL' placeholderTextColor={Colors.whiteMuted}/>
                 <TouchableOpacity>
-                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='cloud-upload' style={[Fonts.style.borderedIconRight,{marginLeft:6}]} /></View>
+                <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:15, marginTop:5,marginRight:5}}><MaterialCommunityIcons name='plus' style={[Fonts.style.borderedIconRight,{marginLeft:6,fontWeight:'800'}]} /></View>
                 </TouchableOpacity>
               </View>
               </View>
@@ -305,12 +305,40 @@ class AddGallery extends React.Component {
             </View>
             <View>
             <ScrollView style={{height:365,}} contentContainerStyle={styles.imageCollection}>
-              <Image source={Images.user1} style={styles.imageThumbnail}/>
-              <Image source={Images.user2} style={styles.imageThumbnail}/>
-              <Image source={Images.user3} style={styles.imageThumbnail}/>
-              <Image source={Images.user4} style={styles.imageThumbnail}/>
-              <Image source={Images.user5} style={styles.imageThumbnail}/>
-              <Image source={Images.user1} style={styles.imageThumbnail}/>
+              <View style={styles.imageTouch}>
+                <Image source={Images.user1} style={styles.imageThumbnail}/>
+                <TouchableOpacity style={{height:20,position:'absolute',top:2,right:3}}>
+                  <View style={{backgroundColor:'rgb(172,14,250)',alignItems:'center', width:20,height:20, borderRadius:10,}}><Icon name='close' style={{backgroundColor:'transparent',color:'white',fontSize:20,marginRight:0}} /></View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.imageTouch}>
+                <Image source={Images.user2} style={styles.imageThumbnail}/>
+                <TouchableOpacity style={{height:20,position:'absolute',top:2,right:3}}>
+                  <View style={{backgroundColor:'rgb(172,14,250)',alignItems:'center', width:20,height:20, borderRadius:10,}}><Icon name='close' style={{backgroundColor:'transparent',color:'white',fontSize:20,marginRight:0}} /></View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.imageTouch}>
+                <Image source={Images.user3} style={styles.imageThumbnail}/>
+                <TouchableOpacity style={{height:20,position:'absolute',top:2,right:3}}>
+                  <View style={{backgroundColor:'rgb(172,14,250)',alignItems:'center', width:20,height:20, borderRadius:10,}}><Icon name='close' style={{backgroundColor:'transparent',color:'white',fontSize:20,marginRight:0}} /></View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.imageTouch}>
+                <Image source={Images.user4} style={styles.imageThumbnail}/>
+                <TouchableOpacity style={{height:20,position:'absolute',top:2,right:3}}>
+                  <View style={{backgroundColor:'rgb(172,14,250)',alignItems:'center', width:20,height:20, borderRadius:10,}}><Icon name='close' style={{backgroundColor:'transparent',color:'white',fontSize:20,marginRight:0}} /></View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.imageTouch}>
+                <Image source={Images.user5} style={styles.imageThumbnail}/>
+                <TouchableOpacity style={{height:20,position:'absolute',top:2,right:3}}>
+                  <View style={{backgroundColor:'rgb(172,14,250)',alignItems:'center', width:20,height:20, borderRadius:10,}}><Icon name='close' style={{backgroundColor:'transparent',color:'white',fontSize:20,marginRight:0}} /></View>
+                </TouchableOpacity>
+              </View>
 
             </ScrollView>
             </View>
