@@ -170,6 +170,56 @@ export default EStyleSheet.create({
     lineHeight:23,
     letterSpacing:1.5
   },
+  tabBorderSytelPurple : {
+    backgroundColor:'rgb(172,14,250)',
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 5,
+    borderBottomWidth: 6,
+    borderLeftWidth: 5,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'rgb(172,14,250)',
+    borderLeftColor: 'transparent',
+    marginLeft:0,
+    marginRight:30,
+    width:'22%'
+  },
+  imageThumbnail : {
+    height:(width > 325) ? 110 : 92,
+    width :(width > 325) ? 110 : 92,
+    borderRadius : 5,
+    marginHorizontal:2,
+    marginTop:10
+
+  },
+  imageCollection : {
+    flexDirection:'row',
+    flexWrap:'wrap',
+    paddingTop :10,
+    paddingHorizontal:(width >= 325) ? 0 : 0,
+    justifyContent:'flex-start'
+  },
+  textHeading : {
+    marginTop : 15,
+    fontFamily : Fonts.type.regular,
+    fontSize : 16,
+    color : Colors.subHeadingRegular,
+  },
+  modalVideoView : {
+      flex:1,
+      alignItems : 'center',
+      justifyContent : 'center',
+      backgroundColor:Colors.background
+  },
+  VideoPlayerFullScreen : {
+    height : 300,
+    width : width,
+    backgroundColor:Colors.background
+  },
+
+
 
 
 })

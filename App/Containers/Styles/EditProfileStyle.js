@@ -20,6 +20,15 @@ export default EStyleSheet.create({
     flexDirection:'row',
     alignItems:'center',
   },
+  navbarview: {
+   marginTop:21,
+   //flex:1,
+   flexDirection:'row',
+ },
+ navbarCenterView : {
+   flex:1,
+   alignItems:'center',
+ },
   profileimage: {
   flex:3,
   alignItems:'center',
@@ -54,6 +63,32 @@ export default EStyleSheet.create({
     width:"76%",
     color: 'rgba(102,102,102,0.5)',
     padding: (width >= 325) ? 10 : 7
+  },
+  filtertitles:{
+    marginTop:(width >=325) ? 20 : 10,
+    fontFamily:Fonts.type.bold,
+    color:Colors.whiteMuted,
+    fontSize:10,
+    textAlign:'center',
+    letterSpacing:0.5,
+  },
+  imageThumbnail : {
+    height:(width - 36)/3,
+    width :(width - 36)/3,
+    borderRadius : 5,
+    marginHorizontal:2,
+
+  },
+  imageCollection : {
+    flexDirection:'row',
+    flexWrap:'wrap',
+    paddingTop :10,
+    paddingHorizontal:(width >= 325) ? 10 : 10,
+    justifyContent:'flex-start'
+  },
+  imageTouch : {
+    height:(width - 36)/3,
+    marginTop:10,
   },
 
 })
