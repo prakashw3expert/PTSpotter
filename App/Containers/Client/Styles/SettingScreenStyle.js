@@ -4,7 +4,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
-
+  
   chooseText: {
     marginRight:20,
     fontSize:14,
@@ -22,7 +22,7 @@ export default EStyleSheet.create({
     marginLeft : 15,
   },
   bottomView : {
-    justifyContent:'flex-end',
+    justifyContent:'flex-end', 
     marginTop : 30,
     marginLeft : 20,
     marginRight : 20,
@@ -31,15 +31,17 @@ export default EStyleSheet.create({
   modelText: {
     fontSize:10.4,
     fontFamily : Fonts.type.regular,
+    lineHeight:17,
     letterSpacing:1.4,
     color:'rgb(102,102,102)',
     textAlign:'center',
   },
   textHours : {
-    textAlign:'right',
+    textAlign:'right', 
     marginRight:30,
     fontSize:14,
     fontFamily:Fonts.type.bold,
+    lineHeight:17,
     letterSpacing:2.6,
     color:Colors.subHeadingRegular,
   },
@@ -47,22 +49,23 @@ export default EStyleSheet.create({
     marginLeft:5,
     fontSize:14,
     fontFamily:Fonts.type.bold,
+    lineHeight:17,
     letterSpacing:2.6,
     color:Colors.subHeadingRegular,
   },
   pickerStyle : {
-    fontSize: 32,
-    letterSpacing:3.9,
-    color: 'rgb(102,102,102)',
-    textAlign: 'center',
+    fontSize: 32, 
+    letterSpacing:3.9, 
+    color: 'rgb(102,102,102)', 
+    textAlign: 'center', 
     fontWeight: 'bold',
     width:(width >= 375) ? 100 : 70,
-    marginRight:(width >= 375) ? 10 : 30,
+    marginRight:(width >= 375) ? 10 : 30, 
   },
-
-
-
-
+  
+  
+ 
+  
 
 
 

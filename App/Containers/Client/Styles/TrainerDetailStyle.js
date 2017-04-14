@@ -25,10 +25,10 @@ export default EStyleSheet.create({
     width:(width >= 375) ? 250 : 200,
   },
   profileimage: {
-  flex:15,
+  flex:7,
   alignItems:'center',
   alignSelf:'stretch',
-
+  
   },
   userImage: {
     alignSelf:'center',
@@ -43,22 +43,18 @@ export default EStyleSheet.create({
     fontFamily : Fonts.type.bold,
     color : 'white',
     letterSpacing : 1.7,
-    marginBottom : 6
   },
   userAddress : {
     fontSize : Fonts.size.medium,
     fontFamily : Fonts.type.regular,
     color : Colors.whiteMuted,
     letterSpacing : 0.1,
-    marginBottom : 10
   },
   ratingtext : {
     fontSize : Fonts.size.small,
     fontFamily : Fonts.type.regular,
     color : Colors.whiteMuted,
     letterSpacing : 0.1,
-    marginTop : 7,
-    marginBottom : 20
   },
   emptyView: {
     justifyContent : 'center',
@@ -138,11 +134,11 @@ export default EStyleSheet.create({
     letterSpacing:1.5
   },
   gymColumns : {
-     backgroundColor: 'rgb(235,235,235)',
-     marginRight:10,
-     borderRadius:10,
+     backgroundColor: 'rgb(235,235,235)',  
+     marginRight:10, 
+     borderRadius:10, 
      padding:5,
-     height:57
+     height:57 
   },
   tabText : {
     fontFamily: Fonts.type.regular,
@@ -170,6 +166,7 @@ export default EStyleSheet.create({
     lineHeight:23,
     letterSpacing:1.5
   },
+<<<<<<< HEAD
   tabBorderSytelPurple : {
     backgroundColor:'rgb(172,14,250)',
     backgroundColor: 'transparent',
@@ -221,5 +218,8 @@ export default EStyleSheet.create({
 
 
 
+=======
+  
+>>>>>>> parent of bd6ef8a... UI fixes
 
 })

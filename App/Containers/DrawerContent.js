@@ -112,8 +112,8 @@ class DrawerContent extends Component {
     let settingButton;
     settingButton = (this.props.username === 'client@ptspotter.co.uk') ? <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} /> : <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressPTSettings} />
     return (
-      <View style={[styles.container]}>
-      <ScrollView  >
+      <ScrollView style={[styles.container]} >
+
       <Image source={Images.menuTopBekground} style={styles.menuTopBekground}>
           <View style={styles.usesrDeatils}>
           <ListItem avatar style={{borderBottomWidth:0}} onPress={this.handleUserProfileClick}>
@@ -137,15 +137,14 @@ class DrawerContent extends Component {
           {settingButton}
 
       </View>
-      </ScrollView>
+      <View style={{backgroundColor:'rgb(255,113,113)',height:2,marginTop:10}}></View>
       <View style={styles.bottomLogoutView}>
-        <View style={{backgroundColor:'rgb(255,113,113)',height:2,marginTop:10}}></View>
         <Button transparent block onPress={this.handleLogout}>
             <Text style={{fontSize : 16,fontFamily : Fonts.type.regular,letterSpacing : 1,color:'rgb(255,113,113)'}}> Log Out </Text>
         </Button>
       </View>
-      </View>
 
+      </ScrollView>
     )
   }
 

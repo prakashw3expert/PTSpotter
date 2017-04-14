@@ -161,6 +161,7 @@ export default EStyleSheet.create({
     fontSize:(width > 325) ? 16.4 : 15.4,
     fontFamily:Fonts.type.regular,
     color:Colors.subHeadingRegular,
+    lineHeight:31.4,
     letterSpacing:2.1
   },
   emptyText: {
@@ -224,7 +225,6 @@ export default EStyleSheet.create({
     '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
       height: 90,
     },
-
   },
   headerView: {
     backgroundColor:Colors.background,
@@ -233,15 +233,9 @@ export default EStyleSheet.create({
     '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
       height:65,
     },
-    '@media android': {
-      height: 60,
-    },
   },
   navbarview: {
     marginTop:30,
-    '@media android': {
-      marginTop:10,
-    },
     flexDirection:'row',
 
   },

@@ -16,10 +16,7 @@ import styles from './Styles/EditProfileStyle'
 import Modalss from 'react-native-simple-modal';
 var PickerItemIOS = PickerIOS.Item
 const { width, height } = Dimensions.get('window')
-
-import { connect } from 'react-redux'
-
-class EditProfile extends React.Component {
+export default class EditProfile extends React.Component {
 
   state = {
       open: false,
@@ -96,18 +93,17 @@ class EditProfile extends React.Component {
                     <Input multiline={true} numberOfLines = {30} style={Fonts.style.inputMultipleBordered} placeholder='ABOUT' placeholderTextColor={Fonts.colors.input}/>
                   </View>
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text> : null }
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text>
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ?  <View style={Fonts.style.mt15}>
+                  <View style={Fonts.style.mt15}>
                     <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: true})}>
                         <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD GYM</Text>
                     </Button>
-                  </View> : null}
-
+                  </View>
 
                   <ListItem style={{borderBottomWidth:0}}>
                     <Body>
-                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: "-7%"}]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "AVAILABILITY UPON REQUEST" : "MAKE MY PROFILE PRIVATE"}</Text>
+                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: "-7%"}]}> AVAILABILITY UPON REQUEST</Text>
                     </Body>
                     <Right style={{marginTop:15}}>
                         <Switch
@@ -119,15 +115,11 @@ class EditProfile extends React.Component {
                     </Right>
                   </ListItem>
 
-                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "TRAINING OPTIONS" : "MY INTERESTS"}</Text>
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> TRAINING OPTIONS</Text>
                   <TouchableOpacity onPress={() => this.setState({trainigOptionOpen: true})}>
                   <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
                     <Text style={styles.searchBox}> SEARCH AND ADD</Text>
                     <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:7,marginRight:5, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
-                  </View>
-                  <View style={{marginTop:10, flexDirection:'row'}}>
-                     <Button rounded small style={Fonts.style.categoryTag}><Text style={Fonts.style.categoryTagText}>Yoga <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:10}}/></Text></Button>
-                     <Button rounded small style={Fonts.style.categoryTagGray}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
                   </View>
                   </TouchableOpacity>
 
@@ -170,7 +162,7 @@ class EditProfile extends React.Component {
 
                   <View style={styles.containers}>
 
-
+                  
                   <View style={[Fonts.style.inputWrapperBordered,{height:45}]}>
                     <MaterialCommunityIcons name='dumbbell' style={[Fonts.style.borderedIcon,{color:'rgba(172,14,250,0.5)'}]} />
                     <Input  style={Fonts.style.inputBordered} placeholder='GYM NAME' placeholderTextColor={Fonts.colors.input}/>
@@ -183,14 +175,14 @@ class EditProfile extends React.Component {
 
               </View>
 
-
-
+                  
+                
                   <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
                     <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>
                         <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD GYM</Text>
                     </Button>
                   </View>
-
+                  
                 </View>
               </Modalss>
 
@@ -204,7 +196,7 @@ class EditProfile extends React.Component {
             <View>
               <View style={{flexDirection:'row',alignItems:'center'}}>
                   <Text style={{marginLeft:20}}></Text>
-                  <Text style={[Fonts.style.h2,{flex:1,textAlign:'center',marginLeft:20,fontSize:(width >= 325) ? 16 : 12}]}>{(this.props.username === 'trainer@ptspotter.co.uk') ? "ADD NEW WORKOUT" : "MY INTERESTS"}</Text>
+                  <Text style={[Fonts.style.h2,{flex:1,textAlign:'center',marginLeft:20,fontSize:(width >= 325) ? 16 : 12}]}>ADD NEW WORKOUT</Text>
                   <Button transparent onPress={() => this.setState({trainigOptionOpen: false})}>
                       <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
                   </Button>
@@ -225,7 +217,7 @@ class EditProfile extends React.Component {
                      <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Yoga <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:10}}/></Text></Button>
                      <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
                   </View>
-
+                  
               </View>
 
             </View>
@@ -268,6 +260,7 @@ class EditProfile extends React.Component {
     )
   }
 }
+<<<<<<< HEAD
 
 class AddGallery extends React.Component {
 
@@ -361,3 +354,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(EditProfile)
+=======
+>>>>>>> parent of 0a025d2... Fixes

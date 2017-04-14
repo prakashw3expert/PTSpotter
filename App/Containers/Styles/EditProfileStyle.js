@@ -58,11 +58,12 @@ export default EStyleSheet.create({
     fontFamily:Fonts.type.regular,
     fontSize:Fonts.size.regular,
     lineHeight:23,
-    letterSpacing:1.8,
+    letterSpacing:3.8,
     height:(width >= 325) ? 45 : 40,
+    color:Fonts.colors.input,
     width:"76%",
-    color: 'rgba(102,102,102,0.5)',
-    padding: (width >= 325) ? 10 : 7
+    color: 'rgb(102,102,102)',
+    padding: (width >= 325) ? 8 : 7
   },
   filtertitles:{
     marginTop:(width >=325) ? 20 : 10,

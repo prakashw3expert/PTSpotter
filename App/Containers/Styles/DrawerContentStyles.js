@@ -6,8 +6,7 @@ const { width, height } = Dimensions.get('window')
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   container : {
-    backgroundColor : '#fff',
-    height : height
+    backgroundColor : '#fff'
   },
   menuTopBekground : {
     width : '100%',
@@ -48,6 +47,8 @@ export default EStyleSheet.create({
   bottomLogoutView : {
     position : 'absolute',
     bottom : 0,
-    width : "75%"
+    right : 0,
+    left : 0,
+    height :0,
   },
 })

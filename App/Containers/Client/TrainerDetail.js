@@ -111,8 +111,8 @@ export default class TrainerDetail extends React.Component {
                       <Text style={styles.username}> Aaron Castillo </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
                       <View onPress={() => alert('StarRating Pressed')}>
-
                       <StarRating
+<<<<<<< HEAD
                           disabled={false}
                           emptyStar={'star-o'}
                           fullStar={'star'}
@@ -127,6 +127,20 @@ export default class TrainerDetail extends React.Component {
 
 
 
+=======
+                        disabled={false}
+                        emptyStar={'ios-star-outline'}
+                        fullStar={'ios-star'}
+                        halfStar={'ios-star-half'}
+                        iconSet={'Ionicons'}
+                        maxStars={5}
+                        starSize={20}
+                        rating={this.state.starCount}
+                        selectedStar={(rating) => this.onStarRatingPress(rating)}
+                        starColor={'yellow'}
+
+                      />
+>>>>>>> parent of bd6ef8a... UI fixes
                       </View>
                       <Text style={styles.ratingtext}> Avg. rating from completed sessions </Text>
 
