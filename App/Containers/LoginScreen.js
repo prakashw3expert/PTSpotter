@@ -96,6 +96,7 @@ class LoginScreen extends React.Component {
                   console.log(result)
                   Actions.homeScreen()
 
+
                 }
               }
 
@@ -211,9 +212,10 @@ class LoginScreen extends React.Component {
             <Hr lineColor='white' text='OR' textColor='white' textSize="18" style={{fontWeight:'bold',fontSize:18.6,letterSpacing: 3.8, fontFamily:Fonts.type.bold}}/>
         </View>
 
+        {/*onPress={this.handleFacebookLogin}*/}
         <View>
-          <Button light full rounded style={Fonts.style.facebook} onPress={this.handleFacebookLogin}>
-              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
+          <Button light full rounded style={Fonts.style.facebook} >
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA FACEBOOK</Text>
           </Button>
         </View>
 

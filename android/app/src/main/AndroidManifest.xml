@@ -19,9 +19,10 @@
 
       <meta-data
       android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyC3G8O-XVAOTVLkYRsOViUmw1ZxnRKxB_M"/>
+      android:value="AIzaSyBvf1i5r9WtH2lfnZyFGljdg1CYisawMc8"/>
       <activity
         android:name=".MainActivity"
+          android:screenOrientation="portrait"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize">
@@ -30,7 +31,8 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
-      <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+      <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"
+          android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
