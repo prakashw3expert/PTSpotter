@@ -8,6 +8,7 @@ import { Images,Fonts,Colors } from '../../Themes'
 import RoundedButton from '../../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Foundation from 'react-native-vector-icons/Foundation';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // Styles
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -391,7 +392,6 @@ class PhotosVideos extends React.Component {
 
       <ScrollView style={{height:(width >= 325) ? 350 : 250}} showsVerticalScrollIndicator={false}>
 
-      <Text style={styles.textHeading}>Photos </Text>
       <View style={styles.imageCollection}>
       {
           imgsArr.map((url,index)=>{
@@ -404,23 +404,6 @@ class PhotosVideos extends React.Component {
                   </TouchableOpacity>
           })
       }
-      </View>
-      {/*<Image source={Images.user1} style={styles.imageThumbnail}/>
-      <Image source={Images.user2} style={styles.imageThumbnail}/>
-      <Image source={Images.user3} style={styles.imageThumbnail}/>
-      <Image source={Images.user4} style={styles.imageThumbnail}/>
-      <Image source={Images.user5} style={styles.imageThumbnail}/>*/}
-
-
-      <ImageViewer shown={this.state.shown}
-                   imageUrls={imgsArr}
-                   onClose={this.closeViewer.bind(this)}
-                   index={this.state.curIndex}>
-      </ImageViewer>
-      <Text style={styles.textHeading}>Videos </Text>
-
-      <View style={styles.imageCollection}>
-
       {
           videoThumbnails.map((url,index)=>{
               return <TouchableOpacity key={index}
@@ -429,11 +412,16 @@ class PhotosVideos extends React.Component {
                       <Image
                           source={{uri: url}}
                           style={styles.imageThumbnail}/>
+                          <FontAwesome name='youtube-play' size={30} style={{color:'red',position:'absolute',top:(width > 325) ? 50 : 40,right:(width > 325) ? 40 : 31,backgroundColor:'transparent'}} />
                   </TouchableOpacity>
           })
       }
-
-        </View>
+      </View>
+      <ImageViewer shown={this.state.shown}
+                   imageUrls={imgsArr}
+                   onClose={this.closeViewer.bind(this)}
+                   index={this.state.curIndex}>
+      </ImageViewer>
 
         <Modal
             animationType={"slide"}
