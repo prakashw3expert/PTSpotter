@@ -10,7 +10,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
 import styles from './Styles/HomeScreenStyle'
 const { width, height } = Dimensions.get('window')
-var UserDefaults = require('react-native-userdefaults-ios');
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import Hr from 'react-native-hr'
@@ -38,14 +38,7 @@ export default class HomeScreen extends React.Component {
      }
 
      componentWillMount() {
-       UserDefaults.stringForKey('email')
-      .then(string => {
-          console.log(string);
-      });
-      UserDefaults.boolForKey('isLogin')
-     .then(bool => {
-         console.log(bool);
-     });
+      
 
      }
   render () {

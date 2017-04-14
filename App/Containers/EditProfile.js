@@ -121,6 +121,20 @@ export default class EditProfile extends React.Component {
                     <Text style={styles.searchBox}> SEARCH AND ADD</Text>
                     <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:7,marginRight:5, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
                   </View>
+<<<<<<< HEAD
+=======
+                  <View style={{marginTop:10, flexDirection:'row'}}>
+                     <Button rounded small style={Fonts.style.categoryTag}>
+                     <Text style={[Fonts.style.categoryTagText, {}]}>Yoga</Text>
+                     <MaterialCommunityIcons name="close" size={16} color="rgb(255,255,255)" style={{marginTop : 2}} />
+
+                     </Button>
+                     <Button rounded small style={Fonts.style.categoryTagGray}>
+                     <Text style={Fonts.style.categoryTagText}>Cardio</Text>
+                     <MaterialCommunityIcons name="close" size={16} color="rgb(255,255,255)" style={{marginTop : 2}} />
+                     </Button>
+                  </View>
+>>>>>>> origin/master
                   </TouchableOpacity>
 
                   { (this.props.username === 'trainer@ptspotter.co.uk') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> PHOTOS AND VIDEOS </Text> : null }
@@ -236,8 +250,8 @@ export default class EditProfile extends React.Component {
                           <MaterialCommunityIcons name="close" size={28} style={{color:'white'}}/>
                         </Button>
                       </View>
-                      <View style={styles.navbarCenterView}>
-                          <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS AND VIDEOS </Text>
+                      <View style={[styles.navbarCenterView, {marginTop : 10}]}>
+                          <Text style={[Fonts.style.h2,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS & VIDEOS </Text>
                       </View>
                       <View style={{flex:0.5}}>
                       <Button transparent>
