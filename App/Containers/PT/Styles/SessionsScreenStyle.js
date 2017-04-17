@@ -314,7 +314,7 @@ searchView : {
     height:(Platform.OS === 'ios') ? (width >= 325) ? 405 : 350 : 330
   },
   yearlyScrollViewHeight : {
-    height:(Platform.OS === 'ios') ? (width >= 325) ? 450 : 350 : 375
+    height:(Platform.OS === 'ios') ? (width >= 325) ? 450 : 380 : 375
   },
   searchPopupScrollViewHeight : {
     height:(Platform.OS === 'ios') ? (width >= 325) ? 460 : 400 : 390
