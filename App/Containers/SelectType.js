@@ -35,7 +35,7 @@ this.currentIndex = state.index;
 }
 
   render() {
-    var heightRatio = (width <= 360) ?  0.65 :  0.65;
+    var heightRatio = 0.65;
 
     return (
       <View style={styles.container}>

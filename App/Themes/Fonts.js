@@ -393,6 +393,7 @@ const style = {
     position: 'absolute',
     bottom:20,
     right:20,
+    //elevation: (Platform.OS === 'ios') ? 0 : 10,
   },
   filterbuttonMapView : {
     height:(width >= 375) ? 60 : 50,

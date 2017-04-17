@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet,Platform } from 'react-native'
 import { Fonts, Colors, Metrics } from '../../Themes'
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -10,7 +10,7 @@ export default EStyleSheet.create({
     backgroundColor:'#fff',
   },
   slide: {
-    flex: 1,
+    //flex: 1,
     //justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
@@ -50,7 +50,7 @@ export default EStyleSheet.create({
     marginRight:19,
   },
   topHeading: {
-    marginTop: '6%',
+    marginTop: (Platform.OS === 'ios') ? '6%' : '3%',
     //backgroundColor:'green',
     alignSelf:'stretch',
     alignItems:'center'
