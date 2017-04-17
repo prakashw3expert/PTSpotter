@@ -188,8 +188,10 @@ export default EStyleSheet.create({
     width:'22%'
   },
   imageThumbnail : {
-    height:(width > 325) ? 110 : 92,
-    width :(width > 325) ? 110 : 92,
+    // height:(width > 325) ? 110 : 92,
+    // width :(width > 325) ? 110 : 92,
+    height:(width-44)/3,
+    width:(width-44)/3,
     borderRadius : 5,
     marginHorizontal:2,
     marginTop:10
