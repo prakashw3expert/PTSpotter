@@ -28,7 +28,7 @@ export default class MessageScreen extends React.Component {
                   <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center',flex:1}]}> MESSAGES </Text>
               </View>
               <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end'}}>
-                
+
               </View>
 
           </View>
@@ -38,7 +38,7 @@ export default class MessageScreen extends React.Component {
           <DataListView />
           </Content>
       </Container>
-      
+
     )
   }
 }
@@ -92,7 +92,7 @@ class DataListView extends React.Component {
                      "online" : false,
                      "time" : "7:15 AM"
                    },
-                   
+
 
                  ]
              }
@@ -108,7 +108,7 @@ class DataListView extends React.Component {
     return (
 
           <View style={styles.scheduleView}>
-            
+
                 <Content>
                 <List dataArray={this.state.results.items}  renderRow={(item)  =>
                             <ListItem button avatar onPress={this.navigateToChat} style={{marginTop:(width >= 375) ? 14 : 5,paddingBottom:(width >= 375) ? 14 : 2, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
@@ -117,7 +117,7 @@ class DataListView extends React.Component {
                                    <Image source={item.image} style={styles.listImage}/>
                                    <View style={(item.online === true) ? Fonts.style.onlineDotMessages : Fonts.style.offlineDotMessages}></View>
                                 </View>
-                                  
+
                                 </Left>
                                 <Body style={{borderBottomWidth:0,marginRight:15}}>
                                   <Text style={styles.senderName}>{item.Name}</Text>
@@ -125,7 +125,7 @@ class DataListView extends React.Component {
                                 </Body>
                                 <Right style={{borderBottomWidth:0,justifyContent: 'flex-end'}}>
                                   {item.unreadCount > 0 ? <View style={styles.unreadCircle}><Text style={styles.unreadCounterText}>{item.unreadCount}</Text></View> : <Text></Text>}
-                                  
+
                                   <Text style={styles.messageTime}>{item.time} </Text>
                                 </Right>
                             </ListItem>
@@ -145,16 +145,13 @@ class NoMessages extends React.Component {
       <View style={styles.emptyView}>
           <Image source={Images.emptyMessage} style={{height:120, width:120,marginTop:22}} />
           <Text style={[Fonts.style.buttonTextNormalGrey,styles.emptyText]}>
-           YOU DON’T HAVE ANY MESSAGES YET. 
+           YOU DON’T HAVE ANY MESSAGES YET.
            <Text style={styles.btnEmptyText} onPress={NavigationActions.search}>GO TO THE SEARCH SCREEN </Text> AND FIND YOUR FIRST CLIENT.
           </Text>
 
-          
-        
+
+
       </View>
     )
   }
 }
-
-
-

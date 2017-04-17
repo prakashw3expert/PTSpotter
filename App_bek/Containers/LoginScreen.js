@@ -96,6 +96,7 @@ class LoginScreen extends React.Component {
                   console.log(result)
                   Actions.homeScreen()
 
+
                 }
               }
 
@@ -159,7 +160,7 @@ class LoginScreen extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
       <View style={[Styles.topHeading]}>
         <View style={Styles.navigationbar} >
         <TouchableOpacity onPress={Actions.pop} style={{height:40, flex:.5}}>
@@ -167,7 +168,7 @@ class LoginScreen extends React.Component {
         </TouchableOpacity>
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
-        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER {this.props.username}</Text>
+        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER </Text>
       </View>
 
         <Item rounded style={Fonts.style.inputWrapper}>
@@ -211,9 +212,11 @@ class LoginScreen extends React.Component {
             <Hr lineColor='white' text='OR' textColor='white' textSize="18" style={{fontWeight:'bold',fontSize:18.6,letterSpacing: 3.8, fontFamily:Fonts.type.bold}}/>
         </View>
 
+        {/*onPress={this.handleFacebookLogin}*/}
         <View>
-          <Button light full rounded style={Fonts.style.facebook} onPress={this.handleFacebookLogin}>
-              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
+          <Button light full rounded style={Fonts.style.facebook} >
+              <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA FACEBOOK</Text>
+
           </Button>
         </View>
 

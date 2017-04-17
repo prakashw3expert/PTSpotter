@@ -24,19 +24,19 @@ constructor(props) {
             currentTab : 0,
              }
          }
-     
+
 
 handleChangeTab({i, ref }) {
      this.setState({currentTab : i});
 }
   render () {
 
-    
+
 
     return (
 
       <Container>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
 
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader} style={{height:248}}>
@@ -81,7 +81,7 @@ handleChangeTab({i, ref }) {
 
             {
 
-              (this.state.currentTab == 1) ? <AddNote /> : null 
+              (this.state.currentTab == 1) ? <AddNote /> : null
             }
             </Container>
 
@@ -116,9 +116,9 @@ class AddNote extends React.Component {
     return (
 
           <View style={styles.bottomview}>
-              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:(width >= 325) ? 0 : 7.5,marginTop:(width >= 325) ? 0 : 7.5, height:45}]}>
-                <Input style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
-                <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
+              <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:(width >= 325) ? 0 : 7.5,marginTop:(width >= 325) ? 15 : 7.5, height:45}]}>
+                <Input style={Fonts.style.inputBordered} placeholder='ADD NOTE' placeholderTextColor={Fonts.colors.input}/>
+                <Text style={{ marginTop:10 }}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
               </View>
           </View>
 
@@ -227,8 +227,8 @@ class WorkoutInterest extends React.Component {
               </View>
 
                 <View style={{marginTop:80, marginLeft:20, marginRight:20}}>
-                <Button light full rounded style={Fonts.style.default} >
-                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>START SESSION</Text>
+                <Button light full rounded style={Fonts.style.red} >
+                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>STOP SESSION</Text>
               </Button>
               </View>
           </View>

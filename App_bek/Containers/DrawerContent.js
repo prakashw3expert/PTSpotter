@@ -145,7 +145,6 @@ class DrawerContent extends Component {
         </Button>
       </View>
       </View>
-
     )
   }
 

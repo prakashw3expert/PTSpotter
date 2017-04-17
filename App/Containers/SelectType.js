@@ -39,7 +39,7 @@ this.currentIndex = state.index;
 
     return (
       <View style={styles.container}>
-
+      <StatusBar barStyle='dark-content' backgroundColor={Colors.white} />
       <View style={[styles.topHeading]}>
         <View style={Styles.navigationbar} >
           <TouchableOpacity onPress={Actions.pop} style={{height:30, flex:.5, paddingLeft:Fonts.size.containerPaddingLeft}}>

@@ -1,21 +1,21 @@
 // @flow
-'use strict';
+
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity, Dimensions,StatusBar,Modal } from 'react-native'
+import { ScrollView, Text, Image, View,TouchableOpacity, Dimensions,StatusBar,Modal,Platform } from 'react-native'
 import { Container,Content,Form,Button,Icon,ListItem,Grid,Col, Tabs, Tab, TabHeading,Input, Thumbnail,Body,Left,Right,Card, CardItem } from 'native-base';
 const { width, height } = Dimensions.get('window')
 import { Images,Fonts,Colors } from '../../Themes'
 import RoundedButton from '../../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Foundation from 'react-native-vector-icons/Foundation';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // Styles
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
 import styles from './Styles/TrainerDetailStyle'
 import ImageViewer from 'ImageViewer';
-import Video from 'react-native-video';
+
 import YouTube from 'react-native-youtube'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
@@ -28,17 +28,13 @@ let imgsArr = [
 ];
 
 let videoArray = [
-  'VQXZIkOiKP4',
-  '1KGU6iB5MVE',
-  '9yYKH9K3xdQ',
   'j8QSOvvN_qQ'
+
 ];
 
 let videoThumbnails = [
-  'https://img.youtube.com/vi/VQXZIkOiKP4/0.jpg',
-  'https://img.youtube.com/vi/1KGU6iB5MVE/0.jpg',
-  'https://img.youtube.com/vi/9yYKH9K3xdQ/0.jpg',
   'https://img.youtube.com/vi/j8QSOvvN_qQ/0.jpg'
+
 
 ];
 
@@ -81,29 +77,25 @@ export default class TrainerDetail extends React.Component {
 
     return (
 
-        <ScrollView scrollEnabled={false}>
-        <StatusBar barStyle='light-content' />
-          <View>
-              <View style={styles.headerView}>
-                <Image source={Images.editProfileHeader} style={{height:248}} >
+      <Container>
+      <StatusBar barStyle='light-content' />
 
-                  <View style={styles.navbarview}>
-                      <View style={{flex:1}}>
-                        <Button transparent iconLeft onPress={NavigationActions.pop}>
-                          <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white',marginLeft:(width >= 375) ? 0 : 20}}/>
-                        </Button>
-                      </View>
-                      <View style={styles.navbarCenterView}>
-                        <Text></Text>
-                      </View>
-                      <View style={{flex:1}}>
-                      <Button transparent>
-                          <Image source={Images.messageIcon} style={{height:23,width:23,marginLeft:10}}/>
-                      </Button>
-                      </View>
-
-                    </View>
-
+      <View style={styles.headerView}>
+        <Image source={Images.editProfileHeader} style={{height:248}} >
+          <View style={styles.navbarview}>
+              <View style={{flex:1}}>
+                <Button transparent iconLeft onPress={NavigationActions.pop}>
+                  <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white',marginLeft:(width >= 375) ? 0 : 20}}/>
+                </Button>
+              </View>
+              <View style={styles.navbarCenterView}>
+                <Text></Text>
+              </View>
+              <View style={{flex:1}}>
+              <Button transparent>
+                  <Image source={Images.messageIcon} style={{height:23,width:23,marginLeft:10}}/>
+              </Button>
+              </View>
                     <View style={styles.profileimage} >
                       <View>
                          <Image source={Images.user5} style={styles.userImage}/>
@@ -112,7 +104,6 @@ export default class TrainerDetail extends React.Component {
                       <Text style={styles.username}> Aaron Castillo </Text>
                       <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
                       <View onPress={() => alert('StarRating Pressed')}>
-
                       <StarRating
                           disabled={false}
                           emptyStar={'star-o'}
@@ -126,49 +117,48 @@ export default class TrainerDetail extends React.Component {
                           emptyStarColor='rgb(252, 221, 45)'
                         />
 
-
-
                       </View>
                       <Text style={styles.ratingtext}> Avg. rating from completed sessions </Text>
 
-                    </View>
-                </Image>
+            </View>
+            </View>
+        </Image>
 
-              </View>
+      </View>
 
-              <View style={styles.containers}>
+              <ScrollableTabView
+              locked={false}
+              onChangeTab={this.handleChangeTab.bind(this)}
+              tabBarStyle={{borderWidth:0, height:46}}
+              tabBarBackgroundColor={'white'}
+              tabBarActiveTextColor={Colors.purpleColor}
+              tabBarInactiveTextColor={Colors.subHeadingRegular}
+              tabBarUnderlineStyle={styles.tabBorderSytelPurple}
+              tabBarTextStyle={[styles.tabText]}
+              tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
+              renderTabBar={() => <DefaultTabBar />}>
 
-                    <ScrollableTabView
-                    locked={false}
-                      onChangeTab={this.handleChangeTab.bind(this)}
-                      tabBarStyle={{borderWidth:0, height:46}}
-                      tabBarBackgroundColor={'white'}
-                      tabBarActiveTextColor={Colors.purpleColor}
-                      tabBarInactiveTextColor={Colors.subHeadingRegular}
-                      tabBarUnderlineStyle={styles.tabBorderSytelPurple}
-                      tabBarTextStyle={[styles.tabText]}
-                      tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
-                      renderTabBar={() => <DefaultTabBar />}>
+              <AboutData tabLabel='About' />
+              <Schedule tabLabel='Schedule' />
+              <PhotosVideos tabLabel='Gallery' />
+              <NoteCard tabLabel='Notes' />
 
-                      <AboutData tabLabel='About' />
-                      <Schedule tabLabel='Schedule' />
-                      <PhotosVideos tabLabel='Gallery' />
-                      <NoteCard tabLabel='Notes' />
-                    </ScrollableTabView>
+            </ScrollableTabView>
 
-                    {
+            {
 
-                      (this.state.currentTab == 3) ? <AddNote /> : null
-                    }
-              </View>
+              (this.state.currentTab == 3) ? <AddNote /> : null
+            }
+            </Container>
 
-        </View>
 
-        </ScrollView>
 
     )
   }
 }
+
+
+
 class EmptyAbout extends React.Component {
 
   render () {
@@ -272,7 +262,7 @@ class AboutData extends React.Component {
   render () {
     return (
 
-          <ScrollView style={{height:(width >= 375) ? 370 : 270}} showsVerticalScrollIndicator={false}>
+          <ScrollView style={{height:(width >= 375) ? 370 : 270, paddingHorizontal :20}} showsVerticalScrollIndicator={false}>
 
           <View style={Fonts.style.mt15}>
 
@@ -330,7 +320,7 @@ class Schedule extends React.Component {
   render () {
     return (
 
-      <ScrollView style={{height:(width >= 375) ? 350 : 250}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 375) ? 350 : 250,paddingHorizontal :20}} showsVerticalScrollIndicator={false}>
 
           <View style={Fonts.style.mt5}>
             <Text style={[Fonts.style.h2, Fonts.style.mt20, {textAlign:'center'}]}> GYMS </Text>
@@ -390,7 +380,7 @@ class PhotosVideos extends React.Component {
   render () {
     return (
 
-      <ScrollView style={{height:(width >= 325) ? 350 : 250}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 325) ? 350 : 250,paddingHorizontal :(Platform.OS === 'ios') ? 16 : 16,marginBottom:5}} showsVerticalScrollIndicator={false}>
 
       <View style={styles.imageCollection}>
       {
@@ -417,11 +407,13 @@ class PhotosVideos extends React.Component {
           })
       }
       </View>
+
       <ImageViewer shown={this.state.shown}
                    imageUrls={imgsArr}
                    onClose={this.closeViewer.bind(this)}
                    index={this.state.curIndex}>
       </ImageViewer>
+
 
         <Modal
             animationType={"slide"}
@@ -448,7 +440,7 @@ class PhotosVideos extends React.Component {
                     onChangeQuality={(e)=>{this.setState({quality: e.quality})}}
                     onError={(e)=>{this.setState({error: e.error})}}
                     onProgress={(e)=>{this.setState({currentTime: e.currentTime, duration: e.duration})}}
-
+                    apiKey="AIzaSyDyUcLthCP1_v0NXPE_0CFRcY4lr7rqRUg"
                     style={styles.VideoPlayerFullScreen}
                   />
               </View>
@@ -543,3 +535,89 @@ class PrivateAvailability extends React.Component {
     )
   }
 }
+
+
+/*  <ScrollView scrollEnabled={false}>
+    <StatusBar barStyle='light-content' />
+
+          <View style={styles.headerView}>
+            <Image source={Images.editProfileHeader} style={{height:248}} >
+
+              <View style={styles.navbarview}>
+                  <View style={{flex:1}}>
+                    <Button transparent iconLeft onPress={NavigationActions.pop}>
+                      <Ionicons name="ios-arrow-back-outline" size={30} style={{color:'white',marginLeft:(width >= 375) ? 0 : 20}}/>
+                    </Button>
+                  </View>
+                  <View style={styles.navbarCenterView}>
+                    <Text></Text>
+                  </View>
+                  <View style={{flex:1}}>
+                  <Button transparent>
+                      <Image source={Images.messageIcon} style={{height:23,width:23,marginLeft:10}}/>
+                  </Button>
+                  </View>
+
+                </View>
+
+                <View style={styles.profileimage} >
+                  <View>
+                     <Image source={Images.user5} style={styles.userImage}/>
+                     <View style={Fonts.style.offlineDot}></View>
+                  </View>
+                  <Text style={styles.username}> Aaron Castillo </Text>
+                  <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
+                  <View onPress={() => alert('StarRating Pressed')}>
+
+                  <StarRating
+                      disabled={false}
+                      emptyStar={'star-o'}
+                      fullStar={'star'}
+                      iconSet={'FontAwesome'}
+                      maxStars={5}
+                      starSize={20}
+                      rating={4}
+                      selectedStar={(rating) => this.onStarRatingPress(rating)}
+                      starColor='rgb(252, 221, 45)'
+                      emptyStarColor='rgb(252, 221, 45)'
+                    />
+
+
+
+                  </View>
+                  <Text style={styles.ratingtext}> Avg. rating from completed sessions </Text>
+
+                </View>
+            </Image>
+
+          </View>
+
+          <View style={styles.containers}>
+
+                <ScrollableTabView
+                locked={false}
+                  onChangeTab={this.handleChangeTab.bind(this)}
+                  tabBarStyle={{borderWidth:0, height:46}}
+                  tabBarBackgroundColor={'white'}
+                  tabBarActiveTextColor={Colors.purpleColor}
+                  tabBarInactiveTextColor={Colors.subHeadingRegular}
+                  tabBarUnderlineStyle={styles.tabBorderSytelPurple}
+                  tabBarTextStyle={[styles.tabText]}
+                  tabBarTabStyle={{paddingBottom:0,marginLeft:0,borderBottomWidth:2,borderBottomColor:Colors.purpleColor}}
+                  renderTabBar={() => <DefaultTabBar />}>
+
+                  <AboutData tabLabel='About' />
+                  <Schedule tabLabel='Schedule' />
+                  <PhotosVideos tabLabel='Gallery' />
+                  <NoteCard tabLabel='Notes' />
+                </ScrollableTabView>
+
+                {
+
+                  (this.state.currentTab == 3) ? <AddNote /> : null
+                }
+          </View>
+
+
+
+    </ScrollView> */

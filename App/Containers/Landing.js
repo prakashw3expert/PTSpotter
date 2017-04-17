@@ -21,7 +21,7 @@ class Landing extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle='dark-content' />
+        <StatusBar barStyle='dark-content' backgroundColor={Colors.white}/>
         <View style={styles.topHeading}>
             <Text style={[Fonts.style.h1, Fonts.style.textGrey, Fonts.style.mb25]}>PT SPOTTER</Text>
 

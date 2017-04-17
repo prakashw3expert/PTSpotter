@@ -4,13 +4,13 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
 headerView: {
-    backgroundColor: Colors.background,
-    height:Metrics.navBarHeight,
-
+    backgroundColor:'#0f0b31',
+    height:85,
+    
 
   },
   navbarview: {
-    marginTop:Metrics.navBarTop,
+    marginTop:30,
     flexDirection:'row',
 
   },
@@ -22,6 +22,6 @@ headerView: {
       flex:3,
     },
   },
-
-
+  
+  
 })

@@ -1,4 +1,4 @@
-import { StyleSheet,Dimensions } from 'react-native'
+import { StyleSheet,Dimensions, Platform } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
 const { width, height } = Dimensions.get('window')
@@ -309,6 +309,15 @@ searchView : {
     fontSize:15.1,
     fontFamily:Fonts.type.bold,
     letterSpacing:1.9,
+  },
+  dailyScrollViewHeight : {
+    height:(Platform.OS === 'ios') ? (width >= 325) ? 405 : 350 : 330
+  },
+  yearlyScrollViewHeight : {
+    height:(Platform.OS === 'ios') ? (width >= 325) ? 450 : 350 : 375
+  },
+  searchPopupScrollViewHeight : {
+    height:(Platform.OS === 'ios') ? (width >= 325) ? 460 : 400 : 390
   },
 
 })

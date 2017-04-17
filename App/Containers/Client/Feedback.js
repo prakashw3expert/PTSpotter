@@ -29,7 +29,7 @@ constructor(props) {
     return (
 
         <Container>
-        <StatusBar barStyle='light-content' />
+        <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
       <View style={styles.headerView}>
         <View style={styles.navbarview}>
           <View style={{flex:1}}>
@@ -81,9 +81,7 @@ constructor(props) {
 
 
 </Container>
-      
+
     )
   }
 }
-
-

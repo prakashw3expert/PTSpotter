@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView,Dimensions, Text, Image, View,TouchableOpacity,Picker } from 'react-native'
+import { ScrollView,Dimensions, Text, Image, View,TouchableOpacity,PickerIOS } from 'react-native'
 import {Container,Content, TabHeading, Badge,List,Input, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
 
 import { Images, Colors, Fonts, Metrics } from '../../Themes'
@@ -9,7 +9,7 @@ import styles from './Styles/SessionsScreenStyle'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-simple-modal';
-var PickerItemIOS = Picker.Item;
+var PickerItemIOS = PickerIOS.Item;
 import Hr from 'react-native-hr'
 const { width, height } = Dimensions.get('window')
 
@@ -107,35 +107,32 @@ export default class Daily extends React.Component {
                   <TouchableOpacity onPress={() => this.setState({dateOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={styles.selectBoxText}> 10 </Text>
-                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={() => this.setState({monthOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={styles.selectBoxText}> January </Text>
-                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={() => this.setState({yearOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={styles.selectBoxText}> 2017 </Text>
-                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
                     </View>
                   </TouchableOpacity>
 
                 </View>
               </View>
 
-              {/*}<View style={{marginTop:(width > 325) ? 40 : 30, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
+              <View style={{marginTop:(width > 325) ? 40 : 30, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
                  <Button rounded small style={Fonts.style.categoryTagLarge}><Text style={Fonts.style.categoryTagTextLarge}>Yoga</Text></Button>
                  <Button rounded small style={Fonts.style.categoryTagGrayLarge}><Text style={Fonts.style.categoryTagTextLarge}>Cardio</Text></Button>
                  <Button rounded small style={Fonts.style.categoryTagGreeLarge}><Text style={Fonts.style.categoryTagTextLarge}>Fartlek</Text></Button>
               </View>
-
-
-              */ }
 
             </View>
 
@@ -200,16 +197,14 @@ export default class Daily extends React.Component {
                 </View>
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-            <Picker
+            <PickerIOS
               selectedValue={10}
-              style={{width : 80}}
               itemStyle={styles.pickerStyle}
               onValueChange={(day) => this.setState({day, modelIndex: 0})}>
 
               {days}
 
-
-            </Picker>
+            </PickerIOS>
           </View>
           </View>
         </Modal>
@@ -232,16 +227,14 @@ export default class Daily extends React.Component {
                 </View>
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-            <Picker
+            <PickerIOS
               selectedValue={'January'}
-              style={{width : 200}}
               itemStyle={[styles.pickerStyle,{width:200}]}
               onValueChange={(month) => this.setState({month, modelIndex: 0})}>
 
               {months}
 
-
-            </Picker>
+            </PickerIOS>
           </View>
           </View>
         </Modal>
@@ -264,16 +257,14 @@ export default class Daily extends React.Component {
                 </View>
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-            <Picker
+            <PickerIOS
               selectedValue={2017}
               itemStyle={styles.pickerStyle}
-              style={{width : 80}}
               onValueChange={(year) => this.setState({year, modelIndex: 0})}>
 
               {years}
 
-
-            </Picker>
+            </PickerIOS>
           </View>
           </View>
         </Modal>

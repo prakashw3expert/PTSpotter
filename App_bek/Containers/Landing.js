@@ -12,7 +12,7 @@ import { Actions } from 'react-native-router-flux'
 import Swiper from 'react-native-swiper';
 import SelectType from '../Containers/SelectType';
 import styles from './Styles/LandingStyleSheet'
-import { Fonts } from '../Themes/'
+import { Fonts, Colors } from '../Themes/'
 const { width, height } = Dimensions.get('window')
 
 class Landing extends Component {
@@ -21,7 +21,7 @@ class Landing extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle='dark-content' />
+        <StatusBar barStyle='dark-content' backgroundColor={Colors.white} />
         <View style={styles.topHeading}>
             <Text style={[Fonts.style.h1, Fonts.style.textGrey, Fonts.style.mb25]}>PT SPOTTER</Text>
 

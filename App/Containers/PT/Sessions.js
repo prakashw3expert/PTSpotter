@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView,Dimensions,Modal, Text, Image, View,StatusBar,TouchableOpacity,PickerIOS } from 'react-native'
+import { ScrollView,Dimensions,Modal, Text, Image, View,StatusBar,TouchableOpacity,Picker } from 'react-native'
 import {Container,Content,Input, TabHeading, Badge,List, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
 import ModalPopup from 'react-native-simple-modal';
 import { Images, Colors, Fonts } from '../../Themes'
@@ -11,7 +11,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const { width, height } = Dimensions.get('window')
-var PickerItemIOS = PickerIOS.Item;
+var PickerItemIOS = Picker.Item;
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 
@@ -31,7 +31,7 @@ export default class Sessions extends React.Component {
 
     return (
       <Container>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>
                   <View style={{flex:1}}>
@@ -674,17 +674,17 @@ class Filter extends React.Component {
     var months = [];
     for(i = 1; i <= 31; i++) {
 
-      days.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
+      days.push(<Picker.Item key={i} value={i} label={i.toString()} />)
     }
 
     for(i = 0; i < 12; i++) {
 
-      months.push(<PickerItemIOS key={monthArray[i]} value={monthArray[i]} label={monthArray[i]} />)
+      months.push(<Picker.Item key={monthArray[i]} value={monthArray[i]} label={monthArray[i]} />)
     }
 
     for(i = 2017; i < 2030; i++) {
 
-      years.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
+      years.push(<Picker.Item key={i} value={i} label={i.toString()} />)
     }
    return (
 
@@ -696,7 +696,8 @@ class Filter extends React.Component {
               </Text>
               <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5,marginBottom:10,marginLeft :20,marginRight:20,}]}>
                       <Input  style={Fonts.style.inputBordered} placeholder='Upcoming ' placeholderTextColor={Colors.white}/>
-                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:10,marginRight : (width > 325) ? 10 : 10, backgroundColor:'transparent'}} />
+                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : 10,marginTop:10,backgroundColor:'transparent'}} />
+
                 </View>
 
 
@@ -715,21 +716,21 @@ class Filter extends React.Component {
                   <TouchableOpacity onPress={() => this.setState({dateOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={[styles.selectBoxText, {color:Colors.white}]}> Day </Text>
-                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : 10,marginTop:0,backgroundColor:'transparent'}} />
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={() => this.setState({monthOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={[styles.selectBoxText, {color:Colors.white}]}> Month </Text>
-                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : 10,marginTop:0,backgroundColor:'transparent'}} />
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={() => this.setState({yearOpen: true})}>
                     <View style={styles.selectBox} >
                       <Text style={[styles.selectBoxText, {color:Colors.white}]}> Year </Text>
-                      <Icon name="arrow-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginTop:5,marginRight : (width > 325) ? 0 : 1}} />
+                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : 10,marginTop:0,backgroundColor:'transparent'}} />
                     </View>
                   </TouchableOpacity>
 
@@ -764,7 +765,7 @@ class Filter extends React.Component {
                 overlayBackground={Colors.popupoverlayBackground}
                 modalDidOpen={() => console.log('modal did open')}
                 modalDidClose={() => this.setState({dateOpen: false})}
-                style={{alignItems: 'center'}}>
+                style={{alignItems: 'center', zIndex: 1000}}>
                 <View>
                   <View style={{flexDirection:'row',alignItems:'center', zIndex: 1000}}>
                       <Text style={{marginLeft:20,flex:1}}></Text>
@@ -776,7 +777,7 @@ class Filter extends React.Component {
                       </View>
                   </View>
                 <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-                  <PickerIOS
+                  <Picker
                     selectedValue={10}
                     style={{width:100}}
                     itemStyle={[styles.pickerStyle,{width:135}]}
@@ -784,7 +785,7 @@ class Filter extends React.Component {
 
                     {days}
 
-                  </PickerIOS>
+                  </Picker>
                 </View>
                 </View>
               </ModalPopup>
@@ -815,7 +816,7 @@ class Filter extends React.Component {
 
                     {months}
 
-                  </PickerIOS>
+                  </Picker>
                 </View>
                 </View>
               </ModalPopup>
@@ -838,7 +839,7 @@ class Filter extends React.Component {
                       </View>
                   </View>
                 <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
-                  <PickerIOS
+                  <Picker
                     selectedValue={2017}
                     style={{width:100}}
                     itemStyle={styles.pickerStyle}
@@ -846,7 +847,7 @@ class Filter extends React.Component {
 
                     {years}
 
-                  </PickerIOS>
+                  </Picker>
                 </View>
                 </View>
               </ModalPopup>

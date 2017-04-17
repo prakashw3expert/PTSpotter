@@ -19,6 +19,7 @@ import ClientSettings from '../Containers/Client/Settings'
 import PTSettings from '../Containers/PT/Settings'
 import Availability from '../Containers/PT/Availability'
 import ClientDetail from '../Containers/PT/ClientDetail'
+import ClientDetailNotWorking from '../Containers/PT/ClientDetailNotWorking'
 import Sessions from '../Containers/PT/Sessions'
 import SetupSessions from '../Containers/PT/SetupSessions'
 import TrainerDetail from '../Containers/Client/TrainerDetail'
@@ -53,13 +54,13 @@ class NavigationRouter extends Component {
             <Scene key='SetupSessions' component={SetupSessions} title='SETUP SESSIONS'  hideNavBar={true}/>
             <Scene key='clientDetails' component={ClientDetail} title='' hideNavBar/>
             <Scene key='ClientDetailNotWorking' component={ClientDetailNotWorking} title='' hideNavBar/>
-            <Scene key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
+            <Scene  key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
             <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/>
             <Scene key='decline' component={Decline} title='Rating' hideNavBar/>
-            <Scene key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene  key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='ptsearch' component={PTSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
-            <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={false}/>
+            <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={true} />
             <Scene key='feedback' component={Feedback} title='FEEDBACK' hideNavBar />
           </Scene>
         </Scene>

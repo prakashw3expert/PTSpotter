@@ -1,16 +1,16 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
-    backgroundColor:'#0f0b31',
-    height:85,
+    backgroundColor:Colors.background,
+    height:Metrics.navBarHeight,
     alignItems:'center',
 
   },
   navbarview: {
-    marginTop:30,
+    marginTop:(Platform.OS === 'ios') ? 30 : 0,
     flexDirection:'row',
 
   },
@@ -76,7 +76,7 @@ export default EStyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
     alignItems:'center',
-    height: 110,
+    height:(Platform.OS === 'ios') ? 110 : 90,
     width:'100%',
     paddingLeft : 40,
     paddingRight : 40,
@@ -93,7 +93,7 @@ export default EStyleSheet.create({
     textAlign:'center',
     marginLeft:10,
     marginRight:10,
-   
+
   },
   textHours : {
     textAlign:'right',
@@ -120,13 +120,13 @@ export default EStyleSheet.create({
     },
   },
   pickerStyle : {
-    fontSize: 32, 
-    letterSpacing:3.9, 
-    color: 'rgb(102,102,102)', 
-    textAlign: 'center', 
+    fontSize: 32,
+    letterSpacing:3.9,
+    color: 'rgb(102,102,102)',
+    textAlign: 'center',
     fontWeight: 'bold',
     width:50,
-    marginRight:35, 
+    marginRight:35,
     '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
       marginRight:20,
       fontSize: 28,
@@ -138,8 +138,8 @@ export default EStyleSheet.create({
     letterSpacing:2,
     lineHeight:18,
     color:'rgb(102,102,102)',
-    
+
   },
-  
-  
+
+
 })

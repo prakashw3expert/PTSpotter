@@ -7,6 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import { Images, Colors, Fonts } from '../../Themes'
 import RoundedButton from '../../Components/RoundedButton'
@@ -36,17 +37,17 @@ state = {
     var hours = [];
     var minutes = [];
     for(i = 0; i < 24; i++) {
-      
+
       hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     for(i = 0; i < 60; i++) {
-      
+
       minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     return (
 
       <View style={styles.mainContainer}>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
         <ScrollView style={styles.container}>
             <View style={styles.mainView}>
                 <Form>
@@ -64,71 +65,71 @@ state = {
                           style={{marginRight:10}}
                           value={this.state.locationTrueSwitchIsOn} />
                     </ListItem>
-                
+
                     <Text style={[Fonts.style.h2,Fonts.style.ml20,{marginTop : 20}]}>
                           ALERTS
                     </Text>
-                    
+
                     <ListItem style={{borderBottomWidth:0}} onPress={() => this.setState({open: true})}>
                         <Body>
                             <Text style={[Fonts.style.h2,styles.chooseText]}>
                               Choose the amount of time prior to any event you would like to be notified
                             </Text>
                         </Body>
-                        <Icon name="arrow-forward" style={{color:Fonts.colors.input, marginRight:15}}/>
+                        <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                     </ListItem>
-                    
-                        
+
+
                     <Text style={[Fonts.style.h2,Fonts.style.ml20,{marginTop:20}]}>
                           GENERAL
                     </Text>
-                    
+
 
                     <List style={Fonts.style.settingList}>
                     <ListItem >
                         <Ionicons name="md-time" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Availability</Text>
                         <Right>
-                          <Icon name="arrow-forward" />
+                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialCommunityIcons name="comment-text-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Leave Feedback</Text>
                         <Right>
-                          <Icon name="arrow-forward" />
+                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialIcons name="help-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Support</Text>
                         <Right>
-                          <Icon name="arrow-forward" />
+                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialCommunityIcons name="information-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>About</Text>
                         <Right>
-                          <Icon name="arrow-forward" />
+                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <Ionicons name="md-list-box" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Terms of Service</Text>
                         <Right>
-                          <Icon name="arrow-forward" />
+                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <SimpleLineIcons name="eye" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Privacy Policy</Text>
                         <Right>
-                          <Icon name="arrow-forward" />
+                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
                         </Right>
                     </ListItem>
                     </List>
-                        
+
 
                       <View style={styles.bottomView}>
                           <Button bordered rounded block style={{height: 57,borderColor:'rgb(255,113,113)', borderWidth:2,}}>
@@ -163,24 +164,24 @@ state = {
                                   <Text style={styles.textMinutes}> MINUTES </Text>
                                 </Col>
                             </Grid>
-                            
-                            
+
+
                           <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
                             <PickerIOS
                               selectedValue={3}
                               itemStyle={styles.pickerStyle}
                               onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
-                                  
+
                               {hours}
-                                    
+
                             </PickerIOS>
                             <PickerIOS
                               selectedValue={25}
                               itemStyle={styles.pickerStyle}
                               onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
-                                  
+
                               {minutes}
-                                    
+
                             </PickerIOS>
                           </View>
                             <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
@@ -188,7 +189,7 @@ state = {
                                   <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD</Text>
                               </Button>
                             </View>
-                            
+
                           </View>
                         </Modal>
                 </Form>
@@ -198,4 +199,3 @@ state = {
     )
   }
 }
-

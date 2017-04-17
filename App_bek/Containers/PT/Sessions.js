@@ -334,7 +334,7 @@ class Daily extends React.Component {
               <Hr lineColor='rgb(234, 234, 234)'  />
             </View>
 
-            <ScrollView style={{height:(width >= 325) ? 405 : 350}} horizontal={false}>
+            <ScrollView style={styles.dailyScrollViewHeight} horizontal={false}>
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
@@ -528,7 +528,7 @@ class Yearly extends React.Component {
               <Hr lineColor='rgb(234, 234, 234)'  />
             </View>
 
-            <ScrollView style={{height:(width >= 325) ? 450 : 380}} horizontal={false} >
+            <ScrollView style={styles.yearlyScrollViewHeight} horizontal={false} >
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
@@ -623,7 +623,7 @@ class Search extends React.Component {
             <View style={styles.separater}>
                 <Hr lineColor={Colors.separetorLineColor}/>
             </View>
-            <ScrollView style={{height:(width >= 325) ? 460 : 400}} horizontal={false}>
+            <ScrollView style={styles.searchPopupScrollViewHeight} horizontal={false}>
             <View style={{}}>
               <List dataArray={this.state.results.items} renderRow={(item) =>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:15, paddingBottom:10}}>
@@ -779,8 +779,8 @@ class Filter extends React.Component {
                 <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
                   <Picker
                     selectedValue={10}
-                    style={{width:80}}
-                    itemStyle={styles.pickerStyle}
+                    style={{width:100}}
+                    itemStyle={[styles.pickerStyle,{width:135}]}
                     onValueChange={(day) => this.setState({day, modelIndex: 0})}>
 
                     {days}
@@ -810,7 +810,7 @@ class Filter extends React.Component {
                 <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
                   <Picker
                     selectedValue={'March'}
-                    style={{width:100}}
+                    style={{width:150}}
                     itemStyle={[styles.pickerStyle,{width:135}]}
                     onValueChange={(month) => this.setState({month, modelIndex: 1})}>
 
@@ -841,7 +841,7 @@ class Filter extends React.Component {
                 <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
                   <Picker
                     selectedValue={2017}
-                    style={{width:80}}
+                    style={{width:100}}
                     itemStyle={styles.pickerStyle}
                     onValueChange={(year) => this.setState({year, modelIndex: 0})}>
 
