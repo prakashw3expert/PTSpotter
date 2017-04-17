@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text,Platform, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
+import { ScrollView, Text,Platform, Image, View,Switch, TouchableHighlight,Dimensions,Picker,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Grid,Col } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import DayButton from '../../Components/DayButton'
@@ -14,7 +14,7 @@ import styles from './Styles/AvailabilityStyle'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Modal from 'react-native-simple-modal';
 const { width, height } = Dimensions.get('window')
-var PickerItemIOS = PickerIOS.Item;
+var PickerItemIOS = Picker.Item;
 
 export default class AvailabilityScreen extends React.Component {
 
@@ -114,7 +114,7 @@ export default class AvailabilityScreen extends React.Component {
               <View>
                 <View style={{flexDirection:'row',alignItems:'center'}}>
                     <Text style={{marginLeft:20,flex:1}}></Text>
-                    <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:13}]}>ADD AVAILABILITY</Text>
+                    <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:(Platform.OS === 'ios') ? 13 : 16}]}>ADD AVAILABILITY</Text>
                     <View style={{flexDirection:'row',alignItems:'flex-end'}}>
                     <Button transparent onPress={() => this.setState({open: false})} >
                         <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
@@ -140,29 +140,32 @@ export default class AvailabilityScreen extends React.Component {
 
 
               <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
-                <PickerIOS
+                <Picker
+                  style={{width:(Platform.OS === 'ios') ? 70 : 90, marginTop:(Platform.OS === 'android') ? 20 : 0}}
                   selectedValue={3}
                   itemStyle={styles.pickerStyle}
                   onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
 
                   {hours}
 
-                </PickerIOS>
-                <PickerIOS
+                </Picker>
+                <Picker
+                  style={{width:(Platform.OS === 'ios') ? 70 : 90,marginTop:(Platform.OS === 'android') ? 20 : 0}}
                   selectedValue={25}
                   itemStyle={styles.pickerStyle}
                   onValueChange={(minute) => this.setState({minute, modelIndex: 0})}>
 
                   {minutes}
 
-                </PickerIOS>
-                <PickerIOS
+                </Picker>
+                <Picker
+                  style={{width:(Platform.OS === 'ios') ? 70 : 90,marginTop:(Platform.OS === 'android') ? 20 : 0}}
                   selectedValue="pm"
                   itemStyle={styles.pickerStyle}
                   onValueChange={(ampm) => this.setState({ampm, modelIndex: 0})}>
                     <PickerItemIOS key="am" value="am" label="am" />
                     <PickerItemIOS key="pm" value="pm" label="pm" />
-                </PickerIOS>
+                </Picker>
               </View>
                 <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
                   <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>

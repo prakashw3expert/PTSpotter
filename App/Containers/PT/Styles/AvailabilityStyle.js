@@ -85,7 +85,7 @@ export default EStyleSheet.create({
     },
   },
   modelText: {
-    fontSize:10.4,
+    fontSize:(Platform.OS === 'ios') ? 10.4 : 13,
     fontFamily : Fonts.type.regular,
     lineHeight:17,
     letterSpacing:1.4,
@@ -126,15 +126,15 @@ export default EStyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     width:50,
-    marginRight:35,
+    marginRight:(Platform.OS === 'ios') ? 35 : 20,
     '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
-      marginRight:20,
+      marginRight:(Platform.OS === 'ios') ? 0 : 5,
       fontSize: 28,
     },
   },
   dayBold: {
     fontFamily:Fonts.type.bold,
-    fontSize:Fonts.size.small,
+    fontSize:(Platform.OS === 'ios') ? 10.4 : 13,
     letterSpacing:2,
     lineHeight:18,
     color:'rgb(102,102,102)',
