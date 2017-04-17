@@ -25,10 +25,11 @@ export default EStyleSheet.create({
     width:(width >= 375) ? 250 : 200,
   },
   profileimage: {
-  flex:15,
+  flex:7,
   alignItems:'center',
   alignSelf:'stretch',
   paddingBottom : (Platform.OS === 'ios') ? 0 : 100,
+
 
   },
   userImage: {
@@ -44,22 +45,18 @@ export default EStyleSheet.create({
     fontFamily : Fonts.type.bold,
     color : 'white',
     letterSpacing : 1.7,
-    marginBottom : 6
   },
   userAddress : {
     fontSize : Fonts.size.medium,
     fontFamily : Fonts.type.regular,
     color : Colors.whiteMuted,
     letterSpacing : 0.1,
-    marginBottom : 10
   },
   ratingtext : {
     fontSize : Fonts.size.small,
     fontFamily : Fonts.type.regular,
     color : Colors.whiteMuted,
     letterSpacing : 0.1,
-    marginTop : 7,
-    marginBottom : 20
   },
   emptyView: {
     justifyContent : 'center',
@@ -219,7 +216,6 @@ export default EStyleSheet.create({
     width : width,
     backgroundColor:Colors.background
   },
-
 
 
 

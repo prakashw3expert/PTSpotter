@@ -127,7 +127,6 @@ const style = {
     color:colors.input,
   },
   inputWrapperBordered : {
-
    /* flex: 1, */
     flexDirection: 'row',
     borderWidth:2,
@@ -135,7 +134,6 @@ const style = {
     borderRadius:25,
     paddingLeft:10,
     marginTop:16,
-    paddingRight : 5,
   },
   borderedIcon : {
     marginTop: (width >= 325) ? 10 : 8,
@@ -427,11 +425,11 @@ const style = {
   categoryTag : {
     paddingLeft:(width >= 325) ? 15 : 10,
     paddingRight:(width >= 325) ? 15 : 10,
-    height:(width >= 325) ? 35 : 35,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width >= 325) ? 35 : 30,
     backgroundColor:'rgb(31,199,116)',
-    marginRight : 5,
-    justifyContent : 'center',
-    alignItems : 'center'
+    marginRight : 5
   },
   categoryTagLarge : {
     paddingLeft:(width >= 325) ? 22 : 10,
@@ -440,9 +438,7 @@ const style = {
     paddingBottom : 0,
     height:(width >= 325) ? 48 : 30,
     backgroundColor:'rgb(31,199,116)',
-    marginRight : 5,
-    justifyContent : 'center',
-    alignItems : 'center'
+    marginRight : 5
   },
   categoryTagGrayLarge : {
     paddingLeft:(width >= 325) ? 22 : 10,
@@ -451,9 +447,7 @@ const style = {
     paddingBottom : 0,
     height:(width >= 325) ? 48 : 30,
     backgroundColor : 'rgb(36, 195, 200)',
-    marginRight : 5,
-    justifyContent : 'center',
-    alignItems : 'center'
+    marginRight : 5
   },
   categoryTagGreeLarge : {
     paddingLeft:(width >= 325) ? 22 : 10,
@@ -462,14 +456,13 @@ const style = {
     paddingBottom : 0,
     height:(width >= 325) ? 48 : 30,
     backgroundColor : 'rgb(251, 179, 39)',
-    marginRight : 5,
-    justifyContent : 'center',
-    alignItems : 'center'
+    marginRight : 5
   },
   categoryTagTextLarge : {
-    fontSize:16,
+    fontSize:16.4,
     fontFamily:type.regular,
     color:'#fff',
+    lineHeight:31.4,
     letterSpacing:2.1,
     backgroundColor : 'transparent'
   },
@@ -497,9 +490,8 @@ const style = {
     fontSize:12,
     fontFamily:type.regular,
     color:'#fff',
+    lineHeight:23,
     letterSpacing:1.5,
-    alignItems : 'center',
-    justifyContent : 'center'
   },
   ratingCards : {
     borderLeftWidth : 0,

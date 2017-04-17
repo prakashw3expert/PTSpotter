@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar, Picker } from 'react-native'
+import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
 import { Container, Content, Input,
   Form, Item, Icon, List, ListItem, Right, Button, Body, Left, Grid, Col  } from 'native-base';
 
@@ -7,7 +7,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import { Images, Colors, Fonts } from '../../Themes'
 import RoundedButton from '../../Components/RoundedButton'
@@ -15,12 +14,11 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/SettingScreenStyle'
 import FullButton from '../../Components/FullButton'
 import Modal from 'react-native-simple-modal';
-var PickerItemIOS = Picker.Item;
+var PickerItemIOS = PickerIOS.Item;
 const { width, height } = Dimensions.get('window')
 
-import { connect } from 'react-redux'
 
-class SettingScreen extends React.Component {
+export default class SettingScreen extends React.Component {
 
 state = {
       open: false,
@@ -38,12 +36,12 @@ state = {
     var hours = [];
     var minutes = [];
     for(i = 0; i < 24; i++) {
-
-      hours.push(<Picker.Item key={i} value={i} label={i.toString()} />)
+      
+      hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     for(i = 0; i < 60; i++) {
-
-      minutes.push(<Picker.Item key={i} value={i} label={i.toString()} />)
+      
+      minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     return (
 
@@ -66,91 +64,117 @@ state = {
                           style={{marginRight:10}}
                           value={this.state.locationTrueSwitchIsOn} />
                     </ListItem>
-
+                
                     <Text style={[Fonts.style.h2,Fonts.style.ml20,{marginTop : 20}]}>
                           ALERTS
                     </Text>
-
+                    
                     <ListItem style={{borderBottomWidth:0}} onPress={() => this.setState({open: true})}>
                         <Body>
                             <Text style={[Fonts.style.h2,styles.chooseText]}>
                               Choose the amount of time prior to any event you would like to be notified
                             </Text>
                         </Body>
+<<<<<<< HEAD
                         <FontAwesome name='angle-right' style={{fontSize:24,color:"rgba(102, 102, 102, 0.5)"}} />
+=======
+                        <Icon name="arrow-forward" style={{color:Fonts.colors.input, marginRight:15}}/>
+>>>>>>> parent of bd6ef8a... UI fixes
                     </ListItem>
                     <List style={Fonts.style.settingList}>
                     <ListItem >
-
+                        
                         <Text style={styles.listText}>10 Minutes Prior</Text>
                         <Right>
                           <MaterialCommunityIcons name="close" size={(width >= 375) ? 18 : 16} color="rgb(178,178,178)"/>
                         </Right>
                     </ListItem>
                     <ListItem>
-
+                        
                         <Text style={styles.listText}>1 Hour 12 Minutes Prior</Text>
                         <Right>
                           <MaterialCommunityIcons name="close" size={(width >= 375) ? 18 : 16} color="rgb(178,178,178)"/>
                         </Right>
                     </ListItem>
                     </List>
-
+                        
                     <Text style={[Fonts.style.h2,Fonts.style.ml20,{marginTop:20}]}>
                           GENERAL
                     </Text>
-
+                    
 
                     <List style={Fonts.style.settingList}>
-
-                    {(this.props.username === 'trainer@ptspotter.co.uk') ? <ListItem >
+                    <ListItem >
                         <Ionicons name="md-time" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Availability</Text>
                         <Right>
+<<<<<<< HEAD
                           <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
+=======
+                          <Icon name="arrow-forward" />
+>>>>>>> parent of bd6ef8a... UI fixes
                         </Right>
-                    </ListItem> : null}
-
+                    </ListItem>
                     <ListItem>
                         <MaterialCommunityIcons name="comment-text-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Leave Feedback</Text>
                         <Right>
+<<<<<<< HEAD
                           <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
+=======
+                          <Icon name="arrow-forward" />
+>>>>>>> parent of bd6ef8a... UI fixes
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialIcons name="help-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Support</Text>
                         <Right>
+<<<<<<< HEAD
                           <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
+=======
+                          <Icon name="arrow-forward" />
+>>>>>>> parent of bd6ef8a... UI fixes
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialCommunityIcons name="information-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>About</Text>
                         <Right>
+<<<<<<< HEAD
                           <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
+=======
+                          <Icon name="arrow-forward" />
+>>>>>>> parent of bd6ef8a... UI fixes
                         </Right>
                     </ListItem>
                     <ListItem>
                         <Ionicons name="md-list-box" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Terms of Service</Text>
                         <Right>
+<<<<<<< HEAD
                           <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
+=======
+                          <Icon name="arrow-forward" />
+>>>>>>> parent of bd6ef8a... UI fixes
                         </Right>
                     </ListItem>
                     <ListItem>
                         <SimpleLineIcons name="eye" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Privacy Policy</Text>
                         <Right>
+<<<<<<< HEAD
                           <FontAwesome name='angle-right' style={{fontSize:20,color:"rgba(102, 102, 102, 0.5)"}} />
+=======
+                          <Icon name="arrow-forward" />
+>>>>>>> parent of bd6ef8a... UI fixes
                         </Right>
                     </ListItem>
                     </List>
-
+                        
 
                       <View style={styles.bottomView}>
-                          <Button bordered rounded block style={{height: 57,borderColor:'rgb(255,113,113)', borderWidth:2,}} onPress={NavigationActions.login}>
+                          <Button bordered rounded block style={{height: 57,borderColor:'rgb(255,113,113)', borderWidth:2,}}>
                               <Text style={[Fonts.style.buttonText,{color:'rgb(255,113,113)'}]}> LOG OUT</Text>
                           </Button>
                       </View>
@@ -182,33 +206,32 @@ state = {
                                   <Text style={styles.textMinutes}> MINUTES </Text>
                                 </Col>
                             </Grid>
-
+                            
+                            
                           <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
-                            <Picker
+                            <PickerIOS
                               selectedValue={3}
-                              style={{width:90, alignItems : 'center'}}
                               itemStyle={styles.pickerStyle}
-                              onValueChange={(hour) => this.setState({location: hour})}>
-
+                              onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
+                                  
                               {hours}
-
-                            </Picker>
-                            <Picker
+                                    
+                            </PickerIOS>
+                            <PickerIOS
                               selectedValue={25}
-                              style={{width:90, alignItems : 'center'}}
                               itemStyle={styles.pickerStyle}
-                              onValueChange={(hour) => this.setState({location: hour})}>
-
+                              onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
+                                  
                               {minutes}
-
-                            </Picker>
+                                    
+                            </PickerIOS>
                           </View>
                             <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
                               <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>
                                   <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD</Text>
                               </Button>
                             </View>
-
+                            
                           </View>
                         </Modal>
                 </Form>
@@ -219,10 +242,3 @@ state = {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    username: state.login.username
-  }
-}
-
-export default connect(mapStateToProps)(SettingScreen)

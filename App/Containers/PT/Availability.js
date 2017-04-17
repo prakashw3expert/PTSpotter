@@ -41,11 +41,11 @@ export default class AvailabilityScreen extends React.Component {
     var hours = [];
     var minutes = [];
     for(i = 0; i < 24; i++) {
-
+      
       hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     for(i = 0; i < 60; i++) {
-
+      
       minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
 
@@ -55,7 +55,7 @@ export default class AvailabilityScreen extends React.Component {
 
       <Container>
       <StatusBar barStyle='light-content' />
-
+      
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>
                   <View style={{flex:1,marginBottom:5}}>
@@ -100,8 +100,8 @@ export default class AvailabilityScreen extends React.Component {
             </View>
             <Hr lineColor='rgb(234, 234, 234)' />
             {showItem}
-
-
+           
+            
            </Content>
           <Save />
           <Modal
@@ -137,24 +137,24 @@ export default class AvailabilityScreen extends React.Component {
                       <Text style={styles.textMinutes}> 6:30 pm </Text>
                     </Col>
                 </Grid>
-
-
+                
+                
               <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
                 <PickerIOS
                   selectedValue={3}
                   itemStyle={styles.pickerStyle}
                   onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
-
+                      
                   {hours}
-
+                        
                 </PickerIOS>
                 <PickerIOS
                   selectedValue={25}
                   itemStyle={styles.pickerStyle}
                   onValueChange={(minute) => this.setState({minute, modelIndex: 0})}>
-
+                      
                   {minutes}
-
+                        
                 </PickerIOS>
                 <PickerIOS
                   selectedValue="pm"
@@ -169,7 +169,7 @@ export default class AvailabilityScreen extends React.Component {
                       <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD</Text>
                   </Button>
                 </View>
-
+                
               </View>
             </Modal>
         </Container>

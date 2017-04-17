@@ -4,8 +4,8 @@ const { width, height } = Dimensions.get('window')
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   headerView: {
-    backgroundColor: Colors.background,
-    height:Metrics.navBarHeight,
+    backgroundColor:'#0f0b31',
+    height:85,
     alignItems:'center',
 
   },
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     alignItems:'center'
   },
   navbarview: {
-    marginTop:Metrics.navBarTop,
+    marginTop:30,
     flexDirection:'row',
   },
   navbarCenterView : {
@@ -46,7 +46,7 @@ export default StyleSheet.create({
   },
   messageTime:{
     fontSize:10,
-    color:Colors.mutedColor,
+    color:Colors.mutedColor, 
     fontFamily:Fonts.type.regular,
     letterSpacing:0.1,
   },
@@ -65,7 +65,7 @@ export default StyleSheet.create({
     fontSize:12,
     fontFamily:Fonts.type.regular,
     letterSpacing:0.1,
-
+    
   },
   emptyView: {
     justifyContent : 'center',
@@ -90,7 +90,7 @@ export default StyleSheet.create({
     width:(width >= 375) ? 72 : 60,
     borderRadius:(width >= 375) ? 36 : 30,
   },
-
+  
 
 
 })

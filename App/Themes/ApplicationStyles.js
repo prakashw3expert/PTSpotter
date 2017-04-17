@@ -10,8 +10,7 @@ const ApplicationStyles = {
     mainContainer: {
       flex: 1,
       backgroundColor: Colors.transparent,
-      marginTop:Metrics.mainContainerMarginTop,
-
+      marginTop:70,
     },
     backgroundImage: {
       position: 'absolute',
