@@ -16,7 +16,7 @@ export default StyleSheet.create({
     fontSize : Fonts.size.regular,
     letterSpacing : 0.3,
     fontFamily : Fonts.type.regular,
-    
+
   },
   tabsSection : {
     padding:20
@@ -32,15 +32,15 @@ export default StyleSheet.create({
     borderTopColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'white',
-    borderLeftColor: 'transparent',  
-    marginLeft:'10%',
-    marginRight:30, 
+    borderLeftColor: 'transparent',
+    marginLeft:'11%',
+    marginRight:30,
     width:'22%'
   },
   tabContent : {
     paddingTop:28
   },
- 
+
   listname: {
     fontSize:(width >= 375) ? 14 : 13,
     fontFamily:Fonts.type.bold,

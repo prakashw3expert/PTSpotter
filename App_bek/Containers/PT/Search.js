@@ -108,7 +108,7 @@ class ListView extends React.Component {
                             style={Fonts.style.filterbutton}>
                         <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5}}/>
                     </Button>*/}
-           
+
          </Content>
 
 
@@ -213,7 +213,7 @@ class MapViewTab extends React.Component {
     return (
       <Content>
       <View style={{height:250}}>
-        
+
         <MapView
             style={{flex:1}}
             clusterMarkers={true}
@@ -224,8 +224,8 @@ class MapViewTab extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
-        
-        
+
+
         <MapView.Marker
           coordinate={{latitude: 37.78825,
             longitude: -122.4524}}
@@ -254,10 +254,10 @@ class MapViewTab extends React.Component {
           description="32 Blake Vista Apt. 777"
           image={Images.mapIcon}
         />
-        
-       
 
-        
+
+
+
 
         </MapView>
 
