@@ -36,6 +36,7 @@ const images = {
   articleArrow: require('../Images/articleSelectButton.png'),
   likeIcon: require('../Images/likeIcon.png'),
   commentIcon: require('../Images/combinedShape.png'),
+  userIconSetting: require('../Images/lll.png'),
 
   menuTopBekground: require('../Images/navigationDrawerBackground@3x.png'),
   commentAdd: require('../Images/sendCommentIcon.png'),

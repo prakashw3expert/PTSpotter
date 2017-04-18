@@ -50,6 +50,14 @@ export default {
     )
   },
 
+  UserIcon () {
+    return (
+      <TouchableOpacity >
+      <Image source={Images.userIconSetting} style={styles.messageIcon}/>
+      </TouchableOpacity>
+    )
+  },
+
   searchButton (callback) {
     return (
       <TouchableOpacity onPress={callback}>
