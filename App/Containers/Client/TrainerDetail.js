@@ -28,12 +28,12 @@ let imgsArr = [
 ];
 
 let videoArray = [
-  'VQXZIkOiKP4',
+  'j8QSOvvN_qQ'
 
 ];
 
 let videoThumbnails = [
-  'https://img.youtube.com/vi/VQXZIkOiKP4/0.jpg',
+  'https://img.youtube.com/vi/j8QSOvvN_qQ/0.jpg'
 
 
 ];
