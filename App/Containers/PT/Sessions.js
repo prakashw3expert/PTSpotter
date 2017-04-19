@@ -767,7 +767,7 @@ class Filter extends React.Component {
                 modalDidClose={() => this.setState({dateOpen: false})}
                 style={{alignItems: 'center', zIndex: 1000}}>
                 <View>
-                  <View style={{flexDirection:'row',alignItems:'center', , zIndex: 1000}}>
+                  <View style={{flexDirection:'row',alignItems:'center', zIndex: 1000}}>
                       <Text style={{marginLeft:20,flex:1}}></Text>
                       <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:(width >= 325) ? 16 : 13}]}>SELECT DAY</Text>
                       <View style={{flexDirection:'row',alignItems:'flex-end'}}>
