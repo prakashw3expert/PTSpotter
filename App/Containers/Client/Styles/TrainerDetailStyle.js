@@ -201,6 +201,25 @@ export default EStyleSheet.create({
     paddingHorizontal:(width >= 325) ? 0 : 0,
     justifyContent:'flex-start'
   },
+  textHeading : {
+    marginTop : 15,
+    fontFamily : Fonts.type.regular,
+    fontSize : 16,
+    color : Colors.subHeadingRegular,
+  },
+  modalVideoView : {
+      flex:1,
+      alignItems : 'center',
+      justifyContent : 'center',
+      backgroundColor:Colors.background
+  },
+  VideoPlayerFullScreen : {
+    height : 300,
+    width : width,
+    backgroundColor:Colors.background
+  },
+
+
 
 
 })

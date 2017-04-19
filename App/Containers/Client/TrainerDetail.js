@@ -1,26 +1,44 @@
 // @flow
-
+'use strict';
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity, Dimensions,StatusBar } from 'react-native'
+import { ScrollView, Text, Image, View,TouchableOpacity, Dimensions,StatusBar,Modal } from 'react-native'
 import { Container,Content,Form,Button,Icon,ListItem,Grid,Col, Tabs, Tab, TabHeading,Input, Thumbnail,Body,Left,Right,Card, CardItem } from 'native-base';
 const { width, height } = Dimensions.get('window')
 import { Images,Fonts,Colors } from '../../Themes'
 import RoundedButton from '../../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Foundation from 'react-native-vector-icons/Foundation';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // Styles
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
 import styles from './Styles/TrainerDetailStyle'
 import ImageViewer from 'ImageViewer';
+import Video from 'react-native-video';
+import YouTube from 'react-native-youtube'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 let imgsArr = [
   'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
-  'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
-  'https://s-media-cache-ak0.pinimg.com/originals/6b/23/b5/6b23b554561c8f4a94c8c8311c5f196d.jpg',
-  'https://healthnewsandviews.files.wordpress.com/2014/04/weight-lifting-400x400.jpg',
-  'https://s-media-cache-ak0.pinimg.com/originals/6b/23/b5/6b23b554561c8f4a94c8c8311c5f196d.jpg',
+  'http://3.bp.blogspot.com/-VGk_nvib7Sc/UN6XJyjri9I/AAAAAAAAAMM/aT1v8WFpz1Q/s400/Iron-Gym-Dip.jpg',
+  'https://s-media-cache-ak0.pinimg.com/736x/37/11/f3/3711f3f695d448eeba83a929dc740130.jpg',
+  'http://www.horizonlc.com/wp-content/uploads/2016/05/xshutterstock_290613188-400x400.jpg.pagespeed.ic.eg3BaseU6I.jpg',
+  'http://befit.ae/wp-content/uploads/2016/07/personal-trainer-1.jpg',
+];
+
+let videoArray = [
+  'VQXZIkOiKP4',
+  '1KGU6iB5MVE',
+  '9yYKH9K3xdQ',
+  'j8QSOvvN_qQ'
+];
+
+let videoThumbnails = [
+  'https://img.youtube.com/vi/VQXZIkOiKP4/0.jpg',
+  'https://img.youtube.com/vi/1KGU6iB5MVE/0.jpg',
+  'https://img.youtube.com/vi/9yYKH9K3xdQ/0.jpg',
+  'https://img.youtube.com/vi/j8QSOvvN_qQ/0.jpg'
+
 ];
 
 export default class TrainerDetail extends React.Component {
@@ -317,7 +335,9 @@ class Schedule extends React.Component {
             <Text style={[Fonts.style.h2, Fonts.style.mt20, {textAlign:'center'}]}> GYMS </Text>
             <Gyms />
             <PrivateAvailability />
+
         </View>
+
      </ScrollView>
     )
   }
@@ -327,11 +347,29 @@ class PhotosVideos extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       shown:false,
-      curIndex:0
+      curIndex:0,
+      VideoModalVisible: false,
+      currentVideo : '',
     };
   }
+
+
+  setVideoModalVisible(visible) {
+    this.setState({VideoModalVisible: visible});
+  }
+
+  openVideoViewer(index){
+
+      var video = videoArray[index];
+        this.setState({
+            VideoModalVisible:true,
+            currentVideo : video,
+
+        })
+    }
 
   openViewer(index){
         this.setState({
@@ -346,32 +384,90 @@ class PhotosVideos extends React.Component {
             curIndex:0
         })
     }
+
+
   render () {
     return (
 
-      <ScrollView style={{height:(width >= 325) ? 350 : 250}} contentContainerStyle={styles.imageCollection} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:(width >= 325) ? 350 : 250}} showsVerticalScrollIndicator={false}>
 
+      <Text style={styles.textHeading}>Photos </Text>
+      <View style={styles.imageCollection}>
       {
           imgsArr.map((url,index)=>{
               return <TouchableOpacity key={index}
                                        activeOpacity={1}
-                                       onPress={this.openViewer.bind(this,index)} style={{height:120}}>
+                                       onPress={this.openViewer.bind(this,index)} style={{height:(width >=325) ? 120 : 100}}>
                       <Image
                           source={{uri: url}}
                           style={styles.imageThumbnail}/>
                   </TouchableOpacity>
           })
       }
+      </View>
       {/*<Image source={Images.user1} style={styles.imageThumbnail}/>
       <Image source={Images.user2} style={styles.imageThumbnail}/>
       <Image source={Images.user3} style={styles.imageThumbnail}/>
       <Image source={Images.user4} style={styles.imageThumbnail}/>
       <Image source={Images.user5} style={styles.imageThumbnail}/>*/}
+
+
       <ImageViewer shown={this.state.shown}
                    imageUrls={imgsArr}
                    onClose={this.closeViewer.bind(this)}
                    index={this.state.curIndex}>
       </ImageViewer>
+      <Text style={styles.textHeading}>Videos </Text>
+
+      <View style={styles.imageCollection}>
+
+      {
+          videoThumbnails.map((url,index)=>{
+              return <TouchableOpacity key={index}
+                                       activeOpacity={1}
+                                       onPress={this.openVideoViewer.bind(this,index)} style={{height:(width >= 325) ? 120 :100}}>
+                      <Image
+                          source={{uri: url}}
+                          style={styles.imageThumbnail}/>
+                  </TouchableOpacity>
+          })
+      }
+
+        </View>
+
+        <Modal
+            animationType={"slide"}
+            transparent={false}
+            visible={this.state.VideoModalVisible}
+            onRequestClose={() => {alert("Modal has been closed.")}}>
+             <Container>
+              <View style={styles.modalVideoView}>
+              <View style={{alignSelf:'flex-start',marginBottom:30}}>
+                <Button transparent iconLeft onPress={() => {this.setVideoModalVisible(!this.state.VideoModalVisible)}}>
+                  <MaterialCommunityIcons name="close" size={28} style={{color:'white'}}/>
+                </Button>
+              </View>
+              <YouTube
+                    ref="youtubePlayer"
+                    videoId={this.state.currentVideo} // The YouTube video ID
+                    play={true}           // control playback of video with true/false
+                    hidden={false}        // control visiblity of the entire view
+                    playsInline={true}    // control whether the video should play inline
+                    loop={false}          // control whether the video should loop when ended
+                    rel={false}
+                    onReady={(e)=>{this.setState({isReady: true})}}
+                    onChangeState={(e)=>{this.setState({status: e.state})}}
+                    onChangeQuality={(e)=>{this.setState({quality: e.quality})}}
+                    onError={(e)=>{this.setState({error: e.error})}}
+                    onProgress={(e)=>{this.setState({currentTime: e.currentTime, duration: e.duration})}}
+
+                    style={styles.VideoPlayerFullScreen}
+                  />
+              </View>
+
+          </Container>
+        </Modal>
+
      </ScrollView>
     )
   }
@@ -443,6 +539,7 @@ class Gyms extends React.Component {
 }
 
 class PrivateAvailability extends React.Component {
+
 
   render () {
     return (
