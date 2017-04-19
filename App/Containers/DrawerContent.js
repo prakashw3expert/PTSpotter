@@ -121,7 +121,7 @@ class DrawerContent extends Component {
                     <Thumbnail source={Images.avatar} />
                 </Left>
                 <Body style={{borderBottomWidth:0}}>
-                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>Kumar Pratik </Text>
+                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>{this.props.user.name} </Text>
                     <Text note style={Fonts.style.drawerUserText}>Bristol, BS4 5SS, UK</Text>
                     <Text note style={Fonts.style.drawerUserText}>Personal Trainer</Text>
                 </Body>
@@ -157,7 +157,8 @@ DrawerContent.contextTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.login.username
+    username: state.user.profile.username,
+    user: state.user.profile
   }
 }
 

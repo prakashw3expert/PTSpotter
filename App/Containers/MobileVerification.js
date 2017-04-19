@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux'
 import Styles from './Styles/MobileVerificationStyles'
 import {Images, Metrics,Fonts, Colors} from '../Themes'
-import LoginActions from '../Redux/LoginRedux'
+import LoginActions from '../Redux/UserRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 class MobileVerification extends React.Component {
