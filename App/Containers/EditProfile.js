@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text,StatusBar, Image, Modal, View,TouchableOpacity,PickerIOS,Dimensions } from 'react-native'
+import { ScrollView, Text,StatusBar, Image, Modal, View,TouchableOpacity,PickerIOS,Dimensions,Platform } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Grid,Col, Switch,Left, Right, ListItem } from 'native-base';
 
 import { Images,Fonts,Colors } from '../Themes'
@@ -51,7 +51,7 @@ class EditProfile extends React.Component {
     return (
 
         <Content>
-        <StatusBar barStyle='light-content' />
+        <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
           <View>
           <Form>
               <View style={styles.headerView}>
@@ -107,7 +107,7 @@ class EditProfile extends React.Component {
 
                   <ListItem style={{borderBottomWidth:0}}>
                     <Body>
-                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: "-7%"}]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "AVAILABILITY UPON REQUEST" : "MAKE MY PROFILE PRIVATE"}</Text>
+                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: (Platform.OS === 'ios') ? "-7%" : "-1%"}]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "AVAILABILITY UPON REQUEST" : "MAKE MY PROFILE PRIVATE"}</Text>
                     </Body>
                     <Right style={{marginTop:15}}>
                         <Switch
@@ -237,6 +237,7 @@ class EditProfile extends React.Component {
               visible={this.state.modalPhotosVisible}
               onRequestClose={() => {alert("Modal has been closed.")}}>
                <Container>
+               <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
                   <View style={styles.headerView}>
                     <View style={styles.navbarview}>
                       <View style={{flex:0.5}}>
@@ -245,7 +246,7 @@ class EditProfile extends React.Component {
                         </Button>
                       </View>
                       <View style={styles.navbarCenterView}>
-                          <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS AND VIDEOS </Text>
+                          <Text style={[Fonts.style.h2,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS AND VIDEOS </Text>
                       </View>
                       <View style={{flex:0.5}}>
                       <Button transparent>

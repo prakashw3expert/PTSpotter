@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
+import { ScrollView, Text,Platform, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Grid,Col } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import DayButton from '../../Components/DayButton'
@@ -59,7 +59,7 @@ export default class AvailabilityScreen extends React.Component {
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>
                   <View style={{flex:1,marginBottom:5}}>
-                    <Button transparent iconLeft onPress={NavigationActions.pop}>
+                    <Button transparent iconLeft >
                       {NavItems.hamburgerButton()}
                     </Button>
                   </View>
@@ -74,7 +74,7 @@ export default class AvailabilityScreen extends React.Component {
 
               </View>
           </View>
-            <Content style={{marginBottom:(width >= 375) ? 110 : 90}}>
+            <Content style={{marginBottom: (Platform.OS === 'ios') ? (width >= 325) ? 110 : 90 : 90}}>
             <View style={styles.topView}>
                 <Text style={[Fonts.style.h2,styles.dayTitle]}>MONDAY</Text>
                 <View style={styles.buttonsView}>

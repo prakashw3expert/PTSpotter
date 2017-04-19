@@ -38,8 +38,7 @@ export default class HomeScreen extends React.Component {
      }
 
      componentWillMount() {
-      
-
+       
      }
   render () {
     return (
