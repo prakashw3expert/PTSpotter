@@ -168,7 +168,7 @@ class LoginScreen extends React.Component {
         </TouchableOpacity>
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
-        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER {this.props.username}</Text>
+        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER </Text>
       </View>
 
         <Item rounded style={Fonts.style.inputWrapper}>
@@ -214,8 +214,10 @@ class LoginScreen extends React.Component {
 
         {/*onPress={this.handleFacebookLogin}*/}
         <View>
+
           <Button light full rounded style={Fonts.style.facebook} >
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA FACEBOOK</Text>
+
           </Button>
         </View>
 
