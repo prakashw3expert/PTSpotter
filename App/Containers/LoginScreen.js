@@ -5,7 +5,7 @@ import { Container, Content,Input, Form, Button, Item, Icon } from 'native-base'
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyles'
 import {Images, Metrics,Fonts, Colors} from '../Themes'
-import LoginActions from '../Redux/LoginRedux'
+import LoginActions from '../Redux/UserRedux'
 import { Actions } from 'react-native-router-flux'
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -30,8 +30,8 @@ class LoginScreen extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      username: 'reactnative@infinite.red',
-      password: 'password',
+      email: '',
+      password: '',
       visibleHeight: Metrics.screenHeight,
       topLogo: { width: Metrics.screenWidth }
     }
@@ -125,22 +125,9 @@ class LoginScreen extends React.Component {
   }
 
   handlePressLogin = () => {
-    const { username, password } = this.state
-    const { fetching } = this.props
-    this.isAttempting = true
+    const { email, password } = this.state
     // attempt a login - a saga is listening to pick it up from here.
-    this.props.attemptLogin(username, password);
-
-    if(this.state.username === 'client@ptspotter.co.uk') {
-      Actions.clientHome()
-    }
-    else if(this.state.username === 'trainer@ptspotter.co.uk'){
-      Actions.homeScreen()
-    }
-    else{
-      alert('please enter EMAIL as \'client@ptsoptter.co.uk\' or \'trainer@ptsoptter.co.uk\'')
-    }
-
+    this.props.attemptLogin(email, password);
   }
 
   handleChangeUsername = (text) => {
@@ -178,7 +165,7 @@ class LoginScreen extends React.Component {
             returnKeyType='next'
             autoCapitalize='none'
             autoCorrect={false}
-            onChangeText={this.handleChangeUsername}
+            onChangeText={(email) => this.setState({email})}
             underlineColorAndroid='transparent'
             onSubmitEditing={ (event) => { this.refs.password._root.focus() }}
             />
@@ -197,7 +184,7 @@ class LoginScreen extends React.Component {
               autoCapitalize='none'
               autoCorrect={false}
               secureTextEntry
-              onChangeText={this.handleChangePassword}
+              onChangeText={(password) => this.setState({password})}
               />
         </Item>
 
@@ -235,8 +222,8 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.login.fetching,
-    username: state.login.username
+    fetching: state.user.fetching,
+    username: state.user.username
   }
 }
 

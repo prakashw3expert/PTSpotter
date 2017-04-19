@@ -6,7 +6,7 @@ import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thu
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyles'
 import {Images, Metrics,Fonts, Colors} from '../Themes'
-import LoginActions from '../Redux/LoginRedux'
+import LoginActions from '../Redux/UserRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -176,7 +176,7 @@ class SignUpScreen extends React.Component {
 
         <Item rounded style={Fonts.style.inputWrapper}>
               <Icon name='lock'style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
-              <Input 
+              <Input
                 style={Fonts.style.input}
                 placeholder='PASSWORD'
                 placeholderTextColor={Fonts.colors.input}
