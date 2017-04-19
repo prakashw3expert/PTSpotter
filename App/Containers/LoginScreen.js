@@ -2,8 +2,6 @@ import React, { PropTypes } from 'react'
 import { View, ScrollView, Text, TextInput, TouchableOpacity, Image, Keyboard, LayoutAnimation,StatusBar } from 'react-native'
 import Hr from 'react-native-hr'
 import { Container, Content,Input, Form, Button, Item, Icon } from 'native-base';
-
-
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyles'
 import {Images, Metrics,Fonts, Colors} from '../Themes'
@@ -160,7 +158,7 @@ class LoginScreen extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
       <View style={[Styles.topHeading]}>
         <View style={Styles.navigationbar} >
         <TouchableOpacity onPress={Actions.pop} style={{height:40, flex:.5}}>
@@ -168,7 +166,7 @@ class LoginScreen extends React.Component {
         </TouchableOpacity>
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
-        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER {this.props.username}</Text>
+        <Text style={[Fonts.style.h6, Fonts.style.textWhite, Fonts.style.mb60]}>THE NEW WAY TO FIND YOUR PERFECT PERSONAL TRAINER</Text>
       </View>
 
         <Item rounded style={Fonts.style.inputWrapper}>

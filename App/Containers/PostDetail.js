@@ -4,7 +4,7 @@ import React from 'react'
 import { ScrollView,Text, Image, View,TouchableHighlight,Dimensions,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thumbnail,List,Button,Card, CardItem,Label,Grid,Col, Badge } from 'native-base';
 const { width, height } = Dimensions.get('window')
-import { Images,Metrics,Fonts } from '../Themes'
+import { Images,Metrics,Fonts,Colors } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -19,7 +19,7 @@ like() {
   render () {
     return (
       <Container>
-      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
+      <StatusBar barStyle='dark-content' backgroundColor={Colors.white}/>
       <Content>
           <View style={styles.headerView}>
             <Image source={Images.blogImage} style={styles.postImage}>

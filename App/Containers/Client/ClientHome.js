@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView,StatusBar, Text, Image, View,Dimensions } from 'react-native'
 import { Container, Content, Left,Icon, Body, Right, ListItem, Thumbnail,List,Button,Card, CardItem,Grid,Col, Badge } from 'native-base';
 
-import { Images, Fonts } from '../../Themes'
+import { Images, Fonts, Colors } from '../../Themes'
 import RoundedButton from '../../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 // Styles
