@@ -809,10 +809,10 @@ class Filter extends React.Component {
                   </View>
                 <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
                   <Picker
-                    selectedValue={'January'}
+                    selectedValue={'March'}
                     style={{width:100}}
-                    itemStyle={[styles.pickerStyle,{width:200}]}
-                    onValueChange={(month) => this.setState({month, modelIndex: 0})}>
+                    itemStyle={[styles.pickerStyle,{width:135}]}
+                    onValueChange={(month) => this.setState({month, modelIndex: 1})}>
 
                     {months}
 

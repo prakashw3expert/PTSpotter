@@ -7,7 +7,7 @@
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
-    <string>org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)</string>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
@@ -22,8 +22,32 @@
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb1807588632902341</string>
+        </array>
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>1807588632902341</string>
+    <key>FacebookDisplayName</key>
+    <string>PTSpotter</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>PTSpotter wants to access your Photo library.</string>
     <key>NSAppTransportSecurity</key>
     <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
       <key>NSExceptionDomains</key>
       <dict>
         <key>localhost</key>

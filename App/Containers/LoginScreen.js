@@ -1,18 +1,7 @@
 import React, { PropTypes } from 'react'
-import {
-  View,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  Keyboard,
-  LayoutAnimation,StatusBar
-} from 'react-native'
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Image, Keyboard, LayoutAnimation,StatusBar } from 'react-native'
 import Hr from 'react-native-hr'
-import {
-  Container, Content,Input,
-  Form, Button, Item, Icon } from 'native-base';
+import { Container, Content,Input, Form, Button, Item, Icon } from 'native-base';
 
 
 import { connect } from 'react-redux'
@@ -22,6 +11,11 @@ import LoginActions from '../Redux/LoginRedux'
 import { Actions } from 'react-native-router-flux'
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+const FBSDK = require('react-native-fbsdk');
+const {
+  LoginManager, LoginButton, GraphRequest, GraphRequestManager,AccessToken
+} = FBSDK;
 
 class LoginScreen extends React.Component {
 
@@ -76,6 +70,59 @@ class LoginScreen extends React.Component {
       visibleHeight: Metrics.screenHeight,
       topLogo: {width: Metrics.screenWidth}
     })
+  }
+
+
+  handleFacebookLogin = () => {
+  //  alert('Facebook btn tapped')
+      LoginManager.logInWithReadPermissions(['public_profile','email']).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Login cancelled');
+        } else {
+          // alert('Login success with permissions: '
+          //   +result.grantedPermissions.toString());
+          console.log(result)
+          AccessToken.getCurrentAccessToken().then(
+            (data) => {
+              let accessToken = data.accessToken
+            //  alert(accessToken.toString())   //success
+
+              const responseInfoCallback = (error, result) => {
+                if (error) {
+                  console.log(error)
+                  alert('Error fetching data: ' + error.toString());
+                } else {
+                  console.log(result)
+
+                  alert('Login Success : ' + result.email.toString());
+                }
+              }
+
+              const infoRequest = new GraphRequest(
+                '/me',
+                {
+                  accessToken: accessToken,
+                  parameters: {
+                    fields: {
+                      string: 'email,name,first_name,middle_name,last_name'
+                    }
+                  }
+                },
+                responseInfoCallback
+              );
+
+              // Start the graph request.
+              new GraphRequestManager().addRequest(infoRequest).start()
+
+            }
+          )
+        }
+      },
+      function(error) {
+        alert('Login fail with error: ' + error);
+      }
+    );
   }
 
   handlePressLogin = () => {
@@ -165,10 +212,12 @@ class LoginScreen extends React.Component {
         </View>
 
         <View>
-          <Button light full rounded style={Fonts.style.facebook}>
+          <Button light full rounded style={Fonts.style.facebook} onPress={this.handleFacebookLogin}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA FACEBOOK</Text>
           </Button>
         </View>
+
+
 
         <View style={Styles.foooter}>
           <Text style={Styles.footeText}> Register as</Text>
