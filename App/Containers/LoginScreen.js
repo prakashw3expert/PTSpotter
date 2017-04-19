@@ -180,13 +180,14 @@ class LoginScreen extends React.Component {
             autoCorrect={false}
             onChangeText={this.handleChangeUsername}
             underlineColorAndroid='transparent'
-            onSubmitEditing={() => this.refs.password.focus()}
+            onSubmitEditing={ (event) => { this.refs.password._root.focus() }}
             />
         </Item>
 
         <Item rounded style={Fonts.style.inputWrapper}>
               <Icon name='lock'style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
               <Input
+              ref={'password'}
               style={Fonts.style.input}
               placeholder='PASSWORD'
               placeholderTextColor={Fonts.colors.input}

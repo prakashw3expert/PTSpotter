@@ -41,7 +41,7 @@ class CustomNavBar extends React.Component {
 
       return (
         <View style={styles.rightButtons}>
-          {NavItems.messageIcon()}
+          {(this.props.title === 'SEARCH') ? null : NavItems.messageIcon()}
         </View>
       )
 
