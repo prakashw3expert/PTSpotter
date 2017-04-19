@@ -19,7 +19,7 @@ like() {
   render () {
     return (
       <Container>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
       <Content>
           <View style={styles.headerView}>
             <Image source={Images.blogImage} style={styles.postImage}>
@@ -124,7 +124,7 @@ like() {
           </View>
 
         </Content>
-        
+
   </Container>
 
 
@@ -139,15 +139,15 @@ like() {
 }
   render () {
     return (
-    
-          
+
+
             <View style={styles.bottomview}>
             <View style={[Fonts.style.inputWrapperBordered, {marginRight: 20, marginLeft:20, marginBottom:20, height:45}]}>
               <Input  style={Fonts.style.inputBordered} placeholder='ADD COMMENT' placeholderTextColor={Fonts.colors.input}/>
               <Text style={{ marginTop:10}}><Image source={Images.commentAdd} resizeMode='contain' style={{width:30, height:30}}></Image></Text>
             </View>
             </View>
-   
+
     )
   }
 }
@@ -166,4 +166,3 @@ like() {
     )
   }
 }
-

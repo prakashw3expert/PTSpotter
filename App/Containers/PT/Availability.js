@@ -54,7 +54,7 @@ export default class AvailabilityScreen extends React.Component {
 
 
       <Container>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
 
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>

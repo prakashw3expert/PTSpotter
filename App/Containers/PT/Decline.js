@@ -29,7 +29,7 @@ constructor(props) {
     return (
 
         <Container>
-        <StatusBar barStyle='light-content' />
+        <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
       <View style={styles.headerView}>
         <View style={styles.navbarview}>
           <View style={{flex:1}}>
@@ -54,7 +54,7 @@ constructor(props) {
       <Image source={Images.user4} style={styles.clientImage} />
       <Text style={styles.clientname}>Aaron Castillo</Text>
       <Text style={styles.clientaddress}>Bristol, BS4 5SS, UK</Text>
-      
+
       <Text style={styles.msgText}>MESSAGE</Text>
 
       <View style={[Fonts.style.inputWrapperBordered,{margin:20}]}>
@@ -70,9 +70,7 @@ constructor(props) {
 
 
 </Container>
-      
+
     )
   }
 }
-
-

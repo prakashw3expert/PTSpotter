@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
+import { ScrollView, Text,Platform, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
 import { Container, Content,Input,Form,Item,Body, ListItem,Icon,Thumbnail,List,Button,Card, CardItem,Label,Left,Right,Grid,Col } from 'native-base';
 import { Images,Colors,Fonts } from '../../Themes'
 import DayButton from '../../Components/DayButton'
@@ -41,11 +41,11 @@ export default class AvailabilityScreen extends React.Component {
     var hours = [];
     var minutes = [];
     for(i = 0; i < 24; i++) {
-
+      
       hours.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
     for(i = 0; i < 60; i++) {
-
+      
       minutes.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
 
@@ -55,11 +55,11 @@ export default class AvailabilityScreen extends React.Component {
 
       <Container>
       <StatusBar barStyle='light-content' />
-
+      
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>
                   <View style={{flex:1,marginBottom:5}}>
-                    <Button transparent iconLeft onPress={NavigationActions.pop}>
+                    <Button transparent iconLeft >
                       {NavItems.hamburgerButton()}
                     </Button>
                   </View>
@@ -74,7 +74,7 @@ export default class AvailabilityScreen extends React.Component {
 
               </View>
           </View>
-            <Content style={{marginBottom:(width >= 375) ? 110 : 90}}>
+            <Content style={{marginBottom: (Platform.OS === 'ios') ? (width >= 325) ? 110 : 90 : 90}}>
             <View style={styles.topView}>
                 <Text style={[Fonts.style.h2,styles.dayTitle]}>MONDAY</Text>
                 <View style={styles.buttonsView}>
@@ -100,8 +100,8 @@ export default class AvailabilityScreen extends React.Component {
             </View>
             <Hr lineColor='rgb(234, 234, 234)' />
             {showItem}
-
-
+           
+            
            </Content>
           <Save />
           <Modal
@@ -137,24 +137,24 @@ export default class AvailabilityScreen extends React.Component {
                       <Text style={styles.textMinutes}> 6:30 pm </Text>
                     </Col>
                 </Grid>
-
-
+                
+                
               <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
                 <PickerIOS
                   selectedValue={3}
                   itemStyle={styles.pickerStyle}
                   onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
-
+                      
                   {hours}
-
+                        
                 </PickerIOS>
                 <PickerIOS
                   selectedValue={25}
                   itemStyle={styles.pickerStyle}
                   onValueChange={(minute) => this.setState({minute, modelIndex: 0})}>
-
+                      
                   {minutes}
-
+                        
                 </PickerIOS>
                 <PickerIOS
                   selectedValue="pm"
@@ -169,7 +169,7 @@ export default class AvailabilityScreen extends React.Component {
                       <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD</Text>
                   </Button>
                 </View>
-
+                
               </View>
             </Modal>
         </Container>

@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text,StatusBar, Image, Modal, View,TouchableOpacity,PickerIOS,Dimensions } from 'react-native'
+import { ScrollView, Text,StatusBar, Image, Modal, View,TouchableOpacity,PickerIOS,Dimensions,Platform } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Grid,Col, Switch,Left, Right, ListItem } from 'native-base';
-
+import { connect } from 'react-redux'
 import { Images,Fonts,Colors } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -16,9 +16,6 @@ import styles from './Styles/EditProfileStyle'
 import Modalss from 'react-native-simple-modal';
 var PickerItemIOS = PickerIOS.Item
 const { width, height } = Dimensions.get('window')
-
-import { connect } from 'react-redux'
-
 class EditProfile extends React.Component {
 
   state = {
@@ -51,7 +48,7 @@ class EditProfile extends React.Component {
     return (
 
         <Content>
-        <StatusBar barStyle='light-content' />
+        <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
           <View>
           <Form>
               <View style={styles.headerView}>
@@ -96,18 +93,17 @@ class EditProfile extends React.Component {
                     <Input multiline={true} numberOfLines = {30} style={Fonts.style.inputMultipleBordered} placeholder='ABOUT' placeholderTextColor={Fonts.colors.input}/>
                   </View>
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text> : null }
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text>
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ?  <View style={Fonts.style.mt15}>
+                  <View style={Fonts.style.mt15}>
                     <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: true})}>
                         <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD GYM</Text>
                     </Button>
-                  </View> : null}
-
+                  </View>
 
                   <ListItem style={{borderBottomWidth:0}}>
                     <Body>
-                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: "-7%"}]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "AVAILABILITY UPON REQUEST" : "MAKE MY PROFILE PRIVATE"}</Text>
+                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: (Platform.OS === 'ios') ? "-7%" : "-1%"}]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "AVAILABILITY UPON REQUEST" : "MAKE MY PROFILE PRIVATE"}</Text>
                     </Body>
                     <Right style={{marginTop:15}}>
                         <Switch
@@ -119,15 +115,22 @@ class EditProfile extends React.Component {
                     </Right>
                   </ListItem>
 
-                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "TRAINING OPTIONS" : "MY INTERESTS"}</Text>
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> TRAINING OPTIONS</Text>
                   <TouchableOpacity onPress={() => this.setState({trainigOptionOpen: true})}>
                   <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
                     <Text style={styles.searchBox}> SEARCH AND ADD</Text>
                     <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:7,marginRight:5, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
                   </View>
                   <View style={{marginTop:10, flexDirection:'row'}}>
-                     <Button rounded small style={Fonts.style.categoryTag}><Text style={Fonts.style.categoryTagText}>Yoga <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:10}}/></Text></Button>
-                     <Button rounded small style={Fonts.style.categoryTagGray}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
+                     <Button rounded small style={Fonts.style.categoryTag}>
+                     <Text style={[Fonts.style.categoryTagText, {}]}>Yoga</Text>
+                     <MaterialCommunityIcons name="close" size={16} color="rgb(255,255,255)" style={{marginTop : 2}} />
+
+                     </Button>
+                     <Button rounded small style={Fonts.style.categoryTagGray}>
+                     <Text style={Fonts.style.categoryTagText}>Cardio</Text>
+                     <MaterialCommunityIcons name="close" size={16} color="rgb(255,255,255)" style={{marginTop : 2}} />
+                     </Button>
                   </View>
                   </TouchableOpacity>
 
@@ -204,7 +207,7 @@ class EditProfile extends React.Component {
             <View>
               <View style={{flexDirection:'row',alignItems:'center'}}>
                   <Text style={{marginLeft:20}}></Text>
-                  <Text style={[Fonts.style.h2,{flex:1,textAlign:'center',marginLeft:20,fontSize:(width >= 325) ? 16 : 12}]}>{(this.props.username === 'trainer@ptspotter.co.uk') ? "ADD NEW WORKOUT" : "MY INTERESTS"}</Text>
+                  <Text style={[Fonts.style.h2,{flex:1,textAlign:'center',marginLeft:20,fontSize:(width >= 325) ? 16 : 12}]}>ADD NEW WORKOUT</Text>
                   <Button transparent onPress={() => this.setState({trainigOptionOpen: false})}>
                       <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
                   </Button>
@@ -237,6 +240,7 @@ class EditProfile extends React.Component {
               visible={this.state.modalPhotosVisible}
               onRequestClose={() => {alert("Modal has been closed.")}}>
                <Container>
+               <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
                   <View style={styles.headerView}>
                     <View style={styles.navbarview}>
                       <View style={{flex:0.5}}>
@@ -245,7 +249,8 @@ class EditProfile extends React.Component {
                         </Button>
                       </View>
                       <View style={styles.navbarCenterView}>
-                          <Text style={[Fonts.style.h1,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS AND VIDEOS </Text>
+                          <Text style={[Fonts.style.h2,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS AND VIDEOS </Text>
+
                       </View>
                       <View style={{flex:0.5}}>
                       <Button transparent>

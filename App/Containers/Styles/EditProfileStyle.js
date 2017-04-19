@@ -28,7 +28,6 @@ export default EStyleSheet.create({
  navbarCenterView : {
    flex:1,
    alignItems:'center',
-   
  },
   profileimage: {
   flex:3,

@@ -47,7 +47,7 @@ state = {
     return (
 
       <View style={styles.mainContainer}>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
         <ScrollView style={styles.container}>
             <View style={styles.mainView}>
                 <Form>

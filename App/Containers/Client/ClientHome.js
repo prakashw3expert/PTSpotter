@@ -19,7 +19,7 @@ export default class HomeScreen extends React.Component {
   render () {
     return (
       <View style={styles.mainContainer}>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
         <ScrollView style={styles.container}>
           <Schedule />
           <HealthFeeds />
@@ -28,4 +28,3 @@ export default class HomeScreen extends React.Component {
     )
   }
 }
-

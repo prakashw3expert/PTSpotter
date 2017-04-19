@@ -1,5 +1,5 @@
 
-import { StyleSheet,Dimensions } from 'react-native'
+import { StyleSheet,Dimensions,Platform } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
 const { width, height } = Dimensions.get('window')
@@ -47,7 +47,7 @@ export default EStyleSheet.create({
   },
   bottomLogoutView : {
     position : 'absolute',
-    bottom : 0,
+    bottom : (Platform.OS === 'ios') ? 0 : 20,
     width : "75%"
   },
 })

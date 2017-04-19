@@ -126,15 +126,8 @@ class EditProfile extends React.Component {
                     <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:7,marginRight:5, paddingRight:20}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
                   </View>
                   <View style={{marginTop:10, flexDirection:'row'}}>
-                     <Button rounded small style={Fonts.style.categoryTag}>
-                     <Text style={[Fonts.style.categoryTagText, {}]}>Yoga</Text>
-                     <MaterialCommunityIcons name="close" size={16} color="rgb(255,255,255)" style={{marginTop : 2}} />
-
-                     </Button>
-                     <Button rounded small style={Fonts.style.categoryTagGray}>
-                     <Text style={Fonts.style.categoryTagText}>Cardio</Text>
-                     <MaterialCommunityIcons name="close" size={16} color="rgb(255,255,255)" style={{marginTop : 2}} />
-                     </Button>
+                     <Button rounded small style={Fonts.style.categoryTag}><Text style={Fonts.style.categoryTagText}>Yoga <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:10}}/></Text></Button>
+                     <Button rounded small style={Fonts.style.categoryTagGray}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
                   </View>
                   </TouchableOpacity>
 
@@ -244,7 +237,6 @@ class EditProfile extends React.Component {
               visible={this.state.modalPhotosVisible}
               onRequestClose={() => {alert("Modal has been closed.")}}>
                <Container>
-               <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
                   <View style={styles.headerView}>
                     <View style={styles.navbarview}>
                       <View style={{flex:0.5}}>
@@ -253,8 +245,10 @@ class EditProfile extends React.Component {
                         </Button>
                       </View>
 
+
                       <View style={[styles.navbarCenterView, {marginTop : 10}]}>
                           <Text style={[Fonts.style.h2,Fonts.style.textWhite,{textAlign:'center'}]}> PHOTOS & VIDEOS </Text>
+
                       </View>
                       <View style={{flex:0.5}}>
                       <Button transparent>

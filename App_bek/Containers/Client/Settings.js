@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
 import { Images, Colors, Fonts } from '../../Themes'
 import RoundedButton from '../../Components/RoundedButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -76,7 +75,7 @@ state = {
                               Choose the amount of time prior to any event you would like to be notified
                             </Text>
                         </Body>
-                        <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                        <Icon name="arrow-forward" style={{color:Fonts.colors.input, marginRight:15}}/>
                     </ListItem>
 
 
@@ -90,42 +89,42 @@ state = {
                         <Ionicons name="md-time" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Availability</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialCommunityIcons name="comment-text-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Leave Feedback</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialIcons name="help-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Support</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <MaterialCommunityIcons name="information-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>About</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <Ionicons name="md-list-box" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Terms of Service</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     <ListItem>
                         <SimpleLineIcons name="eye" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)" />
                         <Text style={styles.listText}>Privacy Policy</Text>
                         <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
+                          <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                     </List>

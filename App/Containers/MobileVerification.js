@@ -106,7 +106,7 @@ class MobileVerification extends React.Component {
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
       <Content>
       <TouchableOpacity onPress={NavigationActions.pop}>
           <Ionicons name="ios-arrow-back" size={28} color="rgb(255,255,255)" style={{marginTop :-2}}/>

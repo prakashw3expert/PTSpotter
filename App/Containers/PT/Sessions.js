@@ -31,7 +31,7 @@ export default class Sessions extends React.Component {
 
     return (
       <Container>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
           <View style={styles.headerView}>
                 <View style={styles.navbarview}>
                   <View style={{flex:1}}>

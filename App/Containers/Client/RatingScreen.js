@@ -36,7 +36,7 @@ constructor(props) {
     return (
 
         <Container>
-          <StatusBar barStyle='light-content' />
+          <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
               <View style={styles.headerView}>
                 <Image source={Images.editProfileHeader} style={{height:96}}>
                     <View style={styles.navbarview}>

@@ -108,7 +108,7 @@ class ListView extends React.Component {
                             style={Fonts.style.filterbutton}>
                         <MaterialCommunityIcons name="filter-outline" size={(width >= 375) ? 28 : 20} style={{color:'white',marginTop:5}}/>
                     </Button>*/}
-
+           
          </Content>
 
 
@@ -128,37 +128,32 @@ class DataListView extends React.Component {
                      "Time" : "Ernest Woods",
                      "image" : require('../../Images/dummy/user1.jpg'),
                      "title" : "809 Gleason Mills Suite 263",
-                     "online" : true,
-                     "working" : true
+                     "online" : true
                    },
                    {
                      "Time" : "Arthur Moran",
                      "image" : require('../../Images/dummy/user2.jpeg'),
                      "title" : "98 Bergnaum Road Suite 803",
-                     "online" : false,
-                     "working" : false
+                     "online" : false
                    },
                    {
                      "Time" : "Curtis Stone",
                      "image" : require('../../Images/dummy/user3.jpg'),
                      "title" : "31 Blake Vista Apt. 815",
-                     "online" : false,
-                     "working" : true
+                     "online" : false
                    },
                    {
                      "Time" : "Mike Nguyen",
                      "image" : require('../../Images/dummy/user4.jpeg'),
                      "title" : "OO Frami Port",
-                     "online" : true,
-                     "working" : false
+                     "online" : true
                    },
 
                    {
                      "Time" : "Robert Reld",
                      "image" : require('../../Images/dummy/user7.jpeg'),
                      "title" : "5240 Padberg Highway",
-                     "online" : false,
-                     "working" : true
+                     "online" : false
                    }
 
                  ]
@@ -166,14 +161,8 @@ class DataListView extends React.Component {
          }
      }
 
-     navigateToDetails(item) {
-       if(item.working){
-          NavigationActions.clientDetails()
-       }
-       else{
-         NavigationActions.ClientDetailNotWorking()
-       }
-
+     navigateToDetails() {
+      NavigationActions.clientDetails()
      }
   render () {
     return (
@@ -187,7 +176,7 @@ class DataListView extends React.Component {
             </View>
             <Content style={{marginBottom:20}}>
                <List dataArray={this.state.results.items} renderRow={(item) =>
-                        <ListItem button avatar onPress={() => this.navigateToDetails(item)} style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
+                        <ListItem button avatar onPress={() => this.navigateToDetails()} style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
                             <Left>
                               <View>
                                  <Image source={item.image} style={styles.listImage}/>
@@ -224,7 +213,7 @@ class MapViewTab extends React.Component {
     return (
       <Content>
       <View style={{height:250}}>
-
+        
         <MapView
             style={{flex:1}}
             clusterMarkers={true}
@@ -235,8 +224,8 @@ class MapViewTab extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
-
-
+        
+        
         <MapView.Marker
           coordinate={{latitude: 37.78825,
             longitude: -122.4524}}
@@ -265,10 +254,10 @@ class MapViewTab extends React.Component {
           description="32 Blake Vista Apt. 777"
           image={Images.mapIcon}
         />
+        
+       
 
-
-
-
+        
 
         </MapView>
 

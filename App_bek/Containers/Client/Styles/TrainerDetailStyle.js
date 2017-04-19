@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions,Platform } from 'react-native'
 import { Metrics, ApplicationStyles, Colors, Fonts } from '../../../Themes/'
 import EStyleSheet from 'react-native-extended-stylesheet';
 const { width, height } = Dimensions.get('window')
@@ -25,9 +25,11 @@ export default EStyleSheet.create({
     width:(width >= 375) ? 250 : 200,
   },
   profileimage: {
-  flex:15,
+  flex:7,
   alignItems:'center',
   alignSelf:'stretch',
+  paddingBottom : (Platform.OS === 'ios') ? 0 : 100,
+
 
   },
   userImage: {
@@ -43,22 +45,18 @@ export default EStyleSheet.create({
     fontFamily : Fonts.type.bold,
     color : 'white',
     letterSpacing : 1.7,
-    marginBottom : 6
   },
   userAddress : {
     fontSize : Fonts.size.medium,
     fontFamily : Fonts.type.regular,
     color : Colors.whiteMuted,
     letterSpacing : 0.1,
-    marginBottom : 10
   },
   ratingtext : {
     fontSize : Fonts.size.small,
     fontFamily : Fonts.type.regular,
     color : Colors.whiteMuted,
     letterSpacing : 0.1,
-    marginTop : 7,
-    marginBottom : 20
   },
   emptyView: {
     justifyContent : 'center',
@@ -182,7 +180,7 @@ export default EStyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: 'rgb(172,14,250)',
     borderLeftColor: 'transparent',
-    marginLeft:0,
+    marginLeft:5,
     marginRight:30,
     width:'22%'
   },
@@ -218,7 +216,6 @@ export default EStyleSheet.create({
     width : width,
     backgroundColor:Colors.background
   },
-
 
 
 

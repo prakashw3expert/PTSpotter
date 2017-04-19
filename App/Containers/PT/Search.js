@@ -28,7 +28,7 @@ export default class SearchScreen extends React.Component {
     return (
 
       <View style={styles.mainContainer}>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
 
         <ScrollableTabView
               locked={true}
