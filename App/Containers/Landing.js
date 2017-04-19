@@ -7,7 +7,7 @@ import {
 
 import {Button} from 'native-base';
 
-import { Images } from '../Themes'
+import { Images, Colors } from '../Themes'
 import { Actions } from 'react-native-router-flux'
 import Swiper from 'react-native-swiper';
 import SelectType from '../Containers/SelectType';
