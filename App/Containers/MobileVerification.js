@@ -13,9 +13,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 class MobileVerification extends React.Component {
 
   static propTypes = {
-    dispatch: PropTypes.func,
     fetching: PropTypes.bool,
-    attemptLogin: PropTypes.func
   }
 
   isAttempting = false
@@ -154,13 +152,13 @@ class MobileVerification extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.login.fetching
+    fetching: state.user.fetching
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
+
   }
 }
 

@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react'
-import {View, ScrollView, Text, TextInput, TouchableOpacity, Image, Keyboard, LayoutAnimation, StatusBar } from 'react-native'
+import {View, ScrollView, Text, TextInput, TouchableOpacity, Image, Keyboard, LayoutAnimation, StatusBar,Platform } from 'react-native'
 import Hr from 'react-native-hr'
 import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thumbnail,List,Button,Card, CardItem,Label } from 'native-base';
-
+import * as EmailValidator from 'email-validator';
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyles'
 import {Images, Metrics,Fonts, Colors} from '../Themes'
 import LoginActions from '../Redux/UserRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import DeviceInfo from 'react-native-device-info';
 
 const FBSDK = require('react-native-fbsdk');
 const {
@@ -19,7 +20,7 @@ class SignUpScreen extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func,
     fetching: PropTypes.bool,
-    attemptLogin: PropTypes.func
+    attemptSignup: PropTypes.func
   }
 
   isAttempting = false
@@ -29,8 +30,9 @@ class SignUpScreen extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      username: 'reactnative@infinite.red',
-      password: 'password',
+      email: '',
+      password: '',
+      role : 'client',
       visibleHeight: Metrics.screenHeight,
       topLogo: { width: Metrics.screenWidth }
     }
@@ -46,6 +48,9 @@ class SignUpScreen extends React.Component {
   }
 
   componentWillMount () {
+
+    this.setState({ role : this.props.role});
+    
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
@@ -128,26 +133,28 @@ class SignUpScreen extends React.Component {
     );
   }
 
-  handlePressLogin = () => {
-    const { username, password } = this.state
-    this.isAttempting = true
-    // attempt a login - a saga is listening to pick it up from here.
-    this.props.attemptLogin(username, password)
+  handlePressSignup = () => {
+
+    const { email, password } = this.state
+    const device_Id = DeviceInfo.getUniqueID();
+    const device = (Platform.OS === 'ios') ? "iphone" : "android";
+    const role = this.state.role;
+    this.props.attemptSignup(email, password, device, device_Id, role)
   }
 
-  handleChangeUsername = (text) => {
-    this.setState({ username: text })
-  }
 
-  handleChangePassword = (text) => {
-    this.setState({ password: text })
-  }
 
   render () {
-    const { username, password } = this.state
+    const { email, password } = this.state
     const { fetching } = this.props
     const editable = !fetching
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
+
+    var isSubmit = (
+      this.state.email
+      && this.state.password
+      && EmailValidator.validate(this.state.email) ) ? true : false;
+
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
       <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
@@ -166,25 +173,35 @@ class SignUpScreen extends React.Component {
             <Input
               style={Fonts.style.input}
               placeholder='EMAIL'
+              ref={'email'}
               placeholderTextColor={Fonts.colors.input}
               keyboardType='default'
               returnKeyType='next'
               autoCapitalize='none'
+              onChangeText={(email) => this.setState({email})}
               autoCorrect={false}
-              onSubmitEditing={ (event) => { this.refs.password._root.focus() }}/>
+              onSubmitEditing={ () => { if (!EmailValidator.validate(this.state.email)) {
+                                  alert('Invalid Email');
+                                  this.refs.email._root.focus()
+                                } else {
+                                  this.refs.password._root.focus()
+                                }}}
+              />
         </Item>
 
         <Item rounded style={Fonts.style.inputWrapper}>
               <Icon name='lock'style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
               <Input
+                onChangeText={(password) => this.setState({password})}
                 style={Fonts.style.input}
                 placeholder='PASSWORD'
                 placeholderTextColor={Fonts.colors.input}
+                secureTextEntry
                 ref={'password'}/>
         </Item>
 
       <View style={Fonts.style.mt15}>
-        <Button light full rounded style={Fonts.style.default}  onPress={NavigationActions.mobile}>
+        <Button light full rounded style={Fonts.style.default} disabled={!isSubmit}  onPress={this.handlePressSignup}>
             <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SIGNUP VIA EMAIL</Text>
         </Button>
       </View>
@@ -215,64 +232,16 @@ class SignUpScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.login.fetching
+    fetching: state.user.fetching,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
+    attemptSignup: (email, password, device, device_id , role) => dispatch(LoginActions.signupRequest(email, password, device, device_id, role))
   }
 }
-/*<View style={Styles.form}>
-          <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>Username</Text>
-            <TextInput
-              ref='username'
-              style={textInputStyle}
-              value={username}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='next'
-              autoCapitalize='none'
-              autoCorrect={false}
-              onChangeText={this.handleChangeUsername}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={() => this.refs.password.focus()}
-              placeholder='Username' />
-          </View>
 
-          <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>Password</Text>
-            <TextInput
-              ref='password'
-              style={textInputStyle}
-              value={password}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='go'
-              autoCapitalize='none'
-              autoCorrect={false}
-              secureTextEntry
-              onChangeText={this.handleChangePassword}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={this.handlePressLogin}
-              placeholder='Password' />
-          </View>
 
-          <View style={[Styles.loginRow]}>
-            <TouchableOpacity style={Styles.loginButtonWrapper} onPress={this.handlePressLogin}>
-              <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>Sign In</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.loginButtonWrapper} onPress={NavigationActions.pop}>
-              <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>Cancel</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-        */
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpScreen)

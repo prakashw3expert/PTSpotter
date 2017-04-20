@@ -19,6 +19,7 @@ export default function * root () {
     // some sagas only receive an action
 
     takeLatest(UserTypes.LOGIN_REQUEST, user),
+    takeLatest(UserTypes.SIGNUP_REQUEST, user),
 
     // some sagas receive extra parameters in addition to an action
 

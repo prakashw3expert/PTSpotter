@@ -9,7 +9,7 @@ import LoginActions from '../Redux/UserRedux'
 import { Actions } from 'react-native-router-flux'
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import * as EmailValidator from 'email-validator';
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginManager, LoginButton, GraphRequest, GraphRequestManager,AccessToken
@@ -32,6 +32,7 @@ class LoginScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
+      role : 'client',
       visibleHeight: Metrics.screenHeight,
       topLogo: { width: Metrics.screenWidth }
     }
@@ -40,6 +41,9 @@ class LoginScreen extends React.Component {
 
 
   componentWillMount () {
+
+    (this.props.role) ? this.setState({role : this.props.role}) : this.setState({role : 'client'})
+
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
@@ -130,19 +134,23 @@ class LoginScreen extends React.Component {
     this.props.attemptLogin(email, password);
   }
 
-  handleChangeUsername = (text) => {
-    this.setState({ username: text })
+  handleSignupAction () {
+    Actions.signup({ role : this.state.role})
   }
 
-  handleChangePassword = (text) => {
-    this.setState({ password: text })
-  }
 
   render () {
     const { username, password } = this.state
     const { fetching } = this.props
     const editable = !fetching
     const textInputStyle = editable ? Styles.textInput : Styles.textInputReadonly
+
+    var isSubmit = (
+      this.state.email
+      && this.state.password
+      && EmailValidator.validate(this.state.email) ) ? true : false;
+
+
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[Styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
       <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
@@ -160,6 +168,7 @@ class LoginScreen extends React.Component {
             <Icon name='mail' style={{marginTop:3,marginLeft:15,marginRight:10,color:'rgb(172,14,250)',backgroundColor:'transparent'}}/>
             <Input  style={Fonts.style.input}
             placeholder='EMAIL'
+            ref={'email'}
             placeholderTextColor={Fonts.colors.input}
             keyboardType='default'
             returnKeyType='next'
@@ -167,7 +176,12 @@ class LoginScreen extends React.Component {
             autoCorrect={false}
             onChangeText={(email) => this.setState({email})}
             underlineColorAndroid='transparent'
-            onSubmitEditing={ (event) => { this.refs.password._root.focus() }}
+            onSubmitEditing={ () => { if (!EmailValidator.validate(this.state.email)) {
+                                alert('Invalid Email');
+                                  this.refs.email._root.focus();
+                              } else {
+                                this.refs.password._root.focus()
+                              }}}
             />
         </Item>
 
@@ -189,7 +203,7 @@ class LoginScreen extends React.Component {
         </Item>
 
         <View style={Fonts.style.mt15}>
-          <Button light full rounded style={Fonts.style.default}  onPress={this.handlePressLogin}>
+          <Button light full rounded style={Fonts.style.default} disabled={!isSubmit}  onPress={this.handlePressLogin}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA EMAIL</Text>
           </Button>
         </View>
@@ -200,7 +214,7 @@ class LoginScreen extends React.Component {
 
         <View>
 
-          <Button light full rounded style={Fonts.style.facebook} onPress={this.handleFacebookLogin}>
+          <Button light full rounded style={Fonts.style.facebook}  onPress={this.handleFacebookLogin}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>LOGIN VIA FACEBOOK</Text>
           </Button>
         </View>
@@ -209,8 +223,8 @@ class LoginScreen extends React.Component {
 
         <View style={Styles.foooter}>
           <Text style={Styles.footeText}> Register as</Text>
-            <TouchableOpacity onPress={Actions.signup}>
-              <Text style={Styles.footeLink}> Personal Trainer </Text>
+            <TouchableOpacity onPress={this.handleSignupAction.bind(this)}>
+              <Text style={Styles.footeLink}> { (this.state.role === 'trainer') ? "Personal Trainer" : "Fitness Enthusiast" } </Text>
             </TouchableOpacity>
         </View>
 
@@ -219,11 +233,18 @@ class LoginScreen extends React.Component {
   }
 
 }
+/*
+{ () => { if (!this.validateEmail(this.state.email)) {
+                    console.log('email not valid try again')
+                  } else {
+                    console.log('Great. Email is Valid')
+                    this.refs.password._root.focus()
+                  }}}
+                  */
 
 const mapStateToProps = (state) => {
   return {
     fetching: state.user.fetching,
-    username: state.user.username
   }
 }
 

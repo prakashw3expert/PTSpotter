@@ -39,6 +39,11 @@ class EditProfile extends React.Component {
     this.setState({modalPhotosVisible: visible});
   }
 
+  componentWillMount () {
+
+    alert(this.props.role)
+    console.log(this.props.prevData)
+  }
 
 
 
@@ -96,9 +101,9 @@ class EditProfile extends React.Component {
                     <Input multiline={true} numberOfLines = {30} style={Fonts.style.inputMultipleBordered} placeholder='ABOUT' placeholderTextColor={Fonts.colors.input}/>
                   </View>
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text> : null }
+                  { (this.props.user.profile.role === 'trainer') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> MY GYMS</Text> : null }
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ?  <View style={Fonts.style.mt15}>
+                  { (this.props.user.profile.role === 'trainer') ?  <View style={Fonts.style.mt15}>
                     <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: true})}>
                         <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD GYM</Text>
                     </Button>
@@ -107,7 +112,7 @@ class EditProfile extends React.Component {
 
                   <ListItem style={{borderBottomWidth:0}}>
                     <Body>
-                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: (Platform.OS === 'ios') ? "-7%" : "-1%"}]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "AVAILABILITY UPON REQUEST" : "MAKE MY PROFILE PRIVATE"}</Text>
+                      <Text style={[Fonts.style.h3, Fonts.style.mt20, {marginLeft: (Platform.OS === 'ios') ? "-7%" : "-1%"}]}> {(this.props.user.profile.role === 'trainer') ? "AVAILABILITY UPON REQUEST" : "MAKE MY PROFILE PRIVATE"}</Text>
                     </Body>
                     <Right style={{marginTop:15}}>
                         <Switch
@@ -119,7 +124,7 @@ class EditProfile extends React.Component {
                     </Right>
                   </ListItem>
 
-                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> {(this.props.username === 'trainer@ptspotter.co.uk') ? "TRAINING OPTIONS" : "MY INTERESTS"}</Text>
+                  <Text style={[Fonts.style.h2, Fonts.style.mt20]}> {(this.props.user.profile.role === 'trainer') ? "TRAINING OPTIONS" : "MY INTERESTS"}</Text>
                   <TouchableOpacity onPress={() => this.setState({trainigOptionOpen: true})}>
                   <View style={[Fonts.style.inputWrapperBordered, {paddingRight:5}]} >
                     <Text style={styles.searchBox}> SEARCH AND ADD</Text>
@@ -131,9 +136,9 @@ class EditProfile extends React.Component {
                   </View>
                   </TouchableOpacity>
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> PHOTOS AND VIDEOS </Text> : null }
+                  { (this.props.user.profile.role === 'trainer') ? <Text style={[Fonts.style.h2, Fonts.style.mt20]}> PHOTOS AND VIDEOS </Text> : null }
 
-                  { (this.props.username === 'trainer@ptspotter.co.uk') ?  <View style={Fonts.style.mt15}>
+                  { (this.props.user.profile.role === 'trainer') ?  <View style={Fonts.style.mt15}>
                     <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({modalPhotosVisible: true})}>
                         <Text style={[Fonts.style.buttonTextNormalGrey]}>ADD PHOTOS AND VIDEOS</Text>
                     </Button>
@@ -204,7 +209,7 @@ class EditProfile extends React.Component {
             <View>
               <View style={{flexDirection:'row',alignItems:'center'}}>
                   <Text style={{marginLeft:20}}></Text>
-                  <Text style={[Fonts.style.h2,{flex:1,textAlign:'center',marginLeft:20,fontSize:(width >= 325) ? 16 : 12}]}>{(this.props.username === 'trainer@ptspotter.co.uk') ? "ADD NEW WORKOUT" : "MY INTERESTS"}</Text>
+                  <Text style={[Fonts.style.h2,{flex:1,textAlign:'center',marginLeft:20,fontSize:(width >= 325) ? 16 : 12}]}>{(this.props.user.profile.role === 'trainer') ? "ADD NEW WORKOUT" : "MY INTERESTS"}</Text>
                   <Button transparent onPress={() => this.setState({trainigOptionOpen: false})}>
                       <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
                   </Button>
@@ -359,7 +364,7 @@ class AddGallery extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.login.username
+    user: state.user
   }
 }
 

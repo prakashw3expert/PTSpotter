@@ -20,5 +20,9 @@ export const api = {
     return serviceUrl.get('/users/' + userId)
   },
 
+  signup(data) {
+    return serviceUrl.post('/users',data)
+  }
+
 
 }

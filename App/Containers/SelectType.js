@@ -22,9 +22,19 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 class SelectType extends Component {
 
-  swiper:Object;
-currentIndex:number;
+swiper : Object;
+currentIndex : number;
 
+constructor (props) {
+  super(props)
+  this.state = {
+    type: 0,
+
+  }
+}
+componentWillMount () {
+
+}
 componentWillReceiveProps(nextProps) {
 if (this.currentIndex > 0) {
 this.swiper.scrollBy(this.currentIndex * -1); //offset
@@ -33,12 +43,21 @@ this.swiper.scrollBy(this.currentIndex * -1); //offset
 
 _onMomentumScrollEnd(e, state, context) {
 this.currentIndex = state.index;
+this.setState({type : state.index})
+}
 
+handleSelectAction () {
+  const role = (this.state.type === 0) ? 'client' : 'trainer';
+  Actions.signup({ role : role})
+}
+
+handleLoginPress () {
+  const role = (this.state.type === 0) ? 'client' : 'trainer';
+  Actions.login({ role : role})
 }
 
   render() {
     var heightRatio = 0.65;
-
     return (
       <View style={styles.container}>
       <StatusBar barStyle='dark-content' backgroundColor={Colors.white} />
@@ -90,14 +109,14 @@ this.currentIndex = state.index;
 
       <View style={[Fonts.style.mt15, {paddingLeft:Fonts.size.containerPaddingLeft, paddingRight:Fonts.size.containerPaddingRight}]}>
 
-          <Button light full rounded style={Fonts.style.default} onPress={Actions.signup}>
+          <Button light full rounded style={Fonts.style.default} onPress={this.handleSelectAction.bind(this)}>
               <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SELECT</Text>
           </Button>
 
 
         <View style={styles.loginView}>
             <Text style={styles.loginText}> Already have an account? </Text>
-            <TouchableOpacity onPress={Actions.login}>
+            <TouchableOpacity onPress={this.handleLoginPress.bind(this)}>
              <Text style={styles.loginBtn}>Log in </Text>
              </TouchableOpacity>
         </View>

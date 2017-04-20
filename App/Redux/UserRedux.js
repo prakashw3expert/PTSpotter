@@ -8,6 +8,7 @@ const { Types, Creators } = createActions({
   loginSuccess: ['accessToken', 'userId'],
   profile: ['data'],
   userFailure: ['error'],
+  signupRequest : ['email', 'password', 'device', 'device_id', 'role'],
   logout: null
 })
 
@@ -23,7 +24,8 @@ export const INITIAL_STATE = Immutable({
   userId : null,
   profile  : {},
   error: null,
-  fetching: false
+  fetching: false,
+  isLogin: false
 })
 
 /* ------------- Reducers ------------- */
@@ -36,9 +38,12 @@ export const login = (state, { username, password }) => {
 // we've successfully logged in
 export const loginSuccess = (state, { accessToken, userId }) => {
 
-  return state.merge({ fetching: true, error: null, accessToken, userId })
+  return state.merge({ fetching: true, error: null, accessToken, userId, isLogin : true })
 }
-
+// attempt to signup
+export const signup = (state, { data }) => {
+  return state.merge({ fetching: true, profile : data })
+}
 
 
 // we've had a problem logging in
@@ -49,7 +54,7 @@ export const failure = (state, { error }) =>
   // we've successfully logged in
   export const profile = (state, { data }) => {
     console.log(data)
-    return state.merge({ fetching: false, error: null, profile : data })
+    return state.merge({ fetching: false, error: null, profile : data, isLogin : false })
   }
 
 // we've logged out
@@ -62,5 +67,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_SUCCESS]: loginSuccess,
   [Types.PROFILE]: profile,
   [Types.USER_FAILURE]: failure,
+  [Types.SIGNUP_REQUEST]: signup,
   [Types.LOGOUT]: logout
 })

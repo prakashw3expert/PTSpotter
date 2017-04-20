@@ -101,16 +101,6 @@ class DrawerContent extends Component {
     let imageView;
     imageView = <Image source={Images.addPhotoCircle} style={styles.userImage}/>
 
-    let Homebtn;
-    Homebtn = (this.props.username === 'client@ptspotter.co.uk') ? <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressClientHome} /> : <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
-
-    let searchBtn;
-    searchBtn = (this.props.username === 'client@ptspotter.co.uk') ? <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressPTSearch} /> : <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} />
-
-    let availabilityBtn;
-    availabilityBtn = (this.props.username === 'trainer@ptspotter.co.uk') ? <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} /> : null
-    let settingButton;
-    settingButton = (this.props.username === 'client@ptspotter.co.uk') ? <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} /> : <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressPTSettings} />
     return (
       <View style={[styles.container]}>
       <ScrollView  >
@@ -121,22 +111,32 @@ class DrawerContent extends Component {
                     <Thumbnail source={Images.avatar} />
                 </Left>
                 <Body style={{borderBottomWidth:0}}>
-                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>{this.props.user.name} </Text>
+                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>{(this.props.user.isLogin) ? 'Static Name' : ''} </Text>
                     <Text note style={Fonts.style.drawerUserText}>Bristol, BS4 5SS, UK</Text>
                     <Text note style={Fonts.style.drawerUserText}>Personal Trainer</Text>
                 </Body>
             </ListItem>
           </View>
       </Image>
-      <View style={styles.nav}>
-          {Homebtn}
-          <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressInbox} />
-          {searchBtn}
-          <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
-          {availabilityBtn}
-          {settingButton}
+      {
+        (this.props.user.isLogin && this.props.user.profile.role === 'client')
+        ? <View style={styles.nav}>
+            <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressClientHome} />
+            <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressInbox} />
+            <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressPTSearch} />
+            <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
+            <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressSettings} />
+        </View>
+        : <View style={styles.nav}>
+            <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
+            <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressInbox} />
+            <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressSearch} />
+            <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
+            <DrawerButton icon='md-time' text='Availability'  onPress={this.handlePressAvailability} />
+            <DrawerButton icon='md-options' text='Settings'  onPress={this.handlePressPTSettings} />
 
-      </View>
+        </View>
+      }
       </ScrollView>
       <View style={styles.bottomLogoutView}>
         <View style={{backgroundColor:'rgb(255,113,113)',height:2,marginTop:10}}></View>
@@ -157,8 +157,7 @@ DrawerContent.contextTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.user.profile.username,
-    user: state.user.profile
+    user: state.user
   }
 }
 
