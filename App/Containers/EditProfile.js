@@ -29,6 +29,10 @@ class EditProfile extends React.Component {
       availabilityTrueSwitchIsOn: true,
       availabilityFalseSwitchIsOn: false,
       modalPhotosVisible : false,
+      name : '',
+      email : '',
+      mobile : '',
+      about : '',
     };
 
   setModalVisible(visible) {
@@ -41,8 +45,8 @@ class EditProfile extends React.Component {
 
   componentWillMount () {
 
-    alert(this.props.role)
     console.log(this.props.prevData)
+    this.setState({email : this.props.prevData.email})
   }
 
 
@@ -89,7 +93,7 @@ class EditProfile extends React.Component {
 
                   <View style={Fonts.style.inputWrapperBordered}>
                     <Icon name='mail' style={Fonts.style.borderedIcon} />
-                    <Input  style={Fonts.style.inputBordered} placeholder='EMAIL ADDRESS' placeholderTextColor={Fonts.colors.input}/>
+                    <Input  style={Fonts.style.inputBordered} placeholder='EMAIL ADDRESS' placeholderTextColor={Fonts.colors.input} value={(this.props.prevData.email)}/>
                   </View>
 
                   <View style={Fonts.style.inputWrapperBordered}>

@@ -14,6 +14,9 @@ import Hr from 'react-native-hr'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 const { width, height } = Dimensions.get('window')
 
+import {api} from  "../../Services/Api"
+import { call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+
 export default class SearchScreen extends React.Component {
 
   state = {
@@ -122,81 +125,54 @@ class DataListView extends React.Component {
   constructor(props) {
          super(props);
          this.state = {
-             results: {
-                 items: [
-                   {
-                     "Time" : "Ernest Woods",
-                     "image" : require('../../Images/dummy/user1.jpg'),
-                     "title" : "809 Gleason Mills Suite 263",
-                     "online" : true,
-                     "working" : true
-                   },
-                   {
-                     "Time" : "Arthur Moran",
-                     "image" : require('../../Images/dummy/user2.jpeg'),
-                     "title" : "98 Bergnaum Road Suite 803",
-                     "online" : false,
-                     "working" : false
-                   },
-                   {
-                     "Time" : "Curtis Stone",
-                     "image" : require('../../Images/dummy/user3.jpg'),
-                     "title" : "31 Blake Vista Apt. 815",
-                     "online" : false,
-                     "working" : true
-                   },
-                   {
-                     "Time" : "Mike Nguyen",
-                     "image" : require('../../Images/dummy/user4.jpeg'),
-                     "title" : "OO Frami Port",
-                     "online" : true,
-                     "working" : false
-                   },
-
-                   {
-                     "Time" : "Robert Reld",
-                     "image" : require('../../Images/dummy/user7.jpeg'),
-                     "title" : "5240 Padberg Highway",
-                     "online" : false,
-                     "working" : true
-                   }
-
-                 ]
-             }
+             result: {}
          }
      }
 
      navigateToDetails(item) {
-       if(item.working){
-          NavigationActions.clientDetails()
-       }
-       else{
-         NavigationActions.ClientDetailNotWorking()
-       }
+      // if(item.working){
+          NavigationActions.clientDetails({ clientData : item})
+      //  }
+      //  else{
+      //    NavigationActions.ClientDetailNotWorking()
+      //  }
 
      }
-  render () {
-    return (
+
+
+     componentWillMount () {
+
+      api.clientSearch()
+       .then((response) => {
+          this.setState({result : response.data})
+            console.log('response is : ', this.state.result)
+       })
+
+
+     }
+
+     render () {
+        return (
 
           <View>
             <Text style={styles.listViewTitle}>
-              Found 6 clients nearby
+              Found {this.state.result.length} clients nearby
             </Text>
             <View style={styles.separater}>
                 <Hr lineColor={Colors.separetorLineColor}/>
             </View>
             <Content style={{marginBottom:20}}>
-               <List dataArray={this.state.results.items} renderRow={(item) =>
+               <List dataArray={this.state.result} renderRow={(item) =>
                         <ListItem button avatar onPress={() => this.navigateToDetails(item)} style={{marginTop:(width >= 375) ? 14 : 10,paddingBottom:(width >= 375) ? 14 : 10, borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:(width >= 375) ? 20 : 10}}>
                             <Left>
                               <View>
-                                 <Image source={item.image} style={styles.listImage}/>
+                                 <Image source={require('../../Images/dummy/user4.jpeg')} style={styles.listImage}/>
                                  <View style={(item.online === true) ? Fonts.style.onlineDotMessages : Fonts.style.offlineDotMessages}></View>
                               </View>
                             </Left>
                             <Body style={{borderBottomWidth:0}}>
-                              <Text style={styles.listname}>{item.Time}</Text>
-                              <Text style={styles.listAddress} note>{item.title}</Text>
+                              <Text style={styles.listname}>{item.name}</Text>
+                              <Text style={styles.listAddress} note>{item.location.address}</Text>
                             </Body>
                             <Right style={{borderBottomWidth:0}}>
                               <FontAwesome name='angle-right' style={{fontSize:22,color:"rgba(102, 102, 102, 0.5)"}} />

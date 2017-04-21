@@ -48,8 +48,22 @@ export default class TrainerDetail extends React.Component {
       currentTab : 0,
       starCount: 4,
       shown:false,
-      curIndex:0
+      curIndex:0,
+      name : '',
+      address : '',
+      clientid : '',
+      online : false
     };
+  }
+
+  componentWillMount () {
+
+    this.setState({
+      name : this.props.trainerData.name,
+      address : this.props.trainerData.location.address,
+      clientid : this.props.trainerData.id,
+      online : this.props.trainerData.online
+    })
   }
 
   openViewer(index){
@@ -103,10 +117,10 @@ export default class TrainerDetail extends React.Component {
             <View style={styles.profileimage} >
               <View>
                  <Image source={Images.user5} style={styles.userImage}/>
-                 <View style={Fonts.style.offlineDot}></View>
+                 <View style={(this.state.online === true) ? Fonts.style.onlineDot : Fonts.style.offlineDot}></View>
               </View>
-              <Text style={styles.username}> Aaron Castillo </Text>
-              <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
+              <Text style={styles.username}> {this.state.name} </Text>
+              <Text style={styles.userAddress}> {this.state.address} </Text>
               <View onPress={() => alert('StarRating Pressed')}>
 
               <StarRating

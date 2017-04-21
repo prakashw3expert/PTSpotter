@@ -51,8 +51,11 @@ export function * user (request) {
 
         // do data conversion here if needed
         yield put(UserActions.profile(response.data));
-
-        Actions.editProfile({ role : role, prevData : response.data})
+        const data = {
+          "email" : response.data.email,
+          "userId" : response.data.id
+        }
+        Actions.editProfile({ role : role, prevData : data})
         // Get User Profile data
         //const profileResponse = yield call(api.getUser, response.data.userId);
         //if (profileResponse.ok) {

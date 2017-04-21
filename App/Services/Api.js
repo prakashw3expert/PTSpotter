@@ -22,6 +22,14 @@ export const api = {
 
   signup(data) {
     return serviceUrl.post('/users',data)
+  },
+
+  clientSearch() {
+    return serviceUrl.get('/users/search-clients')
+  },
+
+  trainerSearch() {
+    return serviceUrl.get('/users/search-trainers')
   }
 
 

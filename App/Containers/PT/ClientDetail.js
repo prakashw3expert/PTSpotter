@@ -22,6 +22,10 @@ constructor(props) {
          super(props);
          this.state = {
             currentTab : 0,
+            name : '',
+            address : '',
+            clientid : '',
+            online : false
              }
          }
 
@@ -29,10 +33,18 @@ constructor(props) {
 handleChangeTab({i, ref }) {
      this.setState({currentTab : i});
 }
+
+componentWillMount () {
+
+  this.setState({
+    name : this.props.clientData.name,
+    address : this.props.clientData.location.address,
+    clientid : this.props.clientData.id,
+    online : this.props.clientData.online
+  })
+}
+
   render () {
-
-
-
     return (
 
       <Container>
@@ -52,10 +64,10 @@ handleChangeTab({i, ref }) {
                     <View style={styles.profileimage} >
                       <View>
                          <Image source={Images.user4} style={styles.userImage}/>
-                         <View style={Fonts.style.onlineDot}></View>
+                         <View style={(this.state.online === true) ? Fonts.style.onlineDot : Fonts.style.offlineDot}></View>
                       </View>
-                      <Text style={styles.username}> Ernest Woods </Text>
-                      <Text style={styles.userAddress}> Bristol, BS4 5SS, UK </Text>
+                      <Text style={styles.username}> {this.state.name} </Text>
+                      <Text style={styles.userAddress}> {this.state.address} </Text>
                     </View>
                 </Image>
 

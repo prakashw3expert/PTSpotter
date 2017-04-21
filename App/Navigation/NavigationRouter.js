@@ -57,8 +57,8 @@ class NavigationRouter extends Component {
             <Scene  key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
             <Scene key='ratingScreen' component={RatingScreen} title='Rating' hideNavBar/>
             <Scene key='decline' component={Decline} title='Rating' hideNavBar/>
-            <Scene  key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene key='ptsearch' component={PTSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='search' component={ClientSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene  key='ptsearch' component={PTSearch} title='SEARCH' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='inbox' component={Inbox} title='MESSAGES' hideNavBar/>
             <Scene key='chatScreen' component={ChatScreen} title='Ernest Woods' hideNavBar={true} />
             <Scene key='feedback' component={Feedback} title='FEEDBACK' hideNavBar />

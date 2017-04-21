@@ -50,7 +50,7 @@ class SignUpScreen extends React.Component {
   componentWillMount () {
 
     this.setState({ role : this.props.role});
-    
+
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
