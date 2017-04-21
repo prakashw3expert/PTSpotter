@@ -111,7 +111,7 @@ class DrawerContent extends Component {
                     <Thumbnail source={Images.avatar} />
                 </Left>
                 <Body style={{borderBottomWidth:0}}>
-                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>{(this.props.user.isLogin) ? 'Static Name' : ''} </Text>
+                    <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>{(this.props.user.isLogin) ? this.props.user.profile.name : ''} </Text>
                     <Text note style={Fonts.style.drawerUserText}>Bristol, BS4 5SS, UK</Text>
                     <Text note style={Fonts.style.drawerUserText}>Personal Trainer</Text>
                 </Body>

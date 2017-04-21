@@ -22,7 +22,7 @@ export const INITIAL_STATE = Immutable({
   password : null,
   accessToken : null,
   userId : null,
-  profile  : {},
+  profile  : {"name" : '', "role" : ''},
   error: null,
   fetching: false,
   isLogin: false
@@ -42,7 +42,7 @@ export const loginSuccess = (state, { accessToken, userId }) => {
 }
 // attempt to signup
 export const signup = (state, { data }) => {
-  return state.merge({ fetching: true, profile : data })
+  return state.merge({ fetching: true })
 }
 
 
@@ -54,7 +54,7 @@ export const failure = (state, { error }) =>
   // we've successfully logged in
   export const profile = (state, { data }) => {
     console.log(data)
-    return state.merge({ fetching: false, error: null, profile : data, isLogin : false })
+    return state.merge({ fetching: false, error: null, profile : data, isLogin : true })
   }
 
 // we've logged out

@@ -46,11 +46,17 @@ export function * user (request) {
         "emailVerified" : false
       }
       const response = yield call(api.signup, userData);
-      console.log(response)
+      //console.log(response)
       if (response.ok) {
 
         // do data conversion here if needed
-        yield put(UserActions.profile(response.data));
+        const profileData = {
+          "email" : response.data.email,
+          "userId" : response.data.id,
+          "name" : '',
+          "role" : role,
+        }
+        yield put(UserActions.profile(profileData));
         const data = {
           "email" : response.data.email,
           "userId" : response.data.id

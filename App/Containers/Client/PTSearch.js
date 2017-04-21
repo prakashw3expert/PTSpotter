@@ -19,12 +19,25 @@ import { call, put, takeEvery, takeLatest} from 'redux-saga/effects'
 
 export default class PTSearch extends React.Component {
 
-  state = {
-    modalVisible: false,
-  }
+  constructor(props) {
+         super(props);
+         this.state = {
+             result: {},
+             modalVisible: false,
+         }
+     }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
+  }
+
+  componentWillMount () {
+
+   api.clientSearch()
+    .then((response) => {
+       this.setState({result : response.data})
+         console.log('response Main : ', this.state.result)
+    })
   }
 
   render () {
@@ -34,6 +47,7 @@ export default class PTSearch extends React.Component {
       <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
 
         <ScrollableTabView
+              locked={true}
               tabBarStyle={{borderWidth:0, height:40}}
               tabBarBackgroundColor={Colors.background}
               tabBarActiveTextColor={Colors.white}
@@ -43,8 +57,8 @@ export default class PTSearch extends React.Component {
               tabBarTabStyle={{paddingBottom:0}}
               renderTabBar={() => <DefaultTabBar />}>
 
-              <ListView tabLabel='List View'/>
-              <MapViewTab tabLabel='Map View'/>
+              <ListView tabLabel='List View' data={this.state.result}/>
+              <MapViewTab tabLabel='Map View' data={this.state.result}/>
 
             </ScrollableTabView>
 
@@ -91,6 +105,17 @@ export default class PTSearch extends React.Component {
 
 class ListView extends React.Component {
 
+  constructor(props) {
+         super(props);
+         this.state = {
+             data: {}
+         }
+     }
+
+  componentWillReceiveProps ( props) {
+  this.setState({data : props.data})
+  }
+
 
  render () {
    return (
@@ -105,7 +130,7 @@ class ListView extends React.Component {
                   </View>
             </View>
 
-            <DataListView />
+            <DataListView data={this.props.data}/>
 
          </Content>
 
@@ -120,7 +145,7 @@ class DataListView extends React.Component {
   constructor(props) {
          super(props);
          this.state = {
-             result: {}
+             result: Object
          }
      }
 
@@ -130,12 +155,16 @@ class DataListView extends React.Component {
 
      componentWillMount () {
 
-      api.clientSearch()
-       .then((response) => {
-          this.setState({result : response.data})
-            console.log('trainer found : ', this.state.result)
-       })
+        api.clientSearch()
+         .then((response) => {
+            this.setState({result : response.data})
+              console.log('trainer found : ', this.state.result)
+         })
+     }
 
+     componentWillReceiveProps (props) {
+
+      this.setState({result : props.data})
 
      }
 
@@ -145,7 +174,7 @@ class DataListView extends React.Component {
 
           <View style={styles.scheduleView}>
             <Text style={styles.listViewTitle}>
-              Found {this.state.result.length} personal trainers nearby
+              Found {this.props.data.length} personal trainers nearby
             </Text>
             <View style={styles.separater}>
                 <Hr lineColor={Colors.separetorLineColor}/>
@@ -178,15 +207,37 @@ class DataListView extends React.Component {
 
 class MapViewTab extends React.Component {
 
-  state = {
-    modalVisible: false,
-  }
+  constructor(props) {
+         super(props);
+         this.state = {
+             data: {},
+             modalVisible: false,
+         }
+     }
+
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
-
+  componentWillReceiveProps ( props) {
+    this.setState({data : props.data})
+  }
   render () {
+
+    var markers = [];
+
+    this.props.data.forEach(function(item, i){
+      markers.push(<MapView.Marker
+                    coordinate={{latitude: item.lat,
+                      longitude: item.lng}}
+                    title={item.name}
+                    description={item.location.address}
+                    image={Images.mapIcon}
+                    key={i}
+                  />)
+  });
+
+
     return (
       <Content>
       <View style={{height:250}}>
@@ -202,44 +253,12 @@ class MapViewTab extends React.Component {
           }}
         >
 
-
-        <MapView.Marker
-          coordinate={{latitude: 37.78825,
-            longitude: -122.4524}}
-          title="Ernest Woods"
-          description="809 Gleason Mills Suite 263"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.79825,
-            longitude: -122.4324}}
-          title="Arthur Moran"
-          description="98 Bergnaum Road Suite 807"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.75825,
-            longitude: -122.4924}}
-          title="Curtis Stone"
-          description="31 Blake Vista Apt. 815"
-          image={Images.mapIcon}
-        />
-        <MapView.Marker
-          coordinate={{latitude: 37.80825,
-            longitude: -122.4124}}
-          title="Tarun Bardawa"
-          description="32 Blake Vista Apt. 777"
-          image={Images.mapIcon}
-        />
-
-
-
-
+        { markers}
 
         </MapView>
 
       </View>
-      <DataListView />
+      <DataListView data={this.props.data}/>
 
      {/*  <Button onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
               style={Fonts.style.filterbuttonMapView}>

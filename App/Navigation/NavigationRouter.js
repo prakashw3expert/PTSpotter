@@ -3,6 +3,9 @@ import { Scene, Router } from 'react-native-router-flux'
 import Styles from './Styles/NavigationContainerStyles'
 import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
+
+import { connect } from 'react-redux'
+
 // screens identified by the router
 import CustomNavBar from '../Navigation/CustomNavBar'
 
@@ -38,12 +41,12 @@ class NavigationRouter extends Component {
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-            <Scene initial key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
+            <Scene initial={!this.props.isLogin} key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene key='selectType' component={SelectType} title='PT SPOTTER'  />
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='mobile' component={MobileVerification} title='Verification' hideNavBar/>
-            <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
+            <Scene initial={this.props.isLogin} key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='clientHome' component={ClientHome} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
@@ -68,5 +71,17 @@ class NavigationRouter extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    isLogin: state.user.isLogin,
+  }
+}
 
-export default NavigationRouter
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationRouter)
