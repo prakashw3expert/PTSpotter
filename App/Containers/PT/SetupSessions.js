@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView,Dimensions, Text, Image, View,TouchableOpacity,Picker } from 'react-native'
+import { ScrollView,Dimensions, Text, Image, View,TouchableOpacity,Picker,Platform,StatusBar } from 'react-native'
 import {Container,Content, TabHeading, Badge,List,Input, ListItem, Left, Body, Right, Icon,Grid, Col, Button  } from 'native-base';
 
 import { Images, Colors, Fonts, Metrics } from '../../Themes'
@@ -11,14 +11,25 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-simple-modal';
 var PickerItemIOS = Picker.Item;
 import Hr from 'react-native-hr'
+var moment = require('moment');
+import { connect } from 'react-redux'
+import {api} from  "../../Services/Api"
+import { call, put, takeEvery, takeLatest} from 'redux-saga/effects'
 const { width, height } = Dimensions.get('window')
+var monthArrayShort = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-
-export default class Daily extends React.Component {
+export default class SetupSession extends React.Component {
 
   constructor(props) {
          super(props);
          this.state = {
+              selectedGym : 'Select Gym',
+              selectedGymPostcode : '',
+              selectedGymData : {},
+              selectedDate : moment().date(),
+              selectedMonth : moment().format('MMM'),
+              selectedYear : moment().year(),
               open:false,
               modalVisible: false,
               dateOpen : false,
@@ -27,29 +38,132 @@ export default class Daily extends React.Component {
               monthModalVisible : false,
               yearOpen : false,
               yearModalVisible : false,
-             results: {
-                 items: [
-                   {
-                     "name" : "Ernest Woods",
-                     "image" : Images.user4,
-                     "location" : "BLOK London Gym",
-                     "bordered" : false,
-                   },
+              gymsOpen : false,
+              gymsModalVisible : false,
+              categories : [],
+              myWorkouts : [],
 
-
-                 ]
-             }
          }
+         this.addInterest = this.addInterest.bind(this);
+         this.removeInterest = this.removeInterest.bind(this);
+         this.handleInterest = this.handleInterest.bind(this);
+         this.savePressed = this.savePressed.bind(this);
      }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
 
+
+  componentDidMount () {
+
+    // api.getCategories(this.props.user.accessToken)
+    //  .then((response) => {
+    //     this.setState({categories : response.data})
+    //       console.log('category List : ', this.state.categories)
+    //  })
+    this.props.trainer.myInterests ?
+    this.setState({categories : this.props.trainer.myInterests}) : this.setState({categories : []})
+  }
+
+  addInterest = (item) => {
+
+    this.setState(prevState => ({
+      myWorkouts: [...prevState.myWorkouts, { "id" : item.id, "name" : item.name}],
+
+    }));
+    //console.log('After Adding My Interest : ',this.state.myWorkouts);
+
+
+  }
+
+  removeInterest = (item) => {
+
+    this.setState({
+      myWorkouts: this.state.myWorkouts.filter((itm, i) => itm.id !== item.id)
+
+    })
+
+    //  console.log('After Remove My Interest : ',this.state.myWorkouts);
+
+
+  }
+
+  handleInterest = (item) => {
+    console.log('item : ', item);
+    var selected = false;
+    this.state.myWorkouts.map(itm => {
+      if(itm.id === item.id) {
+        selected = true
+      }
+    })
+
+    if(selected === true) {
+      console.log('already')
+      this.removeInterest(item)
+      selected = false
+    }
+    else{
+      console.log('Not Have')
+      this.addInterest(item)
+    }
+
+  }
+
+  savePressed() {
+    //alert('Save Pressed')
+    if(this.state.selectedGym === 'Select Gym'){
+      alert('Please select gym')
+      return
+    }
+    else if(this.state.myWorkouts.length === 0) {
+      alert('Please select workouts')
+    }
+    else{
+
+        var start_time;
+        var ampm = (moment().hour() >= 12) ? "PM" : "AM"
+        start_time = moment().format("h") + ':' + moment().format("mm") + ' ' + ampm
+
+        var session_date = moment().set({'year': this.state.selectedYear, 'month': this.state.selectedMonth, 'date': this.state.selectedDate}).format()
+        var gymPostcode;
+        this.props.trainer.myGyms.map((gym) => {
+          if(gym.name === this.state.selectedGym){
+            gymPostcode = gym.postcode;
+          }
+        })
+        const value = {
+          session_date : session_date,
+          gym : { "name" : this.state.selectedGym, "postcode" : gymPostcode},
+          workouts : this.state.myWorkouts,
+          userId : this.props.user.profile.id,
+          trainerId : this.props.trainer.id,
+          start_time : start_time,
+          end_time : ''
+
+        }
+
+          api.postStartSession(this.props.user.accessToken, value)
+          .then((response) => {
+              if(response.ok){
+                alert('Sessions created successfully')
+              }
+              else{
+                alert('Error while creating session.')
+              }
+
+
+          })
+  }
+
+
+  }
+
   render () {
 
+    var colors = ['rgb(251, 99, 39)', 'rgb(36, 240, 133)', 'rgb(251, 179, 39)', 'rgb(36, 195, 200)', 'rgb(31, 199, 116)'];
     var days = [];
-    var monthArray = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
     var years =[];
     var months = [];
     for(i = 1; i <= 31; i++) {
@@ -67,14 +181,27 @@ export default class Daily extends React.Component {
       years.push(<PickerItemIOS key={i} value={i} label={i.toString()} />)
     }
 
+    var gyms = [];
+
+    (this.props.trainer.myGyms && this.props.trainer.myGyms.length > 0) ? this.props.trainer.myGyms.map((gym, i) => {
+      gyms.push(<PickerItemIOS key={i} value={gym.name} label={gym.name} />)
+    })
+    : gyms.push(<PickerItemIOS key={'no'} value={'Select Gym'} label={'Select Gym'} />)
+
+
+
+
     return (
       <Container>
+
         <View style={{height:Metrics.screenHeight}}>
             <View style={[styles.tabHeading, {paddingLeft:20, paddingRight:20,paddingHorizontal: 5,flexDirection: 'row',
             justifyContent: 'space-between',backgroundColor:Colors.background, height:Metrics.navBarHeight,paddingTop: Metrics.titleBarTop}]}>
-              <Text style={ Fonts.style.textCenter}>
+              <TouchableOpacity >
+              <Text style={ Fonts.style.textCenter} onPress={() => this.props.callback()}>
                 <Icon name="md-close"  style={{color:'white'}}/>
               </Text>
+              </TouchableOpacity>
               <Text style={ Fonts.style.textCenter}>
                 <Text style={[Fonts.style.h1, Fonts.style.textWhite]}>SETUP SESSION</Text>
               </Text>
@@ -83,63 +210,174 @@ export default class Daily extends React.Component {
               </Text>
             </View>
 
-            <View style={{}}>
-              <List dataArray={this.state.results.items} renderRow={(item) =>
+
+              <List>
                   <ListItem button avatar style={{borderBottomWidth:1, borderColor:'rgb(234, 234, 234)', marginRight:19, paddingTop:0, paddingBottom:10}}>
                   <Left>
-                    <Image source={item.image} style={( item.bordered === true ) ? Fonts.style.avatarBordered : Fonts.style.avatar}/>
+                    <Image source={Images.user4} style={Fonts.style.avatar}/>
                   </Left>
                   <Body style={{borderBottomWidth:0}}>
-                    <Text style={styles.usernameSet} note>{item.name}</Text>
-                    <Text style={styles.locationSet} note> {item.location}</Text>
+                    <Text style={styles.usernameSet} note>{this.props.trainer.name}</Text>
+                    <Text style={styles.locationSet} note>{this.props.trainer.address}</Text>
                   </Body>
                   <Right style={{borderBottomWidth:0, alignItems:'center'}}>
-                      <Icon name="arrow-forward" style={{fontSize:22, color:'rgb(221,221, 221)'}} />
+                      <FontAwesome name='angle-right' style={{fontSize:22,color:"rgb(221, 221, 221)"}} />
                   </Right>
                   </ListItem>
-              } />
+               </List>
 
+               <Content style={{marginBottom: (Platform.OS === 'ios') ? (width >= 325) ? 110 : 90 : (width >= 325) ? 110 : 90}}>
+
+               <View style={{marginTop:16, marginRight:20,marginLeft:20}}>
+                 <Text style={{fontSize:10,fontFamily:Fonts.type.bold,letterSpacing : 0.5,color:Colors.mutedColor,textAlign:'center', marginBottom:16}}>SELECT GYM</Text>
+                 {
+                   (Platform.OS === 'ios') ?
+                   <TouchableOpacity onPress={() => this.setState({gymsOpen: true})}>
+                     <View style={styles.selectBox} >
+                       <Text style={styles.selectBoxText}> {(this.state.selectedGym === '') ? "Select Gym" : this.state.selectedGym }</Text>
+                       <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginLeft : (width > 325) ? 20 : 20}} />
+                     </View>
+                   </TouchableOpacity>
+                   :
+
+                     <View style={styles.selectBox} >
+                     <Picker
+                       selectedValue={(this.state.selectedGym === '') ? 'Select Gym' : this.state.selectedGym}
+                       style={{width : 150,}}
+                       prompt='Select Gym'
+                       itemStyle={[styles.pickerStyleGym]}
+                       onValueChange={(value) => this.setState({selectedGym : value})}>
+
+                       { gyms.length > 0 ? gyms : null}
+
+
+                     </Picker>
+                     </View>
+
+                 }
+
+              </View>
               <View style={{marginTop:16, marginRight:20,marginLeft:20}}>
                 <Text style={{fontSize:10,fontFamily:Fonts.type.bold,letterSpacing : 0.5,color:Colors.mutedColor,textAlign:'center', marginBottom:16}}>SESSION DATE</Text>
 
-                <View style={{marginTop:10, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
+                {
+                  (Platform.OS === 'ios') ?
 
-                  <TouchableOpacity onPress={() => this.setState({dateOpen: true})}>
-                    <View style={styles.selectBox} >
-                      <Text style={styles.selectBoxText}> 10 </Text>
-                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                  <View style={{marginTop:10,marginLeft : 5, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
+
+                    <TouchableOpacity onPress={() => this.setState({dateOpen: true})}>
+                      <View style={styles.selectBox} >
+                        <Text style={styles.selectBoxText}> {this.state.selectedDate} </Text>
+                        <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                      </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => this.setState({monthOpen: true})}>
+                      <View style={styles.selectBox} >
+                        <Text style={styles.selectBoxText}>{this.state.selectedMonth} </Text>
+                        <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                      </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => this.setState({yearOpen: true})}>
+                      <View style={styles.selectBox} >
+                        <Text style={styles.selectBoxText}>{this.state.selectedYear} </Text>
+                        <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                      </View>
+                    </TouchableOpacity>
                     </View>
-                  </TouchableOpacity>
+                    :
 
-                  <TouchableOpacity onPress={() => this.setState({monthOpen: true})}>
-                    <View style={styles.selectBox} >
-                      <Text style={styles.selectBoxText}> January </Text>
-                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
+                    <View style={{marginTop:10,marginLeft:-10, flexDirection:'row',alignItems: 'center',}}>
+                    <View style={styles.selectBoxAndroid} >
+                    <Picker
+                      selectedValue={this.state.selectedDate}
+                      style={{width : 70}}
+                      prompt='Select Day'
+                      itemStyle={styles.pickerStyle}
+                      onValueChange={(value) => this.setState({selectedDate : value})}>
+
+                      {days}
+
+
+                    </Picker>
                     </View>
-                  </TouchableOpacity>
 
-                  <TouchableOpacity onPress={() => this.setState({yearOpen: true})}>
+
                     <View style={styles.selectBox} >
-                      <Text style={styles.selectBoxText}> 2017 </Text>
-                      <FontAwesome name="angle-down" style={{fontSize:(width > 325) ? 22 : 20, color:'rgb(102,102, 102)',marginRight : (width > 325) ? 0 : 1}} />
-                    </View>
-                  </TouchableOpacity>
+                    <Picker
+                      selectedValue={this.state.selectedMonth}
+                      style={{width : 80}}
+                      prompt='Select Month'
+                      itemStyle={[styles.pickerStyle]}
+                      onValueChange={(value) => this.setState({selectedMonth : value})}>
 
-                </View>
+                      {months}
+
+
+                    </Picker>
+                    </View>
+
+                    <View style={styles.selectBox} >
+                    <Picker
+                      selectedValue={this.state.selectedYear}
+                      itemStyle={styles.pickerStyle}
+                      style={{width : 85}}
+                      prompt='Select Year'
+                      onValueChange={(value) => this.setState({selectedYear : value})}>
+
+                      {years}
+
+
+                    </Picker>
+                    </View>
+                  </View>
+
+
+                  }
+
+
+
               </View>
 
-              {/*}<View style={{marginTop:(width > 325) ? 40 : 30, flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
-                 <Button rounded small style={Fonts.style.categoryTagLarge}><Text style={Fonts.style.categoryTagTextLarge}>Yoga</Text></Button>
-                 <Button rounded small style={Fonts.style.categoryTagGrayLarge}><Text style={Fonts.style.categoryTagTextLarge}>Cardio</Text></Button>
-                 <Button rounded small style={Fonts.style.categoryTagGreeLarge}><Text style={Fonts.style.categoryTagTextLarge}>Fartlek</Text></Button>
+              <View style={{marginTop:20,marginHorizontal : 20, flexDirection:'row', flexWrap : 'wrap'}}>
+                 {
+                   (this.state.myWorkouts.length > 0) ?
+                         this.state.myWorkouts.map((workout, i) => {
+                            return <Button rounded small key={i} style={{
+                              paddingLeft:(width >= 325) ? 15 : 10,
+                              paddingRight:(width >= 325) ? 15 : 10,
+                              paddingTop : 0,
+                              paddingBottom : 0,
+                              height:(width >= 325) ? 40 : 35,
+                              backgroundColor : colors[i % 5],
+                              marginRight : 5,
+                              marginBottom : 5
+                            }}
+                            onPress={() => this.setState({open: true})}>
+                                  <Text style={Fonts.style.categoryTagText}>{workout.name}</Text>
+                                </Button>
+                         })
+                    :
+                    <View style={{flex:1,alignItems:'center', marginBottom : 30}}>
+                    <Image source={Images.workoutEmpty} style={{height:172, width : 218, alignSelf:'center'}}/>
+                    <Text style={styles.emptyText}> NO WORKOUTS FOR SELECTED DATE. </Text>
+                    <TouchableOpacity onPress={() => this.setState({open : true})}>
+                        <Text style={styles.colorText}>
+                          CLICK HERE TO ADD WORKOUTS
+                        </Text>
+                    </TouchableOpacity>
+                    </View>
+                }
               </View>
 
+            </Content>
 
-              */ }
-
+            <View style={styles.bottomview}>
+              <Button light full rounded style={Fonts.style.default} onPress={this.savePressed}>
+                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SAVE</Text>
+              </Button>
             </View>
-
-            <SaveButton />
 
 
         </View>
@@ -160,9 +398,9 @@ export default class Daily extends React.Component {
                 </Button>
             </View>
 
-            <Text style={styles.modelText}>
+            {/*<Text style={styles.modelText}>
               SEARCH AND ADD WORKOUTS FOR 10 OF OCTOBER
-            </Text>
+            </Text> */}
 
             <View style={styles.containers}>
 
@@ -171,10 +409,57 @@ export default class Daily extends React.Component {
                   <View style={{backgroundColor:'rgb(172,14,250)', width:30,height:30, borderRadius:100, marginTop:7, paddingRight:20,marginRight:5}}><Icon name='search' style={Fonts.style.borderedIconRight} /></View>
                 </View>
 
-                <View style={{marginTop:10, flexDirection:'row'}}>
+                <ScrollView style={{height:200}}>
+                <View style={{marginTop:10, flexDirection:'row',flexWrap :'wrap',}}>
+                  {
+                    this.state.categories.map((item,i) => {
+                      var selected = false
+                      this.state.myWorkouts.map(val => {
+                        if(item.id === val.id){
+                          //console.log('called');
+                          selected = true
+                        }
+
+                      })
+                    if(selected === true){
+
+                      selected = false
+                      return <Button key={i} rounded small style={Fonts.style.categoryTagPink} onPress={() => this.handleInterest(item)}>
+                                  <Text style={Fonts.style.categoryTagText}>{item.name}</Text>
+                                  <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:3,backgroundColor:'transparent'}}/>
+                                </Button>
+                    }
+                    else{
+                      selected = false
+                      return <Button key={i} rounded small style={{
+                        paddingLeft:(width >= 325) ? 15 : 10,
+                        paddingRight:(width >= 325) ? 15 : 10,
+                        paddingTop : 0,
+                        paddingBottom : 0,
+                        height:(width >= 325) ? 35 : 30,
+                        backgroundColor : colors[i % 5],
+                        marginRight : 5,
+                        marginBottom : 5
+                      }} onPress={() => this.handleInterest(item)}>
+                                <Text style={Fonts.style.categoryTagText}>{item.name}</Text>
+                                <MaterialCommunityIcons name="plus" size={18} color="rgb(255,255,255)" style={{paddingTop:3, backgroundColor:'transparent'}}/>
+                              </Button>
+
+                    }
+
+
+
+                        })
+
+
+                  }
+
+                </View>
+                </ScrollView>
+                {/*<View style={{marginTop:10, flexDirection:'row'}}>
                    <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Yoga <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)" style={{paddingTop:10}}/></Text></Button>
                    <Button rounded small style={Fonts.style.categoryTagPink}><Text style={Fonts.style.categoryTagText}>Cardio <MaterialCommunityIcons name="close" size={18} color="rgb(255,255,255)"/></Text></Button>
-                </View>
+                </View>*/}
 
             </View>
 
@@ -201,10 +486,10 @@ export default class Daily extends React.Component {
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
             <Picker
-              selectedValue={10}
+              selectedValue={this.state.selectedDate}
               style={{width : 80}}
               itemStyle={styles.pickerStyle}
-              onValueChange={(day) => this.setState({day, modelIndex: 0})}>
+              onValueChange={(value) => this.setState({selectedDate : value})}>
 
               {days}
 
@@ -219,7 +504,7 @@ export default class Daily extends React.Component {
           open={this.state.monthOpen}
           overlayBackground={Colors.popupoverlayBackground}
           modalDidOpen={() => console.log('modal did open')}
-          modalDidClose={() => this.setState({dateOpen: false})}
+          modalDidClose={() => this.setState({monthOpen: false})}
           style={{alignItems: 'center'}}>
           <View>
             <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -233,10 +518,10 @@ export default class Daily extends React.Component {
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
             <Picker
-              selectedValue={'January'}
+              selectedValue={this.state.selectedMonth}
               style={{width : 200}}
               itemStyle={[styles.pickerStyle,{width:200}]}
-              onValueChange={(month) => this.setState({month, modelIndex: 0})}>
+              onValueChange={(value) => this.setState({selectedMonth : value})}>
 
               {months}
 
@@ -265,12 +550,46 @@ export default class Daily extends React.Component {
             </View>
           <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
             <Picker
-              selectedValue={2017}
+              selectedValue={this.state.selectedYear}
               itemStyle={styles.pickerStyle}
               style={{width : 80}}
-              onValueChange={(year) => this.setState({year, modelIndex: 0})}>
+              onValueChange={(value) => this.setState({selectedYear : value})}>
 
               {years}
+
+
+            </Picker>
+          </View>
+          </View>
+        </Modal>
+
+        {/* Gyms Modal is here*/}
+
+        <Modal
+          offset={this.state.offset}
+          open={this.state.gymsOpen}
+          overlayBackground={Colors.popupoverlayBackground}
+          modalDidOpen={() => console.log('modal did open')}
+          modalDidClose={() => this.setState({gymsOpen: false})}
+          style={{alignItems: 'center'}}>
+          <View>
+            <View style={{flexDirection:'row',alignItems:'center'}}>
+                <Text style={{marginLeft:20,flex:1}}></Text>
+                <Text style={[Fonts.style.h2,{flex:(width >= 375) ? 4 : 6,textAlign:'center',fontSize:18}]}>SELECT GYM</Text>
+                <View style={{flexDirection:'row',alignItems:'flex-end'}}>
+                <Button transparent onPress={() => this.setState({gymsOpen: false})} >
+                    <MaterialCommunityIcons name="close" size={22} color="rgb(102,102,102)"/>
+                </Button>
+                </View>
+            </View>
+          <View style={{marginTop:10,alignItems:'center',justifyContent:'center'}}>
+            <Picker
+              selectedValue={(this.state.selectedGym === '') ? 'January' : this.state.selectedGym}
+              style={{width : 200}}
+              itemStyle={[styles.pickerStyleGym,{width:200}]}
+              onValueChange={(value) => this.setState({selectedGym : value})}>
+
+              { gyms.length > 0 ? gyms : null}
 
 
             </Picker>
@@ -310,7 +629,7 @@ class SaveButton extends React.Component {
 
 
             <View style={styles.bottomview}>
-              <Button light full rounded style={Fonts.style.default}>
+              <Button light full rounded style={Fonts.style.default} onPress={this.props.callback}>
                   <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>SAVE</Text>
               </Button>
             </View>

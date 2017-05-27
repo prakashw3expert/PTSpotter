@@ -57,7 +57,7 @@ const images = {
   SearchEmpty: require('../Images/searchEmpty.png'),
   mapIcon: require('../Images/mapIcon2.png'),
   workoutEmpty: require('../Images/workoutsEmpty.png'),
-
+  noRequest: require('../Images/happyCalendar.png'),
 }
 
 export default images

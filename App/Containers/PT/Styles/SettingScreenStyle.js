@@ -62,6 +62,47 @@ export default EStyleSheet.create({
     width:(width >= 375) ? 100 : 70,
     marginRight:(width >= 375) ? 10 : 30,
   },
+  headerView: {
+    backgroundColor:Colors.background,
+    height:85,
+    alignItems:'center',
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      height:65,
+    },
+    '@media android': {
+      height: 60,
+    },
+  },
+  navbarview: {
+    marginTop:30,
+    '@media android': {
+      marginTop:10,
+    },
+    flexDirection:'row',
+
+  },
+  navbarCenterView : {
+    flex:2,
+    alignItems:'center',
+    justifyContent: 'center',
+    flexDirection:'row',
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+      flex:3,
+    },
+  },
+  aboutText : {
+    fontSize : 14,
+    fontFamily : Fonts.type.regular,
+    backgroundColor : 'transparent',
+    color : 'rgba(255,255,255,0.8)',
+    lineHeight : 23,
+    letterSpacing : 0.1
+
+  },
+  closeButton : {
+    marginLeft : 10
+  },
+
 
 
 

@@ -137,9 +137,11 @@ export default StyleSheet.create({
   buttonsView: {
     flexDirection : 'row',
     flex : 1,
+    flexWrap : 'wrap',
     justifyContent : 'flex-start',
     marginTop : 15,
     marginLeft:20,
+    marginBottom : 20
   },
   horizontalRow:{
     height:0.5,
@@ -152,6 +154,19 @@ export default StyleSheet.create({
     borderWidth:2,
     borderRadius:(width >= 375) ? 36 : 30,
   },
+  track: {
+    height: 4,
+    borderRadius: 2,
+  },
+  thumb: {
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2,
+    backgroundColor: Colors.background,
+    borderColor: 'white',
+    borderWidth: 2,
+    top: 22
+  }
 
 
 

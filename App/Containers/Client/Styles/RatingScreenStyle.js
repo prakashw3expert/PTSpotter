@@ -95,6 +95,19 @@ export default EStyleSheet.create({
       height: 70,
     },
   },
+  noRatingView : {
+    height:250,
+    alignItems : 'center',
+    justifyContent : 'center'
+  },
+  noRatingText : {
+    fontSize : 14,
+    textAlign : 'center',
+    lineHeight : 23,
+    letterSpacing : 1.8,
+    color : 'rgb(102,102,102)',
+    fontFamily : Fonts.type.regular
+  },
 
 
 })

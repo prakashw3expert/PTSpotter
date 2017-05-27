@@ -2,6 +2,7 @@ package com.ptspotter;
 
 import android.app.Application;
 
+import com.digits.sdk.android.Digits;
 import com.facebook.react.ReactApplication;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.imagepicker.ImagePickerPackage;
@@ -16,13 +17,22 @@ import com.facebook.soloader.SoLoader;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 import com.facebook.CallbackManager;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.proxima.RCTDigits.DigitsPackage;
 
 
 
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import io.fabric.sdk.android.Fabric;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "9KtXJrvQ1dqaYeX72paRv6X2P";
+    private static final String TWITTER_SECRET = "fJVDbVic1hzSU1W42T27IHECh29mPJmvep4ei6Td8ivF6fmZu3";
+
 
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
 
@@ -46,7 +56,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNDeviceInfo(),
             new ReactNativeConfigPackage(),
             new FBSDKPackage(mCallbackManager),
-              new ReactNativeYouTube()
+              new ReactNativeYouTube(),
+      new DigitsPackage()
       );
     }
   };
@@ -60,6 +71,8 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+    Fabric.with(this, new TwitterCore(authConfig), new Digits.Builder().build());
     SoLoader.init(this, /* native exopackage */ false);
   }
 }

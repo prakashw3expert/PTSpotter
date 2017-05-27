@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,PickerIOS,StatusBar } from 'react-native'
+import { ScrollView, Text, Image, View,Switch, TouchableHighlight,Dimensions,Picker,StatusBar } from 'react-native'
 import { Container, Content, Input,
   Form, Item, Icon, List, ListItem, Right, Button, Body, Left, Grid, Col  } from 'native-base';
 
@@ -15,18 +15,23 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/SettingScreenStyle'
 import FullButton from '../../Components/FullButton'
 import Modal from 'react-native-simple-modal';
-var PickerItemIOS = PickerIOS.Item;
+var PickerItemIOS = Picker.Item;
 const { width, height } = Dimensions.get('window')
 
 
 export default class SettingScreen extends React.Component {
 
-state = {
-      open: false,
-      locationTrueSwitchIsOn: true,
-      locationFalseSwitchIsOn: false,
-      modalVisible: false,
-    };
+  constructor(props) {
+    super(props);
+    this.state = {
+          hour : 3,
+          minute : 30,
+          open: false,
+          locationTrueSwitchIsOn: true,
+          locationFalseSwitchIsOn: false,
+          modalVisible: false,
+        }
+  }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
@@ -86,13 +91,7 @@ state = {
 
 
                     <List style={Fonts.style.settingList}>
-                    <ListItem >
-                        <Ionicons name="md-time" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
-                        <Text style={styles.listText}>Availability</Text>
-                        <Right>
-                          <FontAwesome name='angle-right' style={{fontSize:28,color:"rgb(102, 102, 102)"}} />
-                        </Right>
-                    </ListItem>
+                    
                     <ListItem>
                         <MaterialCommunityIcons name="comment-text-outline" size={(width >= 375) ? 18 : 16} color="rgb(213,134,252)"/>
                         <Text style={styles.listText}>Leave Feedback</Text>
@@ -167,22 +166,22 @@ state = {
 
 
                           <View style={{flexDirection:'row',marginLeft:'15%',marginTop:10}}>
-                            <PickerIOS
-                              selectedValue={3}
+                            <Picker
+                              selectedValue={this.state.hour}
                               itemStyle={styles.pickerStyle}
-                              onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
+                              onValueChange={(value) => this.setState({hour : value})}>
 
                               {hours}
 
-                            </PickerIOS>
-                            <PickerIOS
-                              selectedValue={25}
+                            </Picker>
+                            <Picker
+                              selectedValue={this.state.minute}
                               itemStyle={styles.pickerStyle}
-                              onValueChange={(hour) => this.setState({hour, modelIndex: 0})}>
+                              onValueChange={(value) => this.setState({minute : value})}>
 
                               {minutes}
 
-                            </PickerIOS>
+                            </Picker>
                           </View>
                             <View style={[Fonts.style.mt15,Fonts.style.mb15]}>
                               <Button light full rounded bordered style={Fonts.style.bordered}  onPress={() => this.setState({open: false})}>

@@ -20,6 +20,10 @@ export default function * root () {
 
     takeLatest(UserTypes.LOGIN_REQUEST, user),
     takeLatest(UserTypes.SIGNUP_REQUEST, user),
+    takeLatest(UserTypes.UPDATE_PROFILE, user),
+    takeLatest(UserTypes.AUTO_LOGIN, user),
+    takeLatest(UserTypes.FACEBOOK_LOGIN, user),
+    takeLatest(UserTypes.LOGOUT, user),
 
     // some sagas receive extra parameters in addition to an action
 

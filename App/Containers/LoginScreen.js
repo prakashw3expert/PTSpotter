@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, ScrollView, Text, TextInput, TouchableOpacity, Image, Keyboard, LayoutAnimation,StatusBar } from 'react-native'
+import { View, ScrollView, Text, TextInput, TouchableOpacity,Platform, Image, Keyboard, LayoutAnimation,StatusBar } from 'react-native'
 import Hr from 'react-native-hr'
 import { Container, Content,Input, Form, Button, Item, Icon } from 'native-base';
 import { connect } from 'react-redux'
@@ -7,9 +7,11 @@ import Styles from './Styles/LoginScreenStyles'
 import {Images, Metrics,Fonts, Colors} from '../Themes'
 import LoginActions from '../Redux/UserRedux'
 import { Actions } from 'react-native-router-flux'
-
+import DeviceInfo from 'react-native-device-info';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import * as EmailValidator from 'email-validator';
+import {api} from  "../Services/Api"
+import { call, put, takeEvery, takeLatest} from 'redux-saga/effects'
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginManager, LoginButton, GraphRequest, GraphRequestManager,AccessToken
@@ -37,6 +39,15 @@ class LoginScreen extends React.Component {
       topLogo: { width: Metrics.screenWidth }
     }
     this.isAttempting = false
+
+  }
+
+  componentWillReceiveProps (newProps) {
+
+    if(newProps.newUser){
+      alert('No account associated with this facebook account. Please signup first')
+    }
+
   }
 
 
@@ -74,6 +85,9 @@ class LoginScreen extends React.Component {
     })
   }
 
+navigateToSignUp() {
+  LoginActions.signup({newUser : true})
+}
 
   handleFacebookLogin = () => {
   //  alert('Facebook btn tapped')
@@ -96,9 +110,20 @@ class LoginScreen extends React.Component {
                   alert('Error fetching data: ' + error.toString());
                 } else {
                   console.log(result)
-                  Actions.homeScreen()
-
-
+                  var facebookId = result.id;
+                  var name = result.name;
+                  var email = result.email;
+                  const device_Id = DeviceInfo.getUniqueID();
+                  const device = (Platform.OS === 'ios') ? "iphone" : "android";
+                  console.log('Login Success : ' + result.email.toString());
+                  var LoginData = {
+                    "name" : name,
+                    "facebook_id" : facebookId,
+                    "device" : device,
+                    "device_id" : device_Id
+                  }
+                  console.log(LoginData)
+                  this.props.fbLogin(LoginData);
                 }
               }
 
@@ -121,7 +146,7 @@ class LoginScreen extends React.Component {
             }
           )
         }
-      },
+      }.bind(this),
       function(error) {
         alert('Login fail with error: ' + error);
       }
@@ -156,8 +181,8 @@ class LoginScreen extends React.Component {
       <StatusBar barStyle='light-content' backgroundColor={Colors.background}/>
       <View style={[Styles.topHeading]}>
         <View style={Styles.navigationbar} >
-        <TouchableOpacity onPress={Actions.pop} style={{height:40, flex:.5}}>
-            <FontAwesome name='angle-left' style={{fontSize:32, color : Colors.white}}/>
+        <TouchableOpacity onPress={Actions.pop} style={Styles.backButton}>
+            <FontAwesome name='angle-left' style={Styles.backButtonIcon}/>
         </TouchableOpacity>
         <Text style={[Fonts.style.h1, Fonts.style.textWhite, Fonts.style.mb20, { flex:2}]}>PT SPOTTER</Text>
         </View>
@@ -201,6 +226,14 @@ class LoginScreen extends React.Component {
               onChangeText={(password) => this.setState({password})}
               />
         </Item>
+        {
+          // this.props.user.error ?
+          // <View style={Fonts.style.mt5}>
+          //       <Text style={{color : 'red', marginLeft : 10}}>{this.props.user.error}</Text>
+          // </View>
+          // : null
+        }
+
 
         <View style={Fonts.style.mt15}>
           <Button light full rounded style={Fonts.style.default} disabled={!isSubmit}  onPress={this.handlePressLogin}>
@@ -245,12 +278,14 @@ class LoginScreen extends React.Component {
 const mapStateToProps = (state) => {
   return {
     fetching: state.user.fetching,
+    user: state.user,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
+    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password)),
+    fbLogin: (data) => dispatch(LoginActions.facebookLogin(data))
   }
 }
 

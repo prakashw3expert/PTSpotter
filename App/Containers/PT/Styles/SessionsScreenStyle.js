@@ -156,6 +156,19 @@ export default EStyleSheet.create({
     justifyContent : 'center',
     flexDirection:'row'
   },
+  selectBoxAndroid : {
+    paddingLeft:(width > 325) ? 14 : 8,
+    paddingRight:(width > 325) ? 14 : 8,
+    paddingTop : 0,
+    paddingBottom : 0,
+    height:(width > 325) ? 57 : 50,
+    marginRight : 5,
+    borderColor : 'rgb(234, 234, 234)',
+    borderWidth:2,
+    borderRadius:30,
+    alignItems : 'center',
+    justifyContent : 'center',
+  },
 
   selectBoxText : {
     fontSize:(width > 325) ? 16.4 : 15.4,
@@ -318,6 +331,40 @@ searchView : {
   },
   searchPopupScrollViewHeight : {
     height:(Platform.OS === 'ios') ? (width >= 325) ? 460 : 400 : 390
+  },
+  monthlyScrollViewHeight : {
+    height:(Platform.OS === 'ios') ? (width >= 325) ? 405 : 350 : 330
+  },
+  pickerStyleGym : {
+    fontSize: 28,
+    letterSpacing:3.9,
+    color: 'rgb(102,102,102)',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    width:100,
+
+    '@media (min-width: 320) and (max-width: 350)': { // media query on sheet level
+
+      fontSize: 24,
+    },
+  },
+  emptyText : {
+    marginTop : 5,
+    fontSize : 14,
+    fontFamily : Fonts.type.regular,
+    lineHeight : 23,
+    letterSpacing : 1.8,
+    color : 'rgb(102,102,102)',
+    textAlign : 'center'
+  },
+  colorText : {
+    marginTop : 5,
+    fontSize : 14,
+    fontFamily : Fonts.type.bold,
+    lineHeight : 23,
+    letterSpacing : 1.8,
+    color : 'rgb(172,14,250)',
+    textAlign : 'center'
   },
 
 })

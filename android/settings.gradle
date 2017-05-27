@@ -1,4 +1,6 @@
 rootProject.name = 'PTSpotter'
+include ':react-native-maps'
+project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-maps/android')
 include ':react-native-video'
 project(':react-native-video').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-video/android')
 include ':react-native-fbsdk'
@@ -17,5 +19,11 @@ include ':react-native-config'
 project(':react-native-config').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-config/android')
 
 include ':app'
+include ':react-native-geocoder'
+project(':react-native-geocoder').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-geocoder/android')
+include ':react-native-spinkit'
+project(':react-native-spinkit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-spinkit/android')
+include ':react-native-fabric-digits'
+project(':react-native-fabric-digits').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fabric-digits/android')
 include ':react-native-youtube'
 project(':react-native-youtube').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-youtube/android')

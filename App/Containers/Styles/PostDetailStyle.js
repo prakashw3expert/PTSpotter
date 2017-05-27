@@ -63,7 +63,6 @@ export default EStyleSheet.create({
   },
 
   desc: {
-
     marginTop:10,
     fontSize:Fonts.size.subHeadingRegular,
     color:Colors.mutedColor,
@@ -104,6 +103,12 @@ export default EStyleSheet.create({
     justifyContent: 'space-between',
     height: 77,
     width:'100%'
+  },
+  commentText: {
+    fontSize : Fonts.size.subHeadingRegular,
+    letterSpacing : 1,
+    color:Colors.mutedColor,
+    marginLeft : 20,
   },
 
 })

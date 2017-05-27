@@ -6,23 +6,54 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import styles from './Styles/FeedbackStyle'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StarRating from 'react-native-star-rating';
-
+import AppConfig from  "../../Config/AppConfig"
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 const { width, height } = Dimensions.get('window')
+import { connect } from 'react-redux'
+import {api} from  "../../Services/Api"
+import { call, put, takeEvery, takeLatest} from 'redux-saga/effects'
 
-export default class Feedback extends React.Component {
+class Feedback extends React.Component {
 
 constructor(props) {
     super(props);
     this.state = {
-      starCount: 4
-    };
+      starCount: 3,
+      reviewText : '',
+
+    }
+    this.submitReview = this.submitReview.bind(this);
   }
 
   onStarRatingPress(rating) {
     this.setState({
       starCount: rating
     });
+  }
+
+  submitReview (){
+      var postReview = {
+        "userId" : this.props.user.userId,
+        "trainerId" : this.props.trainer.id,
+        "review" : this.state.reviewText,
+        "rating" : this.state.starCount
+      }
+
+      api.postReview(this.props.user.accessToken, postReview)
+      .then((response) => {
+        if(response.ok){
+          NavigationActions.pop({refresh : { refreshList : true}})
+        }
+        else{
+          alert(response.problem)
+
+        }
+
+      })
+
+
+
+
   }
 
   render () {
@@ -51,9 +82,9 @@ constructor(props) {
 
     <Content style={{backgroundColor:Colors.background}} contentContainerStyle={{alignItems:'center'}}>
 
-      <Image source={Images.user4} style={styles.ptImage} />
-      <Text style={styles.ptname}>Aaron Castillo</Text>
-      <Text style={styles.ptaddress}>Bristol, BS4 5SS, UK</Text>
+      <Image source={{uri : this.props.trainer.image}} style={styles.ptImage} />
+      <Text style={styles.ptname}>{this.props.trainer.name}</Text>
+      <Text style={styles.ptaddress}>{this.props.trainer.address}</Text>
       <StarRating
         disabled={false}
         emptyStar={'ios-star-outline'}
@@ -69,10 +100,17 @@ constructor(props) {
       />
 
       <View style={[Fonts.style.inputWrapperBordered,{margin:20}]}>
-        <Input multiline={true} numberOfLines = {30} style={Fonts.style.inputMultipleBordered} placeholder='LEAVE YOUR FEEDBACK' placeholderTextColor={Fonts.colors.input}/>
+        <Input multiline={true}
+            numberOfLines = {30}
+            style={Fonts.style.inputMultipleBordered}
+            placeholder='LEAVE YOUR FEEDBACK'
+            placeholderTextColor={Fonts.colors.input}
+            onChangeText={(text) => this.setState({reviewText : text})}
+            value={this.state.reviewText}
+            />
       </View>
       <View style={styles.submitBtnView}>
-          <Button rounded block style={{marginTop:(width >= 375) ? 20 : 10,marginBottom:10,marginLeft:20,marginRight:20,backgroundColor:'white', height:57,width:'80%'}}>
+          <Button rounded block style={Fonts.style.submitButtonFeedback} onPress={this.submitReview}>
               <Text style={styles.submitBtnText}> SUBMIT</Text>
           </Button>
       </View>
@@ -85,3 +123,11 @@ constructor(props) {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Feedback)

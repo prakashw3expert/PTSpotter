@@ -196,6 +196,12 @@ const style = {
     borderColor: 'rgb(102,102,102)',
     borderWidth: 2
   },
+  borderedRed: {
+    backgroundColor:'rgb(255,255,255)',
+    height: 45,
+    borderColor: 'rgb(255,113,113)',
+    borderWidth: 2
+  },
   buttonText : {
     fontSize: (width >= 325) ? size.button : size.regular,
     fontFamily: type.regular,
@@ -215,6 +221,13 @@ const style = {
     lineHeight:23,
     letterSpacing:1.8,
     color:'rgb(102,102,102)'
+  },
+  buttonTextNormalRed : {
+    fontFamily:type.regular,
+    fontSize: size.input,
+    lineHeight:23,
+    letterSpacing:1.8,
+    color:'rgb(255,113,113)'
   },
   textGreyLight:{
     color: 'rgba(102,102,102,0.5)'
@@ -268,7 +281,7 @@ const style = {
     marginBottom: 50
   },
   mb60 : {
-    marginBottom: (width >= 365) ? 60 : 40
+    marginBottom: (width >= 325) ? 60 : 40
   },
   pt20:{
     paddingTop:20
@@ -284,6 +297,7 @@ const style = {
     letterSpacing:0.6,
     color:"rgba(255,255,255,0.5)",
     marginTop:4,
+    width : (width >= 325) ? 150 : 120,
   },
   commnetBox : {
     margin:15,
@@ -296,6 +310,7 @@ const style = {
     shadowRadius: 3.5,
     shadowOffset: (Platform.OS === 'ios') ? { width: 0, height: 0 } : { width: 1, height: 1 },
     elevation: (Platform.OS === 'ios') ? 0 : 3,
+    width : '90%',
   },
 
   sessionCard : {
@@ -311,6 +326,7 @@ const style = {
     shadowOffset: { width: 0, height: 2 },
     elevation: (Platform.OS === 'ios') ? 0 : 3,
     width:"94.5%",
+    position : 'absolute',
 
   },
 
@@ -326,10 +342,46 @@ const style = {
     shadowRadius: 2.5,
     shadowOffset: (Platform.OS === 'ios') ? { width: 0, height: 2 } : { width: 10, height: 10 },
     elevation: (Platform.OS === 'ios') ? 0 : 6,
-    position : 'absolute',
-    top:-10,
+    top:-15,
     width:"94.5%",
     left:-10,
+    height : 110
+
+  },
+  commnetBoxRed : {
+    margin:15,
+    marginTop : 15,
+    marginBottom:10,
+    borderRadius:10,
+    shadowColor : 'rgb(0, 0, 0)',
+    borderWidth:5,
+    borderColor : 'rgb(255,113,113)',
+    shadowOpacity: 0.2,
+    shadowRadius: 2.5,
+    shadowOffset: (Platform.OS === 'ios') ? { width: 0, height: 2 } : { width: 10, height: 10 },
+    elevation: (Platform.OS === 'ios') ? 0 : 6,
+    top:-15,
+    width:"94.5%",
+    left:-10,
+    height : 110
+
+  },
+  commnetBoxGreen : {
+    margin:15,
+    marginTop : 15,
+    marginBottom:10,
+    borderRadius:10,
+    shadowColor : 'rgb(0, 0, 0)',
+    borderWidth:5,
+    borderColor : '(rgb(31,199,116))',
+    shadowOpacity: 0.2,
+    shadowRadius: 2.5,
+    shadowOffset: (Platform.OS === 'ios') ? { width: 0, height: 2 } : { width: 10, height: 10 },
+    elevation: (Platform.OS === 'ios') ? 0 : 6,
+    top:-15,
+    width:"94.5%",
+    left:-10,
+    height : 110
 
   },
   settingList:{
@@ -426,13 +478,23 @@ const style = {
     borderRadius:(width >= 325) ? 36 : 30,
   },
   categoryTag : {
-    paddingLeft:(width >= 325) ? 15 : 10,
-    paddingRight:(width >= 325) ? 15 : 10,
-    height:(width >= 325) ? 35 : 35,
+    paddingHorizontal:(width >= 325) ? 10 : 7,
+    height: 35,
     backgroundColor:'rgb(31,199,116)',
     marginRight : 5,
     justifyContent : 'center',
-    alignItems : 'center'
+    alignItems : 'center',
+    marginBottom : 5,
+  },
+  categoryTagSmall : {
+    paddingLeft:(width >= 325) ? 8 : 5,
+    paddingRight:(width >= 325) ? 8 : 5,
+    height:(width >= 325) ? 30 : 30,
+    backgroundColor:'rgb(31,199,116)',
+    marginRight : 5,
+    justifyContent : 'center',
+    alignItems : 'center',
+    marginBottom : 5,
   },
   categoryTagLarge : {
     paddingLeft:(width >= 325) ? 22 : 10,
@@ -475,13 +537,14 @@ const style = {
     backgroundColor : 'transparent'
   },
   categoryTagGray : {
-    paddingLeft:(width >= 325) ? 15 : 10,
+    paddingLeft:(width >= 325) ? 10 : 7,
     paddingRight:(width >= 325) ? 15 : 10,
     paddingTop : 0,
     paddingBottom : 0,
-    height:(width >= 325) ? 35 : 30,
+    height:35,
     backgroundColor : 'rgb(36, 195, 200)',
-    marginRight : 5
+    marginRight : 5,
+    marginBottom : 5
   },
 
   categoryTagPink : {
@@ -489,9 +552,12 @@ const style = {
     paddingRight:(width >= 325) ? 15 : 10,
     paddingTop : 0,
     paddingBottom : 0,
-    height:(width >= 325) ? 35 : 30,
+    height:(width >= 325) ? 35 : 35,
     backgroundColor : 'rgb(172, 14, 250)',
     marginRight : 5,
+    marginBottom : 5,
+    justifyContent : 'center',
+    alignItems : 'center'
   },
 
   categoryTagText : {
@@ -558,13 +624,28 @@ const style = {
     right : 0,
     top:0
   },
-
+  submitButtonFeedback : {
+    marginTop:(width >= 375) ? 20 : 10,
+    marginBottom:10,
+    marginLeft:20,
+    marginRight:20,
+    backgroundColor:'white',
+    height:57,
+    width:'80%'
+  },
   workoutBoxActive : {
     paddingLeft:25, paddingRight:25,marginRight:15,marginBottom:15, height:50, backgroundColor:'white'
   },
   workoutBox : {
     paddingLeft:25, paddingRight:25,marginRight:15,marginBottom:15, height:50, backgroundColor:'transparent',borderWidth:2,borderColor:'white'
-  }
+  },
+  signupButtonWithDigits: {
+    backgroundColor:'rgb(172,14,250)',
+    height: size.buttonHeight,
+    alignItems: 'center',
+    justifyContent : 'center',
+    borderRadius : 120
+  },
 
 
 }

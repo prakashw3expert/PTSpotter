@@ -1,31 +1,88 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, Image, View,TouchableOpacity,StatusBar,Dimensions } from 'react-native'
+import { ScrollView, Text, Image,ActivityIndicator, View,TouchableOpacity,StatusBar,Dimensions } from 'react-native'
 import { Container, Content,Input,Form,Item,Icon,Body,Thumbnail,Button,Card,CardItem, Switch,Left, Right, ListItem } from 'native-base';
 
-import { Images,Fonts,Metrics } from '../../Themes'
+import { Images, Fonts, Metrics, Colors } from '../../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-// Styles
 import styles from './Styles/RatingScreenStyle'
 import StarRating from 'react-native-star-rating';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import AppConfig from  "../../Config/AppConfig"
 import Hr from 'react-native-hr'
 const { width, height } = Dimensions.get('window')
-export default class RatingScreen extends React.Component {
+import { connect } from 'react-redux'
+import {api} from  "../../Services/Api"
+import { call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+var moment = require('moment');
+
+class RatingScreen extends React.Component {
 
 constructor(props) {
     super(props);
     this.state = {
-      starCount: 4
-    };
+      starCount: 1,
+      loading : false,
+      reviews : {},
+      reviewCount : 99,
+      loading : false,
+    }
+    this.getReview = this.getReview.bind(this);
+    this.getReviewCount = this.getReviewCount.bind(this);
   }
 
   onStarRatingPress(rating) {
     this.setState({
       starCount: rating
     });
+  }
+  componentWillMount () {
+    //console.log('On Rating : ', this.props.trainer);
+    this.getReview()
+    this.getReviewCount()
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(newProps.refreshList){
+      this.getReview()
+      this.getReviewCount()
+    }
+  }
+
+  getReview() {
+
+    this.setState({loading : true})
+    api.getReview(this.props.trainer.id, this.props.user.accessToken)
+    .then((response) => {
+      if(response.ok){
+        console.log('Trainer Reviews : ' , response.data)
+        this.setState({reviews : response.data, loading : false})
+      }
+      else{
+        alert(response.problem)
+        console.log(response)
+        this.setState({reviews : {}, loading : false})
+      }
+
+    })
+  }
+
+  getReviewCount() {
+
+    api.getReviewCount(this.props.trainer.id, this.props.user.userId, this.props.user.accessToken)
+    .then((response) => {
+      if(response.ok){
+        console.log(response.data)
+        this.setState({reviewCount : response.data.count, loading : false})
+      }
+      else{
+        alert(response.problem)
+        console.log(response)
+        this.setState({reviewCount : 99, loading : false})
+      }
+
+    })
   }
   render () {
 
@@ -47,24 +104,27 @@ constructor(props) {
                       </View>
                       <View style={styles.navbarCenterView}>
                         <View style={{alignItems:'flex-start'}}>
-                            <Image source={Images.user4} style={styles.userImage}/>
+                            <Image source={{uri : this.props.trainer.image}} style={styles.userImage}/>
                         </View>
                         <View style={{marginLeft:12}}>
-                            <Text style={[styles.name]}>Aaron Castillo</Text>
-                            <Text style={[styles.address]}>Bristol, BS4 5SS, UK</Text>
-                          <StarRating
-                              disabled={false}
-                              emptyStar={'star-o'}
-                              fullStar={'star'}
-                              iconSet={'FontAwesome'}
-                              maxStars={5}
-                              starSize={20}
-                              rating={4}
-                              selectedStar={(rating) => this.onStarRatingPress(rating)}
-                              starColor='rgb(252, 221, 45)'
-                              emptyStarColor='rgb(252, 221, 45)'
-                            />
+                            <Text style={[styles.name]}>{this.props.trainer.name}</Text>
+                            <Text style={[styles.address]}>{this.props.trainer.address}</Text>
+                            <View style={{width : 100}}>
+                              <StarRating
+                                  disabled={true}
+                                  emptyStar={'star-o'}
+                                  fullStar={'star'}
+                                  iconSet={'FontAwesome'}
+                                  maxStars={5}
+                                  starSize={20}
+                                  rating={this.props.trainer.rating}
+                                  selectedStar={(rating) => this.onStarRatingPress(rating)}
+                                  starColor='rgb(252, 221, 45)'
+                                  emptyStarColor='rgb(252, 221, 45)'
+                                />
+                            </View>
                         </View>
+
 
                       </View>
                       <View>
@@ -80,109 +140,82 @@ constructor(props) {
               </View>
 
               <Content style={{marginTop : 10, marginBottom:(width >= 325 ? 90 : 70)}}>
-                <Card style={Fonts.style.ratingCards}>
-                  <CardItem>
-                      <Left>
-                          <Image  source={Images.user1} style={{height:70, width:70, borderRadius:35}} />
-                          <Body>
-                              <Text style={styles.raterName}>Christian Keller</Text>
-                              <Text note style={styles.raterDate}>07/26/2017</Text>
-                              <View style={{width:100}}>
-                              <StarRating
-                              disabled={true}
-                              emptyStar={'star-o'}
-                              fullStar={'star'}
-                              iconSet={'FontAwesome'}
-                              maxStars={5}
-                              starSize={20}
-                              rating={5}
-                              selectedStar={(rating) => this.onStarRatingPress(rating)}
-                              starColor='rgb(252, 221, 45)'
-                              emptyStarColor='rgb(252, 221, 45)'
-                            />
-                            </View>
-                          </Body>
-                      </Left>
-                    </CardItem>
+                {
+                  (this.state.loading) ?
+                    <ActivityIndicator
+                        animating={this.state.loading}
+                        style={[styles.centering, {height: 80}]}
+                        size="large"
+                      />
+                  :
 
-                    <CardItem content>
-                        <Text style={styles.raterFeedback}>
-                          If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event in childhood that started you along this exciting hobby.
-                        </Text>
-                    </CardItem>
+                  (this.state.reviews.length > 0) ?
 
-             </Card>
+                  this.state.reviews.map((revieww, i) => {
+                    return <Card key={i} style={Fonts.style.ratingCards}>
+                              <CardItem>
+                                  <Left>
+                                      <Image source={{uri : AppConfig.userProfilPath + revieww.user.image}} style={{height:70, width:70, borderRadius:35}} />
+                                      <Body>
+                                          <Text style={styles.raterName}>{revieww.user.name}</Text>
+                                          <Text note style={styles.raterDate}>{moment(revieww.createdAt).format("L")}</Text>
+                                          <View style={{width:100}}>
+                                            <StarRating
+                                            disabled={true}
+                                            emptyStar={'star-o'}
+                                            fullStar={'star'}
+                                            iconSet={'FontAwesome'}
+                                            maxStars={5}
+                                            starSize={20}
+                                            rating={revieww.rating}
+                                            selectedStar={(rating) => this.onStarRatingPress(rating)}
+                                            starColor='rgb(252, 221, 45)'
+                                            emptyStarColor='rgb(252, 221, 45)'
+                                          />
+                                        </View>
+                                      </Body>
+                                  </Left>
+                                </CardItem>
 
-             <Hr lineColor='rgb(234, 234, 234)' style={{paddingLeft:5, paddingRight:5}} />
+                                <CardItem content>
+                                    <Text style={styles.raterFeedback}>
+                                      {revieww.review}
+                                    </Text>
+                                </CardItem>
+                                <Hr lineColor='rgb(234, 234, 234)' style={{paddingLeft:5, paddingRight:5}} />
+                         </Card>
 
-             <Card style={Fonts.style.ratingCards}>
-                  <CardItem>
-                      <Left>
-                          <Image  source={Images.user2} style={{height:70, width:70, borderRadius:35}} />
-                          <Body>
-                              <Text style={styles.raterName}>Corey Schmidt</Text>
-                              <Text note style={styles.raterDate}>03/18/2017</Text>
-                              <View style={{width:100}}>
-                              <StarRating
-                              disabled={true}
-                              emptyStar={'star-o'}
-                              fullStar={'star'}
-                              iconSet={'FontAwesome'}
-                              maxStars={5}
-                              starSize={20}
-                              rating={this.state.starCount}
-                              selectedStar={(rating) => this.onStarRatingPress(rating)}
-                              starColor='rgb(252, 221, 45)'
-                              emptyStarColor='rgb(252, 221, 45)'
-                            />
-                            </View>
-                          </Body>
-                      </Left>
-                    </CardItem>
-             </Card>
-             <Hr lineColor='rgb(234, 234, 234)' style={{paddingLeft:5, paddingRight:5}} />
-             <Card style={Fonts.style.ratingCards}>
-                  <CardItem>
-                      <Left>
-                          <Image  source={Images.user3} style={{height:70, width:70, borderRadius:35}} />
-                          <Body>
-                              <Text style={styles.raterName}>Florence Greene</Text>
-                              <Text note style={styles.raterDate}>09/30/2017</Text>
-                              <View style={{width:100}}>
-                              <StarRating
-                              disabled={true}
-                              emptyStar={'star-o'}
-                              fullStar={'star'}
-                              iconSet={'FontAwesome'}
-                              maxStars={5}
-                              starSize={20}
-                              rating={2}
-                              selectedStar={(rating) => this.onStarRatingPress(rating)}
-                              starColor='rgb(252, 221, 45)'
-                              emptyStarColor='rgb(252, 221, 45)'
-                            />
-                            </View>
-                          </Body>
-                      </Left>
-                    </CardItem>
 
-                    <CardItem content>
-                        <Text style={styles.raterFeedback}>
-                          Stu Unger is one of the biggest superstars to have immerged from the professional poker world.
-                        </Text>
-                    </CardItem>
+                  })
+                  :
+                     <View style={styles.noRatingView}>
+                        <Text style={styles.noRatingText}>No Review</Text>
+                     </View>
 
-             </Card>
+                }
 
               </Content>
+              {
+                (this.state.reviewCount === 0) ?
+                    <View style={styles.bottomview}>
+                    <Button light full rounded style={Fonts.style.default} onPress={() => NavigationActions.feedback({trainer : this.props.trainer})}>
+                        <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>WRITE A REVIEW</Text>
+                    </Button>
+                  </View>
+                :
+                null
+              }
 
-              <View style={styles.bottomview}>
-              <Button light full rounded style={Fonts.style.default} onPress={NavigationActions.feedback}>
-                  <Text style={[Fonts.style.buttonText, Fonts.style.textBold]}>WRITE A REVIEW</Text>
-              </Button>
-            </View>
         </Container>
 
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(RatingScreen)

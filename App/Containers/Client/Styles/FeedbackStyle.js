@@ -43,10 +43,12 @@ export default StyleSheet.create({
     marginTop:(width >= 375) ? 6 : 4
   },
   ptImage : {
-    height:(width >= 375) ? 128 : 100, 
-    width:(width >= 375) ? 128 : 100, 
+    height:(width >= 375) ? 128 : 100,
+    width:(width >= 375) ? 128 : 100,
     borderRadius:(width >= 375) ? 64 : 50,
   },
+
+
 
 
 })

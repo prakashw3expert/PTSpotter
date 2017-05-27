@@ -10,8 +10,8 @@ export default EStyleSheet.create({
 
   },
   containers : {
-    marginLeft: 16,
-    marginRight : 16,
+    marginLeft: 10,
+    marginRight : 10,
     marginBottom : 20
   },
   navbarview: {
@@ -90,5 +90,37 @@ export default EStyleSheet.create({
     height:(width - 36)/3,
     marginTop:10,
   },
+  username : {
+    fontFamily : Fonts.type.bold,
+    fontSize : 14,
+    lineHeight : 23,
+    letterSpacing : 1.8,
+    color : 'white',
+    backgroundColor : 'transparent'
+  },
+  gymname : {
+    fontFamily : Fonts.type.regular,
+    fontSize : 16,
+    letterSpacing : 2,
+    lineHeight : 23,
+    color : 'rgb(102,102,102)',
+  },
+  searchButtonView : {
+    backgroundColor:'rgb(172,14,250)',
+    width:30,
+    height:30,
+    borderRadius:100,
+    marginTop:(width > 325) ? 7 : 5,
+    marginRight:5,
+    paddingRight:20
+  },
+  playIcon: {
+    color:'rgb(172,14,250)',
+    position:'absolute',
+    top:(width > 325) ? 40 : 30,
+    right:(width > 325) ? 40 : 31,
+    backgroundColor:'transparent'
+  },
+
 
 })

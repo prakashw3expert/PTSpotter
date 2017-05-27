@@ -94,5 +94,13 @@ export default EStyleSheet.create({
     textDecorationStyle: "solid",
     textDecorationColor: "#fff"
   },
+  backButton: {
+    height:40,
+    flex:.5
+  },
+  backButtonIcon: {
+    fontSize:32,
+    color : Colors.white
+  }
 
 })

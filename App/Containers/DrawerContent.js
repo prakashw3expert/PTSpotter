@@ -8,7 +8,7 @@ import DrawerButton from '../Components/DrawerButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 import { Button, Text, Icon, ListItem, Left, Right, Body, Thumbnail,Badge } from 'native-base';
-
+import LoginActions from '../Redux/UserRedux'
 import { Images,Fonts } from '../Themes'
 import Hr from 'react-native-hr'
 import { connect } from 'react-redux'
@@ -18,7 +18,7 @@ class DrawerContent extends Component {
   constructor() {
       super();
       this.state = {
-         'user': ''
+
       }
    }
   componentDidMount () {
@@ -43,10 +43,6 @@ class DrawerContent extends Component {
     this.toggleDrawer()
     NavigationActions.homeScreen()
   }
-  handlePressClientHome = () => {
-    this.toggleDrawer()
-    NavigationActions.clientHome()
-  }
 
   handlePressSearch = () => {
     this.toggleDrawer()
@@ -65,12 +61,12 @@ class DrawerContent extends Component {
 
   handlePressSettings = () => {
     this.toggleDrawer()
-    NavigationActions.clientsettings()
+    NavigationActions.settings()
   }
 
   handlePressPTSettings = () => {
     this.toggleDrawer()
-    NavigationActions.ptsettings()
+    NavigationActions.settings()
   }
 
   handleUserProfileClick = () => {
@@ -92,8 +88,7 @@ class DrawerContent extends Component {
   }
   handleLogout = () => {
     this.toggleDrawer()
-    NavigationActions.login()
-
+    this.props.logout()
   }
 
 
@@ -108,12 +103,12 @@ class DrawerContent extends Component {
           <View style={styles.usesrDeatils}>
           <ListItem avatar style={{borderBottomWidth:0}} onPress={this.handleUserProfileClick}>
                 <Left>
-                    <Thumbnail source={Images.avatar} />
+                    <Thumbnail source={{uri : this.props.user.profile.image}} />
                 </Left>
                 <Body style={{borderBottomWidth:0}}>
                     <Text style={{fontFamily:Fonts.type.bold, color:'rgb(255, 255, 255)', fontSize:Fonts.size.regular, letterSpacing:0.7}}>{(this.props.user.isLogin) ? this.props.user.profile.name : ''} </Text>
-                    <Text note style={Fonts.style.drawerUserText}>Bristol, BS4 5SS, UK</Text>
-                    <Text note style={Fonts.style.drawerUserText}>Personal Trainer</Text>
+                    {(this.props.user.isLogin && this.props.user.profile.address) ? <Text note style={Fonts.style.drawerUserText}>{this.props.user.profile.address}</Text> : null }
+                    <Text note style={Fonts.style.drawerUserText}>{(this.props.user.isLogin) ? (this.props.user.profile.role === 'client') ? "Fitness Enthusiast" : "Personal Trainer"  : ''}</Text>
                 </Body>
             </ListItem>
           </View>
@@ -121,7 +116,7 @@ class DrawerContent extends Component {
       {
         (this.props.user.isLogin && this.props.user.profile.role === 'client')
         ? <View style={styles.nav}>
-            <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressClientHome} />
+            <DrawerButton icon='ios-list' text='Home' active={true} onPress={this.handlePressHome} />
             <DrawerButton icon='mail-open' text='Inbox' counter={2}  onPress={this.handlePressInbox} />
             <DrawerButton icon='md-search' text='Search'  onPress={this.handlePressPTSearch} />
             <DrawerButton icon='ios-flash' text='Sessions'  onPress={this.handlePressSessions} />
@@ -160,5 +155,10 @@ const mapStateToProps = (state) => {
     user: state.user
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(LoginActions.logout())
+  }
+}
 
-export default connect(mapStateToProps)(DrawerContent)
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent)

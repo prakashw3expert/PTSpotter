@@ -8,6 +8,12 @@ export default EStyleSheet.create({
     backgroundColor:Colors.background,
     alignItems:'center',
   },
+  popupheaderView: {
+    backgroundColor:Colors.background,
+    height:64,
+    alignItems:'center',
+
+  },
   containers : {
     marginLeft: 16,
     marginRight : 16,
@@ -81,6 +87,8 @@ export default EStyleSheet.create({
     fontFamily : Fonts.type.bold,
   },
   bottomview: {
+    borderTopWidth:1.5,
+    borderTopColor:'rgb(234,234,234)',
     backgroundColor:'white',
     position: 'absolute',
     flexDirection: 'row',
@@ -143,7 +151,8 @@ export default EStyleSheet.create({
      marginRight:10,
      borderRadius:10,
      padding:5,
-     height:57
+     height:57,
+     marginBottom : 10
   },
   tabText : {
     fontFamily: Fonts.type.regular,
@@ -221,6 +230,27 @@ export default EStyleSheet.create({
     width : width,
     backgroundColor:Colors.background
   },
+  gymsView : {
+    flexDirection : 'row',
+    flexWrap : 'wrap'
+  },
+  popupnavbarview: {
+   marginTop:21,
+   flex:1,
+   flexDirection:'row',
+ },
+ popupnavbarCenterView : {
+   flex:2,
+   alignItems:'center',
+   flexDirection:'row',
+ },
+ playIcon: {
+   color:'rgb(172,14,250)',
+   position:'absolute',
+   top:(width > 325) ? 50 : 40,
+   right:(width > 325) ? 40 : 31,
+   backgroundColor:'transparent'
+ },
 
 
 

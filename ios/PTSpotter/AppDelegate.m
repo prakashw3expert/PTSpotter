@@ -14,6 +14,11 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Fabric/Fabric.h>
+#import <DigitsKit/DigitsKit.h>
+#import <Crashlytics/Crashlytics.h>
+
+
 
 @implementation AppDelegate
 
@@ -29,6 +34,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [Fabric with:@[[Digits class], [Crashlytics class]]];
+
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];

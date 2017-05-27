@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>PTSpotter wants to access your microphone.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>PTSpotter wants to access your location for better response.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>PTSpotter wants to access your camera</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -29,6 +35,31 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>baa0faef2119008398ba9761c37621628f511f46</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>61itpCaFXrYDU8HiDCwBrE9jL</string>
+					<key>consumerSecret</key>
+					<string>LM0gk5csQ5VVLmh4YKv1FRj2gHBI6JA12z0wwH5PmjuwqpsCDg</string>
+				</dict>
+				<key>KitName</key>
+				<string>Digits</string>
+			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>1807588632902341</string>
 	<key>FacebookDisplayName</key>
@@ -56,7 +87,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>PTSpotter wants to access your location for better response.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>PTSpotter wants to access your Photo library.</string>
 	<key>UIAppFonts</key>

@@ -21,7 +21,7 @@ export default EStyleSheet.create({
     padding : 20,
     paddingTop: 10,
     paddingLeft : 10,
-    marginTop : 10,
+    marginTop : 0,
     paddingBottom : 10
   },
   centered: {
@@ -125,10 +125,32 @@ export default EStyleSheet.create({
     color : 'rgb(102,102,102)',
     marginBottom : 6,
   },
+  CardHeadingWhite : {
+    fontSize : Fonts.size.regular,
+    letterSpacing : 1.1,
+    fontFamily : Fonts.type.bold,
+    color : 'rgb(255,255,255)',
+    marginBottom : 20,
+    marginLeft : 10
+  },
   CardText : {
     fontSize:12,
     fontFamily : Fonts.type.regular,
     letterSpacing:0.1,
     color : "rgba(102, 102, 102, 0.5)"
+  },
+  CardTextWhite : {
+    fontSize:14,
+    fontFamily : Fonts.type.regular,
+    letterSpacing:0.1,
+    color : "rgb(255, 255, 255)",
+    marginBottom : 5,
+  },
+  CardTextWhiteSmall : {
+    fontSize:12,
+    fontFamily : Fonts.type.regular,
+    letterSpacing:0.1,
+    color : "rgba(255, 255, 255, 0.5)",
+    marginBottom : 5,
   }
 })

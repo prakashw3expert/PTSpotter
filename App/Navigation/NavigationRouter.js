@@ -3,9 +3,10 @@ import { Scene, Router } from 'react-native-router-flux'
 import Styles from './Styles/NavigationContainerStyles'
 import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
-
+import { AsyncStorage } from 'react-native'
 import { connect } from 'react-redux'
-
+import {api} from  "../Services/Api"
+import LoginActions from '../Redux/UserRedux'
 // screens identified by the router
 import CustomNavBar from '../Navigation/CustomNavBar'
 
@@ -18,8 +19,7 @@ import ClientHome from '../Containers/Client/ClientHome'
 import EditProfile from '../Containers/EditProfile'
 import MobileVerification from '../Containers/MobileVerification'
 import PostDetail from '../Containers/PostDetail'
-import ClientSettings from '../Containers/Client/Settings'
-import PTSettings from '../Containers/PT/Settings'
+import Settings from '../Containers/PT/Settings'
 import Availability from '../Containers/PT/Availability'
 import ClientDetail from '../Containers/PT/ClientDetail'
 import ClientDetailNotWorking from '../Containers/PT/ClientDetailNotWorking'
@@ -33,9 +33,22 @@ import Inbox from '../Containers/PT/Messages'
 import ChatScreen from '../Containers/PT/ChatScreen'
 import Decline from '../Containers/PT/Decline'
 import Feedback from '../Containers/Client/Feedback'
+import Likes from '../Containers/Likes'
 
 
 class NavigationRouter extends Component {
+
+  componentWillMount(){
+    var token;
+    var userId;
+    AsyncStorage.multiGet(['ptspotter_accessToken','userId']).then((data) => {
+      if(data[0][1]){
+        token = data[0][1] || null;
+        userId = data[1][1] || null;
+        this.props.attemptAutoLogin(userId, token);
+      }
+    })
+  }
   render () {
     return (
       <Router>
@@ -46,15 +59,13 @@ class NavigationRouter extends Component {
             <Scene key='login' component={LoginScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='signup' component={SignUpScreen} title='PT SPOTTER' hideNavBar />
             <Scene key='mobile' component={MobileVerification} title='Verification' hideNavBar/>
-            <Scene initial={this.props.isLogin} key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
-            <Scene key='clientHome' component={ClientHome} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
+            <Scene key='homeScreen' component={HomeScreen} title='HOME' hideNavBar={false} navBar={CustomNavBar} />
             <Scene key='postDetail' component={PostDetail} title='POST' hideNavBar />
             <Scene key='editProfile' component={EditProfile} title='Edit Profile' hideNavBar />
-            <Scene key='ptsettings' component={PTSettings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
-            <Scene key='clientsettings' component={PTSettings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
+            <Scene key='settings' component={Settings} title='SETTINGS' hideNavBar={false} navBar={CustomNavBar}/>
             <Scene key='availability' component={Availability} title='AVAILABILITY' hideNavBar/>
             <Scene key='sessions' component={Sessions} title='SESSIONS' hideNavBar/>
-            <Scene key='SetupSessions' component={SetupSessions} title='SETUP SESSIONS'  hideNavBar={true}/>
+            <Scene key='likes' component={Likes} title='Likes'  hideNavBar={true}/>
             <Scene key='clientDetails' component={ClientDetail} title='' hideNavBar/>
             <Scene key='ClientDetailNotWorking' component={ClientDetailNotWorking} title='' hideNavBar/>
             <Scene  key='trainerDetails' component={TrainerDetail} title='' hideNavBar/>
@@ -79,7 +90,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    attemptAutoLogin: (userId, token) => dispatch(LoginActions.autoLogin(userId, token))
   }
 }
 
